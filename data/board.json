@@ -4,21 +4,21 @@
   "project": "PSY 프로젝트",
   "subtitle": "메이플풍 2D 횡스크롤 액션 RPG · Unity 6.3 LTS",
   "currentMilestone": "M1",
-  "updatedAt": "2026-09-27T09:52:52Z",
+  "updatedAt": "2026-09-27T13:21:56Z",
   "qa": {
-   "at": "2026-09-27T09:52:51Z",
+   "at": "2026-09-27T13:21:48Z",
    "gate": "PASS",
    "compile": "0 errors",
    "editmode": "31/31",
-   "playmode": "8/8 E2E",
-   "screenshots": 11
+   "playmode": "9/9 (2 건너뜀)",
+   "screenshots": 13
   },
   "build": {
-   "at": "2026-09-27T09:52:51Z",
-   "target": "Windows x64 (Mono)",
-   "sizeMB": 141,
+   "at": "2026-09-27T13:21:48Z",
+   "target": "Windows x64 (Mono, PSY_PLAYTEST)",
+   "sizeMB": 147,
    "path": "project_psy/Builds/Windows/PSY.exe",
-   "commit": "33159e1"
+   "commit": "e13cb00"
   }
  },
  "milestones": [
@@ -641,13 +641,13 @@
    "createdAt": "2026-09-27T03:30:00Z",
    "doneAt": null,
    "milestone": "M1",
-   "note": "실행: project_psy\\Builds\\Windows\\PSY.exe (09-27 저녁 빌드: 새 주인공·마을 아트·효과음·음악·픽셀 글꼴 반영). 판정: 타격감·조작감·브레이크/평점 재미·강화 긴장감·보스 난이도·★소리 크기(일시정지 메뉴에서 조절)·글자 가독성. 발견사항은 이 카드 메모에",
+   "note": "실행: 에디터 ▶(허브 사본, 어떤 씬이 열려 있어도 Game 씬부터) 또는 project_psy\\Builds\\Windows\\PSY.exe(09-27 밤 빌드 e13cb00: 아트 v2 전 영역·조작법 F1·미니맵 M·테스트 키 F5~F9). 판정: 타격감·조작감·브레이크/평점 재미·강화 긴장감·보스 난이도·★소리 크기(일시정지 메뉴)·글자 가독성·새 그림 인상. 발견사항은 이 카드 메모에",
    "order": 50,
    "owner": "사용자",
    "priority": "P0",
    "stage": "qa",
    "title": "사용자 실기 손맛 판정",
-   "updatedAt": "2026-09-27T09:52:42Z",
+   "updatedAt": "2026-09-27T13:21:56Z",
    "id": "m1-playtest"
   },
   {
@@ -751,15 +751,15 @@
   {
    "area": "아트",
    "createdAt": "2026-09-27T03:30:00Z",
-   "doneAt": null,
+   "doneAt": "2026-09-27T13:21:56Z",
    "milestone": "M2",
-   "note": "v1 전량 자체 제작 초안 → 개선 우선순위: ①주인공 칼날·쓰러짐 ②아이템 아이콘 실루엣 ③깊은 숲 배경 ④NPC 표정. 외주는 비용 승인 필요(유료 멤버십은 안 씀, PSY-19)",
+   "note": "완료(09-27 밤): 원장 v2 157건 + 사다리·로프 4. v1 은 PixelArt/_snapshots/v1-20260927 보존. 남은 약점: 코드로 찍은 그림이라 일부 동작의 팔다리가 단순 · 속 타일 2종 반복 · 숲 하늘색이 냉기 FX 와 비슷. 외주(v3)는 m3-art-v3",
    "order": 65,
-   "owner": "PD",
+   "owner": "Claude",
    "priority": "P1",
-   "stage": "art",
-   "title": "아트 v2: 주인공·보스 외주 검토·NPC 개선",
-   "updatedAt": "2026-09-27T09:52:42Z",
+   "stage": "done",
+   "title": "아트 v2(자체 제작) — 전 영역",
+   "updatedAt": "2026-09-27T13:21:56Z",
    "id": "m2-art-v2"
   },
   {
@@ -1013,9 +1013,314 @@
    "createdAt": "2026-09-27T09:52:42Z",
    "updatedAt": "2026-09-27T09:52:42Z",
    "doneAt": null
+  },
+  {
+   "id": "m1-playfix",
+   "title": "에디터 ▶ 실행 시 진행 안 됨 수리 — 항상 Game 씬부터",
+   "stage": "done",
+   "milestone": "M1",
+   "area": "개발",
+   "priority": "P0",
+   "owner": "Claude",
+   "note": "원인: 허브 사본에 이름 없는 빈 씬이 열려 있었음(MCP 로 확인). PlayFromGameScene — 메뉴 «PSY/실행은 항상 Game 씬부터»로 끌 수 있음, 테스트 러너는 자동 제외(PSY-25)",
+   "order": 93,
+   "createdAt": "2026-09-27T13:21:56Z",
+   "updatedAt": "2026-09-27T13:21:56Z",
+   "doneAt": "2026-09-27T13:21:56Z"
+  },
+  {
+   "id": "m1-playmode-reset",
+   "title": "빠른 실행(도메인 리로드 끔) 대응 static 초기화",
+   "stage": "done",
+   "milestone": "M1",
+   "area": "개발",
+   "priority": "P1",
+   "owner": "Claude",
+   "note": "PlayModeReset(SubsystemRegistration) — ▶ 를 다시 눌러도 이전 실행 값(저장 경로·싱글턴·캐시)이 남지 않게",
+   "order": 94,
+   "createdAt": "2026-09-27T13:21:56Z",
+   "updatedAt": "2026-09-27T13:21:56Z",
+   "doneAt": "2026-09-27T13:21:56Z"
+  },
+  {
+   "id": "m1-input-fix",
+   "title": "입력 새는 버그·끊김 뒤 키 씹힘 수리",
+   "stage": "done",
+   "milestone": "M1",
+   "area": "개발",
+   "priority": "P0",
+   "owner": "Claude",
+   "note": "창 열고 닫을 때 입력 버퍼 비움(Esc 로 가방 닫으면 메뉴도 열림·대화 X 가 공격으로 샘) · 버퍼 = 0.13초 또는 다음 프레임까지(PSY-29)",
+   "order": 95,
+   "createdAt": "2026-09-27T13:21:56Z",
+   "updatedAt": "2026-09-27T13:21:56Z",
+   "doneAt": "2026-09-27T13:21:56Z"
+  },
+  {
+   "id": "m1-help-minimap",
+   "title": "조작법 창(F1·메뉴) + 미니맵(M)",
+   "stage": "done",
+   "milestone": "M1",
+   "area": "개발",
+   "priority": "P1",
+   "owner": "Claude",
+   "note": "조작법 = 키보드·패드·가방 키 + 테스트 키(개발 빌드) · 미니맵 = 지형·발판·사다리·포털·NPC·적 점, 켜짐 여부 저장",
+   "order": 96,
+   "createdAt": "2026-09-27T13:21:56Z",
+   "updatedAt": "2026-09-27T13:21:56Z",
+   "doneAt": "2026-09-27T13:21:56Z"
+  },
+  {
+   "id": "m1-title-polish",
+   "title": "새 게임 덮어쓰기 확인 + 타이틀 배경(마을 풍경)",
+   "stage": "done",
+   "milestone": "M1",
+   "area": "개발",
+   "priority": "P2",
+   "owner": "Claude",
+   "note": "저장이 있으면 «새 게임»에 확인 단계 · 타이틀 뒤로 루미엘 마을이 천천히 흐른다",
+   "order": 97,
+   "createdAt": "2026-09-27T13:21:56Z",
+   "updatedAt": "2026-09-27T13:21:56Z",
+   "doneAt": "2026-09-27T13:21:56Z"
+  },
+  {
+   "id": "m1-testkeys",
+   "title": "테스트 키 F5~F9(레벨·재화·회복·다음 맵·적 처치)",
+   "stage": "done",
+   "milestone": "M1",
+   "area": "개발",
+   "priority": "P1",
+   "owner": "Claude",
+   "note": "에디터·PSY_PLAYTEST 빌드에만(PSY-26) — 1장 전체(보스·강화)를 빨리 확인용",
+   "order": 98,
+   "createdAt": "2026-09-27T13:21:56Z",
+   "updatedAt": "2026-09-27T13:21:56Z",
+   "doneAt": "2026-09-27T13:21:56Z"
+  },
+  {
+   "id": "m1-e2e-input",
+   "title": "E2E: 실제 입력 경로로 타이틀→대화→포털→퀘스트 보고→메뉴·가방·F1",
+   "stage": "done",
+   "milestone": "M1",
+   "area": "QA",
+   "priority": "P0",
+   "owner": "Claude",
+   "note": "메서드 직접 호출 없이 키 입력만으로 진행 — 입력 새는 버그·끊김 씹힘 회귀 검사 포함",
+   "order": 99,
+   "createdAt": "2026-09-27T13:21:56Z",
+   "updatedAt": "2026-09-27T13:21:56Z",
+   "doneAt": "2026-09-27T13:21:56Z"
+  },
+  {
+   "id": "m0-lore-tab",
+   "title": "작업 보드 «세계관» 탭 — 세계관·시나리오 플롯",
+   "stage": "done",
+   "milestone": "M0",
+   "area": "기획",
+   "priority": "P1",
+   "owner": "Claude",
+   "note": "https://qtdqtd002-coder.github.io/psy-board/#lore · 원고 docs/design/01_Concept/03_Lore.md(1장 구현됨·2~5장 가안, PSY-27)",
+   "order": 100,
+   "createdAt": "2026-09-27T13:21:56Z",
+   "updatedAt": "2026-09-27T13:21:56Z",
+   "doneAt": "2026-09-27T13:21:56Z"
+  },
+  {
+   "id": "m0-mcp-check",
+   "title": "Unity MCP 연동 재점검 + 사용자 에디터 실행 점검 도구",
+   "stage": "done",
+   "milestone": "M0",
+   "area": "인프라",
+   "priority": "P1",
+   "owner": "Claude",
+   "note": "MCP for Unity(47도구)·Unity AI 릴레이 연결 확인 · tools/dev/play-smoke.py = ▶ → 타이틀 → 새 게임 → 대화 → 걷기 자동 점검(저장 경로 임시 전환 후 원복)",
+   "order": 101,
+   "createdAt": "2026-09-27T13:21:56Z",
+   "updatedAt": "2026-09-27T13:21:56Z",
+   "doneAt": "2026-09-27T13:21:56Z"
+  },
+  {
+   "id": "m2-art-v2-hero",
+   "title": "아트 v2: 주인공 이안 14동작 + 대화 초상화",
+   "stage": "done",
+   "milestone": "M2",
+   "area": "아트",
+   "priority": "P1",
+   "owner": "Claude",
+   "note": "idle·run·평타 3단·공중·하단·대시·점프·낙하·피격·쓰러짐·사다리·시전 · 칼끝 범위가 판정 박스 안(재조정 불필요 확인)",
+   "order": 102,
+   "createdAt": "2026-09-27T13:21:56Z",
+   "updatedAt": "2026-09-27T13:21:56Z",
+   "doneAt": "2026-09-27T13:21:56Z"
+  },
+  {
+   "id": "m2-art-v2-enemy",
+   "title": "아트 v2: 몽글이·잿빛 병정·병정 대장(48px)·해골왕(96px)",
+   "stage": "done",
+   "milestone": "M2",
+   "area": "아트",
+   "priority": "P1",
+   "owner": "Claude",
+   "note": "공격 예비동작 프레임 · 대장 2연타 · 보스 도약 이륙/공중/착지 포즈 · 판정 배율·공격 박스를 아트 판정표에 맞춤(PSY-28)",
+   "order": 103,
+   "createdAt": "2026-09-27T13:21:56Z",
+   "updatedAt": "2026-09-27T13:21:56Z",
+   "doneAt": "2026-09-27T13:21:56Z"
+  },
+  {
+   "id": "m2-art-v2-npc",
+   "title": "아트 v2: NPC 4명 + 대화 초상화 · 스킬 아이콘 · 아이템 아이콘 31종",
+   "stage": "done",
+   "milestone": "M2",
+   "area": "아트",
+   "priority": "P1",
+   "owner": "Claude",
+   "note": "초상화 64px(정수배) · 스킬 아이콘 24px · 아이템 16px",
+   "order": 104,
+   "createdAt": "2026-09-27T13:21:56Z",
+   "updatedAt": "2026-09-27T13:21:56Z",
+   "doneAt": "2026-09-27T13:21:56Z"
+  },
+  {
+   "id": "m2-art-v2-fx",
+   "title": "아트 v2: FX 14종(스킬 4·타격·치명·브레이크·착지·레벨업·충격파·포털·드롭)",
+   "stage": "done",
+   "milestone": "M2",
+   "area": "아트",
+   "priority": "P1",
+   "owner": "Claude",
+   "note": "치명타 전용 불꽃·브레이크 폭발 추가 연결, 유성은 낙하 타이밍에 맞춰 재생",
+   "order": 105,
+   "createdAt": "2026-09-27T13:21:56Z",
+   "updatedAt": "2026-09-27T13:21:56Z",
+   "doneAt": "2026-09-27T13:21:56Z"
+  },
+  {
+   "id": "m2-art-v2-world",
+   "title": "아트 v2: 배경 4테마×3층 · 지면 타일 32 · 소품 20 · 사다리·로프",
+   "stage": "done",
+   "milestone": "M2",
+   "area": "아트",
+   "priority": "P1",
+   "owner": "Claude",
+   "note": "배경층 바닥 고정(키 큰 맵의 근경 바닥띠 제거) · 층별 어둡게 곱하기 폐지 · 발판 양끝 마감 타일 · 언덕/숲 입구 소품 배치(PSY-28)",
+   "order": 106,
+   "createdAt": "2026-09-27T13:21:56Z",
+   "updatedAt": "2026-09-27T13:21:56Z",
+   "doneAt": "2026-09-27T13:21:56Z"
+  },
+  {
+   "id": "m3-art-v3",
+   "title": "아트 v3 외주 검토 — 주인공·보스(게임의 얼굴)",
+   "stage": "plan",
+   "milestone": "M3",
+   "area": "아트",
+   "priority": "P2",
+   "owner": "PD",
+   "note": "비용 승인 필요(유료 멤버십은 안 씀, PSY-19) · Steam AI 공시(m4-ai-disclosure)와 함께 결정",
+   "order": 107,
+   "createdAt": "2026-09-27T13:21:56Z",
+   "updatedAt": "2026-09-27T13:21:56Z",
+   "doneAt": null
   }
  ],
  "log": [
+  {
+   "at": "2026-09-27T13:21:56Z",
+   "text": "«에디터 ▶ 실행 시 진행 안 됨 수리 — 항상 Game 씬부터» 추가(완료)",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-27T13:21:56Z",
+   "text": "«빠른 실행(도메인 리로드 끔) 대응 static 초기화» 추가(완료)",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-27T13:21:56Z",
+   "text": "«입력 새는 버그·끊김 뒤 키 씹힘 수리» 추가(완료)",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-27T13:21:56Z",
+   "text": "«조작법 창(F1·메뉴) + 미니맵(M)» 추가(완료)",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-27T13:21:56Z",
+   "text": "«새 게임 덮어쓰기 확인 + 타이틀 배경(마을 풍경)» 추가(완료)",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-27T13:21:56Z",
+   "text": "«테스트 키 F5~F9(레벨·재화·회복·다음 맵·적 처치)» 추가(완료)",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-27T13:21:56Z",
+   "text": "«E2E: 실제 입력 경로로 타이틀→대화→포털→퀘스트 보고→메뉴·가방·F1» 추가(완료)",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-27T13:21:56Z",
+   "text": "«작업 보드 «세계관» 탭 — 세계관·시나리오 플롯» 추가(완료)",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-27T13:21:56Z",
+   "text": "«Unity MCP 연동 재점검 + 사용자 에디터 실행 점검 도구» 추가(완료)",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-27T13:21:56Z",
+   "text": "«아트 v2: 주인공 이안 14동작 + 대화 초상화» 추가(완료)",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-27T13:21:56Z",
+   "text": "«아트 v2: 몽글이·잿빛 병정·병정 대장(48px)·해골왕(96px)» 추가(완료)",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-27T13:21:56Z",
+   "text": "«아트 v2: NPC 4명 + 대화 초상화 · 스킬 아이콘 · 아이템 아이콘 31종» 추가(완료)",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-27T13:21:56Z",
+   "text": "«아트 v2: FX 14종(스킬 4·타격·치명·브레이크·착지·레벨업·충격파·포털·드롭)» 추가(완료)",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-27T13:21:56Z",
+   "text": "«아트 v2: 배경 4테마×3층 · 지면 타일 32 · 소품 20 · 사다리·로프» 추가(완료)",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-27T13:21:56Z",
+   "text": "«아트 v2(자체 제작) — 전 영역» 수정(title, owner, note)",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-27T13:21:56Z",
+   "text": "«아트 v2(자체 제작) — 전 영역» 아트 → 완료",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-27T13:21:56Z",
+   "text": "«아트 v3 외주 검토 — 주인공·보스(게임의 얼굴)» 추가(기획)",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-27T13:21:56Z",
+   "text": "«사용자 실기 손맛 판정» 수정(note)",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-27T13:21:56Z",
+   "text": "09-27 밤: 아트 v2 전 영역 반영(원장 v2 157건 + 사다리·로프) · ▶ 실행 수리 · 입력 버그 · 조작법·미니맵·테스트 키 · 세계관 탭 — 게이트 PASS, 빌드 e13cb00",
+   "by": "Claude"
+  },
   {
    "at": "2026-09-27T09:52:42Z",
    "text": "«리소스 교체 구조(아트·사운드 매니페스트 + 외부 교체 폴더)» 개발 → 완료 — 리소스 매니페스트(키 238)+ResourcePack 덮어쓰기+대체 사슬 구현. 도구 tools/res/manifest.py(lint·todo), 문서 05_Art_Sound/02_Resource_Swap.md, 테스트 ResourceManifestTests 5종. 게이트 PASS(09-27)",
