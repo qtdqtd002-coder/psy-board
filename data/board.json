@@ -4,9 +4,9 @@
   "project": "PSY 프로젝트",
   "subtitle": "메이플풍 2D 횡스크롤 액션 RPG · Unity 6.3 LTS",
   "currentMilestone": "M1",
-  "updatedAt": "2026-09-27T09:52:42Z",
+  "updatedAt": "2026-09-27T09:52:52Z",
   "qa": {
-   "at": "__NOW__",
+   "at": "2026-09-27T09:52:51Z",
    "gate": "PASS",
    "compile": "0 errors",
    "editmode": "31/31",
@@ -14,7 +14,7 @@
    "screenshots": 11
   },
   "build": {
-   "at": "__NOW__",
+   "at": "2026-09-27T09:52:51Z",
    "target": "Windows x64 (Mono)",
    "sizeMB": 141,
    "path": "project_psy/Builds/Windows/PSY.exe",
