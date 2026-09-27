@@ -4,21 +4,22 @@
   "project": "PSY 프로젝트",
   "subtitle": "메이플풍 2D 횡스크롤 액션 RPG · Unity 6.3 LTS",
   "currentMilestone": "M1",
-  "updatedAt": "2026-09-27T14:49:14Z",
+  "updatedAt": "2026-09-27T14:49:16Z",
   "qa": {
-   "at": "2026-09-27T13:52:16Z",
+   "at": "2026-09-27T14:43:29Z",
    "gate": "PASS",
    "compile": "0 errors",
    "editmode": "31/31",
-   "playmode": "14/14 (2 건너뜀, 조작감 실측 5 포함)",
-   "screenshots": 13
+   "playmode": "14/14 (2 건너뜀)",
+   "screenshots": 13,
+   "coopSmoke": "PASS(지연 0/100/200ms)"
   },
   "build": {
-   "at": "2026-09-27T13:53:36Z",
-   "target": "Windows x64 (Mono, PSY_PLAYTEST)",
-   "sizeMB": 142,
+   "at": "2026-09-27T14:44:22Z",
+   "target": "Windows x64 (Mono, PSY_PLAYTEST) · Game+Coop",
+   "sizeMB": 150,
    "path": "project_psy/Builds/Windows/PSY.exe",
-   "commit": "36ec241"
+   "commit": "e14142c"
   }
  },
  "milestones": [
