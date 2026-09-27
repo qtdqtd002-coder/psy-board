@@ -4,7 +4,7 @@
   "project": "PSY 프로젝트",
   "subtitle": "메이플풍 2D 횡스크롤 액션 RPG · Unity 6.3 LTS",
   "currentMilestone": "M1",
-  "updatedAt": "2026-09-27T04:05:00Z",
+  "updatedAt": "2026-09-27T08:54:56Z",
   "qa": {
    "at": "2026-09-27T04:00:00Z",
    "gate": "PASS",
@@ -204,15 +204,15 @@
   {
    "area": "기획",
    "createdAt": "2026-09-27T03:30:00Z",
-   "doneAt": null,
+   "doneAt": "2026-09-27T08:54:56Z",
    "milestone": "M0",
-   "note": "decision-log PSY-4·5·7 및 시나리오 큰 줄기 확인 요청",
+   "note": "decision-log PSY-4·5·7 및 시나리오 큰 줄기 확인 요청\n사용자 결정(09-27 오후): 새 프로젝트로 진행 OK · 그래픽 = 픽셀아트 확정 + 나중에 리소스를 갈아끼울 수 있는 구조 필수 · 정식 제목은 아직 불필요",
    "order": 11,
    "owner": "사용자",
    "priority": "P0",
-   "stage": "plan",
+   "stage": "done",
    "title": "사용자 확인: 정식 제목 · 픽셀아트 · PixelActionRPG 분리",
-   "updatedAt": "2026-09-27T04:05:00Z",
+   "updatedAt": "2026-09-27T08:54:56Z",
    "id": "m0-confirm"
   },
   {
@@ -520,7 +520,7 @@
    "priority": "P1",
    "stage": "art",
    "title": "NPC 4종 스프라이트(모이라·브론·피피·포포)",
-   "updatedAt": "2026-09-27T03:30:00Z",
+   "updatedAt": "2026-09-27T08:54:56Z",
    "id": "m1-art-npc"
   },
   {
@@ -534,7 +534,7 @@
    "priority": "P1",
    "stage": "art",
    "title": "아이템 아이콘 16px 세트(8슬롯·재료·포션)",
-   "updatedAt": "2026-09-27T03:30:00Z",
+   "updatedAt": "2026-09-27T08:54:56Z",
    "id": "m1-art-icons"
   },
   {
@@ -548,7 +548,7 @@
    "priority": "P1",
    "stage": "art",
    "title": "드롭 빛기둥·등급 연출",
-   "updatedAt": "2026-09-27T03:30:00Z",
+   "updatedAt": "2026-09-27T08:54:56Z",
    "id": "m1-art-drop"
   },
   {
@@ -556,13 +556,13 @@
    "createdAt": "2026-09-27T03:30:00Z",
    "doneAt": null,
    "milestone": "M1",
-   "note": "라이선스 원장 등록 후",
+   "note": "라이선스 원장 등록 후\n착수 — Galmuri(OFL) 다운로드",
    "order": 44,
    "owner": "Claude",
    "priority": "P2",
-   "stage": "art",
+   "stage": "dev",
    "title": "한글 픽셀 폰트 Galmuri 반입(OFL)",
-   "updatedAt": "2026-09-27T03:30:00Z",
+   "updatedAt": "2026-09-27T08:54:56Z",
    "id": "m1-font"
   },
   {
@@ -570,13 +570,13 @@
    "createdAt": "2026-09-27T03:30:00Z",
    "doneAt": null,
    "milestone": "M1",
-   "note": "Kenney Impact/Interface(CC0)",
+   "note": "Kenney Impact/Interface(CC0)\n착수 — Kenney CC0 팩 다운로드·선별",
    "order": 45,
    "owner": "Claude",
    "priority": "P1",
-   "stage": "art",
+   "stage": "dev",
    "title": "타격·UI 효과음 CC0 반입",
-   "updatedAt": "2026-09-27T03:30:00Z",
+   "updatedAt": "2026-09-27T08:54:56Z",
    "id": "m1-sfx"
   },
   {
@@ -584,13 +584,13 @@
    "createdAt": "2026-09-27T03:30:00Z",
    "doneAt": null,
    "milestone": "M1",
-   "note": "Tallbeard Music Loop Bundle(CC0)",
+   "note": "Tallbeard Music Loop Bundle(CC0)\n착수 — CC0 BGM 선별",
    "order": 46,
    "owner": "Claude",
    "priority": "P2",
-   "stage": "art",
+   "stage": "dev",
    "title": "BGM CC0 반입(마을·사냥터·보스)",
-   "updatedAt": "2026-09-27T03:30:00Z",
+   "updatedAt": "2026-09-27T08:54:56Z",
    "id": "m1-bgm"
   },
   {
@@ -666,15 +666,15 @@
   {
    "area": "사운드",
    "createdAt": "2026-09-27T04:12:00Z",
-   "doneAt": null,
+   "doneAt": "2026-09-27T08:54:56Z",
    "milestone": "M1",
-   "note": "외부 파일 다운로드·결제는 사용자 승인 후 진행(후보·라이선스 = docs/research/resource-sourcing.md §6)",
+   "note": "외부 파일 다운로드·결제는 사용자 승인 후 진행(후보·라이선스 = docs/research/resource-sourcing.md §6)\n사용자 승인(09-27): CC0 사운드·Galmuri 폰트 다운로드 진행 / 유료 멤버십(Craftpix 등)은 쓰지 않음",
    "order": 52,
    "owner": "사용자",
    "priority": "P1",
-   "stage": "plan",
+   "stage": "done",
    "title": "승인 필요: CC0 사운드·Galmuri 폰트 다운로드 / Craftpix 멤버십(연 $24) 구매 여부",
-   "updatedAt": "2026-09-27T04:12:00Z",
+   "updatedAt": "2026-09-27T08:54:56Z",
    "id": "m1-approve-assets"
   },
   {
@@ -872,9 +872,168 @@
    "title": "IL2CPP 빌드 파이프라인·SteamPipe 업로드",
    "updatedAt": "2026-09-27T03:30:00Z",
    "id": "m4-build"
+  },
+  {
+   "id": "m0-mcp-hub",
+   "title": "허브 에디터 MCP 연결 수리·종단 검증",
+   "stage": "done",
+   "milestone": "M0",
+   "area": "인프라",
+   "priority": "P0",
+   "owner": "Claude",
+   "note": "허브(MSIX)로 연 에디터에서 stdio 브리지가 안 떠 McpStdioDefault 를 패키지 API(전송 전환+브리지 직접 시작)로 수정. .claude/settings.json 에 UnityMCP·unity-ai 사전 승인. 검증: claude mcp list 두 사본 모두 Connected, 헤드리스 claude -p 가 manage_scene·read_console 호출 성공(오류 0)",
+   "order": 83,
+   "createdAt": "2026-09-27T08:54:56Z",
+   "updatedAt": "2026-09-27T08:54:56Z",
+   "doneAt": "2026-09-27T08:54:56Z"
+  },
+  {
+   "id": "m0-lfs-clone",
+   "title": "허브 사본(C:\\Users\\qtdqt\\project_psy) LFS 이미지 복구",
+   "stage": "done",
+   "milestone": "M0",
+   "area": "인프라",
+   "priority": "P0",
+   "owner": "Claude",
+   "note": "전역 git 에 LFS 필터가 없어 복제본 이미지 63개가 포인터(129바이트)였다 → git lfs pull 로 복구, 에디터 재임포트 후 콘솔 오류 0. 새로 복제할 땐 git lfs install 이 먼저 필요",
+   "order": 84,
+   "createdAt": "2026-09-27T08:54:56Z",
+   "updatedAt": "2026-09-27T08:54:56Z",
+   "doneAt": "2026-09-27T08:54:56Z"
+  },
+  {
+   "id": "m0-board-site",
+   "title": "작업 보드 → GitHub Pages 사이트 이전",
+   "stage": "done",
+   "milestone": "M0",
+   "area": "인프라",
+   "priority": "P0",
+   "owner": "Claude",
+   "note": "https://qtdqtd002-coder.github.io/psy-board/ — 공개 저장소 psy-board(data/board.json) · Actions 배포 · 1분 자동 새로고침 · 편집은 psy-board 전용 토큰. Claude 갱신 = project_psy/tools/board/board.py",
+   "order": 85,
+   "createdAt": "2026-09-27T08:54:56Z",
+   "updatedAt": "2026-09-27T08:54:56Z",
+   "doneAt": "2026-09-27T08:54:56Z"
+  },
+  {
+   "id": "m1-res-swap",
+   "title": "리소스 교체 구조(아트·사운드 매니페스트 + 외부 교체 폴더)",
+   "stage": "dev",
+   "milestone": "M1",
+   "area": "아트",
+   "priority": "P0",
+   "owner": "Claude",
+   "note": "사용자 요구: 픽셀아트로 가되 나중에 리소스를 갈아끼울 수 있게. 코드는 논리 키만 참조 → 매니페스트가 파일·프레임·피벗·배율을 정의 → 교체는 파일/매니페스트만",
+   "order": 86,
+   "createdAt": "2026-09-27T08:54:56Z",
+   "updatedAt": "2026-09-27T08:54:56Z",
+   "doneAt": null
+  },
+  {
+   "id": "m1-hero-sword",
+   "title": "주인공 몽검 스펠블레이드 스프라이트 세트(64px, 콤보 3단 분리)",
+   "stage": "art",
+   "milestone": "M1",
+   "area": "아트",
+   "priority": "P0",
+   "owner": "Claude",
+   "note": "임시 «마법사» 스프라이트 교체(PSY-14). idle·run·attack1~3·air·downslash·jump·fall·dash·hit·death·climb·cast",
+   "order": 87,
+   "createdAt": "2026-09-27T08:54:56Z",
+   "updatedAt": "2026-09-27T08:54:56Z",
+   "doneAt": null
+  },
+  {
+   "id": "m1-credits",
+   "title": "크레딧·라이선스 화면(OFL·CC0 표기)",
+   "stage": "plan",
+   "milestone": "M1",
+   "area": "UI",
+   "priority": "P1",
+   "owner": "Claude",
+   "note": "Galmuri(SIL OFL 1.1)는 배포 시 저작권·라이선스 고지 필요. CC0 는 의무 없음이지만 출처 표기",
+   "order": 88,
+   "createdAt": "2026-09-27T08:54:56Z",
+   "updatedAt": "2026-09-27T08:54:56Z",
+   "doneAt": null
   }
  ],
  "log": [
+  {
+   "at": "2026-09-27T08:54:56Z",
+   "text": "«사용자 확인: 정식 제목 · 픽셀아트 · PixelActionRPG 분리» 기획 → 완료 — 사용자 결정(09-27 오후): 새 프로젝트로 진행 OK · 그래픽 = 픽셀아트 확정 + 나중에 리소스를 갈아끼울 수 있는 구조 필수 · 정식 제목은 아직 불필요",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-27T08:54:56Z",
+   "text": "«승인 필요: CC0 사운드·Galmuri 폰트 다운로드 / Craftpix 멤버십(연 $24) 구매 여부» 기획 → 완료 — 사용자 승인(09-27): CC0 사운드·Galmuri 폰트 다운로드 진행 / 유료 멤버십(Craftpix 등)은 쓰지 않음",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-27T08:54:56Z",
+   "text": "«허브 에디터 MCP 연결 수리·종단 검증» 추가(완료)",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-27T08:54:56Z",
+   "text": "«허브 사본(C:\\Users\\qtdqt\\project_psy) LFS 이미지 복구» 추가(완료)",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-27T08:54:56Z",
+   "text": "«작업 보드 → GitHub Pages 사이트 이전» 추가(완료)",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-27T08:54:56Z",
+   "text": "«리소스 교체 구조(아트·사운드 매니페스트 + 외부 교체 폴더)» 추가(개발)",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-27T08:54:56Z",
+   "text": "«주인공 몽검 스펠블레이드 스프라이트 세트(64px, 콤보 3단 분리)» 추가(아트)",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-27T08:54:56Z",
+   "text": "«크레딧·라이선스 화면(OFL·CC0 표기)» 추가(기획)",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-27T08:54:56Z",
+   "text": "«타격·UI 효과음 CC0 반입» 아트 → 개발 — 착수 — Kenney CC0 팩 다운로드·선별",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-27T08:54:56Z",
+   "text": "«BGM CC0 반입(마을·사냥터·보스)» 아트 → 개발 — 착수 — CC0 BGM 선별",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-27T08:54:56Z",
+   "text": "«한글 픽셀 폰트 Galmuri 반입(OFL)» 아트 → 개발 — 착수 — Galmuri(OFL) 다운로드",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-27T08:54:56Z",
+   "text": "«NPC 4종 스프라이트(모이라·브론·피피·포포)» 아트",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-27T08:54:56Z",
+   "text": "«아이템 아이콘 16px 세트(8슬롯·재료·포션)» 아트",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-27T08:54:56Z",
+   "text": "«드롭 빛기둥·등급 연출» 아트",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-27T08:54:56Z",
+   "text": "사용자 결정 반영(09-27 오후): 픽셀아트 확정·리소스 교체 구조 필수·정식 제목 보류·CC0 사운드/Galmuri 승인·유료 멤버십 미사용",
+   "by": "Claude"
+  },
   {
    "at": "2026-09-27T04:05:00Z",
    "text": "M1 수직 슬라이스 구현 — QA 게이트 통과(컴파일 0 · EditMode 23/23 · PlayMode E2E 6/6 · 스크린샷 10장). 손맛 7건 → QA(사용자 실기 대기), 시스템 16건 → 완료"
