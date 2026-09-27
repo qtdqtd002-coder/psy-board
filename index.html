@@ -143,6 +143,41 @@ footer.foot{color:var(--muted);font-size:12px;display:flex;flex-wrap:wrap;gap:6p
 .dlg .actions .danger{margin-right:auto}
 .dlg p{margin:0;font-size:13px;color:var(--muted)}
 .dlg .note{white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px;color:var(--ink);background:var(--surface2);border:1px solid var(--line);border-radius:6px;padding:8px}
+/* ---- 세계관 ---- */
+.lore{display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px;align-items:start}
+.lore .toc{position:sticky;top:calc(12px + env(safe-area-inset-top,0px));display:flex;flex-direction:column;gap:2px;border-left:2px solid var(--line);padding-left:12px}
+.lore .toc b{font-size:11px;letter-spacing:.08em;color:var(--muted);margin-bottom:4px}
+.lore .toc a{color:var(--muted);text-decoration:none;font-size:13px;padding:3px 0;line-height:1.35}
+.lore .toc a:hover,.lore .toc a.on{color:var(--ink)}
+.lore article{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:28px clamp(16px,4vw,40px) 36px;min-width:0}
+.lore article>*{max-width:760px}
+.lore h1{font-family:var(--font-display);font-weight:400;font-size:clamp(28px,4vw,38px);line-height:1.15;margin:0 0 14px;text-wrap:balance}
+.lore h2{font-family:var(--font-display);font-weight:400;font-size:26px;margin:36px 0 10px;padding-top:16px;border-top:1px solid var(--line);scroll-margin-top:16px;text-wrap:balance}
+.lore h3{font-size:16.5px;margin:24px 0 6px;scroll-margin-top:16px;text-wrap:balance}
+.lore p,.lore li{font-size:15px;line-height:1.8}
+.lore p{margin:8px 0}
+.lore ul,.lore ol{margin:8px 0;padding-left:22px}
+.lore li{margin:3px 0}
+.lore strong{color:var(--ink)}
+.lore blockquote{margin:14px 0;padding:10px 16px;border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:0 8px 8px 0;font-size:14px;line-height:1.7}
+.lore .tblwrap{overflow-x:auto;margin:10px 0;max-width:760px}
+.lore table{border-collapse:collapse;width:100%;font-size:13.5px}
+.lore th,.lore td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top;line-height:1.55}
+.lore th{background:var(--surface2);font-weight:600;white-space:nowrap}
+.lpill{display:inline-block;font-size:11.5px;font-weight:600;padding:1px 8px;border-radius:999px;vertical-align:1px;margin-right:2px}
+.lpill.ok{background:color-mix(in srgb,var(--good) 16%,transparent);color:var(--good)}
+.lpill.tbd{background:color-mix(in srgb,var(--st-plan) 16%,transparent);color:var(--st-plan)}
+.branches{list-style:none;margin:18px 0 6px;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;max-width:none!important;position:relative}
+.branches li{margin:0;background:var(--surface2);border:1px solid var(--line);border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:4px;position:relative;font-size:13px;line-height:1.5}
+.branches li.done{border-color:color-mix(in srgb,var(--accent) 55%,var(--line));background:linear-gradient(180deg,var(--accent-soft),var(--surface2) 70%)}
+.branches .no{font-family:var(--font-display);font-size:26px;line-height:1;color:var(--accent)}
+.branches .rg{font-weight:600;font-size:14px}
+.branches .th{color:var(--muted)}
+.branches .bo{font-size:12.5px}
+.branches .gi{font-weight:600;color:var(--indigo)}
+@media (max-width:1100px){.branches{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:900px){.lore{grid-template-columns:1fr}.lore .toc{position:static;flex-direction:row;flex-wrap:wrap;border-left:0;padding-left:0;gap:6px}.lore .toc b{display:none}.lore .toc a{border:1px solid var(--line);border-radius:999px;padding:3px 10px;background:var(--surface)}}
+@media (max-width:560px){.branches{grid-template-columns:1fr 1fr}}
 @media (max-width:1100px){.board{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:900px){.span4,.span5,.span7,.span8{grid-column:span 12}}
 @media (max-width:720px){.board{grid-template-columns:1fr}.stagecounts{grid-template-columns:repeat(3,1fr)}.brand h1{font-size:28px}.dlg .grid{grid-template-columns:1fr}}
@@ -166,6 +201,7 @@ footer.foot{color:var(--muted);font-size:12px;display:flex;flex-wrap:wrap;gap:6p
   <nav class="tabs" role="tablist" aria-label="보기">
     <button class="tab" role="tab" id="tab-board" aria-selected="true" aria-controls="view-board">칸반</button>
     <button class="tab" role="tab" id="tab-dash" aria-selected="false" aria-controls="view-dash">대시보드</button>
+    <button class="tab" role="tab" id="tab-lore" aria-selected="false" aria-controls="view-lore">세계관</button>
     <span class="spacer"></span>
     <span class="status" id="status" aria-live="polite">불러오는 중…</span>
     <button class="iconbtn" id="refreshBtn" type="button" title="지금 새로고침">새로고침</button>
@@ -228,9 +264,16 @@ footer.foot{color:var(--muted);font-size:12px;display:flex;flex-wrap:wrap;gap:6p
     </div>
   </section>
 
+  <section id="view-lore" role="tabpanel" aria-labelledby="tab-lore" hidden>
+    <div class="lore">
+      <nav class="toc" id="loreToc" aria-label="세계관 목차"><b>목차</b></nav>
+      <article id="loreBody"><p class="empty">불러오는 중…</p></article>
+    </div>
+  </section>
+
   <footer class="foot">
     <span id="dataStamp">데이터 —</span>
-    <span>데이터: <a href="data/board.json" style="color:inherit">data/board.json</a></span>
+    <span>데이터: <a href="data/board.json" style="color:inherit">data/board.json</a> · <a href="data/lore.md" style="color:inherit">data/lore.md</a></span>
     <span>1분마다 자동 새로고침</span>
   </footer>
 </div>
@@ -368,14 +411,76 @@ footer.foot{color:var(--muted);font-size:12px;display:flex;flex-wrap:wrap;gap:6p
   }
 
   // ---------- 탭·필터 ----------
+  const TABS = ["board", "dash", "lore"];
   function showTab(which) {
-    const b = which === "board";
-    $("tab-board").setAttribute("aria-selected", b); $("tab-dash").setAttribute("aria-selected", !b);
-    $("view-board").hidden = !b; $("view-dash").hidden = b;
+    if (!TABS.includes(which)) which = "board";
+    for (const t of TABS) { $("tab-" + t).setAttribute("aria-selected", t === which); $("view-" + t).hidden = t !== which; }
     safe(() => localStorage.setItem("psy-tab", which));
+    if (which === "lore") loadLore();
   }
-  $("tab-board").onclick = () => showTab("board"); $("tab-dash").onclick = () => showTab("dash");
-  if (safe(() => localStorage.getItem("psy-tab")) === "dash" || location.hash === "#dash") showTab("dash");
+  for (const t of TABS) $("tab-" + t).onclick = () => showTab(t);
+
+  // ---------- 세계관(data/lore.md — 원본은 project_psy/docs/design/01_Concept/03_Lore.md) ----------
+  let loreLoaded = false;
+  function inl(t) {
+    return esc(t)
+      .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+      .replace(/`(.+?)`/g, "<code>$1</code>")
+      .replace(/\[(구현됨|확정)\]/g, '<span class="lpill ok">$1</span>')
+      .replace(/\[(가안|미정)\]/g, '<span class="lpill tbd">$1</span>');
+  }
+  function mdLore(src) {
+    const lines = src.replace(/\r/g, "").split("\n"); const toc = []; let h = "", i = 0;
+    const isBlock = (l) => /^(#{1,4}\s|>|\s*[-*]\s|\s*\d+\.\s|\||:::|---)/.test(l);
+    while (i < lines.length) {
+      const l = lines[i]; let m;
+      if (!l.trim()) { i++; continue; }
+      if (l.startsWith(":::chapters")) {
+        const items = []; i++;
+        while (i < lines.length && !lines[i].startsWith(":::")) { if (lines[i].trim()) items.push(lines[i].split("|").map(x => x.trim())); i++; }
+        i++;
+        h += '<ol class="branches" aria-label="별나무의 다섯 가지 — 장별 흐름">' + items.map(([no, rg, th, bo, gi, stt]) =>
+          `<li class="${stt === "구현됨" ? "done" : ""}"><span class="no">${esc(no)}장</span><span class="rg">${inl(rg)}</span><span class="th">${inl(th)}</span><span class="bo">보스 · ${inl(bo)}</span><span class="gi">${inl(gi)}</span><span>${inl("[" + stt + "]")}</span></li>`).join("") + "</ol>";
+        continue;
+      }
+      if ((m = /^(#{1,4})\s+(.*)$/.exec(l))) {
+        const lv = m[1].length, id = "lore-" + toc.length;
+        if (lv === 2) toc.push({id, text: m[2]});
+        h += `<h${lv} id="${lv === 2 ? id : ""}">${inl(m[2])}</h${lv}>`; i++; continue;
+      }
+      if (/^---+\s*$/.test(l)) { h += "<hr>"; i++; continue; }
+      if (l.startsWith(">")) { const q = []; while (i < lines.length && lines[i].startsWith(">")) q.push(lines[i++].replace(/^>\s?/, "")); h += `<blockquote>${q.map(inl).join("<br>")}</blockquote>`; continue; }
+      if (/^\s*[-*]\s+/.test(l)) { const it = []; while (i < lines.length && /^\s*[-*]\s+/.test(lines[i])) it.push(lines[i++].replace(/^\s*[-*]\s+/, "")); h += `<ul>${it.map(x => `<li>${inl(x)}</li>`).join("")}</ul>`; continue; }
+      if (/^\s*\d+\.\s+/.test(l)) { const it = []; while (i < lines.length && /^\s*\d+\.\s+/.test(lines[i])) it.push(lines[i++].replace(/^\s*\d+\.\s+/, "")); h += `<ol>${it.map(x => `<li>${inl(x)}</li>`).join("")}</ol>`; continue; }
+      if (l.startsWith("|")) {
+        const rows = []; while (i < lines.length && lines[i].startsWith("|")) rows.push(lines[i++]);
+        const cells = (r) => r.trim().replace(/^\||\|$/g, "").split("|").map(c => c.trim());
+        const head = cells(rows[0]), body = rows.slice(2).map(cells);
+        h += `<div class="tblwrap"><table><thead><tr>${head.map(c => `<th>${inl(c)}</th>`).join("")}</tr></thead><tbody>${body.map(r => `<tr>${r.map(c => `<td>${inl(c)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+        continue;
+      }
+      const para = []; while (i < lines.length && lines[i].trim() && !isBlock(lines[i])) para.push(lines[i++].trim());
+      h += `<p>${inl(para.join(" "))}</p>`;
+    }
+    return {html: h, toc};
+  }
+  async function loadLore(force = false) {
+    if (loreLoaded && !force) return;
+    try {
+      const r = await fetch(`data/lore.md?v=${Date.now()}`, {cache: "no-store"});
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      const {html, toc} = mdLore(await r.text());
+      $("loreBody").innerHTML = html;
+      $("loreToc").innerHTML = "<b>목차</b>" + toc.map(t => `<a href="#${t.id}" data-id="${t.id}">${esc(t.text)}</a>`).join("");
+      $("loreToc").querySelectorAll("a").forEach(a => a.onclick = (e) => { e.preventDefault(); const el = $(a.dataset.id); if (el) el.scrollIntoView({behavior: "smooth", block: "start"}); });
+      loreLoaded = true;
+    } catch (e) {
+      $("loreBody").innerHTML = `<p class="empty">세계관을 불러오지 못했습니다: ${esc(e.message)}</p>`;
+    }
+  }
+
+  const initialTab = location.hash === "#lore" ? "lore" : location.hash === "#dash" ? "dash" : (safe(() => localStorage.getItem("psy-tab")) || "board");
+  showTab(initialTab);
 
   function visible() {
     const q = st.q.trim().toLowerCase();
@@ -570,7 +675,7 @@ footer.foot{color:var(--muted);font-size:12px;display:flex;flex-wrap:wrap;gap:6p
   document.addEventListener("keydown", e => { if (e.key !== "Escape") return; if (!$("cardScrim").hidden) closeCard(); if (!$("tokScrim").hidden) $("tokScrim").hidden = true; });
 
   // ---------- 시작 ----------
-  $("refreshBtn").onclick = () => load();
+  $("refreshBtn").onclick = () => { load(); if (!$("view-lore").hidden) loadLore(true); };
   load();
   setInterval(() => { if (!document.hidden && !st.busy && $("cardScrim").hidden) load(true); }, 60000);
 })();
