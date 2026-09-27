@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>PSY 작업 보드</title>
+<meta name="description" content="PSY 프로젝트의 기획→아트→개발→QA→완료 칸반과 마일스톤 진행 대시보드">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap">
+<style>
+:root{
+  color-scheme:light;
+  --bg:#F3F2F8; --surface:#FFFFFF; --surface2:#F8F7FC; --ink:#1D1A2B; --muted:#625D7A; --line:#E1DEEB;
+  --accent:#A8620A; --accent-soft:#FBEBD2; --indigo:#4A3E9C;
+  --st-plan:#6A4FD0; --st-art:#C2417E; --st-dev:#2F6FD6; --st-qa:#A86F14; --st-done:#2E8B57;
+  --good:#2E8B57; --bad:#C53A3A;
+  --shadow:0 1px 2px rgba(29,26,43,.06),0 4px 14px rgba(29,26,43,.06);
+  --font-body:"IBM Plex Sans KR","Malgun Gothic","Apple SD Gothic Neo",system-ui,sans-serif;
+  --font-display:"Do Hyeon","IBM Plex Sans KR","Malgun Gothic",sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#13111D; --surface:#1C1929; --surface2:#221F31; --ink:#ECEAF5; --muted:#A09BB8; --line:#2F2B43;
+    --accent:#F2B544; --accent-soft:#3A2E17; --indigo:#A99CF5;
+    --st-plan:#9C86F2; --st-art:#EC7AAE; --st-dev:#6FA3F5; --st-qa:#E9B45A; --st-done:#5CC48A;
+    --good:#5CC48A; --bad:#FF7A7A;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#13111D; --surface:#1C1929; --surface2:#221F31; --ink:#ECEAF5; --muted:#A09BB8; --line:#2F2B43;
+  --accent:#F2B544; --accent-soft:#3A2E17; --indigo:#A99CF5;
+  --st-plan:#9C86F2; --st-art:#EC7AAE; --st-dev:#6FA3F5; --st-qa:#E9B45A; --st-done:#5CC48A;
+  --good:#5CC48A; --bad:#FF7A7A;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25);
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:14px/1.5 var(--font-body);}
+.wrap{max-width:1440px;margin:0 auto;padding-inline:16px;padding-block:calc(18px + env(safe-area-inset-top,0px)) calc(40px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:16px}
+header.top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px}
+.brand h1{font-family:var(--font-display);font-weight:400;font-size:34px;line-height:1;margin:0;letter-spacing:.5px;text-wrap:balance}
+.brand p{margin:6px 0 0;color:var(--muted);font-size:13px}
+.brand .mile{color:var(--accent);font-weight:600}
+.overall{display:flex;align-items:center;gap:12px;min-width:240px;flex:0 1 360px}
+.overall .num{font-family:var(--font-display);font-size:30px;font-variant-numeric:tabular-nums;min-width:3ch;text-align:right}
+.overall .lbl{font-size:12px;color:var(--muted);white-space:nowrap}
+.meter{flex:1;height:10px;border-radius:5px;background:var(--line);overflow:hidden;display:flex}
+.meter i{display:block;height:100%}
+nav.tabs{display:flex;flex-wrap:wrap;gap:4px;border-bottom:1px solid var(--line);align-items:center}
+nav.tabs button.tab{font:inherit;font-weight:600;color:var(--muted);background:none;border:0;border-bottom:2px solid transparent;padding:8px 14px;cursor:pointer}
+nav.tabs button.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+nav.tabs .spacer{flex:1}
+.status{font-size:12px;color:var(--muted)}
+.status.err{color:var(--bad)}
+.iconbtn{font:inherit;font-size:12px;padding:4px 10px;border-radius:6px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.iconbtn[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.filters{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.chip{font:inherit;font-size:12px;padding:4px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--muted);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.filters input[type=search]{font:inherit;font-size:12px;padding:5px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);min-width:0;flex:1 1 160px;max-width:260px}
+button:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible,.card:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+/* ---- 칸반 ---- */
+.board{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;align-items:start}
+.col{background:var(--surface2);border:1px solid var(--line);border-radius:10px;display:flex;flex-direction:column;min-height:120px}
+.col.drop{outline:2px dashed var(--accent);outline-offset:-4px}
+.col-head{display:flex;align-items:center;gap:8px;padding:10px 12px;border-bottom:1px solid var(--line)}
+.col-head b{font-family:var(--font-display);font-weight:400;font-size:19px}
+.col-head .dot{width:9px;height:9px;border-radius:50%}
+.col-head .cnt{margin-left:auto;color:var(--muted);font-variant-numeric:tabular-nums;font-size:12px}
+.col-body{display:flex;flex-direction:column;gap:8px;padding:10px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:9px 10px;box-shadow:var(--shadow);cursor:pointer;display:flex;flex-direction:column;gap:6px}
+.editing .card{cursor:grab}
+.card .t{font-weight:600;line-height:1.35;overflow-wrap:anywhere}
+.card .meta{display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+.tag{font-size:11px;padding:1px 7px;border-radius:4px;background:var(--bg);color:var(--muted);border:1px solid var(--line)}
+.tag.m{color:var(--indigo);font-weight:600}
+.tag.p0{color:#fff;background:#C53A3A;border-color:#C53A3A}
+.tag.p1{color:var(--accent);background:var(--accent-soft);border-color:transparent}
+.tag.who{margin-left:auto;border:0;background:none;padding:0}
+.card .row{display:flex;align-items:center;gap:4px;justify-content:flex-end}
+.mv{font:inherit;font-size:12px;width:26px;height:24px;border-radius:5px;border:1px solid var(--line);background:var(--surface2);color:var(--ink);cursor:pointer}
+.mv:disabled{opacity:.3;cursor:default}
+.empty{color:var(--muted);font-size:12px;text-align:center;padding:8px}
+.addbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px}
+.addbar input,.addbar select,.dlg input,.dlg select,.dlg textarea{font:inherit;color:var(--ink);background:var(--surface2);border:1px solid var(--line);border-radius:6px;padding:6px 8px;min-width:0}
+.addbar input{flex:1 1 200px}
+.btn{font:inherit;font-weight:600;padding:6px 14px;border-radius:6px;border:1px solid var(--ink);background:var(--ink);color:var(--bg);cursor:pointer}
+.btn.ghost{background:none;color:var(--ink);border-color:var(--line)}
+.btn.danger{background:none;color:var(--bad);border-color:var(--bad)}
+.btn:disabled{opacity:.5;cursor:default}
+/* ---- 대시보드 ---- */
+.dash{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:12px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.panel h2{margin:0;font-family:var(--font-display);font-weight:400;font-size:21px}
+.panel h2 small{font-family:var(--font-body);font-size:12px;color:var(--muted);margin-left:6px}
+.span4{grid-column:span 4}.span5{grid-column:span 5}.span7{grid-column:span 7}.span8{grid-column:span 8}.span12{grid-column:span 12}
+.ms{display:grid;grid-template-columns:44px 1fr 88px;gap:4px 10px;align-items:center}
+.ms .name{font-weight:600;color:var(--indigo)}
+.ms .bar{height:12px;border-radius:6px;background:var(--line);overflow:hidden;display:flex}
+.ms .bar i{height:100%}
+.ms .pct{text-align:right;font-variant-numeric:tabular-nums;color:var(--muted);font-size:12px}
+.ms .desc{grid-column:2 / 4;color:var(--muted);font-size:12px}
+.ms.current .name::after{content:" ◆";color:var(--accent)}
+.stagecounts{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.sc{border-radius:8px;padding:10px;background:var(--surface2);border:1px solid var(--line);min-width:0}
+.sc b{display:block;font-family:var(--font-display);font-weight:400;font-size:28px;font-variant-numeric:tabular-nums}
+.sc span{font-size:12px;color:var(--muted)}
+.legend{display:flex;flex-wrap:wrap;gap:10px;font-size:12px;color:var(--muted)}
+.legend i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:4px;vertical-align:middle}
+.areas{display:flex;flex-direction:column;gap:6px}
+.area{display:grid;grid-template-columns:90px 1fr 48px;gap:8px;align-items:center;font-size:12px}
+.area .bar{height:8px;border-radius:4px;background:var(--line);overflow:hidden;display:flex}
+.area .bar i{height:100%}
+.area .n{text-align:right;color:var(--muted);font-variant-numeric:tabular-nums}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:13px;margin:0}
+.kv dt{color:var(--muted)}
+.kv dd{margin:0;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.pill{display:inline-block;font-size:12px;font-weight:600;padding:2px 10px;border-radius:999px}
+.pill.pass{background:color-mix(in srgb,var(--good) 18%,transparent);color:var(--good)}
+.pill.fail{background:color-mix(in srgb,var(--bad) 18%,transparent);color:var(--bad)}
+.log{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;max-height:340px;overflow:auto}
+.log li{display:grid;grid-template-columns:92px 1fr;gap:8px;font-size:12.5px}
+.log time{color:var(--muted);font-variant-numeric:tabular-nums}
+.focus{display:flex;flex-direction:column;gap:6px}
+.links{display:flex;flex-wrap:wrap;gap:8px}
+.links a{color:var(--indigo);font-weight:600;text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:5px 10px}
+footer.foot{color:var(--muted);font-size:12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+/* ---- 대화상자 ---- */
+.scrim{position:fixed;inset:0;background:rgba(10,8,20,.45);display:flex;align-items:center;justify-content:center;padding:16px;z-index:10}
+.dlg{background:var(--surface);border:1px solid var(--line);border-radius:12px;width:min(540px,100%);max-height:calc(100dvh - 32px);overflow:auto;padding:16px;display:flex;flex-direction:column;gap:10px;box-shadow:var(--shadow)}
+.dlg h3{margin:0;font-family:var(--font-display);font-weight:400;font-size:22px}
+.dlg label{display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--muted)}
+.dlg label.inline{flex-direction:row;align-items:center;gap:6px}
+.dlg .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.dlg textarea{min-height:100px;resize:vertical}
+.dlg .actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+.dlg .actions .danger{margin-right:auto}
+.dlg p{margin:0;font-size:13px;color:var(--muted)}
+.dlg .note{white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px;color:var(--ink);background:var(--surface2);border:1px solid var(--line);border-radius:6px;padding:8px}
+@media (max-width:1100px){.board{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:900px){.span4,.span5,.span7,.span8{grid-column:span 12}}
+@media (max-width:720px){.board{grid-template-columns:1fr}.stagecounts{grid-template-columns:repeat(3,1fr)}.brand h1{font-size:28px}.dlg .grid{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap" id="app">
+  <header class="top">
+    <div class="brand">
+      <h1 id="projTitle">PSY 작업 보드</h1>
+      <p><span id="subtitle">메이플풍 2D 횡스크롤 액션 RPG</span> · 현재 <span class="mile" id="curMile">—</span></p>
+    </div>
+    <div class="overall" aria-label="현재 마일스톤 진행률">
+      <span class="num" id="overallPct">–</span>
+      <div class="meter" id="overallMeter"></div>
+      <span class="lbl" id="overallLbl"></span>
+    </div>
+  </header>
+
+  <nav class="tabs" role="tablist" aria-label="보기">
+    <button class="tab" role="tab" id="tab-board" aria-selected="true" aria-controls="view-board">칸반</button>
+    <button class="tab" role="tab" id="tab-dash" aria-selected="false" aria-controls="view-dash">대시보드</button>
+    <span class="spacer"></span>
+    <span class="status" id="status" aria-live="polite">불러오는 중…</span>
+    <button class="iconbtn" id="refreshBtn" type="button" title="지금 새로고침">새로고침</button>
+    <button class="iconbtn" id="editBtn" type="button" aria-pressed="false">편집</button>
+  </nav>
+
+  <section id="view-board" role="tabpanel" aria-labelledby="tab-board" style="display:flex;flex-direction:column;gap:12px">
+    <div class="filters" id="filters"></div>
+    <div class="board" id="board"></div>
+    <form class="addbar" id="addForm" hidden>
+      <input id="addTitle" placeholder="새 작업 제목" maxlength="120" required aria-label="새 작업 제목">
+      <select id="addMile" aria-label="마일스톤"></select>
+      <select id="addArea" aria-label="분야"></select>
+      <select id="addPri" aria-label="우선순위"><option>P1</option><option>P0</option><option>P2</option></select>
+      <button class="btn" type="submit">기획에 추가</button>
+    </form>
+  </section>
+
+  <section id="view-dash" role="tabpanel" aria-labelledby="tab-dash" hidden>
+    <div class="dash">
+      <div class="panel span7">
+        <h2>마일스톤 진행<small>카드 가중치 · 완료 1 · QA 0.8 · 개발 0.5 · 아트 0.3 · 기획 0.1</small></h2>
+        <div id="milestones" style="display:flex;flex-direction:column;gap:12px"></div>
+      </div>
+      <div class="panel span5">
+        <h2>단계별 카드</h2>
+        <div class="stagecounts" id="stageCounts"></div>
+        <div class="legend" id="legend"></div>
+      </div>
+      <div class="panel span4">
+        <h2>품질 게이트</h2>
+        <dl class="kv" id="qaBox"></dl>
+      </div>
+      <div class="panel span4">
+        <h2>실행 빌드</h2>
+        <dl class="kv" id="buildBox"></dl>
+      </div>
+      <div class="panel span4">
+        <h2>분야별 완료</h2>
+        <div class="areas" id="areas"></div>
+      </div>
+      <div class="panel span5">
+        <h2>지금 집중할 것<small>P0 · 개발 · QA</small></h2>
+        <div class="focus" id="focus"></div>
+      </div>
+      <div class="panel span7">
+        <h2>최근 활동</h2>
+        <ul class="log" id="log"></ul>
+      </div>
+      <div class="panel span12">
+        <h2>바로가기<small>저장소는 비공개 — 로그인 필요</small></h2>
+        <div class="links">
+          <a href="https://github.com/qtdqtd002-coder/project_psy" target="_blank" rel="noopener">GitHub · project_psy</a>
+          <a href="https://github.com/qtdqtd002-coder/game-asset-library" target="_blank" rel="noopener">GitHub · 자산 라이브러리</a>
+          <a href="https://github.com/qtdqtd002-coder/project_psy/blob/main/docs/design/00_GameDesign_Index.md" target="_blank" rel="noopener">기획 인덱스</a>
+          <a href="https://github.com/qtdqtd002-coder/project_psy/blob/main/docs/roadmap.md" target="_blank" rel="noopener">로드맵</a>
+          <a href="https://github.com/qtdqtd002-coder/project_psy/blob/main/docs/decision-log.md" target="_blank" rel="noopener">결정 로그</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <span id="dataStamp">데이터 —</span>
+    <span>데이터: <a href="data/board.json" style="color:inherit">data/board.json</a></span>
+    <span>1분마다 자동 새로고침</span>
+  </footer>
+</div>
+
+<!-- 카드 상세/편집 -->
+<div class="scrim" id="cardScrim" hidden>
+  <form class="dlg" id="cardDlg" role="dialog" aria-modal="true" aria-labelledby="cardDlgTitle">
+    <h3 id="cardDlgTitle">작업</h3>
+    <div id="cardView"></div>
+    <div id="cardEdit" hidden>
+      <label>제목<input id="fTitle" maxlength="120" required></label>
+      <div class="grid">
+        <label>단계<select id="fStage"></select></label>
+        <label>마일스톤<select id="fMile"></select></label>
+        <label>분야<select id="fArea"></select></label>
+        <label>우선순위<select id="fPri"><option>P0</option><option>P1</option><option>P2</option></select></label>
+        <label>담당<select id="fOwner"><option>Claude</option><option>사용자</option><option>PD</option></select></label>
+      </div>
+      <label>메모<textarea id="fNote" maxlength="4000"></textarea></label>
+    </div>
+    <div class="actions">
+      <button class="btn danger" type="button" id="fDelete" hidden>삭제</button>
+      <button class="btn ghost" type="button" id="fCancel">닫기</button>
+      <button class="btn" type="submit" id="fSave" hidden>저장</button>
+    </div>
+    <p id="fConfirm" hidden>한 번 더 누르면 삭제됩니다.</p>
+  </form>
+</div>
+
+<!-- 편집 모드(토큰) -->
+<div class="scrim" id="tokScrim" hidden>
+  <form class="dlg" id="tokDlg" role="dialog" aria-modal="true" aria-labelledby="tokTitle">
+    <h3 id="tokTitle">편집 모드</h3>
+    <p>보기는 누구나 됩니다. 카드를 옮기거나 고치려면 이 보드 저장소(<b>qtdqtd002-coder/psy-board</b>)에만 쓰기 권한이 있는 GitHub 토큰이 필요합니다. 토큰은 이 브라우저에만 저장되고 GitHub API 외 어디로도 보내지 않습니다.</p>
+    <p>만드는 곳: GitHub → Settings → Developer settings → Fine-grained tokens → Repository access «Only select repositories: psy-board» → Permissions «Contents: Read and write».</p>
+    <label>토큰<input id="tokInput" type="password" autocomplete="off" spellcheck="false" placeholder="github_pat_…"></label>
+    <label class="inline"><input type="checkbox" id="tokRemember"> 이 기기에서 기억(끄면 탭을 닫을 때 지워짐)</label>
+    <div class="actions">
+      <button class="btn danger" type="button" id="tokForget">토큰 지우기</button>
+      <button class="btn ghost" type="button" id="tokCancel">닫기</button>
+      <button class="btn" type="submit">편집 켜기</button>
+    </div>
+    <p id="tokMsg"></p>
+  </form>
+</div>
+
+<script>
+(() => {
+  const REPO = "qtdqtd002-coder/psy-board";
+  const DATA_PATH = "data/board.json";
+  const API = `https://api.github.com/repos/${REPO}/contents/${DATA_PATH}`;
+  const STAGES = [
+    {id:"plan", name:"기획", w:.1, color:"var(--st-plan)"},
+    {id:"art",  name:"아트", w:.3, color:"var(--st-art)"},
+    {id:"dev",  name:"개발", w:.5, color:"var(--st-dev)"},
+    {id:"qa",   name:"QA",   w:.8, color:"var(--st-qa)"},
+    {id:"done", name:"완료", w:1,  color:"var(--st-done)"},
+  ];
+  const $ = (id) => document.getElementById(id);
+  const st = {board:null, filter:"all", q:"", token:null, editing:false, card:null, delArm:false, busy:false};
+  const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const sIdx = (id) => STAGES.findIndex(s => s.id === id);
+  const fmt = (iso) => { if (!iso) return ""; const d = new Date(iso); if (isNaN(d)) return ""; return `${d.getMonth()+1}/${d.getDate()} ${String(d.getHours()).padStart(2,"0")}:${String(d.getMinutes()).padStart(2,"0")}`; };
+  const safe = (fn) => { try { return fn(); } catch (e) { return null; } };
+  const setStatus = (t, err=false) => { $("status").textContent = t; $("status").classList.toggle("err", !!err); };
+  const cards = () => (st.board && st.board.cards) || [];
+  const miles = () => (st.board && st.board.milestones) || [];
+
+  // ---------- 토큰 ----------
+  st.token = safe(() => sessionStorage.getItem("psy-board-token")) || safe(() => localStorage.getItem("psy-board-token"));
+  function storeToken(tok, remember) {
+    safe(() => sessionStorage.removeItem("psy-board-token")); safe(() => localStorage.removeItem("psy-board-token"));
+    if (!tok) return;
+    safe(() => (remember ? localStorage : sessionStorage).setItem("psy-board-token", tok));
+  }
+
+  // ---------- UTF-8 base64 ----------
+  function b64encode(str) {
+    const bytes = new TextEncoder().encode(str); let bin = "";
+    for (let i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x8000));
+    return btoa(bin);
+  }
+  function b64decode(b64) {
+    const bin = atob(b64.replace(/\s/g, "")); const bytes = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+    return new TextDecoder().decode(bytes);
+  }
+
+  // ---------- 읽기 ----------
+  async function load(silent=false) {
+    if (!silent) setStatus("불러오는 중…");
+    try {
+      let data;
+      if (st.token) { data = (await ghGet()).data; }
+      else {
+        const r = await fetch(`${DATA_PATH}?v=${Date.now()}`, {cache:"no-store"});
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        data = await r.json();
+      }
+      st.board = data; render();
+      setStatus(st.editing ? "편집 모드 · 최신" : "최신");
+    } catch (e) {
+      setStatus("불러오지 못했습니다: " + e.message, true);
+    }
+  }
+  async function ghGet() {
+    const r = await fetch(`${API}?ref=main&t=${Date.now()}`, {headers:{Authorization:`Bearer ${st.token}`, Accept:"application/vnd.github+json"}, cache:"no-store"});
+    if (r.status === 401 || r.status === 403) throw new Error("토큰 권한 없음(편집 모드에서 토큰을 확인하세요)");
+    if (!r.ok) throw new Error(`GitHub ${r.status}`);
+    const j = await r.json();
+    return {sha:j.sha, data:JSON.parse(b64decode(j.content))};
+  }
+  async function ghPut(data, sha, message) {
+    return fetch(API, {method:"PUT", headers:{Authorization:`Bearer ${st.token}`, Accept:"application/vnd.github+json", "Content-Type":"application/json"},
+      body: JSON.stringify({message, content:b64encode(JSON.stringify(data, null, 1) + "\n"), sha, branch:"main"})});
+  }
+  // 최신본을 받아 변경을 적용하고 저장(sha 가 바뀌었으면 한 번 더)
+  async function mutate(apply, message, logText) {
+    if (!st.token || st.busy) return false;
+    st.busy = true; setStatus("저장 중…");
+    try {
+      for (let attempt = 0; attempt < 3; attempt++) {
+        const {sha, data} = await ghGet();
+        apply(data);
+        const now = new Date().toISOString();
+        data.meta = data.meta || {}; data.meta.updatedAt = now;
+        if (logText) { data.log = [{at:now, text:logText, by:"사용자"}, ...(data.log || [])].slice(0, 120); }
+        const r = await ghPut(data, sha, message);
+        if (r.ok) { st.board = data; render(); setStatus("저장됨 · 사이트 반영은 약 1분 뒤"); return true; }
+        if (r.status !== 409 && r.status !== 422) throw new Error(`GitHub ${r.status}`);
+      }
+      throw new Error("다른 변경과 충돌 — 새로고침 후 다시 시도");
+    } catch (e) { setStatus("저장 실패: " + e.message, true); return false; }
+    finally { st.busy = false; }
+  }
+
+  // ---------- 탭·필터 ----------
+  function showTab(which) {
+    const b = which === "board";
+    $("tab-board").setAttribute("aria-selected", b); $("tab-dash").setAttribute("aria-selected", !b);
+    $("view-board").hidden = !b; $("view-dash").hidden = b;
+    safe(() => localStorage.setItem("psy-tab", which));
+  }
+  $("tab-board").onclick = () => showTab("board"); $("tab-dash").onclick = () => showTab("dash");
+  if (safe(() => localStorage.getItem("psy-tab")) === "dash" || location.hash === "#dash") showTab("dash");
+
+  function visible() {
+    const q = st.q.trim().toLowerCase();
+    return cards().filter(c => (st.filter === "all" || c.milestone === st.filter)
+      && (!q || (c.title + " " + (c.note||"") + " " + (c.area||"")).toLowerCase().includes(q)));
+  }
+  function renderFilters() {
+    const ms = ["all", ...miles().map(m => m.id)];
+    const wasFocused = document.activeElement && document.activeElement.id === "q";
+    $("filters").innerHTML = ms.map(m => `<button class="chip" type="button" data-f="${esc(m)}" aria-pressed="${st.filter===m}">${m==="all"?"전체":esc(m)}</button>`).join("")
+      + `<input type="search" id="q" placeholder="찾기(제목·메모·분야)" value="${esc(st.q)}" aria-label="카드 찾기">`;
+    $("filters").querySelectorAll(".chip").forEach(b => b.onclick = () => { st.filter = b.dataset.f; render(); });
+    const qi = $("q"); qi.oninput = () => { st.q = qi.value; renderBoard(); };
+    if (wasFocused) { qi.focus(); qi.setSelectionRange(qi.value.length, qi.value.length); }
+  }
+
+  // ---------- 칸반 ----------
+  function cardHtml(c, withMove) {
+    const i = sIdx(c.stage);
+    const pri = c.priority === "P0" ? '<span class="tag p0">P0</span>' : c.priority === "P1" ? '<span class="tag p1">P1</span>' : '';
+    return `<article class="card" tabindex="0" draggable="${st.editing}" data-id="${esc(c.id)}">
+      <div class="t">${esc(c.title)}</div>
+      <div class="meta"><span class="tag m">${esc(c.milestone)}</span><span class="tag">${esc(c.area)}</span>${pri}<span class="tag who">${esc(c.owner||"")}</span></div>
+      ${withMove && st.editing ? `<div class="row">
+        <button class="mv" type="button" data-mv="-1" aria-label="이전 단계로" ${i<=0?"disabled":""}>◀</button>
+        <button class="mv" type="button" data-mv="1" aria-label="다음 단계로" ${i>=STAGES.length-1?"disabled":""}>▶</button></div>` : ""}
+    </article>`;
+  }
+  function bindCards(root) {
+    root.querySelectorAll(".card").forEach(el => {
+      const c = cards().find(x => x.id === el.dataset.id);
+      el.addEventListener("click", e => { if (e.target.closest(".mv")) return; openCard(c); });
+      el.addEventListener("keydown", e => { if (e.key === "Enter") openCard(c); });
+      el.querySelectorAll(".mv").forEach(b => b.onclick = (e) => { e.stopPropagation(); move(c, sIdx(c.stage) + Number(b.dataset.mv)); });
+      el.addEventListener("dragstart", e => { if (!st.editing) { e.preventDefault(); return; } e.dataTransfer.setData("text/plain", c.id); e.dataTransfer.effectAllowed = "move"; });
+    });
+  }
+  function renderBoard() {
+    const cs = visible();
+    const prio = (p) => ({P0:0, P1:1, P2:2})[p] ?? 3;
+    $("board").innerHTML = STAGES.map(s => {
+      const list = cs.filter(c => c.stage === s.id).sort((a,b) => prio(a.priority) - prio(b.priority) || (a.order||0) - (b.order||0));
+      return `<div class="col" data-stage="${s.id}">
+        <div class="col-head"><span class="dot" style="background:${s.color}"></span><b>${s.name}</b><span class="cnt">${list.length}</span></div>
+        <div class="col-body">${list.map(c => cardHtml(c, true)).join("") || '<div class="empty">비어 있음</div>'}</div></div>`;
+    }).join("");
+    bindCards($("board"));
+    $("board").querySelectorAll(".col").forEach(col => {
+      col.addEventListener("dragover", e => { if (!st.editing) return; e.preventDefault(); col.classList.add("drop"); });
+      col.addEventListener("dragleave", () => col.classList.remove("drop"));
+      col.addEventListener("drop", e => { e.preventDefault(); col.classList.remove("drop");
+        const c = cards().find(x => x.id === e.dataTransfer.getData("text/plain")); if (c) move(c, sIdx(col.dataset.stage)); });
+    });
+    $("app").classList.toggle("editing", st.editing);
+  }
+
+  // ---------- 대시보드 ----------
+  function progress(list) { return list.length ? list.reduce((a,c) => a + (STAGES[sIdx(c.stage)]?.w || 0), 0) / list.length : 0; }
+  function stackBar(list) {
+    const n = list.length || 1;
+    return STAGES.map(s => { const k = list.filter(c => c.stage === s.id).length; return k ? `<i style="width:${k/n*100}%;background:${s.color}" title="${s.name} ${k}"></i>` : ""; }).join("");
+  }
+  function renderDash() {
+    const all = cards(); const meta = st.board.meta || {}; const cur = meta.currentMilestone || "M0";
+    $("milestones").innerHTML = miles().map(m => {
+      const cs = all.filter(c => c.milestone === m.id);
+      return `<div class="ms ${m.id===cur?"current":""}"><span class="name">${esc(m.id)}</span><div class="bar">${stackBar(cs)}</div>
+        <span class="pct">${cs.length ? Math.round(progress(cs)*100) + "%" : "—"} · ${cs.filter(c=>c.stage==="done").length}/${cs.length}</span>
+        <span class="desc">${esc(m.name)} — ${esc(m.desc||"")}</span></div>`;
+    }).join("");
+    $("stageCounts").innerHTML = STAGES.map(s => `<div class="sc"><span>${s.name}</span><b style="color:${s.color}">${all.filter(c=>c.stage===s.id).length}</b></div>`).join("");
+    $("legend").innerHTML = STAGES.map(s => `<span><i style="background:${s.color}"></i>${s.name}</span>`).join("");
+    const areas = [...new Set([...(st.board.areas || []), ...all.map(c => c.area)])].filter(Boolean);
+    $("areas").innerHTML = areas.map(a => { const cs = all.filter(c => c.area === a); if (!cs.length) return "";
+      return `<div class="area"><span>${esc(a)}</span><div class="bar">${stackBar(cs)}</div><span class="n">${cs.filter(c=>c.stage==="done").length}/${cs.length}</span></div>`; }).join("");
+    const qa = meta.qa || {};
+    const pass = String(qa.gate || "").toUpperCase() === "PASS";
+    $("qaBox").innerHTML = qa.gate ? `<dt>게이트</dt><dd><span class="pill ${pass ? "pass" : "fail"}">${esc(qa.gate)}</span></dd>
+      <dt>컴파일</dt><dd>${esc(qa.compile||"—")}</dd><dt>EditMode</dt><dd>${esc(qa.editmode||"—")}</dd>
+      <dt>PlayMode</dt><dd>${esc(qa.playmode||"—")}</dd><dt>스크린샷</dt><dd>${esc(qa.screenshots ?? "—")}</dd>
+      <dt>측정</dt><dd>${esc(fmt(qa.at))}</dd>` : `<dt>상태</dt><dd>기록 없음</dd>`;
+    const b = meta.build || {};
+    $("buildBox").innerHTML = b.at ? `<dt>대상</dt><dd>${esc(b.target||"—")}</dd><dt>크기</dt><dd>${esc(b.sizeMB ? b.sizeMB + " MB" : "—")}</dd>
+      <dt>위치</dt><dd>${esc(b.path||"—")}</dd><dt>빌드</dt><dd>${esc(fmt(b.at))}</dd>` : `<dt>상태</dt><dd>빌드 기록 없음</dd>`;
+    const prio = (p) => ({P0:0, P1:1, P2:2})[p] ?? 3;
+    const focus = all.filter(c => c.stage !== "done" && (c.priority === "P0" || c.stage === "qa" || c.stage === "dev"))
+      .sort((a,c) => prio(a.priority) - prio(c.priority)).slice(0, 8);
+    $("focus").innerHTML = focus.map(c => cardHtml(c, false)).join("") || '<div class="empty">진행 중인 작업 없음</div>';
+    bindCards($("focus"));
+    $("log").innerHTML = (st.board.log || []).slice(0, 50).map(l => `<li><time>${esc(fmt(l.at))}</time><span>${esc(l.text)}</span></li>`).join("") || '<li><span class="status">기록 없음</span></li>';
+  }
+
+  function renderHeader() {
+    const meta = st.board.meta || {}; const cur = meta.currentMilestone || "M0";
+    const m = miles().find(x => x.id === cur);
+    $("projTitle").textContent = (meta.project || "PSY") + " 작업 보드";
+    $("subtitle").textContent = meta.subtitle || "";
+    $("curMile").textContent = m ? `${m.id} ${m.name}` : cur;
+    const scope = cards().filter(c => c.milestone === cur);
+    $("overallPct").textContent = scope.length ? Math.round(progress(scope) * 100) + "%" : "–";
+    $("overallMeter").innerHTML = stackBar(scope);
+    $("overallLbl").textContent = scope.length ? `${scope.filter(c=>c.stage==="done").length}/${scope.length} 완료` : "";
+    $("dataStamp").textContent = "데이터 갱신 " + (fmt(meta.updatedAt) || "—");
+  }
+
+  function renderSelects() {
+    const mo = miles().map(m => `<option value="${esc(m.id)}">${esc(m.id)} ${esc(m.name)}</option>`).join("");
+    const areas = [...new Set([...(st.board.areas || []), ...cards().map(c => c.area)])].filter(Boolean);
+    const ao = areas.map(a => `<option>${esc(a)}</option>`).join("");
+    for (const id of ["addMile","fMile"]) { const v = $(id).value; $(id).innerHTML = mo; if (v) $(id).value = v; }
+    for (const id of ["addArea","fArea"]) { const v = $(id).value; $(id).innerHTML = ao; if (v) $(id).value = v; }
+    if (!$("addMile").dataset.init && st.board.meta) { $("addMile").value = st.board.meta.currentMilestone || "M1"; $("addMile").dataset.init = "1"; }
+    $("fStage").innerHTML = STAGES.map(s => `<option value="${s.id}">${s.name}</option>`).join("");
+  }
+
+  function render() {
+    if (!st.board) return;
+    renderSelects(); renderFilters(); renderBoard(); renderDash(); renderHeader();
+    $("addForm").hidden = !st.editing;
+    $("editBtn").setAttribute("aria-pressed", st.editing);
+  }
+
+  // ---------- 쓰기 ----------
+  function move(c, to) {
+    if (!st.editing || to < 0 || to >= STAGES.length || STAGES[to].id === c.stage) return;
+    const from = STAGES[sIdx(c.stage)].name, dest = STAGES[to];
+    mutate(d => { const x = d.cards.find(k => k.id === c.id); if (!x) return; const now = new Date().toISOString();
+      x.stage = dest.id; x.updatedAt = now; x.doneAt = dest.id === "done" ? now : null; },
+      `board: ${c.id} → ${dest.id}`, `«${c.title}» ${from} → ${dest.name}`);
+  }
+  $("addForm").addEventListener("submit", (e) => {
+    e.preventDefault(); const title = $("addTitle").value.trim(); if (!title) return;
+    const id = "u" + Date.now().toString(36);
+    mutate(d => { const now = new Date().toISOString();
+      d.cards.push({id, title, stage:"plan", milestone:$("addMile").value, area:$("addArea").value, priority:$("addPri").value, owner:"사용자", note:"", order:Date.now(), createdAt:now, updatedAt:now, doneAt:null}); },
+      `board: add ${id}`, `«${title}» 추가(기획)`).then(ok => { if (ok) $("addTitle").value = ""; });
+  });
+
+  function openCard(c) {
+    if (!c) return;
+    st.card = c; st.delArm = false; $("fConfirm").hidden = true;
+    const ed = st.editing;
+    $("cardDlgTitle").textContent = ed ? "작업 편집" : "작업";
+    $("cardView").hidden = ed; $("cardEdit").hidden = !ed; $("fSave").hidden = !ed; $("fDelete").hidden = !ed;
+    $("fCancel").textContent = ed ? "취소" : "닫기";
+    const stage = STAGES[sIdx(c.stage)];
+    $("cardView").innerHTML = `<p style="font-size:15px;color:var(--ink);font-weight:600">${esc(c.title)}</p>
+      <div class="meta" style="display:flex;flex-wrap:wrap;gap:4px"><span class="tag" style="color:${stage?stage.color:""};font-weight:600">${stage?stage.name:esc(c.stage)}</span><span class="tag m">${esc(c.milestone)}</span><span class="tag">${esc(c.area)}</span><span class="tag">${esc(c.priority||"")}</span><span class="tag">${esc(c.owner||"")}</span></div>
+      ${c.note ? `<div class="note">${esc(c.note)}</div>` : ""}
+      <p>만듦 ${esc(fmt(c.createdAt))} · 갱신 ${esc(fmt(c.updatedAt))}${c.doneAt ? " · 완료 " + esc(fmt(c.doneAt)) : ""}</p>`;
+    if (ed) {
+      $("fTitle").value = c.title || ""; $("fStage").value = c.stage; $("fMile").value = c.milestone; $("fArea").value = c.area;
+      $("fPri").value = c.priority || "P1"; $("fOwner").value = c.owner || "Claude"; $("fNote").value = c.note || "";
+    }
+    $("cardScrim").hidden = false; (ed ? $("fTitle") : $("fCancel")).focus();
+  }
+  function closeCard() { $("cardScrim").hidden = true; st.card = null; }
+  $("fCancel").onclick = closeCard;
+  $("cardScrim").addEventListener("click", e => { if (e.target === $("cardScrim")) closeCard(); });
+  $("cardDlg").addEventListener("submit", (e) => {
+    e.preventDefault(); const c = st.card; if (!c || !st.editing) return;
+    const patch = {title:$("fTitle").value.trim(), stage:$("fStage").value, milestone:$("fMile").value, area:$("fArea").value,
+      priority:$("fPri").value, owner:$("fOwner").value, note:$("fNote").value};
+    mutate(d => { const x = d.cards.find(k => k.id === c.id); if (!x) return; const now = new Date().toISOString();
+      if (patch.stage !== x.stage) x.doneAt = patch.stage === "done" ? now : null;
+      Object.assign(x, patch, {updatedAt: now}); }, `board: edit ${c.id}`, `«${patch.title}» 수정`).then(ok => { if (ok) closeCard(); });
+  });
+  $("fDelete").onclick = () => {
+    const c = st.card; if (!c || !st.editing) return;
+    if (!st.delArm) { st.delArm = true; $("fConfirm").hidden = false; return; }
+    mutate(d => { d.cards = d.cards.filter(k => k.id !== c.id); }, `board: delete ${c.id}`, `«${c.title}» 삭제`).then(ok => { if (ok) closeCard(); });
+  };
+
+  // ---------- 편집 모드 ----------
+  $("editBtn").onclick = () => {
+    if (st.editing) { st.editing = false; render(); setStatus("보기 모드"); return; }
+    $("tokMsg").textContent = ""; $("tokInput").value = "";
+    $("tokRemember").checked = !!safe(() => localStorage.getItem("psy-board-token"));
+    $("tokScrim").hidden = false; $("tokInput").focus();
+  };
+  $("tokCancel").onclick = () => { $("tokScrim").hidden = true; };
+  $("tokScrim").addEventListener("click", e => { if (e.target === $("tokScrim")) $("tokScrim").hidden = true; });
+  $("tokForget").onclick = () => { storeToken(null); st.token = null; st.editing = false; $("tokMsg").textContent = "토큰을 지웠습니다."; render(); };
+  $("tokDlg").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const tok = $("tokInput").value.trim() || st.token;
+    if (!tok) { $("tokMsg").textContent = "토큰을 넣어 주세요."; return; }
+    const prev = st.token; st.token = tok; $("tokMsg").textContent = "확인 중…";
+    try { await ghGet(); storeToken(tok, $("tokRemember").checked); st.editing = true; $("tokScrim").hidden = true; await load(true); setStatus("편집 모드 · 카드를 끌거나 ◀▶ 로 옮기세요"); }
+    catch (err) { st.token = prev; $("tokMsg").textContent = "확인 실패: " + err.message; }
+  });
+  document.addEventListener("keydown", e => { if (e.key !== "Escape") return; if (!$("cardScrim").hidden) closeCard(); if (!$("tokScrim").hidden) $("tokScrim").hidden = true; });
+
+  // ---------- 시작 ----------
+  $("refreshBtn").onclick = () => load();
+  load();
+  setInterval(() => { if (!document.hidden && !st.busy && $("cardScrim").hidden) load(true); }, 60000);
+})();
+</script>
+</body>
+</html>
