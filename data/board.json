@@ -4,20 +4,21 @@
   "project": "PSY 프로젝트",
   "subtitle": "메이플풍 2D 횡스크롤 액션 RPG · Unity 6.3 LTS",
   "currentMilestone": "M1",
-  "updatedAt": "2026-09-27T08:54:56Z",
+  "updatedAt": "2026-09-27T09:52:42Z",
   "qa": {
-   "at": "2026-09-27T04:00:00Z",
+   "at": "__NOW__",
    "gate": "PASS",
    "compile": "0 errors",
-   "editmode": "23/23",
-   "playmode": "6/6 E2E",
-   "screenshots": 10
+   "editmode": "31/31",
+   "playmode": "8/8 E2E",
+   "screenshots": 11
   },
   "build": {
-   "at": "2026-09-27T04:02:00Z",
+   "at": "__NOW__",
    "target": "Windows x64 (Mono)",
-   "sizeMB": 100,
-   "path": "project_psy/Builds/Windows/PSY.exe"
+   "sizeMB": 141,
+   "path": "project_psy/Builds/Windows/PSY.exe",
+   "commit": "33159e1"
   }
  },
  "milestones": [
@@ -512,99 +513,99 @@
   {
    "area": "아트",
    "createdAt": "2026-09-27T03:30:00Z",
-   "doneAt": null,
+   "doneAt": "2026-09-27T09:52:42Z",
    "milestone": "M1",
-   "note": "PixelArt 도구로 자체 제작 → _assetlib 등록",
+   "note": "PixelArt 도구로 자체 제작 → _assetlib 등록\n모이라·브론·피피·포포 idle 4프레임(v1). 대화 초상화·이름표 높이 자동(Res.VisibleTop). 포포는 공중 부양 피벗",
    "order": 41,
    "owner": "Claude",
    "priority": "P1",
-   "stage": "art",
+   "stage": "done",
    "title": "NPC 4종 스프라이트(모이라·브론·피피·포포)",
-   "updatedAt": "2026-09-27T08:54:56Z",
+   "updatedAt": "2026-09-27T09:52:42Z",
    "id": "m1-art-npc"
   },
   {
    "area": "아트",
    "createdAt": "2026-09-27T03:30:00Z",
-   "doneAt": null,
+   "doneAt": "2026-09-27T09:52:42Z",
    "milestone": "M1",
-   "note": "",
+   "note": "아이템 25종 전용 아이콘 + 재화 아이콘·바닥 드롭 6종(v1, 16px). 약점: 로브·흉갑 실루엣이 비슷(색으로만 구분)",
    "order": 42,
    "owner": "Claude",
    "priority": "P1",
-   "stage": "art",
+   "stage": "done",
    "title": "아이템 아이콘 16px 세트(8슬롯·재료·포션)",
-   "updatedAt": "2026-09-27T08:54:56Z",
+   "updatedAt": "2026-09-27T09:52:42Z",
    "id": "m1-art-icons"
   },
   {
    "area": "아트",
    "createdAt": "2026-09-27T03:30:00Z",
-   "doneAt": null,
+   "doneAt": "2026-09-27T09:52:42Z",
    "milestone": "M1",
-   "note": "흰/초록/파랑/보라/주황",
+   "note": "흰/초록/파랑/보라/주황\n희귀↑ 빛기둥(흰 아트+등급색 틴트)·고급↑ 반짝임·등급별 드롭음(고급~전설)·영웅 카메라 펀치·전설 슬로우",
    "order": 43,
    "owner": "Claude",
    "priority": "P1",
-   "stage": "art",
+   "stage": "done",
    "title": "드롭 빛기둥·등급 연출",
-   "updatedAt": "2026-09-27T08:54:56Z",
+   "updatedAt": "2026-09-27T09:52:42Z",
    "id": "m1-art-drop"
   },
   {
    "area": "UI",
    "createdAt": "2026-09-27T03:30:00Z",
-   "doneAt": null,
+   "doneAt": "2026-09-27T09:52:42Z",
    "milestone": "M1",
-   "note": "라이선스 원장 등록 후\n착수 — Galmuri(OFL) 다운로드",
+   "note": "라이선스 원장 등록 후\n착수 — Galmuri(OFL) 다운로드\nGalmuri 7·9·11·11B·14(OFL 1.1) — 설계 크기 정수배로 스냅(UIKit.Snap), 월드 이름표도 픽셀 글꼴. 라이선스 전문 = 크레딧 화면",
    "order": 44,
    "owner": "Claude",
    "priority": "P2",
-   "stage": "dev",
+   "stage": "done",
    "title": "한글 픽셀 폰트 Galmuri 반입(OFL)",
-   "updatedAt": "2026-09-27T08:54:56Z",
+   "updatedAt": "2026-09-27T09:52:42Z",
    "id": "m1-font"
   },
   {
    "area": "사운드",
    "createdAt": "2026-09-27T03:30:00Z",
-   "doneAt": null,
+   "doneAt": "2026-09-27T09:52:42Z",
    "milestone": "M1",
-   "note": "Kenney Impact/Interface(CC0)\n착수 — Kenney CC0 팩 다운로드·선별",
+   "note": "Kenney Impact/Interface(CC0)\n착수 — Kenney CC0 팩 다운로드·선별\nKenney CC0 6팩(504개 원장) → 게임 61키: 휘두름·재질별 타격·치명·브레이크·처치·점프·착지·발소리·스킬·줍기·등급 드롭·단조(망치→결과)·UI·보스",
    "order": 45,
    "owner": "Claude",
    "priority": "P1",
-   "stage": "dev",
+   "stage": "done",
    "title": "타격·UI 효과음 CC0 반입",
-   "updatedAt": "2026-09-27T08:54:56Z",
+   "updatedAt": "2026-09-27T09:52:42Z",
    "id": "m1-sfx"
   },
   {
    "area": "사운드",
    "createdAt": "2026-09-27T03:30:00Z",
-   "doneAt": null,
+   "doneAt": "2026-09-27T09:52:42Z",
    "milestone": "M1",
-   "note": "Tallbeard Music Loop Bundle(CC0)\n착수 — CC0 BGM 선별",
+   "note": "Tallbeard Music Loop Bundle(CC0)\n착수 — CC0 BGM 선별\nJuhani Junkala «JRPG Pack» 1·2·4·5(CC0) → 타이틀·언덕·마을·숲 입구·깊은 숲·보스 6곡, 크로스페이드·징글 덕킹, 일시정지 메뉴 볼륨 3종(전체·음악·효과음)",
    "order": 46,
    "owner": "Claude",
    "priority": "P2",
-   "stage": "dev",
+   "stage": "done",
    "title": "BGM CC0 반입(마을·사냥터·보스)",
-   "updatedAt": "2026-09-27T08:54:56Z",
+   "updatedAt": "2026-09-27T09:52:42Z",
    "id": "m1-bgm"
   },
   {
    "area": "기획",
    "createdAt": "2026-09-27T03:30:00Z",
-   "doneAt": null,
+   "doneAt": "2026-09-27T09:52:42Z",
    "milestone": "M1",
-   "note": "",
+   "note": "Psy.Core.EnhanceSim(실제 규칙 재사용)+메뉴 PSY/Balance/강화 몬테카를로 → docs/balance/enhance-sim.md. 1장 표준 플레이: Lv11 · 197처치 · 무기 중앙 +6(분해)~+7(판매) = 목표 범위. +5→+6 비용 6배 절벽 관찰. 회귀 테스트 EnhanceSimTests",
    "order": 47,
    "owner": "Claude",
    "priority": "P2",
-   "stage": "plan",
+   "stage": "done",
    "title": "강화 몬테카를로 시뮬(기대 시도·비용)",
-   "updatedAt": "2026-09-27T03:30:00Z",
+   "updatedAt": "2026-09-27T09:52:42Z",
    "id": "m1-sim"
   },
   {
@@ -640,13 +641,13 @@
    "createdAt": "2026-09-27T03:30:00Z",
    "doneAt": null,
    "milestone": "M1",
-   "note": "실행: project_psy\\Builds\\Windows\\PSY.exe (또는 Unity 에디터에서 Game 씬 플레이). 판정 항목: 타격감(히트스톱·셰이크 세기) · 조작감(점프·대시·캔슬) · 브레이크/평점이 재밌는지 · 강화 긴장감 · 보스 난이도. 발견사항은 이 카드 메모에",
+   "note": "실행: project_psy\\Builds\\Windows\\PSY.exe (09-27 저녁 빌드: 새 주인공·마을 아트·효과음·음악·픽셀 글꼴 반영). 판정: 타격감·조작감·브레이크/평점 재미·강화 긴장감·보스 난이도·★소리 크기(일시정지 메뉴에서 조절)·글자 가독성. 발견사항은 이 카드 메모에",
    "order": 50,
    "owner": "사용자",
    "priority": "P0",
    "stage": "qa",
    "title": "사용자 실기 손맛 판정",
-   "updatedAt": "2026-09-27T04:15:00Z",
+   "updatedAt": "2026-09-27T09:52:42Z",
    "id": "m1-playtest"
   },
   {
@@ -654,13 +655,13 @@
    "createdAt": "2026-09-27T04:12:00Z",
    "doneAt": "2026-09-27T04:12:00Z",
    "milestone": "M1",
-   "note": "BuildScript.BuildWindows — 100MB·58초, 실행 스모크(창 기동·로그 오류 0) 확인",
+   "note": "Windows x64 Mono · 141MB · 커밋 33159e1 (09-27 저녁 재빌드)",
    "order": 51,
    "owner": "Claude",
    "priority": "P1",
    "stage": "done",
    "title": "Windows 실행 빌드(Mono 개발용)",
-   "updatedAt": "2026-09-27T04:12:00Z",
+   "updatedAt": "2026-09-27T09:52:42Z",
    "id": "m1-build"
   },
   {
@@ -752,13 +753,13 @@
    "createdAt": "2026-09-27T03:30:00Z",
    "doneAt": null,
    "milestone": "M2",
-   "note": "비용 승인 필요",
+   "note": "v1 전량 자체 제작 초안 → 개선 우선순위: ①주인공 칼날·쓰러짐 ②아이템 아이콘 실루엣 ③깊은 숲 배경 ④NPC 표정. 외주는 비용 승인 필요(유료 멤버십은 안 씀, PSY-19)",
    "order": 65,
    "owner": "PD",
    "priority": "P1",
    "stage": "art",
    "title": "아트 v2: 주인공·보스 외주 검토·NPC 개선",
-   "updatedAt": "2026-09-27T03:30:00Z",
+   "updatedAt": "2026-09-27T09:52:42Z",
    "id": "m2-art-v2"
   },
   {
@@ -918,47 +919,193 @@
   {
    "id": "m1-res-swap",
    "title": "리소스 교체 구조(아트·사운드 매니페스트 + 외부 교체 폴더)",
-   "stage": "dev",
+   "stage": "done",
    "milestone": "M1",
    "area": "아트",
    "priority": "P0",
    "owner": "Claude",
-   "note": "사용자 요구: 픽셀아트로 가되 나중에 리소스를 갈아끼울 수 있게. 코드는 논리 키만 참조 → 매니페스트가 파일·프레임·피벗·배율을 정의 → 교체는 파일/매니페스트만",
+   "note": "사용자 요구: 픽셀아트로 가되 나중에 리소스를 갈아끼울 수 있게. 코드는 논리 키만 참조 → 매니페스트가 파일·프레임·피벗·배율을 정의 → 교체는 파일/매니페스트만\n리소스 매니페스트(키 238)+ResourcePack 덮어쓰기+대체 사슬 구현. 도구 tools/res/manifest.py(lint·todo), 문서 05_Art_Sound/02_Resource_Swap.md, 테스트 ResourceManifestTests 5종. 게이트 PASS(09-27)",
    "order": 86,
    "createdAt": "2026-09-27T08:54:56Z",
-   "updatedAt": "2026-09-27T08:54:56Z",
-   "doneAt": null
+   "updatedAt": "2026-09-27T09:52:42Z",
+   "doneAt": "2026-09-27T09:52:42Z"
   },
   {
    "id": "m1-hero-sword",
    "title": "주인공 몽검 스펠블레이드 스프라이트 세트(64px, 콤보 3단 분리)",
-   "stage": "art",
+   "stage": "done",
    "milestone": "M1",
    "area": "아트",
    "priority": "P0",
    "owner": "Claude",
-   "note": "임시 «마법사» 스프라이트 교체(PSY-14). idle·run·attack1~3·air·downslash·jump·fall·dash·hit·death·climb·cast",
+   "note": "임시 «마법사» 스프라이트 교체(PSY-14). idle·run·attack1~3·air·downslash·jump·fall·dash·hit·death·climb·cast\n«이안» 14동작 45프레임 자체 제작(v1 초안) 교체 + 평타·공중 판정 박스를 칼끝 +29px 에 맞춤(PSY-23). 약점: 칼날이 가늘고 쓰러짐 마지막 2프레임이 단순 → m2-art-v2",
    "order": 87,
    "createdAt": "2026-09-27T08:54:56Z",
-   "updatedAt": "2026-09-27T08:54:56Z",
-   "doneAt": null
+   "updatedAt": "2026-09-27T09:52:42Z",
+   "doneAt": "2026-09-27T09:52:42Z"
   },
   {
    "id": "m1-credits",
    "title": "크레딧·라이선스 화면(OFL·CC0 표기)",
-   "stage": "plan",
+   "stage": "done",
    "milestone": "M1",
    "area": "UI",
    "priority": "P1",
    "owner": "Claude",
-   "note": "Galmuri(SIL OFL 1.1)는 배포 시 저작권·라이선스 고지 필요. CC0 는 의무 없음이지만 출처 표기",
+   "note": "Galmuri(SIL OFL 1.1)는 배포 시 저작권·라이선스 고지 필요. CC0 는 의무 없음이지만 출처 표기\n타이틀 → 크레딧(스크롤): 음악·효과음·글꼴·팔레트 표기 + Galmuri OFL 전문. E2E_06 이 문구 검사·캡처(E2E_10)",
    "order": 88,
    "createdAt": "2026-09-27T08:54:56Z",
-   "updatedAt": "2026-09-27T08:54:56Z",
+   "updatedAt": "2026-09-27T09:52:42Z",
+   "doneAt": "2026-09-27T09:52:42Z"
+  },
+  {
+   "id": "m1-map-themes",
+   "title": "마을·깊은 숲·잿빛 둥지 테마 아트(타일 21·배경 9·소품 15)",
+   "stage": "done",
+   "milestone": "M1",
+   "area": "아트",
+   "priority": "P0",
+   "owner": "Claude",
+   "note": "마을=황혼 돌길+집 2·대장간(브론 옆)·노점(피피 옆)·등불·우물, 깊은 숲=밤·달·버섯등, 둥지=잿빛·죽은 나무·뼈. 맵별 음악·발소리, 하늘색 자동(PSY-24)",
+   "order": 89,
+   "createdAt": "2026-09-27T09:52:42Z",
+   "updatedAt": "2026-09-27T09:52:42Z",
+   "doneAt": "2026-09-27T09:52:42Z"
+  },
+  {
+   "id": "m1-world-fx",
+   "title": "월드 FX·사다리: 포털·충격파·브레이크 별·사다리/로프 윗머리",
+   "stage": "done",
+   "milestone": "M1",
+   "area": "아트",
+   "priority": "P1",
+   "owner": "Claude",
+   "note": "fx_portal·shockwave·breakstar·dropbeam·dropsparkle, tile_ladder/rope mid+top(윗머리 별도 렌더)",
+   "order": 90,
+   "createdAt": "2026-09-27T09:52:42Z",
+   "updatedAt": "2026-09-27T09:52:42Z",
+   "doneAt": "2026-09-27T09:52:42Z"
+  },
+  {
+   "id": "m2-fx-contrast",
+   "title": "FX 대비 점검 — 보라·노랑·시안 NPC/장비와 스킬 이펙트 겹침",
+   "stage": "plan",
+   "milestone": "M2",
+   "area": "아트",
+   "priority": "P2",
+   "owner": "PD",
+   "note": "PSY-21: PixelActionRPG 의 «FX 전용 색 대역» 규칙은 PSY 미적용. 전투 화면 캡처로 가독성 확인",
+   "order": 91,
+   "createdAt": "2026-09-27T09:52:42Z",
+   "updatedAt": "2026-09-27T09:52:42Z",
+   "doneAt": null
+  },
+  {
+   "id": "m4-ai-disclosure",
+   "title": "Steam AI 콘텐츠 공시 확인(AI 에이전트가 그린 v1 아트)",
+   "stage": "plan",
+   "milestone": "M4",
+   "area": "플랫폼",
+   "priority": "P1",
+   "owner": "사용자",
+   "note": "PSY-22: 공시 대상일 가능성 높음 → 공시하거나 사람 제작(v3)으로 교체. 출시 전 결정",
+   "order": 92,
+   "createdAt": "2026-09-27T09:52:42Z",
+   "updatedAt": "2026-09-27T09:52:42Z",
    "doneAt": null
   }
  ],
  "log": [
+  {
+   "at": "2026-09-27T09:52:42Z",
+   "text": "«리소스 교체 구조(아트·사운드 매니페스트 + 외부 교체 폴더)» 개발 → 완료 — 리소스 매니페스트(키 238)+ResourcePack 덮어쓰기+대체 사슬 구현. 도구 tools/res/manifest.py(lint·todo), 문서 05_Art_Sound/02_Resource_Swap.md, 테스트 ResourceManifestTests 5종. 게이트 PASS(09-27)",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-27T09:52:42Z",
+   "text": "«타격·UI 효과음 CC0 반입» 개발 → 완료 — Kenney CC0 6팩(504개 원장) → 게임 61키: 휘두름·재질별 타격·치명·브레이크·처치·점프·착지·발소리·스킬·줍기·등급 드롭·단조(망치→결과)·UI·보스",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-27T09:52:42Z",
+   "text": "«BGM CC0 반입(마을·사냥터·보스)» 개발 → 완료 — Juhani Junkala «JRPG Pack» 1·2·4·5(CC0) → 타이틀·언덕·마을·숲 입구·깊은 숲·보스 6곡, 크로스페이드·징글 덕킹, 일시정지 메뉴 볼륨 3종(전체·음악·효과음)",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-27T09:52:42Z",
+   "text": "«한글 픽셀 폰트 Galmuri 반입(OFL)» 개발 → 완료 — Galmuri 7·9·11·11B·14(OFL 1.1) — 설계 크기 정수배로 스냅(UIKit.Snap), 월드 이름표도 픽셀 글꼴. 라이선스 전문 = 크레딧 화면",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-27T09:52:42Z",
+   "text": "«크레딧·라이선스 화면(OFL·CC0 표기)» 기획 → 완료 — 타이틀 → 크레딧(스크롤): 음악·효과음·글꼴·팔레트 표기 + Galmuri OFL 전문. E2E_06 이 문구 검사·캡처(E2E_10)",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-27T09:52:42Z",
+   "text": "«주인공 몽검 스펠블레이드 스프라이트 세트(64px, 콤보 3단 분리)» 아트 → 완료 — «이안» 14동작 45프레임 자체 제작(v1 초안) 교체 + 평타·공중 판정 박스를 칼끝 +29px 에 맞춤(PSY-23). 약점: 칼날이 가늘고 쓰러짐 마지막 2프레임이 단순 → m2-art-v2",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-27T09:52:42Z",
+   "text": "«NPC 4종 스프라이트(모이라·브론·피피·포포)» 아트 → 완료 — 모이라·브론·피피·포포 idle 4프레임(v1). 대화 초상화·이름표 높이 자동(Res.VisibleTop). 포포는 공중 부양 피벗",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-27T09:52:42Z",
+   "text": "«아이템 아이콘 16px 세트(8슬롯·재료·포션)» 아트 → 완료 — 아이템 25종 전용 아이콘 + 재화 아이콘·바닥 드롭 6종(v1, 16px). 약점: 로브·흉갑 실루엣이 비슷(색으로만 구분)",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-27T09:52:42Z",
+   "text": "«드롭 빛기둥·등급 연출» 아트 → 완료 — 희귀↑ 빛기둥(흰 아트+등급색 틴트)·고급↑ 반짝임·등급별 드롭음(고급~전설)·영웅 카메라 펀치·전설 슬로우",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-27T09:52:42Z",
+   "text": "«강화 몬테카를로 시뮬(기대 시도·비용)» 기획 → 완료 — Psy.Core.EnhanceSim(실제 규칙 재사용)+메뉴 PSY/Balance/강화 몬테카를로 → docs/balance/enhance-sim.md. 1장 표준 플레이: Lv11 · 197처치 · 무기 중앙 +6(분해)~+7(판매) = 목표 범위. +5→+6 비용 6배 절벽 관찰. 회귀 테스트 EnhanceSimTests",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-27T09:52:42Z",
+   "text": "«마을·깊은 숲·잿빛 둥지 테마 아트(타일 21·배경 9·소품 15)» 추가(완료)",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-27T09:52:42Z",
+   "text": "«월드 FX·사다리: 포털·충격파·브레이크 별·사다리/로프 윗머리» 추가(완료)",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-27T09:52:42Z",
+   "text": "«FX 대비 점검 — 보라·노랑·시안 NPC/장비와 스킬 이펙트 겹침» 추가(기획)",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-27T09:52:42Z",
+   "text": "«Steam AI 콘텐츠 공시 확인(AI 에이전트가 그린 v1 아트)» 추가(기획)",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-27T09:52:42Z",
+   "text": "«아트 v2: 주인공·보스 외주 검토·NPC 개선» 수정(note)",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-27T09:52:42Z",
+   "text": "«사용자 실기 손맛 판정» 수정(note)",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-27T09:52:42Z",
+   "text": "«Windows 실행 빌드(Mono 개발용)» 수정(note)",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-27T09:52:42Z",
+   "text": "리소스 교체 구조·CC0 사운드·Galmuri·자체 제작 아트 3종 세트 통합, 강화 시뮬 → M1 카드 10장 완료. 남은 M1 = 사용자 실기(m1-playtest) + QA 8장",
+   "by": "Claude"
+  },
   {
    "at": "2026-09-27T08:54:56Z",
    "text": "«사용자 확인: 정식 제목 · 픽셀아트 · PixelActionRPG 분리» 기획 → 완료 — 사용자 결정(09-27 오후): 새 프로젝트로 진행 OK · 그래픽 = 픽셀아트 확정 + 나중에 리소스를 갈아끼울 수 있는 구조 필수 · 정식 제목은 아직 불필요",
