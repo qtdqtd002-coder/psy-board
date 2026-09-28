@@ -4,22 +4,22 @@
   "project": "PSY 프로젝트",
   "subtitle": "꿈 세계 협동 포획 액션 «악몽 포획대» · 1~4인 · Unity 6.3 LTS",
   "currentMilestone": "M1",
-  "updatedAt": "2026-09-27T19:00:51Z",
+  "updatedAt": "2026-09-28T01:08:59Z",
   "qa": {
-   "at": "2026-09-27T16:59:52Z",
+   "at": "2026-09-28T01:05:02Z",
    "gate": "PASS",
    "compile": "0 errors",
-   "editmode": "43/43",
+   "editmode": "46/46",
    "playmode": "14/14 (2 건너뜀 — Unity 패키지 불안정 표시)",
    "screenshots": 13,
-   "coopSmoke": "PASS 5종×지연 0/100/200ms(15/15) · 창 2개 59.9fps"
+   "coopSmoke": "PASS 6종(2인·4인·둘이 들기·해골왕·재진입·타이머 실패) × 지연 0/100/200ms"
   },
   "build": {
-   "at": "2026-09-27T15:48:18Z",
+   "at": "2026-09-28T01:07:07Z",
    "target": "Windows x64 (Mono, PSY_PLAYTEST) · Game+Coop",
-   "sizeMB": 150,
+   "sizeMB": 151,
    "path": "project_psy/Builds/Windows/PSY.exe",
-   "commit": "46afa59"
+   "commit": "87ef292"
   }
  },
  "milestones": [
@@ -1434,9 +1434,33 @@
    "createdAt": "2026-09-27T18:42:02Z",
    "updatedAt": "2026-09-27T19:00:51Z",
    "doneAt": null
+  },
+  {
+   "id": "m2-art-companion-carry",
+   "title": "아트: 동료 운반 자세 4종 — 몽글이(몸 늘여 받침)·병정·대장(두 팔)·해골왕(가슴 앞)",
+   "stage": "done",
+   "milestone": "M2",
+   "area": "아트",
+   "priority": "P1",
+   "owner": "Claude",
+   "note": "자체 제작(v2 규칙) · verify_spec 오류 0 · 기존 export 변경 0 · _assetlib 반입. 받치는 면 = 발선 위 29·29·45·48px(32px 동료는 짐과 19px 틈 — 프레임 한계). 게임 쪽: 들린 짐은 동료 간격 1.4(0.55 면 주인공 뒤에 가려짐), 운반 중 하트 숨김. 해골왕 캡처·클립으로 «넷이 든다» 확인",
+   "order": 123,
+   "createdAt": "2026-09-28T01:08:59Z",
+   "updatedAt": "2026-09-28T01:08:59Z",
+   "doneAt": "2026-09-28T01:08:59Z"
   }
  ],
  "log": [
+  {
+   "at": "2026-09-28T01:08:59Z",
+   "text": "«아트: 동료 운반 자세 4종 — 몽글이(몸 늘여 받침)·병정·대장(두 팔)·해골왕(가슴 앞)» 추가(완료)",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-28T01:08:59Z",
+   "text": "09-28 아침 마무리: 동료 운반 자세 4종 반입 · 클립 3개 재녹화 · 붕괴 타이머 실패 경로 점검(timeout) 추가 → 협동 스모크 6종 × 0/100/200ms PASS · 게이트 PASS · 본 빌드 151MB. 함정: 밤새 Unity Hub 가 꺼져 배치모드 라이선스 실패(exit 198) → Hub 실행으로 해결",
+   "by": "Claude"
+  },
   {
    "at": "2026-09-27T19:00:51Z",
    "text": "«협동 반복 동기: 결과 화면 기여·칭호 + 꿈 깊이 1~3 + 동료 합성» 수정(title)",
