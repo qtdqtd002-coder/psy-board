@@ -4,7 +4,7 @@
   "project": "PSY 프로젝트",
   "subtitle": "꿈 세계 포획 동료 액션 RPG · 싱글 · Unity 6.3 LTS",
   "currentMilestone": "M1",
-  "updatedAt": "2026-09-28T09:55:34Z",
+  "updatedAt": "2026-09-28T09:56:59Z",
   "qa": {
    "gate": "PASS",
    "editmode": "71/71",
@@ -15,11 +15,12 @@
    "commit": "2f936e1"
   },
   "build": {
-   "at": "2026-09-28T03:09:22Z",
-   "target": "Windows x64 (Mono, PSY_PLAYTEST) · Game",
-   "sizeMB": 151,
-   "path": "project_psy/Builds/Windows/PSY.exe",
-   "commit": "3e7983c"
+   "result": "Succeeded",
+   "size": "150MB",
+   "time": "42s",
+   "at": "2026-09-28 18:56",
+   "commit": "2f936e1",
+   "target": "Windows Mono"
   }
  },
  "milestones": [
