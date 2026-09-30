@@ -4,7 +4,7 @@
   "project": "PSY 프로젝트",
   "subtitle": "꿈 세계 포획 동료 액션 RPG · 싱글 · Unity 6.3 LTS",
   "currentMilestone": "M1",
-  "updatedAt": "2026-09-30T16:30:35Z",
+  "updatedAt": "2026-09-30T17:10:03Z",
   "qa": {
    "gate": "PASS",
    "editmode": "80/80",
@@ -1929,16 +1929,16 @@
   },
   {
    "id": "m2-mv-fx-v4",
-   "title": "FX v4 반입 — start·loop·end 구간 재생(전투·이동 10 + 마법 기술 4)",
+   "title": "FX v4 반입 — start·loop·end 구간 재생(전투·이동 10 + 마법 4 + 칼 4 = 63구간)",
    "stage": "qa",
    "milestone": "M2",
    "area": "아트",
    "priority": "P0",
    "owner": "Claude",
-   "note": "독립 검수 합격본만(4.30~4.39) · FxSequence 가 키.start·loop·end 를 이어 재생 · 벽 미끄러짐·공중 대시·회피는 도는 동안 loop · 커밋 12ff5b9. 남은 것 = 칼 기술 FX(작업 중).",
+   "note": "독립 검수 합격본만(4.30~4.39) · FxSequence 가 키.start·loop·end 를 이어 재생 · 리본 채찍 당김 = 화면 올가미 장에 맞춤(실측 오차 0px) · 커밋 12ff5b9·f780568. 남은 것 = 블룸·타격 섬광.",
    "order": 158,
    "createdAt": "2026-09-30T16:30:35Z",
-   "updatedAt": "2026-09-30T16:30:35Z",
+   "updatedAt": "2026-09-30T17:10:03Z",
    "doneAt": null
   },
   {
@@ -1971,6 +1971,16 @@
   }
  ],
  "log": [
+  {
+   "at": "2026-09-30T17:10:03Z",
+   "text": "«FX v4 반입 — start·loop·end 구간 재생(전투·이동 10 + 마법 4 + 칼 4 = 63구간)» 수정(title, note)",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-09-30T17:10:03Z",
+   "text": "PSY-46 칼 기술 FX v4 반입 f780568 — 화염·초승달·바람 걸음·리본 채찍(거리 변형) · 리본 당김 올가미 맞춤(LashPullTests 0px) · PlayMode 41/41.",
+   "by": "Claude"
+  },
   {
    "at": "2026-09-30T16:30:35Z",
    "text": "«FX v4 반입 — start·loop·end 구간 재생(전투·이동 10 + 마법 기술 4)» 추가(QA)",
@@ -2559,16 +2569,6 @@
   {
    "at": "2026-09-27T15:50:20Z",
    "text": "부제 → 꿈 세계 협동 포획 액션 «악몽 포획대» · 1~4인 · Unity 6.3 LTS",
-   "by": "Claude"
-  },
-  {
-   "at": "2026-09-27T14:49:14Z",
-   "text": "«방향 전환: 4인 멀티가 핵심 재미 + 장르 혼합(포획·크래프팅·농사) — 조사·콘셉트 제안» 기획 → 완료 — 사용자 결정(09-27 밤): 콘셉트 A «악몽 포획대» · 포획 핵심 + 농사 2단계(크래프팅 보류) · 멀티 실기 = 당분간 혼자(한 PC 여러 창) · Steam $100 보류. 사양 docs/design/01_Concept/04_Coop_Capture.md (PSY-31·32)",
-   "by": "Claude"
-  },
-  {
-   "at": "2026-09-27T14:49:14Z",
-   "text": "«네트코드 Mirror 96.11.3 도입(MIT) + 협동 실험실 빌드·창 N개 실행·자동 스모크» 추가(완료)",
    "by": "Claude"
   }
  ]
