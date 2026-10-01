@@ -4,24 +4,24 @@
   "project": "PSY 프로젝트",
   "subtitle": "꿈 세계 포획 동료 액션 RPG · 싱글 · Unity 6.3 LTS",
   "currentMilestone": "M1",
-  "updatedAt": "2026-10-01T01:11:30Z",
+  "updatedAt": "2026-10-01T01:11:44Z",
   "qa": {
    "gate": "PASS",
-   "editmode": "80/80",
-   "playmode": "26/26 (+Explicit 6·유니티 패키지 무시 2)",
-   "e2e": 18,
-   "screens": 45,
-   "at": "2026-09-29 17:4x",
-   "commit": "8e58164",
-   "playtest": "봇 17판 · 목표 16/16"
+   "editmode": "89/89",
+   "playmode": "45/45 (+Explicit 봇 8 제외)",
+   "e2e": 22,
+   "screens": 52,
+   "at": "2026-10-01 10:0x",
+   "commit": "b55d73a",
+   "playtest": "PSY-46 봇 17판 · PSY-47 새 흐름 E2E 4"
   },
   "build": {
    "result": "Succeeded",
-   "size": "150MB",
-   "time": "42s",
-   "at": "2026-09-28 18:56",
-   "commit": "2f936e1",
-   "target": "Windows Mono"
+   "size": "174MB · APK 60MB",
+   "time": "19s · APK 103s",
+   "at": "2026-10-01 10:07",
+   "commit": "b55d73a",
+   "target": "Windows Mono · Android IL2CPP ARM64"
   }
  },
  "milestones": [
