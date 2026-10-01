@@ -4,13 +4,13 @@
   "project": "PSY 프로젝트",
   "subtitle": "꿈 세계 포획 동료 액션 RPG · 싱글 · Unity 6.3 LTS",
   "currentMilestone": "M1",
-  "updatedAt": "2026-10-01T01:11:44Z",
+  "updatedAt": "2026-10-01T01:11:56Z",
   "qa": {
    "gate": "PASS",
    "editmode": "89/89",
    "playmode": "45/45 (+Explicit 봇 8 제외)",
-   "e2e": 22,
-   "screens": 52,
+   "e2e": 24,
+   "screens": 53,
    "at": "2026-10-01 10:0x",
    "commit": "b55d73a",
    "playtest": "PSY-46 봇 17판 · PSY-47 새 흐름 E2E 4"
