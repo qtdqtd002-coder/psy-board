@@ -4,7 +4,7 @@
    "id": "alpha1",
    "name": "1차 알파테스트",
    "at": "2026-10-03",
-   "note": "사용자 직접 플레이. 기록·계획만 — 개발은 일괄 작업 지시 뒤에 시작한다."
+   "note": "사용자 직접 플레이. 기록·계획만 — 개발은 일괄 작업 지시 뒤에 시작한다. · 10-03 일괄 작업 1차: A1-08·A1-01·A1-10·A1-09·A1-07 개선 완료(결정이 필요 없는 묶음 1·2). 나머지는 «결정 필요» 답을 받은 뒤."
   }
  ],
  "bundles": [
@@ -103,7 +103,14 @@
    "round": "alpha1",
    "kind": "UI",
    "size": "S",
-   "status": "recorded",
+   "status": "done",
+   "result": [
+    "원인(코드로 확인): 알림 층이 HUD 아래에 있어 가방 창이 열리면 창에 가렸다 → 알림 층을 캔버스 직속(ToastLayer)으로 옮기고 알릴 때마다 맨 위로.",
+    "«요구 Lv.N» = 레벨이 모자라면 빨간색 + «(부족)» — 가방 상세·가게 목록·재련 창(Window.ReqLevel).",
+    "문구 «레벨이 부족합니다 (Lv.N 필요)»(PlayerProfile.CanEquip) · EditMode Equip_LevelReason_IsReadable.",
+    "남은 것: «레벨 부족 장착 → 토스트 보임» PlayMode 캡처 점검은 유니티에서.",
+    "확인: 클라우드 세션 — Psy.Core·Gameplay C# 컴파일(유니티 참조 어셈블리 + 스텁, 기준선 대비 새 오류 0) · EditMode 일부(dotnet+NUnit) 통과. 유니티 에디터 컴파일·PlayMode·캡처는 아직 — 사용자 에디터에서 확인 필요"
+   ],
    "title": "장착 레벨 부족을 알 수 없다",
    "feedback": "요구 레벨이 지금 레벨보다 높으면 빨간색으로 표시하고, 끼우려 하면 «레벨이 부족하다»는 토스트를 띄운다.",
    "now": [
@@ -330,7 +337,16 @@
    "round": "alpha1",
    "kind": "UI",
    "size": "M",
-   "status": "recorded",
+   "status": "done",
+   "result": [
+    "진열 = 지금 장 것만(ContentDb.AddShop·ShopFor — 장비는 그 장, 소모품은 앞 장 것까지 계속) → 1장 15줄.",
+    "목록 10줄 고정 + 넘기기(▲▼ 남은 수 · 마우스 휠 · 클릭 = 고르기, 다시 클릭 = 사기) · 줄마다 아이콘 · 못 사는 것 흐리게(골드 부족 = 값 빨강 · 레벨 부족 = Lv 빨강).",
+    "통화 = 아이콘 + 숫자(공용 부품 CurrencyView — icon.currency.gold/shard/crystal): 가게·가방 지갑.",
+    "툴팁: 소모품 «효과: HP +60 회복»(데이터 HealHp/HealMp)과 설명 글을 나눔 · 1~4장 포션 설명에서 회복 수치 문장을 뺌(대본 코드 + 1장 원고) · «가방에 N개 있음».",
+    "EditMode Shop_FiltersByChapter_AndConsumableEffects.",
+    "남은 것: HUD·강화·재련·합성 비용의 통화 아이콘화 · 터치 끌어 넘기기 · 목록 부품을 강화·동료·퀘스트 창에 같이 쓰기.",
+    "확인: 클라우드 세션 — Psy.Core·Gameplay C# 컴파일(유니티 참조 어셈블리 + 스텁, 기준선 대비 새 오류 0) · EditMode 일부(dotnet+NUnit) 통과. 유니티 에디터 컴파일·PlayMode·캡처는 아직 — 사용자 에디터에서 확인 필요"
+   ],
    "title": "피피 가게 — 목록 스크롤 · 설명/효과 구분 · 아이콘 · 통화 아이콘",
    "feedback": "목록이 많아 창 밖으로 삐져나온다 → 스크롤로 영역 안에. 아이템 설명과 실제 효과를 구분해서 보여 준다. 아이콘도 보여야 산 뒤 가방에서 찾아 쓸 수 있다. 보유 골드를 알아보기 어렵다 → 골드·꿈조각·별빛 결정을 글자 대신 아이콘으로.",
    "now": [
@@ -370,7 +386,14 @@
    "round": "alpha1",
    "kind": "버그",
    "size": "S",
-   "status": "recorded",
+   "status": "done",
+   "result": [
+    "원인 = 후보 1·2 둘 다: 공중 베기(0.6배)·공중 돌진 찌르기(0.2배)의 낮은 중력이 오르는 중에도 걸렸고, 점프 끊기 판정이 이동 상태에서만 돌았다.",
+    "고침: 낮은 중력은 떨어질 때만(Player.FallOnly · AirAttackGravityMul) · 공중 베기·공격·기술 중에도 점프 키를 떼면 짧은 점프(Player.CheckJumpCut). 낙하 중 체공 손맛은 그대로.",
+    "점검 추가: PlayMode MovementFeelTests.JumpAttack_DoesNotRaiseApex(점프 직후 1타 + 오르는 중 2타 → 정점 ≤ 점프 정점 + 0.15칸).",
+    "남은 것: 0.6·0.24 숫자의 MoveTuning 이전은 A1-05(대시 수치 이전)와 같이 하기로 남김.",
+    "확인: 클라우드 세션 — Psy.Core·Gameplay C# 컴파일(유니티 참조 어셈블리 + 스텁, 기준선 대비 새 오류 0) · EditMode 일부(dotnet+NUnit) 통과. 유니티 에디터 컴파일·PlayMode·캡처는 아직 — 사용자 에디터에서 확인 필요"
+   ],
    "title": "점프하면서 공격하면 점프가 더 높아진다",
    "feedback": "점프하면서 공격하면 점프 높이가 높아지는 버그가 있다.",
    "now": [
@@ -404,7 +427,14 @@
    "round": "alpha1",
    "kind": "UI",
    "size": "M",
-   "status": "recorded",
+   "status": "done",
+   "result": [
+    "가방 상세 칸 위쪽 = «착용 중»(이름·등급·전투력·능력치 4줄) · 아래 = 고른 장비 + «착용 중과 비교»(능력치마다 «공격력 +17 (▲7)» · 새로 · 사라짐 — ItemStats.Diff).",
+    "반지 비교 대상 = 끼우면 바뀔 칸(빈 칸 먼저 — PlayerProfile.EquipTarget) · 가게에서도 같은 비교 · 세트 포함 캐릭터 전체 변화는 왼쪽 능력치 칸 미리 보기(A1-10).",
+    "계획과 다른 점: 창 폭(576)이 모자라 «좌우 두 칸» 대신 같은 상세 칸을 위(착용 중)·아래(고른 장비)로 나눴다.",
+    "EditMode ItemDiff_ListsChangedStats.",
+    "확인: 클라우드 세션 — Psy.Core·Gameplay C# 컴파일(유니티 참조 어셈블리 + 스텁, 기준선 대비 새 오류 0) · EditMode 일부(dotnet+NUnit) 통과. 유니티 에디터 컴파일·PlayMode·캡처는 아직 — 사용자 에디터에서 확인 필요"
+   ],
    "title": "가방 — 착용 중 장비와 나란히 비교",
    "feedback": "같은 부위를 이미 끼고 있으면 착용 전·후 능력치를 비교할 수 있어야 한다. 착용 중인 장비 정보와 끼울 장비 정보를 따로 봐야 비교가 된다.",
    "now": [
@@ -438,7 +468,14 @@
    "round": "alpha1",
    "kind": "UI",
    "size": "S",
-   "status": "recorded",
+   "status": "done",
+   "result": [
+    "가방 능력치 칸 = 한 줄에 하나(왼쪽 이름 · 오른쪽 값): 공격력·방어력·HP·MP·치명타·치명 피해·브레이크·이동 속도·재사용 + 기본값이 아닌 부가 능력치만(Psy.Core StatSheet).",
+    "장비를 고르면 «끼우면», 장비 칸을 고르면 «빼면» 바뀌는 줄에 «→ 새 값»(좋아짐 초록 · 나빠짐 빨강) — 세트 효과까지 실제로 끼운 상태로 계산하고 되돌림(PlayerProfile.FinalIf).",
+    "EditMode StatSheet_Lines_AndEquipPreview(미리 보기 = 실제로 끼운 값 · 장비 되돌림).",
+    "남은 것: 능력치 아이콘(아트 없음 — 글자만).",
+    "확인: 클라우드 세션 — Psy.Core·Gameplay C# 컴파일(유니티 참조 어셈블리 + 스텁, 기준선 대비 새 오류 0) · EditMode 일부(dotnet+NUnit) 통과. 유니티 에디터 컴파일·PlayMode·캡처는 아직 — 사용자 에디터에서 확인 필요"
+   ],
    "title": "가방 — 장비 칸 아래 능력치를 세로 목록으로",
    "feedback": "장비 아래 능력치도 세로로 나열돼야 장비를 끼웠을 때 적용되는 능력치를 알 수 있다.",
    "now": [
@@ -777,5 +814,5 @@
    ]
   }
  ],
- "updatedAt": "2026-10-03T06:43:48Z"
+ "updatedAt": "2026-10-03T10:37:33Z"
 }

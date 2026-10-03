@@ -281,6 +281,9 @@ i.mk.di{border-radius:1px;transform:rotate(45deg) scale(.9)}
 .fb .filters .iconbtn{min-height:40px;padding:0 14px;margin-left:auto}
 .fb-list{display:flex;flex-direction:column;gap:8px}
 .fbi{background:var(--surface);border:1px solid var(--line);border-radius:10px;min-width:0}
+.fbi.done summary b,.fbi.done summary>p{text-decoration:line-through;text-decoration-thickness:1.5px;color:var(--muted)}
+.fbi.done{opacity:.85}
+s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
 .fbi[open]{box-shadow:var(--shadow)}
 .fbi summary{list-style:none;cursor:pointer;padding:12px 14px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:4px 10px;align-items:baseline;border-radius:10px}
 .fbi summary::-webkit-details-marker{display:none}
@@ -949,7 +952,7 @@ i.mk.di{border-radius:1px;transform:rotate(45deg) scale(.9)}
   }
 
   // ---------- 알파 피드백(data/feedback.json — 원본 project_psy/docs/feedback/alpha-feedback.json · 올리기 = board.py publish-feedback) ----------
-  const FB_STATUS = {recorded: "기록됨", ready: "계획 확정", doing: "진행 중", done: "완료", hold: "보류"};
+  const FB_STATUS = {recorded: "기록됨", ready: "계획 확정", doing: "진행 중", done: "개선 완료", hold: "보류"};
   const fb = {data: null, busy: false, round: "", kind: "", q: "", open: new Set()};
   async function loadFeedback(force = false) {
     if (fb.busy || (fb.data && !force)) return;
@@ -965,7 +968,7 @@ i.mk.di{border-radius:1px;transform:rotate(45deg) scale(.9)}
     } finally { fb.busy = false; }
   }
   const fbArr = (v) => Array.isArray(v) ? v.filter(Boolean) : v ? [v] : [];
-  const fbRows = (it) => [["지금", fbArr(it.now), "ul"], ["처리 계획", fbArr(it.plan), "ol"], ["손대는 곳", fbArr(it.touch), "ul"], ["주의", fbArr(it.risk), "ul"],
+  const fbRows = (it) => [["개선 결과", fbArr(it.result), "ul"], ["지금", fbArr(it.now), "ul"], ["처리 계획", fbArr(it.plan), "ol"], ["손대는 곳", fbArr(it.touch), "ul"], ["주의", fbArr(it.risk), "ul"],
     ["결정 필요", fbArr(it.ask), "ul"], ["같이 볼 것", fbArr(it.deps), ""]];
   function fbShown() {
     const q = fb.q.trim().toLowerCase();
@@ -994,7 +997,7 @@ i.mk.di{border-radius:1px;transform:rotate(45deg) scale(.9)}
       + fact("결정 필요", list.filter(it => fbArr(it.ask).length).length);
     const bundles = D.bundles.filter(b => (!fb.round || b.round === fb.round) && fbArr(b.items).some(id => list.some(it => it.id === id)));
     $("fbBundles").innerHTML = bundles.length && !fb.q.trim() && !fb.kind ? `<h3 class="gi-h">작업 묶음<small>일괄 작업 때 권하는 순서</small></h3><div class="gi">` + gtable(["순서", "묶음", "항목", "메모"],
-      bundles.map((b, i) => [esc(b.order ?? i + 1), `<b>${esc(b.name)}</b>`, fbArr(b.items).map(id => `<span class="qid">${esc(id)}</span>${esc(title.get(id) || "")}`).join("<br>"), esc(b.note || "")]), 1, [0]) + `</div>` : "";
+      bundles.map((b, i) => [esc(b.order ?? i + 1), `<b>${esc(b.name)}</b>`, fbArr(b.items).map(id => { const d = D.items.find(x => x.id === id), t = `<span class="qid">${esc(id)}</span>${esc(title.get(id) || "")}`; return d && d.status === "done" ? `<s class="fbdone">${t}</s> <span class="tag st-done">개선 완료</span>` : t; }).join("<br>"), esc(b.note || "")]), 1, [0]) + `</div>` : "";
     $("fbAll").textContent = list.length && list.every(it => fb.open.has(it.id)) ? "모두 접기" : "모두 펼치기";
     $("fbList").innerHTML = list.map(it => {
       const stt = FB_STATUS[it.status] ? it.status : "recorded";
@@ -1002,7 +1005,7 @@ i.mk.di{border-radius:1px;transform:rotate(45deg) scale(.9)}
         const body = tag ? `<${tag}>${v.map(x => `<li>${esc(x)}</li>`).join("")}</${tag}>` : v.map(id => `<span class="qid">${esc(id)}</span>${esc(title.get(id) || "")}`).join(" · ");
         return `<dt>${l}</dt><dd${l === "결정 필요" ? ' class="ask"' : ""}>${body}</dd>`;
       }).join("");
-      return `<details class="fbi" data-id="${esc(it.id)}"${fb.open.has(it.id) ? " open" : ""}><summary><span class="qid">${esc(it.id)}</span><b>${esc(it.title)}</b>
+      return `<details class="fbi${stt === "done" ? " done" : ""}" data-id="${esc(it.id)}"${fb.open.has(it.id) ? " open" : ""}><summary><span class="qid">${esc(it.id)}</span><b>${esc(it.title)}</b>
         <span class="tags">${it.kind ? `<span class="tag">${esc(it.kind)}</span>` : ""}${it.size ? `<span class="tag">규모 ${esc(it.size)}</span>` : ""}${fbArr(it.ask).length ? `<span class="tag need">결정 ${fbArr(it.ask).length}</span>` : ""}<span class="tag st-${stt}">${FB_STATUS[stt]}</span></span>
         <p>${esc(it.feedback)}</p></summary><dl class="fbb">${rows}</dl></details>`;
     }).join("") || NONE;
