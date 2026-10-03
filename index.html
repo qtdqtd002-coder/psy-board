@@ -19,6 +19,11 @@
   --shadow:0 1px 2px rgba(29,26,43,.06),0 4px 14px rgba(29,26,43,.06);
   --font-body:"IBM Plex Sans KR","Malgun Gothic","Apple SD Gothic Neo",system-ui,sans-serif;
   --font-display:"Do Hyeon","IBM Plex Sans KR","Malgun Gothic",sans-serif;
+  /* 지도(게임 정보): 지형 --mp-* · 표식 --mk-* */
+  --mp-air:#F1EFF8; --mp-void:#D8D4E6; --mp-solid:#57516F; --mp-plat:#A8620A; --mp-ghost:#6A4FD0; --mp-flowl:#D9772B; --mp-flowr:#C9A227;
+  --mp-quick:#8A5A44; --mp-soft:#C7A26B; --mp-lift:#2F9E8F; --mp-water:#8EC3EE; --mp-glyph:rgba(29,26,43,.6); --mp-ring:#FFFFFF;
+  --mk-portal:#2F6FD6; --mk-npc:#2E8B57; --mk-spawn:#C53A3A; --mk-elite:#E0701A; --mk-boss:#8E1239; --mk-chest:#9C5B1F;
+  --mk-spot:#6A4FD0; --mk-lantern:#E3A800; --mk-lore:#0E8FA3; --mk-pickup:#D6409F;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
@@ -28,6 +33,10 @@
     --st-plan:#9C86F2; --st-art:#EC7AAE; --st-dev:#6FA3F5; --st-qa:#E9B45A; --st-done:#5CC48A;
     --good:#5CC48A; --bad:#FF7A7A;
     --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25);
+    --mp-air:#1F1C2E; --mp-void:#0B0912; --mp-solid:#6C668A; --mp-plat:#F2B544; --mp-ghost:#9C86F2; --mp-flowl:#E8894A; --mp-flowr:#E3C24F;
+    --mp-quick:#9A6A55; --mp-soft:#B99A6B; --mp-lift:#4FC7B5; --mp-water:#24598C; --mp-glyph:rgba(10,8,20,.65); --mp-ring:#13111D;
+    --mk-portal:#6FA3F5; --mk-npc:#5CC48A; --mk-spawn:#FF7A7A; --mk-elite:#FF9A4D; --mk-boss:#FF5C8A; --mk-chest:#D9A066;
+    --mk-spot:#B3A1FF; --mk-lantern:#FFD84D; --mk-lore:#4FD6E8; --mk-pickup:#F58AC8;
   }
 }
 :root[data-theme="dark"]{
@@ -37,6 +46,10 @@
   --st-plan:#9C86F2; --st-art:#EC7AAE; --st-dev:#6FA3F5; --st-qa:#E9B45A; --st-done:#5CC48A;
   --good:#5CC48A; --bad:#FF7A7A;
   --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25);
+  --mp-air:#1F1C2E; --mp-void:#0B0912; --mp-solid:#6C668A; --mp-plat:#F2B544; --mp-ghost:#9C86F2; --mp-flowl:#E8894A; --mp-flowr:#E3C24F;
+  --mp-quick:#9A6A55; --mp-soft:#B99A6B; --mp-lift:#4FC7B5; --mp-water:#24598C; --mp-glyph:rgba(10,8,20,.65); --mp-ring:#13111D;
+  --mk-portal:#6FA3F5; --mk-npc:#5CC48A; --mk-spawn:#FF7A7A; --mk-elite:#FF9A4D; --mk-boss:#FF5C8A; --mk-chest:#D9A066;
+  --mk-spot:#B3A1FF; --mk-lantern:#FFD84D; --mk-lore:#4FD6E8; --mk-pickup:#F58AC8;
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
@@ -53,7 +66,8 @@ header.top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:spac
 .meter{flex:1;height:10px;border-radius:5px;background:var(--line);overflow:hidden;display:flex}
 .meter i{display:block;height:100%}
 nav.tabs{display:flex;flex-wrap:wrap;gap:4px;border-bottom:1px solid var(--line);align-items:center}
-nav.tabs button.tab{font:inherit;font-weight:600;color:var(--muted);background:none;border:0;border-bottom:2px solid transparent;padding:8px 14px;cursor:pointer}
+nav.tabs .tablist{display:flex;flex-wrap:wrap;gap:4px}
+nav.tabs button.tab{font:inherit;font-weight:600;color:var(--muted);background:none;border:0;border-bottom:2px solid transparent;padding:8px 14px;min-height:40px;cursor:pointer}
 nav.tabs button.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
 nav.tabs .spacer{flex:1}
 .status{font-size:12px;color:var(--muted)}
@@ -64,7 +78,7 @@ nav.tabs .spacer{flex:1}
 .chip{font:inherit;font-size:12px;padding:4px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--muted);cursor:pointer}
 .chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .filters input[type=search]{font:inherit;font-size:12px;padding:5px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);min-width:0;flex:1 1 160px;max-width:260px}
-button:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible,.card:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+button:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible,.card:focus-visible,a:focus-visible,.mapbox:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 /* ---- 칸반 ---- */
 .board{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;align-items:start}
 .col{background:var(--surface2);border:1px solid var(--line);border-radius:10px;display:flex;flex-direction:column;min-height:120px}
@@ -175,12 +189,124 @@ footer.foot{color:var(--muted);font-size:12px;display:flex;flex-wrap:wrap;gap:6p
 .branches .th{color:var(--muted)}
 .branches .bo{font-size:12.5px}
 .branches .gi{font-weight:600;color:var(--indigo)}
+/* ---- 게임 정보 ---- */
+.gi{display:flex;flex-direction:column;gap:12px}
+.gi-bar{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;justify-content:space-between}
+.seg{display:flex;flex-wrap:wrap;gap:2px;padding:3px;background:var(--surface2);border:1px solid var(--line);border-radius:10px}
+.seg button{font:inherit;font-weight:600;color:var(--muted);background:none;border:0;border-radius:7px;min-height:40px;padding:0 14px;cursor:pointer}
+.seg button[aria-selected="true"]{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
+.gi .chip{min-height:40px;padding:0 14px;font-size:13px}
+.gi .filters input[type=search]{min-height:40px;padding:0 14px;font-size:13px}
+#giBody{display:flex;flex-direction:column;gap:10px;min-width:0}
+.gi-h{font-family:var(--font-display);font-weight:400;font-size:21px;margin:10px 0 0;display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px}
+.gi-h small{font-family:var(--font-body);font-size:12px;color:var(--muted)}
+.gi-sub{grid-column:1 / -1;margin:6px 0 -4px;font-size:12px;font-weight:600;color:var(--muted)}
+.gi .tblwrap{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:10px}
+.gt{border-collapse:collapse;width:100%;font-size:13px}
+.gt th{background:var(--surface2);font-size:12px;font-weight:600;color:var(--muted);text-align:left;white-space:nowrap;padding:8px 12px}
+.gt td{padding:8px 12px;border-top:1px solid var(--line);vertical-align:top;line-height:1.55;overflow-wrap:break-word}
+.gt td.ttl{min-width:190px;width:26%}
+.gt td.nw{white-space:nowrap}
+.gt small,.gcard h4 small{display:block;font-weight:400;font-size:12px;color:var(--muted)}
+.qid{font-size:11px;font-weight:600;color:var(--indigo);margin-right:6px;font-variant-numeric:tabular-nums}
+.tag.ok{color:var(--good)}
+.tag.dk{color:var(--bg);background:var(--ink);border-color:var(--ink)}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px;align-items:start}
+.cols3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;align-items:start}
+.gcol{display:flex;flex-direction:column;gap:10px;min-width:0}
+.gcol .gi-h{margin-top:0}
+.gcard{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.gcard h4{margin:0;font-size:15px;font-weight:600;line-height:1.35;display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px}
+.gcard h4 .tag{font-weight:400}
+.gcard h4 .tag:first-of-type{margin-left:auto}
+.gcard h4 small{order:9;flex-basis:100%}
+.gcard p{margin:0;font-size:13px}
+.gcard p.sub{color:var(--muted);font-size:12.5px;line-height:1.6}
+.gcard .kv{grid-template-columns:auto minmax(0,1fr);gap:4px 12px}
+.gcard ul{margin:0;padding-left:18px;font-size:13px}
+.facts{display:flex;flex-wrap:wrap;gap:4px}
+.fact{font-size:12px;padding:2px 8px;border-radius:6px;background:var(--surface2);border:1px solid var(--line);font-variant-numeric:tabular-nums}
+.fact i{font-style:normal;color:var(--muted);margin-right:5px}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.stats div{background:var(--surface2);padding:5px 8px;display:flex;align-items:baseline;justify-content:space-between;gap:6px;min-width:0}
+.stats span{font-size:11.5px;color:var(--muted);white-space:nowrap}
+.stats b{font-weight:600;font-size:13px;font-variant-numeric:tabular-nums}
+.gcard ul.sk{list-style:none;padding:0;display:flex;flex-direction:column;gap:4px}
+.sk li{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 6px}
+.sk li>span:last-child{color:var(--muted);font-size:12px;flex-basis:100%}
+/* 지도 */
+.maps{display:grid;grid-template-columns:220px minmax(0,1fr);gap:12px;align-items:start}
+.maplist{display:flex;flex-direction:column;gap:2px;min-width:0}
+.maplist b{font-size:11px;letter-spacing:.08em;color:var(--muted);margin:8px 0 2px;padding-left:10px;white-space:nowrap}
+.maplist b:first-child{margin-top:0}
+.maplist button{font:inherit;text-align:left;color:var(--ink);background:none;border:1px solid transparent;border-radius:8px;min-height:40px;padding:4px 10px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.maplist button small{color:var(--muted);font-size:11.5px;font-weight:400;white-space:nowrap}
+.maplist button:hover{background:var(--surface2)}
+.maplist button[aria-pressed="true"]{background:var(--surface);border-color:var(--accent);font-weight:600}
+.mapview{gap:10px}
+.maphead{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.maphead h2{margin-right:6px}
+.maphead .spacer{flex:1}
+.zb{width:40px;height:40px;padding:0;font-size:18px;line-height:1}
+.zb[aria-disabled="true"]{opacity:.35;cursor:default}
+.mapbox{display:flex;overflow:auto;max-height:78vh;border:1px solid var(--line);border-radius:8px;background:var(--surface2);overscroll-behavior-x:contain}
+.mapbox canvas{display:block;flex:none;margin:auto;image-rendering:pixelated;outline:1px solid var(--line)}
+.mapsel{margin:0;font-size:13px;display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px}
+.mapsel span{color:var(--muted)}
+i.mk{display:inline-block;flex:none;width:10px;height:10px;margin:0 3px;border-radius:50%;box-shadow:0 0 0 1.5px var(--mp-ring),0 0 0 2.5px var(--line);vertical-align:middle}
+i.mk.sq{border-radius:2px}
+i.mk.di{border-radius:1px;transform:rotate(45deg) scale(.9)}
+.marks{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px 14px;align-items:start}
+.mgroup{display:flex;flex-direction:column;gap:2px;min-width:0}
+.mgroup>b{font-size:12px;font-weight:600;color:var(--muted);padding-left:8px}
+.mark{font:inherit;font-size:13px;text-align:left;color:var(--ink);background:none;border:1px solid transparent;border-radius:6px;min-height:40px;padding:4px 8px;cursor:pointer;display:flex;align-items:center;gap:8px;min-width:0}
+.mark span{flex:1;min-width:0;overflow-wrap:anywhere;line-height:1.35}
+.mark small{display:block;color:var(--muted);font-size:12px}
+.mark em{font-style:normal;color:var(--muted);font-size:11.5px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.mark:hover{background:var(--surface2)}
+.mark[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent)}
+/* ---- 테스트 빌드 ---- */
+.builds{max-width:640px}
+.builds .pre{white-space:pre-wrap}
+.files{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.files li{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:2px 8px;align-items:center;background:var(--surface2);border:1px solid var(--line);border-radius:8px;padding:8px 10px}
+.files b{overflow-wrap:anywhere}
+.files .sz{color:var(--muted);font-size:12px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.files small{grid-column:2 / 4;color:var(--muted);font-size:12px}
+.builds a.btn{align-self:flex-start;display:inline-flex;align-items:center;min-height:40px;padding:6px 18px;text-decoration:none}
 @media (max-width:1100px){.branches{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:900px){.lore{grid-template-columns:1fr}.lore .toc{position:static;flex-direction:row;flex-wrap:wrap;border-left:0;padding-left:0;gap:6px}.lore .toc b{display:none}.lore .toc a{border:1px solid var(--line);border-radius:999px;padding:3px 10px;background:var(--surface)}}
 @media (max-width:560px){.branches{grid-template-columns:1fr 1fr}}
 @media (max-width:1100px){.board{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:900px){.span4,.span5,.span7,.span8{grid-column:span 12}}
 @media (max-width:720px){.board{grid-template-columns:1fr}.stagecounts{grid-template-columns:repeat(3,1fr)}.brand h1{font-size:28px}.dlg .grid{grid-template-columns:1fr}}
+@media (max-width:900px){
+  .cols3{grid-template-columns:1fr}
+  .maps{grid-template-columns:minmax(0,1fr)}
+  .maplist{flex-direction:row;align-items:center;gap:6px;overflow-x:auto;padding:2px 2px 6px;scrollbar-width:thin}
+  .maplist b{margin:0;padding:0 0 0 4px}
+  .maplist button{flex:none;background:var(--surface);border-color:var(--line)}
+}
+@media (max-width:720px){
+  .chip,.iconbtn{min-height:40px;padding-inline:12px}
+  .seg{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));width:100%}
+  .seg button{padding:0 4px}
+  .gi .filters input[type=search]{font-size:16px;max-width:none}
+  .mapview{padding:12px}
+  .cards{grid-template-columns:minmax(0,1fr)}
+  /* 표 → 카드로 쌓는다 */
+  .gi .tblwrap{overflow:visible;background:none;border:0;border-radius:0}
+  .gt,.gt tbody{display:block}
+  .gt thead{display:none}
+  .gt tr{display:flex;flex-direction:column;gap:4px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-bottom:8px}
+  .gt td{display:grid;grid-template-columns:64px minmax(0,1fr);gap:8px;padding:0;border:0}
+  .gt td::before{content:attr(data-l);font-size:12px;color:var(--muted)}
+  .gt td.ttl{display:block;order:-1;min-width:0;width:auto;font-size:15px}
+  .gt td.ttl::before{content:none}
+  .gt td.nil{display:none}
+  .gt td.nw{white-space:normal}
+}
+@media (max-width:480px){nav.tabs .tablist{gap:2px}nav.tabs button.tab{padding:8px 6px;min-width:40px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 </head>
@@ -198,10 +324,14 @@ footer.foot{color:var(--muted);font-size:12px;display:flex;flex-wrap:wrap;gap:6p
     </div>
   </header>
 
-  <nav class="tabs" role="tablist" aria-label="보기">
-    <button class="tab" role="tab" id="tab-board" aria-selected="true" aria-controls="view-board">칸반</button>
-    <button class="tab" role="tab" id="tab-dash" aria-selected="false" aria-controls="view-dash">대시보드</button>
-    <button class="tab" role="tab" id="tab-lore" aria-selected="false" aria-controls="view-lore">세계관</button>
+  <nav class="tabs" aria-label="보기">
+    <div class="tablist" role="tablist" aria-label="보기" id="tabList">
+      <button class="tab" role="tab" id="tab-board" aria-selected="true" aria-controls="view-board">칸반</button>
+      <button class="tab" role="tab" id="tab-dash" aria-selected="false" aria-controls="view-dash">대시보드</button>
+      <button class="tab" role="tab" id="tab-lore" aria-selected="false" aria-controls="view-lore">세계관</button>
+      <button class="tab" role="tab" id="tab-info" aria-selected="false" aria-controls="view-info">게임 정보</button>
+      <button class="tab" role="tab" id="tab-builds" aria-selected="false" aria-controls="view-builds">테스트 빌드</button>
+    </div>
     <span class="spacer"></span>
     <span class="status" id="status" aria-live="polite">불러오는 중…</span>
     <button class="iconbtn" id="refreshBtn" type="button" title="지금 새로고침">새로고침</button>
@@ -271,9 +401,24 @@ footer.foot{color:var(--muted);font-size:12px;display:flex;flex-wrap:wrap;gap:6p
     </div>
   </section>
 
+  <section id="view-info" role="tabpanel" aria-labelledby="tab-info" hidden>
+    <div class="gi">
+      <div class="gi-bar">
+        <div class="seg" role="tablist" aria-label="게임 정보 갈래" id="giSeg"></div>
+        <span class="status" id="giStamp"></span>
+      </div>
+      <div class="filters" id="giFilters"></div>
+      <div id="giBody" role="tabpanel"><p class="empty">불러오는 중…</p></div>
+    </div>
+  </section>
+
+  <section id="view-builds" role="tabpanel" aria-labelledby="tab-builds" hidden>
+    <div class="panel builds" id="buildsBox"><p class="empty">불러오는 중…</p></div>
+  </section>
+
   <footer class="foot">
     <span id="dataStamp">데이터 —</span>
-    <span>데이터: <a href="data/board.json" style="color:inherit">data/board.json</a> · <a href="data/lore.md" style="color:inherit">data/lore.md</a></span>
+    <span>데이터: <a href="data/board.json" style="color:inherit">data/board.json</a> · <a href="data/lore.md" style="color:inherit">data/lore.md</a> · <a href="data/gameinfo.json" style="color:inherit">data/gameinfo.json</a></span>
     <span>1분마다 자동 새로고침</span>
   </footer>
 </div>
@@ -411,14 +556,26 @@ footer.foot{color:var(--muted);font-size:12px;display:flex;flex-wrap:wrap;gap:6p
   }
 
   // ---------- 탭·필터 ----------
-  const TABS = ["board", "dash", "lore"];
+  const TABS = ["board", "dash", "lore", "info", "builds"];
   function showTab(which) {
     if (!TABS.includes(which)) which = "board";
-    for (const t of TABS) { $("tab-" + t).setAttribute("aria-selected", t === which); $("view-" + t).hidden = t !== which; }
+    for (const t of TABS) { const on = t === which; $("tab-" + t).setAttribute("aria-selected", on); $("tab-" + t).tabIndex = on ? 0 : -1; $("view-" + t).hidden = !on; }
     safe(() => localStorage.setItem("psy-tab", which));
     if (which === "lore") loadLore();
+    if (which === "info") loadInfo();
+    if (which === "builds") loadBuilds();
   }
   for (const t of TABS) $("tab-" + t).onclick = () => showTab(t);
+  // 탭 줄 키보드: ← → Home End 로 옮긴다(Tab 순서에는 고른 탭만 든다)
+  function arrowTabs(root) {
+    root.addEventListener("keydown", e => {
+      const tabs = [...root.querySelectorAll('[role="tab"]')], i = tabs.indexOf(document.activeElement);
+      const n = e.key === "ArrowRight" ? i + 1 : e.key === "ArrowLeft" ? i - 1 : e.key === "Home" ? 0 : e.key === "End" ? tabs.length - 1 : null;
+      if (i < 0 || n === null) return;
+      e.preventDefault(); const t = tabs[(n + tabs.length) % tabs.length]; t.focus(); t.click();
+    });
+  }
+  arrowTabs($("tabList"));
 
   // ---------- 세계관(data/lore.md — 원본은 project_psy/docs/design/01_Concept/03_Lore.md) ----------
   let loreLoaded = false;
@@ -479,7 +636,277 @@ footer.foot{color:var(--muted);font-size:12px;display:flex;flex-wrap:wrap;gap:6p
     }
   }
 
-  const initialTab = location.hash === "#lore" ? "lore" : location.hash === "#dash" ? "dash" : (safe(() => localStorage.getItem("psy-tab")) || "board");
+  // ---------- 게임 정보(data/gameinfo.json — 게임 데이터를 BoardInfoExport.cs 가 내보낸 것 · 올리기 = board.py publish-info) ----------
+  const SECS = [["maps", "지도"], ["systems", "시스템"], ["items", "장비"], ["skills", "스킬"], ["monsters", "몬스터"], ["companions", "동료"], ["quests", "퀘스트"]];
+  const TERRAIN = [["#", "solid", "땅"], ["=", "plat", "발판"], ["-", "ghost", "그림 없는 발판"], ["<", "flowl", "흐르는 모래 ←"], [">", "flowr", "흐르는 모래 →"],
+    ["%", "quick", "늪모래"], ["&", "soft", "무른 모래"], ["^", "lift", "모래 기둥"], ["~", "water", "물"]];   // 글자 · 색 변수(--mp-*) · 이름
+  const MARKS = [["portal", "포털", "sq"], ["npc", "NPC", ""], ["boss", "보스", "di"], ["elite", "정예", "di"], ["spawn", "몬스터 자리", ""], ["chest", "숨은 상자", "sq"],
+    ["spot", "재주 자리", ""], ["lantern", "산호 등불", ""], ["lore", "꿈 기록", ""], ["pickup", "퀘스트 물건", ""]];   // 종류 · 이름 · 모양(목록·범례 순서)
+  const MARK_Z = ["spawn", "lore", "pickup", "spot", "lantern", "chest", "npc", "elite", "portal", "boss"];   // 그리는 순서(뒤가 위)
+  const ZOOMS = [3, 4, 5, 6, 8, 10, 12, 16, 20];   // 칸 한 변(px)
+  const NONE = '<p class="empty">찾는 것이 없습니다</p>';
+  const gi = {data: null, busy: false, sec: "maps", ch: 0, q: "", map: null, sel: -1, zoom: 0, cell: 0, rad: 0, pts: []};
+  const num = (v, d = 2) => String(+(+v || 0).toFixed(d));
+  const giHit = (...parts) => { const q = gi.q.trim().toLowerCase(); return !q || parts.join(" ").toLowerCase().includes(q); };
+  const giCh = (n) => !gi.ch || n === gi.ch;
+  const curMap = () => gi.data && gi.data.maps.find(m => m.id === gi.map);
+  const markMeta = (kind) => MARKS.find(k => k[0] === kind) || [kind, kind, ""];
+  const mkIcon = (kind) => `<i class="mk ${markMeta(kind)[2]}" style="background:var(--mk-${esc(kind)},var(--mk-spawn))"></i>`;
+  const markText = (k) => (k.kind === "portal" ? "→ " : "") + k.name;
+  const markNote = (k) => k.kind === "chest" && k.note ? "필요: " + k.note : k.note || "";
+  const fact = (l, v) => `<span class="fact"><i>${l}</i>${esc(v)}</span>`;
+
+  $("giSeg").innerHTML = SECS.map(([id, name]) => `<button type="button" role="tab" id="gi-tab-${id}" aria-controls="giBody" data-sec="${id}">${name}</button>`).join("");
+  $("giSeg").querySelectorAll("button").forEach(b => b.onclick = () => { gi.sec = b.dataset.sec; renderInfo(); });
+  arrowTabs($("giSeg"));
+  function markSeg() {
+    $("giSeg").querySelectorAll("button").forEach(b => { const on = b.dataset.sec === gi.sec; b.setAttribute("aria-selected", on); b.tabIndex = on ? 0 : -1; });
+    $("giBody").setAttribute("aria-labelledby", "gi-tab-" + gi.sec);
+  }
+  markSeg();
+
+  async function loadInfo(force = false) {
+    if (gi.busy || (gi.data && !force)) return;
+    gi.busy = true;
+    try {
+      const r = await fetch(`data/gameinfo.json?v=${Date.now()}`, {cache: "no-store"});
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      const d = await r.json();
+      for (const k of ["chapters", "systems", "maps", "items", "sets", "skills", "monsters", "companions", "quests"]) if (!Array.isArray(d[k])) d[k] = [];
+      gi.data = d; renderInfo();
+    } catch (e) {
+      if (!gi.data) $("giBody").innerHTML = `<p class="empty">게임 정보를 불러오지 못했습니다: ${esc(e.message)}</p>`;
+    } finally { gi.busy = false; }
+  }
+  function renderInfo() {
+    markSeg();
+    const D = gi.data; if (!D) return;
+    $("giStamp").textContent = D.generatedAt ? "게임 데이터 " + fmt(D.generatedAt) : "";
+    // 스킬에는 장 구분이 없다 → 장 고르기를 감춘다
+    $("giFilters").innerHTML = (gi.sec === "skills" ? "" : [0, ...D.chapters.map(c => c.n)].map(n => `<button class="chip" type="button" data-ch="${esc(n)}" aria-pressed="${gi.ch === n}">${n ? esc(n) + "장" : "전체"}</button>`).join(""))
+      + `<input type="search" id="giQ" placeholder="찾기" value="${esc(gi.q)}" aria-label="${SECS.find(s => s[0] === gi.sec)[1]} 찾기">`;
+    const chips = $("giFilters").querySelectorAll(".chip");
+    chips.forEach(b => b.onclick = () => { gi.ch = Number(b.dataset.ch); chips.forEach(x => x.setAttribute("aria-pressed", x === b)); renderInfoBody(); });
+    $("giQ").oninput = () => { gi.q = $("giQ").value; renderInfoBody(); };
+    renderInfoBody();
+  }
+  function renderInfoBody() {
+    if (!gi.data) return;
+    if (gi.sec === "maps") { renderMaps(); return; }
+    const fn = {systems: secSystems, items: secItems, skills: secSkills, monsters: secMonsters, companions: secCompanions, quests: secQuests}[gi.sec];
+    $("giBody").innerHTML = fn() || NONE;
+  }
+
+  // 장 제목 + 그 장의 목록(빈 장은 건너뛴다)
+  function perChapter(list, body) {
+    return [...new Set(list.map(x => x.chapter))].sort((a, b) => a - b).map(n => {
+      const c = gi.data.chapters.find(x => x.n === n);
+      return `<h3 class="gi-h">${esc(c ? c.name : n + "장")}${c && c.levels ? `<small>${esc(c.levels)}</small>` : ""}</h3>` + body(list.filter(x => x.chapter === n));
+    }).join("");
+  }
+  // 표 — 넓은 화면은 표, 좁은 화면은 카드로 쌓인다(td 의 data-l 이 이름표 · ti = 카드 제목이 될 열 · nw = 줄을 바꾸지 않는 열)
+  function gtable(cols, rows, ti = 0, nw = []) {
+    return `<div class="tblwrap"><table class="gt"><thead><tr>${cols.map(c => `<th scope="col">${c}</th>`).join("")}</tr></thead><tbody>${rows.map(r =>
+      `<tr>${r.map((v, i) => `<td data-l="${cols[i]}" class="${i === ti ? "ttl" : ""}${nw.includes(i) ? " nw" : ""}${v === "" ? " nil" : ""}"><div>${v}</div></td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+  }
+  const nameCell = (name, sub, pre = "") => `${pre}<b>${esc(name)}</b>${sub ? `<small>${esc(sub)}</small>` : ""}`;
+
+  function secSystems() {
+    const list = gi.data.systems.filter(s => giCh(s.chapter) && giHit(s.group, s.name, s.text, s.learn));
+    return perChapter(list, l => gtable(["묶음", "이름", "내용", "배우는 곳"], l.map(s => [`<span class="tag">${esc(s.group)}</span>`, nameCell(s.name), esc(s.text), esc(s.learn)]), 1, [0]));
+  }
+  function secItems() {
+    const D = gi.data, chOf = new Map(D.items.map(i => [i.name, i.chapter]));
+    const row = (i) => giHit(i.name, i.kind, i.slot, i.stats, i.set, i.source, i.rarity, i.desc);
+    let h = perChapter(D.items.filter(i => i.kind === "장비" && giCh(i.chapter) && row(i)), l => gtable(["이름", "부위", "레벨", "능력치", "세트", "얻는 곳", "고정 등급"],
+      l.map(i => [nameCell(i.name, i.desc), esc(i.slot), esc(i.level), esc(i.stats), esc(i.set), esc(i.source), esc(String(i.rarity || "").replace(/ 고정$/, ""))]), 0, [1, 2, 4, 6]));
+    const sets = D.sets.filter(s => (!gi.ch || s.pieces.some(p => chOf.get(p) === gi.ch)) && giHit(s.name, s.lore, ...s.pieces, ...s.tiers));
+    if (sets.length) h += `<h3 class="gi-h">세트</h3><div class="cards">${sets.map(s => `<article class="gcard"><h4>${esc(s.name)}</h4><ul>${s.tiers.map(t => `<li>${esc(t)}</li>`).join("")}</ul>
+      <p class="sub">${s.pieces.map(esc).join(" · ")}</p><p class="sub">${esc(s.lore)}</p></article>`).join("")}</div>`;
+    // 소모품·재료는 장에 묶이지 않는다 → 장을 골라도 그대로 보인다
+    for (const kind of [...new Set(D.items.filter(i => i.kind !== "장비").map(i => i.kind))]) {
+      const l = D.items.filter(i => i.kind === kind && row(i));
+      if (l.length) h += `<h3 class="gi-h">${esc(kind)}</h3>` + gtable(["이름", "효과", "값", "얻는 곳"], l.map(i => [nameCell(i.name, i.desc), esc(i.stats), i.price ? Number(i.price).toLocaleString() + " 골드" : "", esc(i.source)]), 0, [1, 2]);
+    }
+    return h;
+  }
+  function secSkills() {
+    const list = gi.data.skills.filter(s => giHit(s.name, s.branch, s.kind, s.desc, s.perRank, s.requires, s.how));
+    const card = (s) => {
+      const act = s.kind === "기술", facts = [fact("최대 랭크", s.maxRank), fact("필요 레벨", s.reqLevel)];
+      if (act) {
+        facts.push(fact("MP", s.mp), fact("재사용", num(s.cooldown) + "초"));
+        if (s.multiplier > 0) facts.push(fact("배율", "×" + num(s.multiplier)));
+        if (s.hits > 0) facts.push(fact("타수", s.hits));
+        if (s.breakPower > 0) facts.push(fact("브레이크", num(s.breakPower)));
+      }
+      const per = String(s.perRank || "").replace(/^랭크당\s*/, "").replace(/\s*\(랭크당\)$/, "");
+      return `<article class="gcard"><h4>${esc(s.name)}<span class="tag${act ? " p1" : ""}">${esc(s.kind)}</span></h4><p>${esc(s.desc)}</p><div class="facts">${facts.join("")}</div>
+        <dl class="kv">${per ? `<dt>랭크당</dt><dd>${esc(per)}</dd>` : ""}${s.requires ? `<dt>먼저 배울 것</dt><dd>${esc(s.requires)}</dd>` : ""}<dt>얻는 법</dt><dd>${esc(s.how)}</dd></dl></article>`;
+    };
+    if (!list.length) return "";
+    return `<div class="cols3">${[...new Set(gi.data.skills.map(s => s.branch))].map(b => { const l = list.filter(s => s.branch === b);
+      return l.length ? `<div class="gcol"><h3 class="gi-h">${esc(b)}</h3>${l.map(card).join("")}</div>` : ""; }).join("")}</div>`;
+  }
+  function secMonsters() {
+    const list = gi.data.monsters.filter(m => giCh(m.chapter) && giHit(m.name, m.title, m.tier, m.style, m.drops, m.where, ...m.skills.map(s => s.name + " " + s.kind)));
+    const stat = (l, v) => `<div><span>${l}</span><b>${esc(Number(v).toLocaleString())}</b></div>`;
+    // phase = 이 페이즈부터 쓴다(0 부터 센다 → 1 = 2페이즈)
+    const sk = (s) => `<li><b>${esc(s.name)}</b><span class="tag">${esc(s.kind)}</span><span>${[`재사용 ${num(s.cooldown)}초`, `예고 ${num(s.telegraph)}초`, s.damage > 0 ? `피해 ×${num(s.damage)}` : "", s.phase > 0 ? `${Number(s.phase) + 1}페이즈부터` : ""].filter(Boolean).join(" · ")}</span></li>`;
+    const card = (m) => `<article class="gcard"><h4>${esc(m.name)}${m.title ? `<small>${esc(m.title)}</small>` : ""}<span class="tag${m.capturable ? " ok" : ""}">${m.capturable ? "포획 가능" : "포획 불가"}</span></h4>
+      <div class="stats">${stat("레벨", m.level)}${stat("HP", m.hp)}${stat("공격", m.attack)}${stat("방어", m.defense)}${stat("브레이크", m.breakMax)}${stat("경험치", m.exp)}</div>
+      <dl class="kv"><dt>평타</dt><dd>${esc(m.style)}</dd>${m.skills.length ? `<dt>스킬</dt><dd><ul class="sk">${m.skills.map(sk).join("")}</ul></dd>` : ""}${m.drops ? `<dt>드롭</dt><dd>${esc(m.drops)}</dd>` : ""}${m.where ? `<dt>어디</dt><dd>${esc(m.where)}</dd>` : ""}</dl></article>`;
+    return perChapter(list, l => `<div class="cards">${[...new Set(l.map(m => m.tier))].map(t => `<h4 class="gi-sub">${esc(t)}</h4>` + l.filter(m => m.tier === t).map(card).join("")).join("")}</div>`);
+  }
+  function secCompanions() {
+    const list = gi.data.companions.filter(c => giCh(c.chapter) && giHit(c.name, c.size, c.role, c.roleText, c.skill, c.skillText, c.yields, c.lore));
+    const card = (c) => `<article class="gcard"><h4>${esc(c.name)}<span class="tag">몸집 ${esc(c.size)}</span><span class="tag m">${esc(c.role)}</span></h4><p>${esc(c.roleText)}</p>
+      <div class="facts">${fact("피해 배율", "×" + num(c.power))}${c.heal > 0 ? fact("HP 회복", "초당 " + num(c.heal) + "%") : ""}${c.light > 0 ? fact("빛", num(c.light) + "칸") : ""}</div>
+      <dl class="kv">${c.skill ? `<dt>재주</dt><dd><b>${esc(c.skill)}</b> — ${esc(c.skillText)}</dd>` : ""}<dt>정원</dt><dd>${esc(c.yields)}</dd></dl><p class="sub">${esc(c.lore)}</p></article>`;
+    return perChapter(list, l => `<div class="cards">${l.map(card).join("")}</div>`);
+  }
+  function secQuests() {
+    const list = gi.data.quests.filter(q => giCh(q.chapter) && giHit(q.id, q.name, q.kind, q.giver, q.summary, q.reward, ...q.objectives));
+    return perChapter(list, l => gtable(["퀘스트", "종류", "주는 이", "목표", "보상"], l.map(q => [nameCell(q.name, q.summary, `<span class="qid">${esc(q.id)}</span>`),
+      `<span class="tag${q.side ? "" : " p1"}">${esc(q.kind)}</span>`, esc(q.giver), q.objectives.map(esc).join("<br>"), esc(q.reward)]), 0, [1, 2]));
+  }
+
+  // ---- 지도: 문자 격자(rows = 위→아래)를 캔버스에 칸으로 찍고, 표식(y = 맨 아랫줄이 0)을 점으로 얹는다 ----
+  function renderMaps() {
+    const maps = gi.data.maps.filter(m => giCh(m.chapter) && giHit(m.name, m.subtitle, m.kind, ...m.marks.map(k => k.name + " " + (k.note || ""))));
+    if (!maps.length) { $("giBody").innerHTML = NONE; return; }
+    if (!maps.some(m => m.id === gi.map)) { gi.map = maps[0].id; gi.sel = -1; gi.zoom = 0; }
+    let last = null;
+    $("giBody").innerHTML = `<div class="maps"><div class="maplist" id="giMapList" role="group" aria-label="지도 목록">${maps.map(m => {
+      const head = !gi.ch && m.chapter !== last ? `<b>${esc(m.chapter)}장</b>` : ""; last = m.chapter;
+      return `${head}<button type="button" data-map="${esc(m.id)}" aria-pressed="${m.id === gi.map}"><span>${esc(m.name)}</span><small>${esc(m.kind)}${m.dark ? " · 어둠" : ""}</small></button>`;
+    }).join("")}</div><div class="panel mapview" id="giMapView"></div></div>`;
+    const list = $("giMapList"), btns = list.querySelectorAll("button");
+    btns.forEach(b => b.onclick = () => { gi.map = b.dataset.map; gi.sel = -1; gi.zoom = 0; btns.forEach(x => x.setAttribute("aria-pressed", x === b)); renderMapView(); });
+    renderMapView();
+    const on = list.querySelector('[aria-pressed="true"]');
+    if (on && list.scrollWidth > list.clientWidth) list.scrollLeft = on.offsetLeft - list.offsetLeft - 40;   // 좁은 화면(가로 띠)에서 고른 지도가 보이게
+  }
+  function renderMapView() {
+    const m = curMap(); if (!m) return;
+    const glyphs = new Set(m.rows.join("")), at = (k) => { const i = MARKS.findIndex(x => x[0] === k); return i < 0 ? 99 : i; };
+    const kinds = [...new Set(m.marks.map(k => k.kind))].sort((a, b) => at(a) - at(b));
+    $("giMapView").innerHTML = `<div class="maphead"><h2>${esc(m.name)}<small>${esc(m.subtitle)}</small></h2>
+        <span class="tag">${esc(m.kind)}</span><span class="tag">${esc(m.w)}×${m.rows.length}칸</span>${m.dark ? '<span class="tag dk">어두운 맵</span>' : ""}<span class="spacer"></span>
+        <button class="iconbtn zb" type="button" data-z="-1" aria-label="지도 작게">−</button><button class="iconbtn zb" type="button" data-z="1" aria-label="지도 크게">+</button></div>
+      <div class="mapbox" id="giMapBox" tabindex="0" role="region" aria-label="${esc(m.name)} 지도"><canvas id="giCanvas"></canvas></div>
+      <p class="mapsel" id="giMapSel" aria-live="polite" hidden></p>
+      <div class="legend">${TERRAIN.filter(t => glyphs.has(t[0])).map(t => `<span><i style="background:var(--mp-${t[1]})${t[1] === "plat" || t[1] === "ghost" ? ";height:4px" : ""}"></i>${t[2]}</span>`).join("")}${kinds.map(k => `<span>${mkIcon(k)}${esc(markMeta(k)[1])}</span>`).join("")}</div>
+      <div class="marks" id="giMarks">${kinds.map(k => `<div class="mgroup"><b>${esc(markMeta(k)[1])}</b>${m.marks.map((x, i) => x.kind !== k ? "" :
+        `<button class="mark" type="button" data-i="${i}" aria-pressed="false">${mkIcon(k)}<span>${esc(markText(x))}${markNote(x) ? `<small>${esc(markNote(x))}</small>` : ""}</span><em>${esc(x.x)}, ${esc(x.y)}</em></button>`).join("")}</div>`).join("")}</div>`;
+    $("giMapView").querySelectorAll(".zb").forEach(b => b.onclick = () => {
+      const z = Number(b.dataset.z) > 0 ? ZOOMS.find(v => v > gi.cell) : [...ZOOMS].reverse().find(v => v < gi.cell);
+      if (!z) return;
+      const box = $("giMapBox"), fx = (box.scrollLeft + box.clientWidth / 2) / box.scrollWidth, fy = (box.scrollTop + box.clientHeight / 2) / box.scrollHeight;
+      gi.zoom = z; drawMap();
+      box.scrollLeft = fx * box.scrollWidth - box.clientWidth / 2; box.scrollTop = fy * box.scrollHeight - box.clientHeight / 2;   // 보던 곳을 가운데에 둔 채 키운다
+    });
+    $("giMarks").querySelectorAll(".mark").forEach(b => b.onclick = () => { const i = Number(b.dataset.i); selectMark(gi.sel === i ? -1 : i, true); });
+    $("giCanvas").onclick = (e) => {   // 점을 누르면 그 표식을 고른다(빈 곳 = 풀기)
+      const cv = $("giCanvas"), r = cv.getBoundingClientRect(), s = cv.width / r.width, px = (e.clientX - r.left) * s, py = (e.clientY - r.top) * s;
+      let best = -1, bd = Math.max(gi.rad * 2, 14 * s);
+      gi.pts.forEach((p, i) => { const d = Math.hypot(p.x - px, p.y - py); if (d < bd) { bd = d; best = i; } });
+      selectMark(best, false);
+    };
+    drawMap();
+  }
+  function selectMark(i, reveal) {
+    const m = curMap(), k = m && m.marks[i];
+    gi.sel = k ? i : -1;
+    $("giMarks").querySelectorAll(".mark").forEach(b => b.setAttribute("aria-pressed", Number(b.dataset.i) === gi.sel));
+    $("giMapSel").hidden = !k;
+    if (k) $("giMapSel").innerHTML = `${mkIcon(k.kind)}<b>${esc(markText(k))}</b><span>${esc([markMeta(k.kind)[1], markNote(k)].filter(Boolean).join(" · "))}</span>`;
+    drawMap();
+    if (k && reveal) {   // 목록에서 골랐으면 지도 안에서 그 자리로 간다
+      const box = $("giMapBox"), p = gi.pts[i], dpr = window.devicePixelRatio || 1;
+      const behavior = safe(() => matchMedia("(prefers-reduced-motion: reduce)").matches) ? "auto" : "smooth";
+      box.scrollTo({left: p.x / dpr - box.clientWidth / 2, top: p.y / dpr - box.clientHeight / 2, behavior});
+      box.scrollIntoView({block: "nearest", behavior});
+    }
+  }
+  function markPath(g, kind, x, y, r) {
+    const sh = markMeta(kind)[2];
+    g.beginPath();
+    if (sh === "sq") g.rect(x - r * .85, y - r * .85, r * 1.7, r * 1.7);
+    else if (sh === "di") { g.moveTo(x, y - r * 1.2); g.lineTo(x + r * 1.2, y); g.lineTo(x, y + r * 1.2); g.lineTo(x - r * 1.2, y); g.closePath(); }
+    else g.arc(x, y, r, 0, Math.PI * 2);
+  }
+  function drawMap() {
+    const m = curMap(), cv = $("giCanvas"); if (!m || !cv) return;
+    const box = $("giMapBox"), dpr = window.devicePixelRatio || 1, H = m.rows.length;
+    // 기본 크기 = 상자 폭(과 화면 높이)에 맞는 가장 큰 칸. 넓은 지도는 상자 안에서만 가로로 민다
+    gi.cell = gi.zoom || Math.max(ZOOMS[0], Math.min(12, Math.floor(Math.min((box.clientWidth - 2) / m.w, Math.min(window.innerHeight * .7, 640) / H))));
+    // 칸을 기기 픽셀 정수로 맞춘다(흐려지지 않게) · 캔버스 넓이 상한
+    const cd = Math.max(1, Math.min(Math.round(gi.cell * dpr), Math.floor(Math.sqrt(12e6 / (m.w * H)))));
+    cv.width = m.w * cd; cv.height = H * cd; cv.style.width = cv.width / dpr + "px"; cv.style.height = cv.height / dpr + "px";
+    const css = getComputedStyle(document.documentElement), col = (n) => css.getPropertyValue(n).trim();
+    const g = cv.getContext("2d"), C = {}, bar = Math.max(1, Math.round(cd * .4)), glyph = col("--mp-glyph");
+    for (const [ch, key] of TERRAIN) C[ch] = col("--mp-" + key);
+    g.fillStyle = col(m.dark ? "--mp-void" : "--mp-air"); g.fillRect(0, 0, cv.width, cv.height);
+    m.rows.forEach((row, r) => {
+      for (let x = 0; x < row.length; x++) {
+        const ch = row[x]; if (!C[ch]) continue;
+        const px = x * cd, py = r * cd; g.fillStyle = C[ch];
+        if (ch === "=" || ch === "-") { if (ch === "=" || x % 2 === 0) g.fillRect(px, py, cd, bar); continue; }   // 발판 = 칸 위쪽 띠 · 그림 없는 발판 = 점선
+        g.fillRect(px, py, cd, cd);
+        if (cd >= 8 && (ch === "<" || ch === ">" || ch === "^")) {   // 칸이 크면 방향 화살표
+          const a = cd * .25, b = cd * .5, c = cd * .75; g.fillStyle = glyph; g.beginPath();
+          if (ch === ">") { g.moveTo(px + a, py + a); g.lineTo(px + c, py + b); g.lineTo(px + a, py + c); }
+          else if (ch === "<") { g.moveTo(px + c, py + a); g.lineTo(px + a, py + b); g.lineTo(px + c, py + c); }
+          else { g.moveTo(px + a, py + c); g.lineTo(px + b, py + a); g.lineTo(px + c, py + c); }
+          g.fill();
+        }
+      }
+    });
+    const rad = gi.rad = Math.max(4.5 * dpr, Math.min(cd * .6, 8 * dpr)), ring = col("--mp-ring"), seen = {};
+    gi.pts = m.marks.map(k => { const key = k.x + "," + k.y, n = seen[key] = (seen[key] || 0) + 1;   // 같은 칸에 겹친 표식은 옆으로 조금씩 민다
+      return {x: (k.x + .5) * cd + (n - 1) * rad * 1.6, y: (H - 1 - k.y + .5) * cd}; });
+    const z = (k) => MARK_Z.indexOf(k.kind);
+    for (const i of m.marks.map((k, i) => i).sort((a, b) => z(m.marks[a]) - z(m.marks[b]))) {
+      const k = m.marks[i], p = gi.pts[i];
+      markPath(g, k.kind, p.x, p.y, k.kind === "boss" ? rad * 1.3 : rad);
+      g.fillStyle = col("--mk-" + k.kind) || col("--mk-spawn"); g.fill(); g.lineWidth = Math.max(1, 1.5 * dpr); g.strokeStyle = ring; g.stroke();
+    }
+    const s = gi.pts[gi.sel];
+    if (s) for (const [w, c] of [[5 * dpr, ring], [2.5 * dpr, col("--accent")]]) { g.beginPath(); g.arc(s.x, s.y, rad * 1.3 + 4 * dpr, 0, Math.PI * 2); g.lineWidth = w; g.strokeStyle = c; g.stroke(); }
+    document.querySelectorAll(".zb").forEach(b => b.setAttribute("aria-disabled", Number(b.dataset.z) > 0 ? gi.cell >= ZOOMS[ZOOMS.length - 1] : gi.cell <= ZOOMS[0]));
+  }
+  const mapVisible = () => !$("view-info").hidden && gi.sec === "maps";
+  let giRaf = 0;
+  window.addEventListener("resize", () => { cancelAnimationFrame(giRaf); giRaf = requestAnimationFrame(() => { if (mapVisible()) drawMap(); }); });
+  safe(() => matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => { if (mapVisible()) drawMap(); }));   // 캔버스 색은 다시 칠해야 바뀐다
+
+  // ---------- 테스트 빌드(다른 공개 사이트 psy-builds 의 builds.json — 여기서는 목록만, 받기는 그 페이지에서) ----------
+  const BUILDS_SITE = "https://qtdqtd002-coder.github.io/psy-builds/";
+  let buildsLoaded = false;
+  const fmtSize = (v) => typeof v !== "number" || !isFinite(v) ? String(v ?? "") : v >= 1048576 ? (v / 1048576).toFixed(v >= 104857600 ? 0 : 1) + " MB" : v >= 1024 ? Math.round(v / 1024) + " KB" : v + " B";
+  async function loadBuilds(force = false) {
+    if (buildsLoaded && !force) return;
+    const none = () => { buildsLoaded = false; $("buildsBox").innerHTML = '<p class="empty">아직 올라온 빌드가 없습니다</p>'; };
+    try {
+      // 보드와 같은 곳(github.io)에서 열렸으면 상대 경로, 파일·다른 호스트에서 열렸으면 전체 주소
+      const base = safe(() => location.origin === new URL(BUILDS_SITE).origin) ? "/psy-builds/" : BUILDS_SITE;
+      const r = await fetch(`${base}builds.json?v=${Date.now()}`, {cache: "no-store"});
+      if (!r.ok) { if (r.status === 404 || !buildsLoaded) none(); return; }
+      const rel = ((await r.json()).releases || []).slice().sort((a, b) => (Date.parse(b.at) || 0) - (Date.parse(a.at) || 0))[0];   // 가장 최근 것
+      if (!rel) { none(); return; }
+      const notes = Array.isArray(rel.notes) ? rel.notes.join("\n") : String(rel.notes || ""), commit = String(rel.commit || "");
+      $("buildsBox").innerHTML = `<h2>${esc(rel.label || rel.id || "테스트 빌드")}</h2>
+        <dl class="kv"><dt>날짜</dt><dd>${esc(fmt(rel.at) || "—")}</dd><dt>커밋</dt><dd>${esc(/^[0-9a-f]{12,}$/i.test(commit) ? commit.slice(0, 7) : commit || "—")}</dd>${notes ? `<dt>내용</dt><dd class="pre">${esc(notes)}</dd>` : ""}</dl>
+        <ul class="files">${(rel.files || []).map(f => `<li><span class="tag m">${esc({windows: "Windows", android: "Android"}[f.kind] || f.kind || "")}</span><b>${esc(f.title || f.name || "")}</b><span class="sz">${esc(fmtSize(f.size))}</span>${f.note ? `<small>${esc(f.note)}</small>` : ""}</li>`).join("")}</ul>
+        <a class="btn" href="${BUILDS_SITE}" target="_blank" rel="noopener">내려받기 페이지 열기</a>`;
+      buildsLoaded = true;
+    } catch (e) {
+      if (!buildsLoaded) none();   // 이미 보이던 목록은 잠깐의 통신 오류로 지우지 않는다
+    }
+  }
+
+  const initialTab = TABS.includes(location.hash.slice(1)) ? location.hash.slice(1) : (safe(() => localStorage.getItem("psy-tab")) || "board");
   showTab(initialTab);
 
   function visible() {
@@ -675,7 +1102,7 @@ footer.foot{color:var(--muted);font-size:12px;display:flex;flex-wrap:wrap;gap:6p
   document.addEventListener("keydown", e => { if (e.key !== "Escape") return; if (!$("cardScrim").hidden) closeCard(); if (!$("tokScrim").hidden) $("tokScrim").hidden = true; });
 
   // ---------- 시작 ----------
-  $("refreshBtn").onclick = () => { load(); if (!$("view-lore").hidden) loadLore(true); };
+  $("refreshBtn").onclick = () => { load(); if (!$("view-lore").hidden) loadLore(true); if (!$("view-info").hidden) loadInfo(true); if (!$("view-builds").hidden) loadBuilds(true); };
   load();
   setInterval(() => { if (!document.hidden && !st.busy && $("cardScrim").hidden) load(true); }, 60000);
 })();
