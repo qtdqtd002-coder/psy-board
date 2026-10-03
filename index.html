@@ -274,6 +274,37 @@ i.mk.di{border-radius:1px;transform:rotate(45deg) scale(.9)}
 .files .sz{color:var(--muted);font-size:12px;font-variant-numeric:tabular-nums;white-space:nowrap}
 .files small{grid-column:2 / 4;color:var(--muted);font-size:12px}
 .builds a.btn{align-self:flex-start;display:inline-flex;align-items:center;min-height:40px;padding:6px 18px;text-decoration:none}
+/* ---- 알파 피드백 ---- */
+.fb{display:flex;flex-direction:column;gap:12px}
+.fb .chip{min-height:40px;padding:0 14px;font-size:13px}
+.fb .filters input[type=search]{min-height:40px;padding:0 14px;font-size:13px}
+.fb .filters .iconbtn{min-height:40px;padding:0 14px;margin-left:auto}
+.fb-list{display:flex;flex-direction:column;gap:8px}
+.fbi{background:var(--surface);border:1px solid var(--line);border-radius:10px;min-width:0}
+.fbi[open]{box-shadow:var(--shadow)}
+.fbi summary{list-style:none;cursor:pointer;padding:12px 14px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:4px 10px;align-items:baseline;border-radius:10px}
+.fbi summary::-webkit-details-marker{display:none}
+.fbi summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.fbi summary b{font-size:15px;line-height:1.4;overflow-wrap:anywhere}
+.fbi summary .tags{display:flex;flex-wrap:wrap;gap:4px;justify-content:flex-end}
+.fbi summary p{grid-column:2 / 4;margin:0;color:var(--muted);font-size:13px;line-height:1.6}
+.fbi summary .qid{margin:0;font-size:12px}
+.fbb{border-top:1px solid var(--line);padding:12px 14px 14px;display:grid;grid-template-columns:88px minmax(0,1fr);gap:10px 14px;font-size:13.5px;line-height:1.65}
+.fbb dt{color:var(--muted);font-size:12px;font-weight:600;padding-top:2px}
+.fbb dd{margin:0;min-width:0;overflow-wrap:anywhere}
+.fbb ol,.fbb ul{margin:0;padding-left:20px}
+.fbb li{margin:2px 0}
+.fbb dd.ask{background:var(--accent-soft);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:8px 12px}
+.fbb code{font-size:12px;background:var(--surface2);border:1px solid var(--line);border-radius:4px;padding:0 4px}
+.tag.st-recorded{color:var(--st-plan)}.tag.st-ready{color:var(--st-dev)}.tag.st-doing{color:var(--st-qa)}.tag.st-done{color:var(--good)}.tag.st-hold{color:var(--muted)}
+.tag.need{color:var(--accent);background:var(--accent-soft);border-color:transparent}
+@media (max-width:720px){
+  .fbi summary{grid-template-columns:auto minmax(0,1fr)}
+  .fbi summary .tags{grid-column:1 / 3;justify-content:flex-start}
+  .fbi summary p{grid-column:1 / 3}
+  .fbb{grid-template-columns:1fr;gap:2px}
+  .fbb dd{margin-bottom:8px}
+}
 @media (max-width:1100px){.branches{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:900px){.lore{grid-template-columns:1fr}.lore .toc{position:static;flex-direction:row;flex-wrap:wrap;border-left:0;padding-left:0;gap:6px}.lore .toc b{display:none}.lore .toc a{border:1px solid var(--line);border-radius:999px;padding:3px 10px;background:var(--surface)}}
 @media (max-width:560px){.branches{grid-template-columns:1fr 1fr}}
@@ -331,6 +362,7 @@ i.mk.di{border-radius:1px;transform:rotate(45deg) scale(.9)}
       <button class="tab" role="tab" id="tab-lore" aria-selected="false" aria-controls="view-lore">세계관</button>
       <button class="tab" role="tab" id="tab-info" aria-selected="false" aria-controls="view-info">게임 정보</button>
       <button class="tab" role="tab" id="tab-builds" aria-selected="false" aria-controls="view-builds">테스트 빌드</button>
+      <button class="tab" role="tab" id="tab-feedback" aria-selected="false" aria-controls="view-feedback">알파 피드백</button>
     </div>
     <span class="spacer"></span>
     <span class="status" id="status" aria-live="polite">불러오는 중…</span>
@@ -416,9 +448,18 @@ i.mk.di{border-radius:1px;transform:rotate(45deg) scale(.9)}
     <div class="panel builds" id="buildsBox"><p class="empty">불러오는 중…</p></div>
   </section>
 
+  <section id="view-feedback" role="tabpanel" aria-labelledby="tab-feedback" hidden>
+    <div class="fb">
+      <div class="gi-bar"><div class="facts" id="fbFacts"></div><span class="status" id="fbStamp"></span></div>
+      <div class="filters" id="fbFilters"></div>
+      <div id="fbBundles"></div>
+      <div class="fb-list" id="fbList"><p class="empty">불러오는 중…</p></div>
+    </div>
+  </section>
+
   <footer class="foot">
     <span id="dataStamp">데이터 —</span>
-    <span>데이터: <a href="data/board.json" style="color:inherit">data/board.json</a> · <a href="data/lore.md" style="color:inherit">data/lore.md</a> · <a href="data/gameinfo.json" style="color:inherit">data/gameinfo.json</a></span>
+    <span>데이터: <a href="data/board.json" style="color:inherit">data/board.json</a> · <a href="data/lore.md" style="color:inherit">data/lore.md</a> · <a href="data/gameinfo.json" style="color:inherit">data/gameinfo.json</a> · <a href="data/feedback.json" style="color:inherit">data/feedback.json</a></span>
     <span>1분마다 자동 새로고침</span>
   </footer>
 </div>
@@ -556,7 +597,7 @@ i.mk.di{border-radius:1px;transform:rotate(45deg) scale(.9)}
   }
 
   // ---------- 탭·필터 ----------
-  const TABS = ["board", "dash", "lore", "info", "builds"];
+  const TABS = ["board", "dash", "lore", "info", "builds", "feedback"];
   function showTab(which) {
     if (!TABS.includes(which)) which = "board";
     for (const t of TABS) { const on = t === which; $("tab-" + t).setAttribute("aria-selected", on); $("tab-" + t).tabIndex = on ? 0 : -1; $("view-" + t).hidden = !on; }
@@ -564,6 +605,7 @@ i.mk.di{border-radius:1px;transform:rotate(45deg) scale(.9)}
     if (which === "lore") loadLore();
     if (which === "info") loadInfo();
     if (which === "builds") loadBuilds();
+    if (which === "feedback") loadFeedback();
   }
   for (const t of TABS) $("tab-" + t).onclick = () => showTab(t);
   // 탭 줄 키보드: ← → Home End 로 옮긴다(Tab 순서에는 고른 탭만 든다)
@@ -906,6 +948,68 @@ i.mk.di{border-radius:1px;transform:rotate(45deg) scale(.9)}
     }
   }
 
+  // ---------- 알파 피드백(data/feedback.json — 원본 project_psy/docs/feedback/alpha-feedback.json · 올리기 = board.py publish-feedback) ----------
+  const FB_STATUS = {recorded: "기록됨", ready: "계획 확정", doing: "진행 중", done: "완료", hold: "보류"};
+  const fb = {data: null, busy: false, round: "", kind: "", q: "", open: new Set()};
+  async function loadFeedback(force = false) {
+    if (fb.busy || (fb.data && !force)) return;
+    fb.busy = true;
+    try {
+      const r = await fetch(`data/feedback.json?v=${Date.now()}`, {cache: "no-store"});
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      const d = await r.json();
+      for (const k of ["rounds", "items", "bundles"]) if (!Array.isArray(d[k])) d[k] = [];
+      fb.data = d; renderFeedback();
+    } catch (e) {
+      if (!fb.data) $("fbList").innerHTML = `<p class="empty">피드백을 불러오지 못했습니다: ${esc(e.message)}</p>`;
+    } finally { fb.busy = false; }
+  }
+  const fbArr = (v) => Array.isArray(v) ? v.filter(Boolean) : v ? [v] : [];
+  const fbRows = (it) => [["지금", fbArr(it.now), "ul"], ["처리 계획", fbArr(it.plan), "ol"], ["손대는 곳", fbArr(it.touch), "ul"], ["주의", fbArr(it.risk), "ul"],
+    ["결정 필요", fbArr(it.ask), "ul"], ["같이 볼 것", fbArr(it.deps), ""]];
+  function fbShown() {
+    const q = fb.q.trim().toLowerCase();
+    return fb.data.items.filter(it => (!fb.round || it.round === fb.round) && (!fb.kind || it.kind === fb.kind)
+      && (!q || [it.id, it.title, it.kind, it.feedback, ...fbRows(it).flatMap(r => r[1])].join(" ").toLowerCase().includes(q)));
+  }
+  function renderFeedback() {
+    const D = fb.data; if (!D) return;
+    $("fbStamp").textContent = D.updatedAt ? "기록 " + fmt(D.updatedAt) : "";
+    const kinds = [...new Set(D.items.map(it => it.kind).filter(Boolean))];
+    const chip = (grp, v, name, on) => `<button class="chip" type="button" data-g="${grp}" data-v="${esc(v)}" aria-pressed="${on}">${esc(name)}</button>`;
+    $("fbFilters").innerHTML = (D.rounds.length > 1 ? [["", "전체 차수"], ...D.rounds.map(r => [r.id, r.name])].map(([v, n]) => chip("round", v, n, fb.round === v)).join("") : "")
+      + [["", "전체"], ...kinds.map(k => [k, k])].map(([v, n]) => chip("kind", v, n, fb.kind === v)).join("")
+      + `<input type="search" id="fbQ" placeholder="찾기" value="${esc(fb.q)}" aria-label="피드백 찾기">`
+      + `<button class="iconbtn" type="button" id="fbAll">모두 펼치기</button>`;
+    $("fbFilters").querySelectorAll(".chip").forEach(b => b.onclick = () => { fb[b.dataset.g] = b.dataset.v; renderFeedback(); });
+    $("fbQ").oninput = () => { fb.q = $("fbQ").value; renderFeedbackBody(); };
+    $("fbAll").onclick = () => { const list = fbShown(), all = list.every(it => fb.open.has(it.id)); list.forEach(it => all ? fb.open.delete(it.id) : fb.open.add(it.id)); renderFeedbackBody(); };
+    renderFeedbackBody();
+  }
+  function renderFeedbackBody() {
+    const D = fb.data, list = fbShown(), title = new Map(D.items.map(it => [it.id, it.title]));
+    const round = D.rounds.find(r => r.id === fb.round) || (D.rounds.length === 1 ? D.rounds[0] : null);
+    $("fbFacts").innerHTML = (round ? fact("차수", round.name + (round.at ? " · " + round.at : "")) : "") + fact("항목", list.length)
+      + Object.entries(FB_STATUS).map(([k, n]) => { const c = list.filter(it => (it.status || "recorded") === k).length; return c ? fact(n, c) : ""; }).join("")
+      + fact("결정 필요", list.filter(it => fbArr(it.ask).length).length);
+    const bundles = D.bundles.filter(b => (!fb.round || b.round === fb.round) && fbArr(b.items).some(id => list.some(it => it.id === id)));
+    $("fbBundles").innerHTML = bundles.length && !fb.q.trim() && !fb.kind ? `<h3 class="gi-h">작업 묶음<small>일괄 작업 때 권하는 순서</small></h3><div class="gi">` + gtable(["순서", "묶음", "항목", "메모"],
+      bundles.map((b, i) => [esc(b.order ?? i + 1), `<b>${esc(b.name)}</b>`, fbArr(b.items).map(id => `<span class="qid">${esc(id)}</span>${esc(title.get(id) || "")}`).join("<br>"), esc(b.note || "")]), 1, [0]) + `</div>` : "";
+    $("fbAll").textContent = list.length && list.every(it => fb.open.has(it.id)) ? "모두 접기" : "모두 펼치기";
+    $("fbList").innerHTML = list.map(it => {
+      const stt = FB_STATUS[it.status] ? it.status : "recorded";
+      const rows = fbRows(it).filter(r => r[1].length).map(([l, v, tag]) => {
+        const body = tag ? `<${tag}>${v.map(x => `<li>${esc(x)}</li>`).join("")}</${tag}>` : v.map(id => `<span class="qid">${esc(id)}</span>${esc(title.get(id) || "")}`).join(" · ");
+        return `<dt>${l}</dt><dd${l === "결정 필요" ? ' class="ask"' : ""}>${body}</dd>`;
+      }).join("");
+      return `<details class="fbi" data-id="${esc(it.id)}"${fb.open.has(it.id) ? " open" : ""}><summary><span class="qid">${esc(it.id)}</span><b>${esc(it.title)}</b>
+        <span class="tags">${it.kind ? `<span class="tag">${esc(it.kind)}</span>` : ""}${it.size ? `<span class="tag">규모 ${esc(it.size)}</span>` : ""}${fbArr(it.ask).length ? `<span class="tag need">결정 ${fbArr(it.ask).length}</span>` : ""}<span class="tag st-${stt}">${FB_STATUS[stt]}</span></span>
+        <p>${esc(it.feedback)}</p></summary><dl class="fbb">${rows}</dl></details>`;
+    }).join("") || NONE;
+    $("fbList").querySelectorAll("details").forEach(d => d.addEventListener("toggle", () => { d.open ? fb.open.add(d.dataset.id) : fb.open.delete(d.dataset.id);
+      $("fbAll").textContent = list.length && list.every(it => fb.open.has(it.id)) ? "모두 접기" : "모두 펼치기"; }));
+  }
+
   const initialTab = TABS.includes(location.hash.slice(1)) ? location.hash.slice(1) : (safe(() => localStorage.getItem("psy-tab")) || "board");
   showTab(initialTab);
 
@@ -1102,7 +1206,7 @@ i.mk.di{border-radius:1px;transform:rotate(45deg) scale(.9)}
   document.addEventListener("keydown", e => { if (e.key !== "Escape") return; if (!$("cardScrim").hidden) closeCard(); if (!$("tokScrim").hidden) $("tokScrim").hidden = true; });
 
   // ---------- 시작 ----------
-  $("refreshBtn").onclick = () => { load(); if (!$("view-lore").hidden) loadLore(true); if (!$("view-info").hidden) loadInfo(true); if (!$("view-builds").hidden) loadBuilds(true); };
+  $("refreshBtn").onclick = () => { load(); if (!$("view-lore").hidden) loadLore(true); if (!$("view-info").hidden) loadInfo(true); if (!$("view-builds").hidden) loadBuilds(true); if (!$("view-feedback").hidden) loadFeedback(true); };
   load();
   setInterval(() => { if (!document.hidden && !st.busy && $("cardScrim").hidden) load(true); }, 60000);
 })();
