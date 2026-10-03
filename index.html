@@ -163,6 +163,12 @@ footer.foot{color:var(--muted);font-size:12px;display:flex;flex-wrap:wrap;gap:6p
 .lore .toc b{font-size:11px;letter-spacing:.08em;color:var(--muted);margin-bottom:4px}
 .lore .toc a{color:var(--muted);text-decoration:none;font-size:13px;padding:3px 0;line-height:1.35}
 .lore .toc a:hover,.lore .toc a.on{color:var(--ink)}
+.lore .toc{max-height:calc(100vh - 24px);overflow-y:auto}
+.lore .toc a.sub{font-size:12px;padding:2px 0 2px 10px}
+.lore-bar{margin-bottom:14px}
+.lore h4{font-size:14.5px;margin:18px 0 4px;color:var(--indigo);scroll-margin-top:16px}
+.lore hr{border:0;border-top:1px dashed var(--line);margin:22px 0}
+.lore code{font-size:12.5px;background:var(--surface2);border:1px solid var(--line);border-radius:5px;padding:0 5px}
 .lore article{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:28px clamp(16px,4vw,40px) 36px;min-width:0}
 .lore article>*{max-width:760px}
 .lore h1{font-family:var(--font-display);font-weight:400;font-size:clamp(28px,4vw,38px);line-height:1.15;margin:0 0 14px;text-wrap:balance}
@@ -181,6 +187,7 @@ footer.foot{color:var(--muted);font-size:12px;display:flex;flex-wrap:wrap;gap:6p
 .lpill{display:inline-block;font-size:11.5px;font-weight:600;padding:1px 8px;border-radius:999px;vertical-align:1px;margin-right:2px}
 .lpill.ok{background:color-mix(in srgb,var(--good) 16%,transparent);color:var(--good)}
 .lpill.tbd{background:color-mix(in srgb,var(--st-plan) 16%,transparent);color:var(--st-plan)}
+.lpill.new{background:var(--accent-soft);color:var(--accent)}
 .branches{list-style:none;margin:18px 0 6px;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;max-width:none!important;position:relative}
 .branches li{margin:0;background:var(--surface2);border:1px solid var(--line);border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:4px;position:relative;font-size:13px;line-height:1.5}
 .branches li.done{border-color:color-mix(in srgb,var(--accent) 55%,var(--line));background:linear-gradient(180deg,var(--accent-soft),var(--surface2) 70%)}
@@ -281,9 +288,6 @@ i.mk.di{border-radius:1px;transform:rotate(45deg) scale(.9)}
 .fb .filters .iconbtn{min-height:40px;padding:0 14px;margin-left:auto}
 .fb-list{display:flex;flex-direction:column;gap:8px}
 .fbi{background:var(--surface);border:1px solid var(--line);border-radius:10px;min-width:0}
-.fbi.done summary b,.fbi.done summary>p{text-decoration:line-through;text-decoration-thickness:1.5px;color:var(--muted)}
-.fbi.done{opacity:.85}
-s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
 .fbi[open]{box-shadow:var(--shadow)}
 .fbi summary{list-style:none;cursor:pointer;padding:12px 14px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:4px 10px;align-items:baseline;border-radius:10px}
 .fbi summary::-webkit-details-marker{display:none}
@@ -309,7 +313,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
   .fbb dd{margin-bottom:8px}
 }
 @media (max-width:1100px){.branches{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media (max-width:900px){.lore{grid-template-columns:1fr}.lore .toc{position:static;flex-direction:row;flex-wrap:wrap;border-left:0;padding-left:0;gap:6px}.lore .toc b{display:none}.lore .toc a{border:1px solid var(--line);border-radius:999px;padding:3px 10px;background:var(--surface)}}
+@media (max-width:900px){.lore{grid-template-columns:1fr}.lore .toc{position:static;max-height:none;flex-direction:row;flex-wrap:wrap;border-left:0;padding-left:0;gap:6px}.lore .toc b{display:none}.lore .toc a{border:1px solid var(--line);border-radius:999px;padding:3px 10px;background:var(--surface)}.lore .toc a.sub{display:none}}
 @media (max-width:560px){.branches{grid-template-columns:1fr 1fr}}
 @media (max-width:1100px){.board{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:900px){.span4,.span5,.span7,.span8{grid-column:span 12}}
@@ -430,9 +434,10 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
   </section>
 
   <section id="view-lore" role="tabpanel" aria-labelledby="tab-lore" hidden>
+    <div class="gi-bar lore-bar"><div class="seg" role="tablist" aria-label="세계관 갈래" id="loreSeg"></div></div>
     <div class="lore">
       <nav class="toc" id="loreToc" aria-label="세계관 목차"><b>목차</b></nav>
-      <article id="loreBody"><p class="empty">불러오는 중…</p></article>
+      <article id="loreBody" role="tabpanel"><p class="empty">불러오는 중…</p></article>
     </div>
   </section>
 
@@ -462,7 +467,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
 
   <footer class="foot">
     <span id="dataStamp">데이터 —</span>
-    <span>데이터: <a href="data/board.json" style="color:inherit">data/board.json</a> · <a href="data/lore.md" style="color:inherit">data/lore.md</a> · <a href="data/gameinfo.json" style="color:inherit">data/gameinfo.json</a> · <a href="data/feedback.json" style="color:inherit">data/feedback.json</a></span>
+    <span>데이터: <a href="data/board.json" style="color:inherit">data/board.json</a> · <a href="data/lore.md" style="color:inherit">data/lore.md</a> · <a href="data/lore-characters.md" style="color:inherit">lore-characters.md</a> · <a href="data/lore-scenario.md" style="color:inherit">lore-scenario.md</a> · <a href="data/gameinfo.json" style="color:inherit">data/gameinfo.json</a> · <a href="data/feedback.json" style="color:inherit">data/feedback.json</a></span>
     <span>1분마다 자동 새로고침</span>
   </footer>
 </div>
@@ -622,14 +627,21 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
   }
   arrowTabs($("tabList"));
 
-  // ---------- 세계관(data/lore.md — 원본은 project_psy/docs/design/01_Concept/03_Lore.md) ----------
-  let loreLoaded = false;
+  // ---------- 세계관(세 갈래 — 원본은 project_psy/docs/design/01_Concept/03_Lore*.md · 올리기 = board.py publish-lore) ----------
+  const LORE_DOCS = [["concept", "세계관 컨셉", "data/lore.md"], ["chars", "인물", "data/lore-characters.md"], ["story", "시나리오", "data/lore-scenario.md"]];   // 갈래 · 이름 · 파일
+  const lore = {doc: safe(() => localStorage.getItem("psy-lore-doc")) || "concept", cache: {}};
+  { const h = /^#lore-(\w+)$/.exec(location.hash); if (h) lore.doc = h[1]; }
+  if (!LORE_DOCS.some(d => d[0] === lore.doc)) lore.doc = "concept";
+  $("loreSeg").innerHTML = LORE_DOCS.map(([id, name]) => `<button type="button" role="tab" id="lore-tab-${id}" aria-controls="loreBody" data-doc="${id}">${name}</button>`).join("");
+  $("loreSeg").querySelectorAll("button").forEach(b => b.onclick = () => { lore.doc = b.dataset.doc; safe(() => localStorage.setItem("psy-lore-doc", lore.doc)); loadLore(); });
+  arrowTabs($("loreSeg"));
   function inl(t) {
     return esc(t)
       .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
       .replace(/`(.+?)`/g, "<code>$1</code>")
       .replace(/\[(구현됨|확정)\]/g, '<span class="lpill ok">$1</span>')
-      .replace(/\[(가안|미정)\]/g, '<span class="lpill tbd">$1</span>');
+      .replace(/\[(가안|미정)\]/g, '<span class="lpill tbd">$1</span>')
+      .replace(/\[(제안)\]/g, '<span class="lpill new">$1</span>');
   }
   function mdLore(src) {
     const lines = src.replace(/\r/g, "").split("\n"); const toc = []; let h = "", i = 0;
@@ -647,8 +659,9 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
       }
       if ((m = /^(#{1,4})\s+(.*)$/.exec(l))) {
         const lv = m[1].length, id = "lore-" + toc.length;
-        if (lv === 2) toc.push({id, text: m[2]});
-        h += `<h${lv} id="${lv === 2 ? id : ""}">${inl(m[2])}</h${lv}>`; i++; continue;
+        const inToc = lv === 2 || lv === 3;
+        if (inToc) toc.push({id, text: m[2].replace(/\s*\[[^\]]+\]/g, "").replace(/\*\*/g, "").replace(/`[^`]*`/g, "").replace(/(\s*[·~]\s*)+$/, "").trim(), lv});
+        h += `<h${lv}${inToc ? ` id="${id}"` : ""}>${inl(m[2])}</h${lv}>`; i++; continue;
       }
       if (/^---+\s*$/.test(l)) { h += "<hr>"; i++; continue; }
       if (l.startsWith(">")) { const q = []; while (i < lines.length && lines[i].startsWith(">")) q.push(lines[i++].replace(/^>\s?/, "")); h += `<blockquote>${q.map(inl).join("<br>")}</blockquote>`; continue; }
@@ -667,15 +680,22 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
     return {html: h, toc};
   }
   async function loadLore(force = false) {
-    if (loreLoaded && !force) return;
+    const [doc, , file] = LORE_DOCS.find(d => d[0] === lore.doc);
+    $("loreSeg").querySelectorAll("button").forEach(b => { const on = b.dataset.doc === doc; b.setAttribute("aria-selected", on); b.tabIndex = on ? 0 : -1; });
+    $("loreBody").setAttribute("aria-labelledby", "lore-tab-" + doc);
     try {
-      const r = await fetch(`data/lore.md?v=${Date.now()}`, {cache: "no-store"});
-      if (!r.ok) throw new Error(`HTTP ${r.status}`);
-      const {html, toc} = mdLore(await r.text());
+      if (force || !lore.cache[doc]) {
+        if (!lore.cache[doc]) $("loreBody").innerHTML = '<p class="empty">불러오는 중…</p>';
+        const r = await fetch(`${file}?v=${Date.now()}`, {cache: "no-store"});
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        lore.cache[doc] = mdLore(await r.text());
+      }
+      if (lore.doc !== doc) return;   // 받는 사이 다른 갈래로 옮겼다
+      const {html, toc} = lore.cache[doc];
+      const subs = doc === "story";   // 시나리오만 장 안의 대목(h3)까지 목차에
       $("loreBody").innerHTML = html;
-      $("loreToc").innerHTML = "<b>목차</b>" + toc.map(t => `<a href="#${t.id}" data-id="${t.id}">${esc(t.text)}</a>`).join("");
+      $("loreToc").innerHTML = "<b>목차</b>" + toc.filter(t => t.lv === 2 || subs).map(t => `<a href="#${t.id}" data-id="${t.id}"${t.lv === 3 ? ' class="sub"' : ""}>${esc(t.text)}</a>`).join("");
       $("loreToc").querySelectorAll("a").forEach(a => a.onclick = (e) => { e.preventDefault(); const el = $(a.dataset.id); if (el) el.scrollIntoView({behavior: "smooth", block: "start"}); });
-      loreLoaded = true;
     } catch (e) {
       $("loreBody").innerHTML = `<p class="empty">세계관을 불러오지 못했습니다: ${esc(e.message)}</p>`;
     }
@@ -952,7 +972,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
   }
 
   // ---------- 알파 피드백(data/feedback.json — 원본 project_psy/docs/feedback/alpha-feedback.json · 올리기 = board.py publish-feedback) ----------
-  const FB_STATUS = {recorded: "기록됨", ready: "계획 확정", doing: "진행 중", done: "개선 완료", hold: "보류"};
+  const FB_STATUS = {recorded: "기록됨", ready: "계획 확정", doing: "진행 중", done: "완료", hold: "보류"};
   const fb = {data: null, busy: false, round: "", kind: "", q: "", open: new Set()};
   async function loadFeedback(force = false) {
     if (fb.busy || (fb.data && !force)) return;
@@ -968,7 +988,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
     } finally { fb.busy = false; }
   }
   const fbArr = (v) => Array.isArray(v) ? v.filter(Boolean) : v ? [v] : [];
-  const fbRows = (it) => [["개선 결과", fbArr(it.result), "ul"], ["지금", fbArr(it.now), "ul"], ["처리 계획", fbArr(it.plan), "ol"], ["손대는 곳", fbArr(it.touch), "ul"], ["주의", fbArr(it.risk), "ul"],
+  const fbRows = (it) => [["지금", fbArr(it.now), "ul"], ["처리 계획", fbArr(it.plan), "ol"], ["손대는 곳", fbArr(it.touch), "ul"], ["주의", fbArr(it.risk), "ul"],
     ["결정 필요", fbArr(it.ask), "ul"], ["같이 볼 것", fbArr(it.deps), ""]];
   function fbShown() {
     const q = fb.q.trim().toLowerCase();
@@ -997,7 +1017,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
       + fact("결정 필요", list.filter(it => fbArr(it.ask).length).length);
     const bundles = D.bundles.filter(b => (!fb.round || b.round === fb.round) && fbArr(b.items).some(id => list.some(it => it.id === id)));
     $("fbBundles").innerHTML = bundles.length && !fb.q.trim() && !fb.kind ? `<h3 class="gi-h">작업 묶음<small>일괄 작업 때 권하는 순서</small></h3><div class="gi">` + gtable(["순서", "묶음", "항목", "메모"],
-      bundles.map((b, i) => [esc(b.order ?? i + 1), `<b>${esc(b.name)}</b>`, fbArr(b.items).map(id => { const d = D.items.find(x => x.id === id), t = `<span class="qid">${esc(id)}</span>${esc(title.get(id) || "")}`; return d && d.status === "done" ? `<s class="fbdone">${t}</s> <span class="tag st-done">개선 완료</span>` : t; }).join("<br>"), esc(b.note || "")]), 1, [0]) + `</div>` : "";
+      bundles.map((b, i) => [esc(b.order ?? i + 1), `<b>${esc(b.name)}</b>`, fbArr(b.items).map(id => `<span class="qid">${esc(id)}</span>${esc(title.get(id) || "")}`).join("<br>"), esc(b.note || "")]), 1, [0]) + `</div>` : "";
     $("fbAll").textContent = list.length && list.every(it => fb.open.has(it.id)) ? "모두 접기" : "모두 펼치기";
     $("fbList").innerHTML = list.map(it => {
       const stt = FB_STATUS[it.status] ? it.status : "recorded";
@@ -1005,7 +1025,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
         const body = tag ? `<${tag}>${v.map(x => `<li>${esc(x)}</li>`).join("")}</${tag}>` : v.map(id => `<span class="qid">${esc(id)}</span>${esc(title.get(id) || "")}`).join(" · ");
         return `<dt>${l}</dt><dd${l === "결정 필요" ? ' class="ask"' : ""}>${body}</dd>`;
       }).join("");
-      return `<details class="fbi${stt === "done" ? " done" : ""}" data-id="${esc(it.id)}"${fb.open.has(it.id) ? " open" : ""}><summary><span class="qid">${esc(it.id)}</span><b>${esc(it.title)}</b>
+      return `<details class="fbi" data-id="${esc(it.id)}"${fb.open.has(it.id) ? " open" : ""}><summary><span class="qid">${esc(it.id)}</span><b>${esc(it.title)}</b>
         <span class="tags">${it.kind ? `<span class="tag">${esc(it.kind)}</span>` : ""}${it.size ? `<span class="tag">규모 ${esc(it.size)}</span>` : ""}${fbArr(it.ask).length ? `<span class="tag need">결정 ${fbArr(it.ask).length}</span>` : ""}<span class="tag st-${stt}">${FB_STATUS[stt]}</span></span>
         <p>${esc(it.feedback)}</p></summary><dl class="fbb">${rows}</dl></details>`;
     }).join("") || NONE;
@@ -1013,7 +1033,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
       $("fbAll").textContent = list.length && list.every(it => fb.open.has(it.id)) ? "모두 접기" : "모두 펼치기"; }));
   }
 
-  const initialTab = TABS.includes(location.hash.slice(1)) ? location.hash.slice(1) : (safe(() => localStorage.getItem("psy-tab")) || "board");
+  const initialTab = location.hash.startsWith("#lore-") ? "lore" : TABS.includes(location.hash.slice(1)) ? location.hash.slice(1) : (safe(() => localStorage.getItem("psy-tab")) || "board");
   showTab(initialTab);
 
   function visible() {
