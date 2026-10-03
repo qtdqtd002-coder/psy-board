@@ -4,18 +4,17 @@
   "project": "PSY 프로젝트",
   "subtitle": "꿈 세계 포획 동료 액션 RPG · 싱글 · Unity 6.3 LTS",
   "currentMilestone": "M1",
-  "updatedAt": "2026-10-03T16:04:11Z",
+  "updatedAt": "2026-10-03T16:13:49Z",
   "qa": {
-   "gate": "PASS",
+   "at": "2026-10-04T01:13:00+09:00",
+   "commit": "70ad2f0",
+   "gate": "BLOCKED",
    "compile": "에러 0",
-   "editmode": "125/125",
-   "playmode": "72/72 (수동 실행 전용 8 제외)",
-   "e2e": 51,
-   "screenshots": 109,
-   "screens": 109,
-   "at": "2026-10-03T16:08:00+09:00",
-   "commit": "b242e40",
-   "playtest": "PSY-49 아트 1물결(골렘·눈·3장 일반 4종) 반입 — E2E_57·59·60·62·64 캡처 확인 · 5장·전직 E2E_70~75 · 전체 걷기 94퀘스트(1장 Lv12 · 2장 Lv22 · 3장 Lv32 · 4장 Lv42) · 봇 실측은 2~5장 아직"
+   "editmode": "146/148 (실패 2)",
+   "playmode": "72/76 (실패 4 · 수동 실행 전용 8 제외)",
+   "e2e": 54,
+   "screenshots": "E2E_62 미갱신",
+   "playtest": "실패: NarrativeTests 2(ribbon_plain 설명 · 제압 힌트 시점) · E2E_62 밝히기 · E2E_68 활공 · E2E_76 길 안내 · E2E_78 도전 탑 가시 — 원인 판정 전 · 마지막 PASS = b242e40"
   },
   "build": {
    "at": "2026-10-04T01:02:00+09:00",
@@ -24,7 +23,7 @@
    "result": "Succeeded",
    "size": "186MB(zip 54MB) · Windows 만(APK 는 이번 묶음에 없음)",
    "sizeMB": 186,
-   "target": "Windows Mono — 알파 피드백 1차 반영(묶음 1~9) · 이 커밋 게이트 미실행"
+   "target": "Windows Mono — 알파 피드백 1차 반영(묶음 1~9) · ★이 커밋 게이트 BLOCKED(테스트 6건 실패)"
   }
  },
  "milestones": [
@@ -2437,6 +2436,11 @@
  ],
  "log": [
   {
+   "at": "2026-10-03T16:13:49Z",
+   "text": "게이트 BLOCKED(70ad2f0): EditMode 146/148 · PlayMode 72/76 — 실패 6건 원인 판정 전(올라간 테스터 빌드와 같은 커밋)",
+   "by": "Claude"
+  },
+  {
    "at": "2026-10-03T16:04:11Z",
    "text": "테스터 빌드 올림: Windows 70ad2f0 «알파 피드백 1차 반영»(zip 54MB) — 이번 묶음은 Windows 만 · 새 13커밋 게이트는 아직",
    "by": "Claude"
@@ -3029,11 +3033,6 @@
   {
    "at": "2026-09-29T03:24:23Z",
    "text": "«사용자 실기: 1장 첫 10분(프롤로그·튜토리얼) · 손맛(콤보·캔슬·히트스톱) · 정예/중간 보스/보스 난이도·예고 읽힘» 추가(QA)",
-   "by": "Claude"
-  },
-  {
-   "at": "2026-09-29T03:24:23Z",
-   "text": "PSY-43 1장 확장·규격화 — 프롤로그·튜토리얼·3막·몬스터 등급·손맛 개편·페이싱 검사·새 아트 반입 · 게이트 PASS(5b65e38)",
    "by": "Claude"
   }
  ]
