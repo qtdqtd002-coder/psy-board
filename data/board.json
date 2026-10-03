@@ -4,24 +4,28 @@
   "project": "PSY 프로젝트",
   "subtitle": "꿈 세계 포획 동료 액션 RPG · 싱글 · Unity 6.3 LTS",
   "currentMilestone": "M1",
-  "updatedAt": "2026-10-03T03:10:40Z",
+  "updatedAt": "2026-10-03T03:16:04Z",
   "qa": {
-   "e2e": 31,
-   "editmode": "98/98",
-   "playtest": "PSY-48 2장 E2E 5 · 전체 걷기 58퀘스트(1장 Lv12 · 2장 Lv22)",
    "gate": "PASS",
-   "playmode": "54/54 (+Explicit 봇 8 제외)",
-   "at": "2026-10-02 09:4x",
+   "compile": "에러 0",
+   "editmode": "98/98",
+   "playmode": "54/54 (수동 실행 전용 8 제외)",
+   "e2e": 33,
+   "screenshots": 64,
    "screens": 64,
-   "commit": "8eee1ea"
+   "at": "2026-10-03T12:15:05+09:00",
+   "commit": "84364cb",
+   "playtest": "PSY-48 2장 E2E 5 · 전체 걷기 58퀘스트(1장 Lv12 · 2장 Lv22) · 2장 봇 실측은 아직(m2-ch2-balance)"
   },
   "build": {
    "result": "Succeeded",
+   "target": "Windows Mono · Android IL2CPP ARM64 — 2장 전 빌드(다시 빌드 필요: m2-ch2-build)",
+   "sizeMB": 177,
    "size": "177MB · APK 60MB",
+   "path": "Builds/Windows · Builds/Android/PSY.apk · Builds/AndroidEmu/PSY-armv7.apk",
    "time": "19s · APK 106s",
-   "at": "2026-10-01 12:12",
-   "commit": "39ec80b",
-   "target": "Windows Mono · Android IL2CPP ARM64"
+   "at": "2026-10-02T01:43:05+09:00",
+   "commit": "bd04ff4 직전 작업본(1장 2차)"
   }
  },
  "milestones": [
@@ -2196,6 +2200,11 @@
  ],
  "log": [
   {
+   "at": "2026-10-03T03:16:04Z",
+   "text": "잔여 작업 점검(10-03): 게이트 PASS(84364cb — EditMode 98 · PlayMode 54 · E2E 33 · 스크린샷 64) · 낡은 카드 정리(글꼴·모듈 결정 완료) · 남은 일 카드 5(2장 아트 2물결 · 봇 실측·강화 경제 · 2차 콘텐츠 · 빌드 · 간헐 실패 조사)",
+   "by": "Claude"
+  },
+  {
    "at": "2026-10-03T03:10:40Z",
    "text": "«2장 모래시계 사막 1차(PSY-48): 장 일반화 · 맵 7 · 모래 지형 4 · 모래 파기 · 땅속 기습·가시 쏘기·멈춘 시간 · 퀘스트 18 · 도입 습격 · 사막 그림·일반 몬스터 4 전용 그림» 수정(title)",
    "by": "Claude"
@@ -2788,11 +2797,6 @@
   {
    "at": "2026-09-28T02:13:14Z",
    "text": "«협동 화면: 팀 체력·원정 상태·원정 게시판·공방·결과·알림(외곽선 글자·받침 패널)» 수정(owner)",
-   "by": "Claude"
-  },
-  {
-   "at": "2026-09-28T02:13:14Z",
-   "text": "«협동 화면: 팀 체력·원정 상태·원정 게시판·공방·결과·알림(외곽선 글자·받침 패널)» QA → 완료 — ⛔중단(PSY-36, 09-28): 사용자 결정으로 멀티 개념 제거 → 싱글 + 포획 동료 탐험. 협동 코드·Mirror 는 빌드·메뉴에서 빼고 휴면 보관(사용자 실기 불필요). 재사용: 결박 규칙·발버둥·동료 AI·결박/정화 아트·동료 운반 자세.",
    "by": "Claude"
   }
  ]
