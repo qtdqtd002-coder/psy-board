@@ -272,6 +272,68 @@ i.mk.di{border-radius:1px;transform:rotate(45deg) scale(.9)}
 .mark em{font-style:normal;color:var(--muted);font-size:11.5px;font-variant-numeric:tabular-nums;white-space:nowrap}
 .mark:hover{background:var(--surface2)}
 .mark[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent)}
+/* ---- 리소스 ---- */
+.rs-lock{display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.rs-lock input[type=password]{font:inherit;color:var(--ink);background:var(--surface2);border:1px solid var(--line);border-radius:6px;padding:0 10px;min-height:40px;flex:1 1 180px;max-width:280px}
+.rs-lock label{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)}
+.rs-lock .btn,.rs-lock .iconbtn{min-height:40px}
+.rs-lock .msg{font-size:12.5px;color:var(--muted)}
+.rs-lock .msg.err{color:var(--bad)}
+.rs-lock .spacer{flex:1}
+.rs .filters .iconbtn{min-height:40px;padding:0 14px}
+.rs .filters .iconbtn:first-of-type{margin-left:auto}
+#rsBody{display:flex;flex-direction:column;gap:10px;min-width:0}
+.rgroup{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.rgroup h4{margin:0;font-size:15px;font-weight:600;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px}
+.rkey{font:12px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;font-weight:400;color:var(--muted);overflow-wrap:anywhere}
+.rgroup h4 .cnt{margin-left:auto;font-size:12px;font-weight:400;color:var(--muted);font-variant-numeric:tabular-nums}
+.rtiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(124px,1fr));gap:8px}
+.rt{font:inherit;color:var(--ink);text-align:left;background:var(--surface2);border:1px solid var(--line);border-radius:8px;padding:6px;cursor:pointer;display:flex;flex-direction:column;gap:5px;min-width:0}
+.rt:hover{border-color:var(--accent)}
+.stage{border-radius:6px;display:flex;align-items:center;justify-content:center;overflow:hidden;
+  background:repeating-conic-gradient(var(--surface) 0 25%,color-mix(in srgb,var(--line) 70%,var(--surface)) 0 50%) 0 0/16px 16px}
+.bg-dark .stage{background:#1B1930}
+.bg-light .stage{background:#F4F1E8}
+.rt .stage{height:104px}
+canvas.rsc{display:block;flex:none;image-rendering:pixelated}
+canvas.rsc.smooth{image-rendering:auto}
+.stage .lk{font-size:11.5px;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:1px 9px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rt .nm{font-size:12.5px;font-weight:600;overflow-wrap:anywhere;line-height:1.3}
+.rt .nm small{display:block;font-weight:400;font-size:11.5px;color:var(--muted)}
+.rt .mt{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+.rt .tg{display:flex;flex-wrap:wrap;gap:3px}
+.tag.warn{color:var(--accent);background:var(--accent-soft);border-color:transparent}
+.tag.bad{color:var(--bad)}
+.rsp{min-height:32px;margin:1px 2px 1px 0}
+.rsp[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.rsp:disabled{opacity:.45;cursor:default}
+.dlg.wide{width:min(880px,100%)}
+.rd{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;align-items:start}
+.rd-left{display:flex;flex-direction:column;gap:8px;min-width:0}
+.rd-view{min-height:160px;max-height:60vh;overflow:auto;padding:12px}
+.rd-view canvas{margin:auto}
+.rd-ctl{display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+.rd-ctl .iconbtn{min-height:36px;min-width:40px}
+.rd-ctl .pos{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;margin:0 6px}
+.rd-ctl .spacer{flex:1}
+.rd-frames{display:flex;flex-wrap:wrap;gap:3px}
+.fbtn{font:inherit;font-size:12px;min-width:34px;min-height:34px;padding:2px 6px;border-radius:6px;border:1px solid var(--line);background:var(--surface2);color:var(--ink);cursor:pointer;font-variant-numeric:tabular-nums;line-height:1.2}
+.fbtn small{display:block;font-size:10.5px;color:var(--muted)}
+.fbtn.hit{border-color:var(--bad);box-shadow:inset 0 -3px 0 var(--bad)}
+.fbtn[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.fbtn[aria-pressed="true"] small{color:inherit}
+.rd .kv{font-size:13px;gap:5px 12px}
+.rd .kv ul{margin:0;padding-left:18px}
+.sw{display:inline-block;width:11px;height:11px;border-radius:3px;border:1px solid var(--line);vertical-align:-1px;margin-right:5px}
+/* 게임 정보에 얹는 작은 그림(리소스가 열려 있을 때만) */
+.rth{flex:none;display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;margin-right:6px;border:1px solid var(--line);border-radius:8px;background:var(--surface2);cursor:pointer;overflow:hidden;vertical-align:middle}
+.rth:hover{border-color:var(--accent)}
+.gt td .rth{float:left;margin:0 10px 2px 0}
+.ovr{display:flex;flex-wrap:wrap;gap:4px}
+.gcard .links{gap:6px}
+.gcard .links button{font:inherit;font-size:12px;font-weight:600;color:var(--indigo);background:none;border:1px solid var(--line);border-radius:6px;min-height:32px;padding:0 10px;cursor:pointer}
+.lorec p{white-space:pre-line;line-height:1.7}
+@media (max-width:720px){.rd{grid-template-columns:minmax(0,1fr)}.rtiles{grid-template-columns:repeat(auto-fill,minmax(104px,1fr))}}
 /* ---- 테스트 빌드 ---- */
 .builds{max-width:640px}
 .builds .pre{white-space:pre-wrap}
@@ -371,6 +433,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
       <button class="tab" role="tab" id="tab-dash" aria-selected="false" aria-controls="view-dash">대시보드</button>
       <button class="tab" role="tab" id="tab-lore" aria-selected="false" aria-controls="view-lore">세계관</button>
       <button class="tab" role="tab" id="tab-info" aria-selected="false" aria-controls="view-info">게임 정보</button>
+      <button class="tab" role="tab" id="tab-res" aria-selected="false" aria-controls="view-res">리소스</button>
       <button class="tab" role="tab" id="tab-builds" aria-selected="false" aria-controls="view-builds">테스트 빌드</button>
       <button class="tab" role="tab" id="tab-feedback" aria-selected="false" aria-controls="view-feedback">알파 피드백</button>
     </div>
@@ -455,6 +518,19 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
     </div>
   </section>
 
+  <section id="view-res" role="tabpanel" aria-labelledby="tab-res" hidden>
+    <div class="gi rs">
+      <div class="gi-bar">
+        <div class="seg" role="tablist" aria-label="리소스 갈래" id="rsSeg"></div>
+        <span class="status" id="rsStamp"></span>
+      </div>
+      <div class="rs-lock" id="rsLock" hidden></div>
+      <div class="facts" id="rsFacts"></div>
+      <div class="filters" id="rsFilters"></div>
+      <div id="rsBody" role="tabpanel"><p class="empty">불러오는 중…</p></div>
+    </div>
+  </section>
+
   <section id="view-builds" role="tabpanel" aria-labelledby="tab-builds" hidden>
     <div class="panel builds" id="buildsBox"><p class="empty">불러오는 중…</p></div>
   </section>
@@ -470,7 +546,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
 
   <footer class="foot">
     <span id="dataStamp">데이터 —</span>
-    <span>데이터: <a href="data/board.json" style="color:inherit">data/board.json</a> · <a href="data/lore.md" style="color:inherit">data/lore.md</a> · <a href="data/lore-characters.md" style="color:inherit">lore-characters.md</a> · <a href="data/lore-scenario.md" style="color:inherit">lore-scenario.md</a> · <a href="data/gameinfo.json" style="color:inherit">data/gameinfo.json</a> · <a href="data/feedback.json" style="color:inherit">data/feedback.json</a></span>
+    <span>데이터: <a href="data/board.json" style="color:inherit">data/board.json</a> · <a href="data/lore.md" style="color:inherit">data/lore.md</a> · <a href="data/lore-characters.md" style="color:inherit">lore-characters.md</a> · <a href="data/lore-scenario.md" style="color:inherit">lore-scenario.md</a> · <a href="data/gameinfo.json" style="color:inherit">data/gameinfo.json</a> · <a href="data/resources.json" style="color:inherit">data/resources.json</a> · <a href="data/feedback.json" style="color:inherit">data/feedback.json</a></span>
     <span>1분마다 자동 새로고침</span>
   </footer>
 </div>
@@ -498,6 +574,15 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
     </div>
     <p id="fConfirm" hidden>한 번 더 누르면 삭제됩니다.</p>
   </form>
+</div>
+
+<!-- 리소스 상세 -->
+<div class="scrim" id="rsScrim" hidden>
+  <div class="dlg wide" id="rsDlg" role="dialog" aria-modal="true" aria-labelledby="rsDlgTitle">
+    <h3 id="rsDlgTitle">리소스</h3>
+    <div id="rsDlgBody"></div>
+    <div class="actions"><button class="btn ghost" type="button" id="rsClose">닫기</button></div>
+  </div>
 </div>
 
 <!-- 편집 모드(토큰) -->
@@ -608,13 +693,14 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
   }
 
   // ---------- 탭·필터 ----------
-  const TABS = ["board", "dash", "lore", "info", "builds", "feedback"];
+  const TABS = ["board", "dash", "lore", "info", "res", "builds", "feedback"];
   function showTab(which) {
     if (!TABS.includes(which)) which = "board";
     for (const t of TABS) { const on = t === which; $("tab-" + t).setAttribute("aria-selected", on); $("tab-" + t).tabIndex = on ? 0 : -1; $("view-" + t).hidden = !on; }
     safe(() => localStorage.setItem("psy-tab", which));
     if (which === "lore") loadLore();
-    if (which === "info") loadInfo();
+    if (which === "info") { loadInfo(); if (gi.data && gi.stale) renderInfoBody(); loadRes().then(() => { if (rs.key && gi.data && !$("view-info").hidden) renderInfoBody(); }); }
+    if (which === "res") { loadRes().then(renderRes); loadInfo().then(() => { rsNames(); if (rs.data && !$("view-res").hidden) renderResBody(); }); }
     if (which === "builds") loadBuilds();
     if (which === "feedback") loadFeedback();
   }
@@ -705,7 +791,8 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
   }
 
   // ---------- 게임 정보(data/gameinfo.json — 게임 데이터를 BoardInfoExport.cs 가 내보낸 것 · 올리기 = board.py publish-info) ----------
-  const SECS = [["maps", "지도"], ["systems", "시스템"], ["items", "장비"], ["skills", "스킬"], ["monsters", "몬스터"], ["companions", "동료"], ["quests", "퀘스트"]];
+  const SECS = [["overview", "개요"], ["maps", "지도"], ["systems", "시스템"], ["rules", "규칙"], ["items", "장비"], ["skills", "스킬"], ["monsters", "몬스터"], ["companions", "동료"], ["quests", "퀘스트"], ["npcs", "인물"], ["lore", "수집"]];
+  const GI_NOCH = ["overview", "rules", "skills"];   // 장 구분이 없는 갈래 → 장 고르기를 감춘다
   const TERRAIN = [["#", "solid", "땅"], ["=", "plat", "발판"], ["-", "ghost", "그림 없는 발판"], ["<", "flowl", "흐르는 모래 ←"], [">", "flowr", "흐르는 모래 →"],
     ["%", "quick", "늪모래"], ["&", "soft", "무른 모래"], ["^", "lift", "모래 기둥"], ["~", "water", "물"]];   // 글자 · 색 변수(--mp-*) · 이름
   const MARKS = [["portal", "포털", "sq"], ["npc", "NPC", ""], ["boss", "보스", "di"], ["elite", "정예", "di"], ["spawn", "몬스터 자리", ""], ["chest", "숨은 상자", "sq"],
@@ -713,7 +800,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
   const MARK_Z = ["spawn", "lore", "pickup", "spot", "lantern", "chest", "npc", "elite", "portal", "boss"];   // 그리는 순서(뒤가 위)
   const ZOOMS = [3, 4, 5, 6, 8, 10, 12, 16, 20];   // 칸 한 변(px)
   const NONE = '<p class="empty">찾는 것이 없습니다</p>';
-  const gi = {data: null, busy: false, sec: "maps", ch: 0, q: "", map: null, sel: -1, zoom: 0, cell: 0, rad: 0, pts: []};
+  const gi = {data: null, busy: false, stale: false, sec: "overview", ch: 0, q: "", map: null, sel: -1, zoom: 0, cell: 0, rad: 0, pts: []};
   const num = (v, d = 2) => String(+(+v || 0).toFixed(d));
   const giHit = (...parts) => { const q = gi.q.trim().toLowerCase(); return !q || parts.join(" ").toLowerCase().includes(q); };
   const giCh = (n) => !gi.ch || n === gi.ch;
@@ -740,7 +827,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
       const r = await fetch(`data/gameinfo.json?v=${Date.now()}`, {cache: "no-store"});
       if (!r.ok) throw new Error(`HTTP ${r.status}`);
       const d = await r.json();
-      for (const k of ["chapters", "systems", "maps", "items", "sets", "skills", "monsters", "companions", "quests"]) if (!Array.isArray(d[k])) d[k] = [];
+      for (const k of ["chapters", "systems", "maps", "items", "sets", "skills", "monsters", "companions", "quests", "paths", "npcs", "lore", "chests", "tables"]) if (!Array.isArray(d[k])) d[k] = [];
       gi.data = d; renderInfo();
     } catch (e) {
       if (!gi.data) $("giBody").innerHTML = `<p class="empty">게임 정보를 불러오지 못했습니다: ${esc(e.message)}</p>`;
@@ -750,8 +837,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
     markSeg();
     const D = gi.data; if (!D) return;
     $("giStamp").textContent = D.generatedAt ? "게임 데이터 " + fmt(D.generatedAt) : "";
-    // 스킬에는 장 구분이 없다 → 장 고르기를 감춘다
-    $("giFilters").innerHTML = (gi.sec === "skills" ? "" : [0, ...D.chapters.map(c => c.n)].map(n => `<button class="chip" type="button" data-ch="${esc(n)}" aria-pressed="${gi.ch === n}">${n ? esc(n) + "장" : "전체"}</button>`).join(""))
+    $("giFilters").innerHTML = (GI_NOCH.includes(gi.sec) ? "" : [0, ...D.chapters.map(c => c.n)].map(n => `<button class="chip" type="button" data-ch="${esc(n)}" aria-pressed="${gi.ch === n}">${n ? esc(n) + "장" : "전체"}</button>`).join(""))
       + `<input type="search" id="giQ" placeholder="찾기" value="${esc(gi.q)}" aria-label="${SECS.find(s => s[0] === gi.sec)[1]} 찾기">`;
     const chips = $("giFilters").querySelectorAll(".chip");
     chips.forEach(b => b.onclick = () => { gi.ch = Number(b.dataset.ch); chips.forEach(x => x.setAttribute("aria-pressed", x === b)); renderInfoBody(); });
@@ -760,9 +846,59 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
   }
   function renderInfoBody() {
     if (!gi.data) return;
+    gi.stale = false;
     if (gi.sec === "maps") { renderMaps(); return; }
-    const fn = {systems: secSystems, items: secItems, skills: secSkills, monsters: secMonsters, companions: secCompanions, quests: secQuests}[gi.sec];
+    const fn = {overview: secOverview, systems: secSystems, rules: secRules, items: secItems, skills: secSkills, monsters: secMonsters, companions: secCompanions, quests: secQuests, npcs: secNpcs, lore: secLore}[gi.sec];
     $("giBody").innerHTML = fn() || NONE;
+    $("giBody").querySelectorAll("[data-go]").forEach(b => b.onclick = () => { gi.sec = b.dataset.go; gi.ch = Number(b.dataset.ch) || 0; gi.q = ""; renderInfo(); });
+    $("giBody").querySelectorAll(".rth").forEach(b => b.onclick = () => openRes(b.dataset.k));
+    rsMount($("giBody"));
+  }
+  // 리소스가 열려 있으면(비밀번호) 그 키의 그림을 작게 — 누르면 리소스 상세. 잠겨 있으면 아무것도 안 그린다
+  function rth(key) {
+    const e = key && rs.data && rs.key ? rsFind(key) : null, a = e && rsArt(e);
+    return a && rsCan(a.f) ? `<button type="button" class="rth" data-k="${esc(e.k)}" aria-label="${esc(e.k)} 그림 보기"><canvas class="rsc" data-k="${esc(e.k)}" data-box="40"></canvas></button>` : "";
+  }
+
+  function secOverview() {
+    const D = gi.data, main = D.quests.filter(q => !q.side).length;
+    const facts = [["장", D.chapters.length], ["지도", D.maps.length], ["퀘스트", `${D.quests.length}(주 ${main} · 곁 ${D.quests.length - main})`], ["몬스터", D.monsters.length],
+      ["동료", D.companions.length], ["장비", D.items.filter(i => i.kind === "장비").length], ["세트", D.sets.length], ["스킬", D.skills.length], ["전직 길", D.paths.length],
+      ["시스템", D.systems.length], ["인물", new Set(D.npcs.map(n => n.id)).size], ["꿈 기록·태엽", D.lore.length], ["숨은 상자", D.chests.length]].filter(f => f[1]);
+    const go = (sec, name, n) => `<button type="button" data-go="${sec}" data-ch="${n}">${name}</button>`;
+    const cards = D.chapters.filter(c => giHit(c.name, c.townName, c.bossName, c.bossTitle, c.finalQuest, ...D.systems.filter(s => s.chapter === c.n).map(s => s.name))).map(c => {
+      const sys = D.systems.filter(s => s.chapter === c.n), boss = D.monsters.find(m => m.id === c.boss);
+      return `<article class="gcard"><h4>${rth(boss && boss.art ? boss.art + ".idle" : "")}${esc(c.name)}${c.levels ? `<span class="tag">${esc(c.levels)}</span>` : ""}${c.part ? `<span class="tag m">${esc(c.part)}부</span>` : ""}</h4>
+        <dl class="kv">${c.townName ? `<dt>마을</dt><dd>${esc(c.townName)}</dd>` : ""}${c.bossName ? `<dt>보스</dt><dd><b>${esc(c.bossName)}</b>${c.bossTitle ? ` — ${esc(c.bossTitle)}` : ""}</dd>` : ""}
+          ${c.intro ? `<dt>도입</dt><dd>${esc(c.intro)}</dd>` : ""}<dt>규모</dt><dd>지도 ${esc(c.maps)} · 주 이야기 ${esc(c.quests)} · 곁가지 ${esc(c.sideQuests)}</dd>
+          ${c.finalQuest ? `<dt>끝</dt><dd>${esc(c.finalQuest)}${c.banner ? ` → «${esc(c.banner)}»` : ""}</dd>` : ""}</dl>
+        ${sys.length ? `<div class="ovr">${sys.map(s => `<span class="tag" title="${esc(s.text)}">${esc(s.name)}</span>`).join("")}</div>` : ""}
+        <div class="links">${go("maps", "지도", c.n)}${go("systems", "시스템", c.n)}${go("monsters", "몬스터", c.n)}${go("quests", "퀘스트", c.n)}</div></article>`;
+    }).join("");
+    return `<div class="facts">${facts.map(f => fact(f[0], f[1])).join("")}</div>` + (cards ? `<div class="cards">${cards}</div>` : NONE);
+  }
+  // 규칙·수치 표(tables — 조작·성장·장비·전투·포획 등, 게임 코드에서 뽑은 값)
+  function secRules() {
+    const list = gi.data.tables.filter(t => giHit(t.group, t.name, t.note, ...t.cols, ...t.rows.flatMap(r => r.c)));
+    return [...new Set(list.map(t => t.group))].map(g => `<h3 class="gi-h">${esc(g)}</h3>` + list.filter(t => t.group === g).map(t =>
+      `<h4 class="gi-sub" style="margin:4px 0 0;font-size:13px;color:var(--ink)">${esc(t.name)}${t.note ? ` <small style="display:inline;font-weight:400;color:var(--muted)">${esc(t.note)}</small>` : ""}</h4>`
+      + gtable(t.cols.map(esc), t.rows.map(r => t.cols.map((_, i) => esc(r.c[i] ?? ""))), 0, t.cols.map((_, i) => i).filter(i => i > 0 && t.cols.length > 2))).join("")).join("");
+  }
+  function secNpcs() {
+    const list = gi.data.npcs.filter(n => giCh(n.chapter) && giHit(n.name, n.role, n.mapName, ...(n.quests || [])));
+    const card = (n) => `<article class="gcard"><h4>${rth(n.art)}${esc(n.name)}${n.role ? `<span class="tag m">${esc(n.role)}</span>` : ""}<span class="tag">${esc(n.mapName)}</span></h4>
+      ${(n.quests || []).length ? `<dl class="kv"><dt>주는 퀘스트</dt><dd>${n.quests.map(esc).join(" · ")}</dd></dl>` : ""}</article>`;
+    return perChapter(list, l => `<div class="cards">${l.map(card).join("")}</div>`);
+  }
+  function secLore() {
+    const D = gi.data;
+    const texts = D.lore.filter(l => giCh(l.chapter) && giHit(l.kind, l.title, l.mapName, ...(l.lines || [])));
+    let h = [...new Set(texts.map(l => l.kind))].map(k => `<h3 class="gi-h">${esc(k)}<small>${texts.filter(l => l.kind === k).length}개</small></h3><div class="cards">${texts.filter(l => l.kind === k).map(l =>
+      `<article class="gcard lorec"><h4><span class="qid">${esc(l.n)}</span>${esc(l.title)}${l.mapName ? `<span class="tag">${esc(l.mapName)}</span>` : ""}</h4><p>${(l.lines || []).map(esc).join("\n")}</p></article>`).join("")}</div>`).join("");
+    const chests = D.chests.filter(c => giCh(c.chapter) && giHit(c.mapName, c.need, c.contents, c.engraving));
+    if (chests.length) h += `<h3 class="gi-h">숨은 보물상자<small>${chests.length}개</small></h3>` + gtable(["지도", "필요", "내용", "뚜껑 각인"],
+      chests.map(c => [`<b>${esc(c.mapName)}</b>`, `<span class="tag">${esc(c.need)}</span>`, esc(c.contents), esc(c.engraving)]), 0, [1]);
+    return h;
   }
 
   // 장 제목 + 그 장의 목록(빈 장은 건너뛴다)
@@ -787,14 +923,14 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
     const D = gi.data, chOf = new Map(D.items.map(i => [i.name, i.chapter]));
     const row = (i) => giHit(i.name, i.kind, i.slot, i.stats, i.set, i.source, i.rarity, i.desc);
     let h = perChapter(D.items.filter(i => i.kind === "장비" && giCh(i.chapter) && row(i)), l => gtable(["이름", "부위", "레벨", "능력치", "세트", "얻는 곳", "고정 등급"],
-      l.map(i => [nameCell(i.name, i.desc), esc(i.slot), esc(i.level), esc(i.stats), esc(i.set), esc(i.source), esc(String(i.rarity || "").replace(/ 고정$/, ""))]), 0, [1, 2, 4, 6]));
+      l.map(i => [nameCell(i.name, i.desc, rth(i.icon)), esc(i.slot), esc(i.level), esc(i.stats), esc(i.set), esc(i.source), esc(String(i.rarity || "").replace(/ 고정$/, ""))]), 0, [1, 2, 4, 6]));
     const sets = D.sets.filter(s => (!gi.ch || s.pieces.some(p => chOf.get(p) === gi.ch)) && giHit(s.name, s.lore, ...s.pieces, ...s.tiers));
     if (sets.length) h += `<h3 class="gi-h">세트</h3><div class="cards">${sets.map(s => `<article class="gcard"><h4>${esc(s.name)}</h4><ul>${s.tiers.map(t => `<li>${esc(t)}</li>`).join("")}</ul>
       <p class="sub">${s.pieces.map(esc).join(" · ")}</p><p class="sub">${esc(s.lore)}</p></article>`).join("")}</div>`;
     // 소모품·재료는 장에 묶이지 않는다 → 장을 골라도 그대로 보인다
     for (const kind of [...new Set(D.items.filter(i => i.kind !== "장비").map(i => i.kind))]) {
       const l = D.items.filter(i => i.kind === kind && row(i));
-      if (l.length) h += `<h3 class="gi-h">${esc(kind)}</h3>` + gtable(["이름", "효과", "값", "얻는 곳"], l.map(i => [nameCell(i.name, i.desc), esc(i.stats), i.price ? Number(i.price).toLocaleString() + " 골드" : "", esc(i.source)]), 0, [1, 2]);
+      if (l.length) h += `<h3 class="gi-h">${esc(kind)}</h3>` + gtable(["이름", "효과", "값", "얻는 곳"], l.map(i => [nameCell(i.name, i.desc, rth(i.icon)), esc(i.stats), i.price ? Number(i.price).toLocaleString() + " 골드" : "", esc(i.source)]), 0, [1, 2]);
     }
     return h;
   }
@@ -809,26 +945,32 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
         if (s.breakPower > 0) facts.push(fact("브레이크", num(s.breakPower)));
       }
       const per = String(s.perRank || "").replace(/^랭크당\s*/, "").replace(/\s*\(랭크당\)$/, "");
-      return `<article class="gcard"><h4>${esc(s.name)}<span class="tag${act ? " p1" : ""}">${esc(s.kind)}</span></h4><p>${esc(s.desc)}</p><div class="facts">${facts.join("")}</div>
-        <dl class="kv">${per ? `<dt>랭크당</dt><dd>${esc(per)}</dd>` : ""}${s.requires ? `<dt>먼저 배울 것</dt><dd>${esc(s.requires)}</dd>` : ""}<dt>얻는 법</dt><dd>${esc(s.how)}</dd></dl></article>`;
+      return `<article class="gcard"><h4>${rth(s.icon)}${esc(s.name)}<span class="tag${act ? " p1" : ""}">${esc(s.kind)}</span></h4><p>${esc(s.desc)}</p><div class="facts">${facts.join("")}</div>
+        <dl class="kv">${per ? `<dt>랭크당</dt><dd>${esc(per)}</dd>` : ""}${s.requires ? `<dt>먼저 배울 것</dt><dd>${esc(s.requires)}</dd>` : ""}${s.how ? `<dt>얻는 법</dt><dd>${esc(s.how)}</dd>` : ""}</dl></article>`;
     };
-    if (!list.length) return "";
-    return `<div class="cols3">${[...new Set(gi.data.skills.map(s => s.branch))].map(b => { const l = list.filter(s => s.branch === b);
-      return l.length ? `<div class="gcol"><h3 class="gi-h">${esc(b)}</h3>${l.map(card).join("")}</div>` : ""; }).join("")}</div>`;
+    // 전직 길(5장 뒤 서임식 — 길마다 전직 능력치 · 각성기 · 길 노드 셋)
+    const paths = gi.data.paths.filter(p => giHit(p.name, p.title, p.motto, p.branch, p.core && p.core.name, p.awakening && p.awakening.name, ...(p.nodes || []).map(n => n.name + " " + n.desc)));
+    const pathCol = (p) => { const aw = p.awakening || {}, core = p.core || {};
+      return `<div class="gcol"><article class="gcard"><h4><i class="sw" style="background:${esc(/^#[0-9a-f]{6}$/i.test(p.hex) ? p.hex : "transparent")}"></i>${esc(p.name)}<span class="tag m">${esc(p.title)}</span><span class="tag">${esc(p.branch)}</span></h4>
+        <p>${esc(p.motto)}</p>${p.blessing ? `<p class="sub">${esc(p.blessing)}</p>` : ""}${core.name ? `<dl class="kv"><dt>전직 능력치</dt><dd><b>${esc(core.name)}</b> — ${esc(core.desc)}</dd></dl>` : ""}</article>
+        ${aw.name ? card({...aw, kind: "기술", branch: p.branch, maxRank: aw.maxRank || 1, reqLevel: aw.reqLevel || 0, how: "서임 때 받는 각성기"}) : ""}${(p.nodes || []).map(n => card({...n, how: "스킬 포인트(길 노드)"})).join("")}</div>`; };
+    const tree = list.length ? `<div class="cols3">${[...new Set(gi.data.skills.map(s => s.branch))].map(b => { const l = list.filter(s => s.branch === b);
+      return l.length ? `<div class="gcol"><h3 class="gi-h">${esc(b)}</h3>${l.map(card).join("")}</div>` : ""; }).join("")}</div>` : "";
+    return tree + (paths.length ? `<h3 class="gi-h">전직 — 꿈지기의 길<small>5장 뒤 서임식에서 하나를 고른다</small></h3><div class="cols3">${paths.map(pathCol).join("")}</div>` : "");
   }
   function secMonsters() {
     const list = gi.data.monsters.filter(m => giCh(m.chapter) && giHit(m.name, m.title, m.tier, m.style, m.drops, m.where, ...m.skills.map(s => s.name + " " + s.kind)));
     const stat = (l, v) => `<div><span>${l}</span><b>${esc(Number(v).toLocaleString())}</b></div>`;
     // phase = 이 페이즈부터 쓴다(0 부터 센다 → 1 = 2페이즈)
     const sk = (s) => `<li><b>${esc(s.name)}</b><span class="tag">${esc(s.kind)}</span><span>${[`재사용 ${num(s.cooldown)}초`, `예고 ${num(s.telegraph)}초`, s.damage > 0 ? `피해 ×${num(s.damage)}` : "", s.phase > 0 ? `${Number(s.phase) + 1}페이즈부터` : ""].filter(Boolean).join(" · ")}</span></li>`;
-    const card = (m) => `<article class="gcard"><h4>${esc(m.name)}${m.title ? `<small>${esc(m.title)}</small>` : ""}<span class="tag${m.capturable ? " ok" : ""}">${m.capturable ? "포획 가능" : "포획 불가"}</span></h4>
+    const card = (m) => `<article class="gcard"><h4>${rth(m.art ? m.art + ".idle" : "")}${esc(m.name)}${m.title ? `<small>${esc(m.title)}</small>` : ""}<span class="tag${m.capturable ? " ok" : ""}">${m.capturable ? "포획 가능" : "포획 불가"}</span></h4>
       <div class="stats">${stat("레벨", m.level)}${stat("HP", m.hp)}${stat("공격", m.attack)}${stat("방어", m.defense)}${stat("브레이크", m.breakMax)}${stat("경험치", m.exp)}</div>
       <dl class="kv"><dt>평타</dt><dd>${esc(m.style)}</dd>${m.skills.length ? `<dt>스킬</dt><dd><ul class="sk">${m.skills.map(sk).join("")}</ul></dd>` : ""}${m.drops ? `<dt>드롭</dt><dd>${esc(m.drops)}</dd>` : ""}${m.where ? `<dt>어디</dt><dd>${esc(m.where)}</dd>` : ""}</dl></article>`;
     return perChapter(list, l => `<div class="cards">${[...new Set(l.map(m => m.tier))].map(t => `<h4 class="gi-sub">${esc(t)}</h4>` + l.filter(m => m.tier === t).map(card).join("")).join("")}</div>`);
   }
   function secCompanions() {
     const list = gi.data.companions.filter(c => giCh(c.chapter) && giHit(c.name, c.size, c.role, c.roleText, c.skill, c.skillText, c.yields, c.lore));
-    const card = (c) => `<article class="gcard"><h4>${esc(c.name)}<span class="tag">몸집 ${esc(c.size)}</span><span class="tag m">${esc(c.role)}</span></h4><p>${esc(c.roleText)}</p>
+    const card = (c) => `<article class="gcard"><h4>${rth(c.icon)}${esc(c.name)}<span class="tag">몸집 ${esc(c.size)}</span><span class="tag m">${esc(c.role)}</span></h4><p>${esc(c.roleText)}</p>
       <div class="facts">${fact("피해 배율", "×" + num(c.power))}${c.heal > 0 ? fact("HP 회복", "초당 " + num(c.heal) + "%") : ""}${c.light > 0 ? fact("빛", num(c.light) + "칸") : ""}</div>
       <dl class="kv">${c.skill ? `<dt>재주</dt><dd><b>${esc(c.skill)}</b> — ${esc(c.skillText)}</dd>` : ""}<dt>정원</dt><dd>${esc(c.yields)}</dd></dl><p class="sub">${esc(c.lore)}</p></article>`;
     return perChapter(list, l => `<div class="cards">${l.map(card).join("")}</div>`);
@@ -948,6 +1090,299 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
   let giRaf = 0;
   window.addEventListener("resize", () => { cancelAnimationFrame(giRaf); giRaf = requestAnimationFrame(() => { if (mapVisible()) drawMap(); }); });
   safe(() => matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => { if (mapVisible()) drawMap(); }));   // 캔버스 색은 다시 칠해야 바뀐다
+
+  // ---------- 리소스(data/resources.json = 목록(공개) · data/res/<묶음>.bin = 비밀번호로 잠근 그림·소리 — 만들기 tools/board/res_export.py · 올리기 = board.py publish-res) ----------
+  const RS_CATS = [["char", "캐릭터"], ["enemy", "몬스터"], ["boss", "보스"], ["fx", "FX"], ["icon", "아이콘"], ["ui", "UI"], ["tile", "타일·배경"], ["prop", "소품"], ["sound", "소리"], ["font", "글꼴"], ["spare", "예비 파일"]];
+  const RS_ICONS = new Set(["skill", "passive", "companion", "stat", "icon", "branch"]);   // ui.<이것>.* 은 아이콘 갈래로
+  const RS_TIER = {v1_cc0: "CC0 원본", v1_inhouse_draft: "자체 제작 초안", v2_inhouse: "자체 제작", v2_ai_cleaned: "AI 생성 + 덧칠", v3_final: "확정"};
+  const RS_LIC = {own: "자체 제작", cc0: "CC0 1.0", ofl: "SIL OFL 1.1"};
+  const RS_PIVOT = {feet: "발", center: "가운데", bottom: "아래", top: "위", px: "좌표"};
+  const RS_MARK = {tele: "예비", start: "시작", takeoff: "도약", rise: "상승", apex: "정점", slam: "내려찍기", land: "착지", spawn: "소환"};
+  const RS_FLT = [["", "전체"], ["anim", "움직임"], ["temp", "임시·빌림"], ["below", "기준 미달"]];
+  const RS_BG = [["check", "체크"], ["dark", "어둡게"], ["light", "밝게"]];
+  const rs = {data: null, busy: null, err: "", cat: "char", flt: "", q: "", key: null, msg: "", packs: new Map(), bmps: new Map(), byKey: new Map(), names: new Map(), sound: null,
+    play: safe(() => localStorage.getItem("psy-res-play")) !== "0", bg: safe(() => localStorage.getItem("psy-res-bg")) || "check"};
+  const b64u8 = (s) => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+  const u8b64 = (u) => { let b = ""; for (const x of u) b += String.fromCharCode(x); return btoa(b); };
+  const utf8 = (s) => new TextEncoder().encode(s);
+  const rsCat = (k) => { const s = k.split("."); return {hero: "char", npc: "char", enemy: "enemy", boss: "boss", fx: "fx", proj: "fx", drop: "fx", icon: "icon", tile: "tile", bg: "tile", prop: "prop"}[s[0]] || (RS_ICONS.has(s[1]) ? "icon" : "ui"); };
+  const rsGroup = (k) => { const s = k.split("."); return s.length >= 3 ? s[0] + "." + s[1] : s[0]; };
+  const rsFind = (key) => rs.byKey.get(key) || rs.byKey.get(key + ".idle") || null;
+  // 그 키가 실제로 그리는 그림(빌려 쓰는 키면 fallback 을 따라간다). 그림 파일이 없으면 null
+  function rsArt(e) { for (let n = 0; e && n < 6; n++) { if (e.f >= 0) return e; e = e.fb ? rs.byKey.get(e.fb) : null; } return null; }
+  function rsFrame(a) { const f = rs.data.files[a.f], n = Math.max(1, Math.min(a.fr || 1, f.w || 1)); return {n, w: Math.max(1, Math.floor((f.w || 1) / n)), h: f.h || 1}; }
+  const rsCan = (fi) => { const f = rs.data && rs.data.files[fi]; return !!(f && rs.key && f.pack && rs.data.packs[f.pack]); };
+  const rsBelow = (a) => !!a && ((rs.data.files[a.f] || {}).tags || []).includes("below_bar");
+
+  function loadRes(force = false) {
+    if (rs.busy) return rs.busy;
+    if (rs.data && !force) return Promise.resolve(rs.data);
+    return rs.busy = (async () => {
+      try {
+        const r = await fetch(`data/resources.json?v=${Date.now()}`, {cache: "no-store"});
+        if (!r.ok) throw new Error(r.status === 404 ? "아직 올라온 목록이 없습니다" : `HTTP ${r.status}`);
+        const d = await r.json();
+        for (const k of ["files", "anims", "sfx", "music", "fonts", "orphans"]) if (!Array.isArray(d[k])) d[k] = [];
+        d.packs = d.packs || {}; d.licenses = d.licenses || {};
+        // 키 없는 그림(예비)도 같은 틀로 볼 수 있게 가짜 키를 준다
+        d.spare = d.orphans.map(i => { const p = d.files[i].p, m = /_strip(\d+)/.exec(p); return {k: "~" + p.split("/").pop().replace(/\.png$/i, ""), f: i, fr: m ? Number(m[1]) : 1, fps: 8, spare: true}; });
+        if (rs.data && JSON.stringify(rs.data.packs) !== JSON.stringify(d.packs)) { rs.packs.clear(); rs.bmps.clear(); }
+        rs.data = d; rs.err = ""; rs.byKey = new Map([...d.anims, ...d.spare].map(e => [e.k, e]));
+        if (rs.key && !(await rsCheck(rs.key))) rsForget();   // 비밀번호가 바뀌었다
+        await rsRestore(); rsNames();
+      } catch (e) { if (!rs.data) rs.err = e.message; }
+      finally { rs.busy = null; }
+      return rs.data;
+    })();
+  }
+  // 게임 정보가 있으면 키에 게임 속 이름을 붙인다(몬스터·NPC·스킬·아이템·동료)
+  function rsNames() {
+    const D = gi.data, m = rs.names; if (!D) return;
+    m.clear();
+    const users = new Map();   // 같은 그림을 색만 바꿔 빌려 쓰는 몬스터가 있다 → 처음 것(제 그림의 주인) + «외 N»
+    for (const x of D.monsters) if (x.art) users.set(x.art, [...(users.get(x.art) || []), x.name]);
+    for (const [k, l] of users) m.set(k, l[0] + (l.length > 1 ? ` 외 ${l.length - 1}` : ""));
+    for (const x of D.npcs) if (x.art) m.set(x.art.replace(/\.idle$/, ""), x.name);
+    for (const x of D.companions) if (x.icon) m.set(x.icon, x.name);
+    for (const x of D.items) if (x.icon && !m.has(x.icon)) m.set(x.icon, x.name);
+    for (const x of [...D.skills, ...D.paths.flatMap(p => [p.awakening, ...(p.nodes || [])])]) { if (!x) continue; if (x.icon) m.set(x.icon, x.name); if (x.fx) m.set(x.fx, x.name); }
+  }
+  const rsName = (k) => rs.names.get(k) || rs.names.get(k.replace(/\.(start|loop|end)$/, "")) || "";
+
+  // ---- 잠금: 열쇠 = PBKDF2-SHA256(비밀번호, 소금) → AES-256-GCM. 푼 열쇠만 이 브라우저에 둔다(비밀번호는 두지 않는다)
+  async function rsCheck(key) {
+    const c = rs.data && rs.data.crypto; if (!c) return false;
+    try { await crypto.subtle.decrypt({name: "AES-GCM", iv: b64u8(c.check.iv), additionalData: utf8("check")}, key, b64u8(c.check.ct)); return true; } catch (e) { return false; }
+  }
+  function rsForget() {
+    rs.key = null; rs.packs.clear(); rs.bmps.clear(); gi.stale = true; rsStop();
+    safe(() => sessionStorage.removeItem("psy-res-key")); safe(() => localStorage.removeItem("psy-res-key"));
+  }
+  async function rsRestore() {
+    const c = rs.data.crypto; if (rs.key || !c || !window.crypto || !crypto.subtle) return;
+    const raw = safe(() => sessionStorage.getItem("psy-res-key")) || safe(() => localStorage.getItem("psy-res-key")); if (!raw) return;
+    try {
+      const j = JSON.parse(raw); if (j.salt !== c.kdf.salt) return;
+      const key = await crypto.subtle.importKey("raw", b64u8(j.k), "AES-GCM", false, ["decrypt"]);
+      if (await rsCheck(key)) { rs.key = key; gi.stale = true; }
+    } catch (e) {}
+  }
+  async function rsUnlock(pw, remember) {
+    const c = rs.data.crypto;
+    const base = await crypto.subtle.importKey("raw", utf8(pw), "PBKDF2", false, ["deriveBits"]);
+    const bits = new Uint8Array(await crypto.subtle.deriveBits({name: "PBKDF2", hash: "SHA-256", salt: b64u8(c.kdf.salt), iterations: c.kdf.iter}, base, 256));
+    const key = await crypto.subtle.importKey("raw", bits, "AES-GCM", false, ["decrypt"]);
+    if (!(await rsCheck(key))) return false;
+    rsForget(); rs.key = key;
+    safe(() => (remember ? localStorage : sessionStorage).setItem("psy-res-key", JSON.stringify({salt: c.kdf.salt, k: u8b64(bits)})));
+    return true;
+  }
+  function rsPack(id) {
+    if (!rs.packs.has(id)) {
+      const p = rs.data.packs[id], key = rs.key;
+      rs.packs.set(id, (async () => {
+        const r = await fetch(`${p.file}?v=${encodeURIComponent(p.iv)}`);   // IV 는 내용에서 나온다 → 내용이 같으면 캐시를 그대로 쓴다
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        return crypto.subtle.decrypt({name: "AES-GCM", iv: b64u8(p.iv), additionalData: utf8(id)}, key, await r.arrayBuffer());
+      })());
+      rs.packs.get(id).catch(() => rs.packs.delete(id));
+    }
+    return rs.packs.get(id);
+  }
+  async function rsBytes(fi) { const f = rs.data.files[fi], buf = await rsPack(f.pack); return buf.slice(f.o, f.o + f.n); }
+  function rsBitmap(fi) {
+    if (!rs.bmps.has(fi)) rs.bmps.set(fi, rsBytes(fi).then(b => createImageBitmap(new Blob([b], {type: "image/png"}))));
+    return rs.bmps.get(fi);
+  }
+
+  // ---- 그림 캔버스: <canvas class="rsc" data-k="키" data-box="칸 크기"> 를 넣고 rsMount(root) — 프레임이 여럿이면 저절로 돈다
+  const rsLive = new Set();
+  const rsIO = "IntersectionObserver" in window ? new IntersectionObserver(es => es.forEach(x => { x.target._on = x.isIntersecting; }), {rootMargin: "80px"}) : null;
+  function rsDraw(cv, i) {
+    const s = cv._s; if (!s || !s.bmp) return;
+    const g = cv.getContext("2d"); g.globalCompositeOperation = "source-over"; g.clearRect(0, 0, s.w, s.h); g.imageSmoothingEnabled = false;
+    g.drawImage(s.bmp, i * s.w, 0, s.w, s.h, 0, 0, s.w, s.h);
+    if (s.tint) {   // 게임의 색 곱하기(빌려 쓰는 그림을 다른 색으로)
+      g.globalCompositeOperation = "multiply"; g.fillStyle = s.tint; g.fillRect(0, 0, s.w, s.h);
+      g.globalCompositeOperation = "destination-in"; g.drawImage(s.bmp, i * s.w, 0, s.w, s.h, 0, 0, s.w, s.h); g.globalCompositeOperation = "source-over";
+    }
+    cv._i = i; if (cv._onFrame) cv._onFrame(i);
+  }
+  function rsMount(root) {
+    if (!rs.data) return;
+    root.querySelectorAll("canvas.rsc:not([data-m])").forEach(cv => {
+      cv.dataset.m = "1";
+      const e = rs.byKey.get(cv.dataset.k), a = e && rsArt(e); if (!a || !rsCan(a.f)) return;
+      const fr = rsFrame(a), box = Number(cv.dataset.box) || 96, cap = Number(cv.dataset.cap) || 4;
+      const fit = Math.min(box / fr.w, box / fr.h), scale = fit >= 1 ? Math.min(cap, Math.floor(fit)) : fit;
+      cv.width = fr.w; cv.height = fr.h; cv.style.width = Math.max(1, Math.round(fr.w * scale)) + "px"; cv.style.height = Math.max(1, Math.round(fr.h * scale)) + "px";
+      if (a.filter === "smooth" || scale < 1) cv.classList.add("smooth");
+      const tint = /^#[0-9a-f]{6}$/i.test(e.tint || a.tint || "") && !/^#f{6}$/i.test(e.tint || a.tint) ? (e.tint || a.tint) : "";
+      cv._s = {w: fr.w, h: fr.h, n: fr.n, fps: a.fps || 8, once: !!a.once, tint, bmp: null};
+      rsBitmap(a.f).then(b => { cv._s.bmp = b; rsDraw(cv, 0); if (fr.n > 1) { rsLive.add(cv); if (rsIO) rsIO.observe(cv); else cv._on = true; } }).catch(() => {});
+    });
+  }
+  function rsTick(t) {
+    if (rs.play && !document.hidden) for (const cv of rsLive) {
+      if (!cv.isConnected) { rsLive.delete(cv); if (rsIO) rsIO.unobserve(cv); continue; }
+      if (!cv._on || cv._hold) continue;
+      const s = cv._s, span = s.n / s.fps + (s.once ? .6 : 0), i = Math.min(s.n - 1, Math.floor(((t / 1000) % span) * s.fps));   // 한 번만 도는 동작은 끝에서 잠깐 쉰다
+      if (i !== cv._i) rsDraw(cv, i);
+    }
+    requestAnimationFrame(rsTick);
+  }
+  requestAnimationFrame(rsTick);
+
+  // ---- 소리: 묶음에서 꺼내 한 번에 하나만 튼다
+  function rsStop() { const s = rs.sound; rs.sound = null; if (!s) return; s.audio.pause(); URL.revokeObjectURL(s.url); if (s.btn) s.btn.setAttribute("aria-pressed", "false"); }
+  async function rsPlay(fi, btn) {
+    const same = rs.sound && rs.sound.fi === fi; rsStop(); if (same || !rsCan(fi)) return;
+    btn.setAttribute("aria-pressed", "true"); const mine = rs.sound = {fi, btn, audio: new Audio(), url: ""};
+    try {
+      const url = URL.createObjectURL(new Blob([await rsBytes(fi)], {type: "audio/ogg"}));
+      if (rs.sound !== mine) { URL.revokeObjectURL(url); return; }
+      mine.url = url; mine.audio.src = url; mine.audio.volume = Math.min(1, Number(btn.dataset.vol) || 1); mine.audio.onended = () => { if (rs.sound === mine) rsStop(); };
+      await mine.audio.play();
+    } catch (e) { if (rs.sound === mine) rsStop(); }
+  }
+
+  $("rsSeg").innerHTML = RS_CATS.map(([id, name]) => `<button type="button" role="tab" id="rs-tab-${id}" aria-controls="rsBody" data-cat="${id}">${name}</button>`).join("");
+  $("rsSeg").querySelectorAll("button").forEach(b => b.onclick = () => { rs.cat = b.dataset.cat; rs.flt = ""; renderRes(); });
+  arrowTabs($("rsSeg"));
+  function renderRes() {
+    $("rsSeg").querySelectorAll("button").forEach(b => { const on = b.dataset.cat === rs.cat; b.setAttribute("aria-selected", on); b.tabIndex = on ? 0 : -1; });
+    $("rsBody").setAttribute("aria-labelledby", "rs-tab-" + rs.cat);
+    const D = rs.data;
+    if (!D) { $("rsLock").hidden = true; $("rsFacts").innerHTML = $("rsFilters").innerHTML = ""; $("rsBody").innerHTML = `<p class="empty">${rs.err ? "리소스 목록을 불러오지 못했습니다: " + esc(rs.err) : "불러오는 중…"}</p>`; return; }
+    $("rsStamp").textContent = D.generatedAt ? "리소스 " + fmt(D.generatedAt) + (D.commit ? " · " + D.commit : "") : "";
+    const arts = D.anims, packed = Object.keys(D.packs).length;
+    $("rsFacts").innerHTML = fact("그림 키", arts.length) + fact("그림 파일", D.files.filter(f => /\.png$/i.test(f.p)).length) + fact("임시·빌림", arts.filter(e => e.f === undefined).length)
+      + fact("기준 미달", arts.filter(e => rsBelow(rsArt(e))).length) + fact("효과음", D.sfx.length) + fact("음악", D.music.length) + fact("글꼴", D.fonts.length)
+      + (packed ? fact("묶음", fmtSize(Object.values(D.packs).reduce((a, p) => a + (p.size || 0), 0))) : "");
+    // 잠금 줄
+    const L = $("rsLock"); L.hidden = false;
+    if (!D.crypto || !packed) L.innerHTML = `<span class="msg">그림·소리 묶음이 아직 올라오지 않았습니다 — 지금은 목록만 보입니다</span>`;
+    else if (!window.crypto || !crypto.subtle) L.innerHTML = `<span class="msg err">이 주소에서는 잠금을 풀 수 없습니다(https 로 열어 주세요)</span>`;
+    else if (rs.key) {
+      L.innerHTML = `<span class="pill pass">열림</span><span class="spacer"></span><button class="iconbtn" type="button" id="rsLockBtn">잠그기</button>`;
+      $("rsLockBtn").onclick = () => { rsForget(); rs.msg = ""; renderRes(); };
+    } else {
+      L.innerHTML = `<form id="rsForm" style="display:contents"><input type="password" id="rsPw" autocomplete="current-password" placeholder="비밀번호" aria-label="리소스 비밀번호" required>
+        <label><input type="checkbox" id="rsKeep"> 이 기기에서 기억</label><button class="btn" type="submit">그림·소리 열기</button><span class="msg${rs.msg ? " err" : ""}" id="rsMsg" aria-live="polite">${esc(rs.msg)}</span></form>`;
+      $("rsForm").onsubmit = async (ev) => {
+        ev.preventDefault(); const pw = $("rsPw").value; if (!pw) return;
+        $("rsMsg").className = "msg"; $("rsMsg").textContent = "확인 중…";
+        let ok = false; try { ok = await rsUnlock(pw, $("rsKeep").checked); } catch (e) {}
+        rs.msg = ok ? "" : "비밀번호가 맞지 않습니다"; renderRes();
+      };
+    }
+    // 고르기
+    const art = !["sound", "font"].includes(rs.cat);
+    const chip = (v, n) => `<button class="chip" type="button" data-f="${v}" aria-pressed="${rs.flt === v}">${n}</button>`;
+    $("rsFilters").innerHTML = (art && rs.cat !== "spare" ? RS_FLT.map(([v, n]) => chip(v, n)).join("") : "")
+      + `<input type="search" id="rsQ" placeholder="찾기(키·이름·메모)" value="${esc(rs.q)}" aria-label="리소스 찾기">`
+      + (art && rs.key ? `<button class="iconbtn" type="button" id="rsPlayBtn" aria-pressed="${rs.play}">${rs.play ? "움직임 켬" : "움직임 끔"}</button>
+        <button class="iconbtn" type="button" id="rsBgBtn">배경: ${RS_BG.find(b => b[0] === rs.bg)[1]}</button>` : "");
+    $("rsFilters").querySelectorAll(".chip").forEach(b => b.onclick = () => { rs.flt = b.dataset.f; renderRes(); });
+    $("rsQ").oninput = () => { rs.q = $("rsQ").value; renderResBody(); };
+    if ($("rsPlayBtn")) $("rsPlayBtn").onclick = () => { rs.play = !rs.play; safe(() => localStorage.setItem("psy-res-play", rs.play ? "1" : "0")); renderRes(); };
+    if ($("rsBgBtn")) $("rsBgBtn").onclick = () => { rs.bg = RS_BG[(RS_BG.findIndex(b => b[0] === rs.bg) + 1) % RS_BG.length][0]; safe(() => localStorage.setItem("psy-res-bg", rs.bg)); renderRes(); };
+    renderResBody();
+  }
+  const rsHit = (...parts) => { const q = rs.q.trim().toLowerCase(); return !q || parts.join(" ").toLowerCase().includes(q); };
+  function rsTile(e) {
+    const D = rs.data, a = rsArt(e), f = a && D.files[a.f], fr = a && rsFrame(a), grp = e.spare ? "" : rsGroup(e.k);
+    const label = e.spare ? e.k.slice(1) : e.k === grp ? e.k : e.k.slice(grp.length + 1), nm = rsName(e.k);
+    const tags = (e.f === -1 ? '<span class="tag bad">파일 없음</span>' : e.f === undefined ? `<span class="tag warn">${a ? "빌림" : "코드 그림"}</span>` : "") + (rsBelow(a) ? '<span class="tag warn">기준 미달</span>' : "");
+    const stage = !a ? `<span class="lk">${esc(e.ph || "그림 없음")}</span>` : rsCan(a.f) ? `<canvas class="rsc" data-k="${esc(e.k)}" data-box="96"></canvas>` : '<span class="lk">잠김</span>';
+    return `<button type="button" class="rt" data-k="${esc(e.k)}"><span class="stage">${stage}</span><span class="nm">${esc(label)}${nm && nm !== rs.names.get(grp) ? `<small>${esc(nm)}</small>` : ""}</span>
+      ${f ? `<span class="mt">${fr.w}×${fr.h}${fr.n > 1 ? ` · ${fr.n}장 · ${num(a.fps || 8)}fps` : ""}</span>` : ""}${tags ? `<span class="tg">${tags}</span>` : ""}</button>`;
+  }
+  function renderResBody() {
+    const D = rs.data, B = $("rsBody"); if (!D) return;
+    B.className = "bg-" + rs.bg;
+    const credit = (lics) => { const l = lics.map(k => D.licenses[k]).filter(Boolean).flatMap(c => c.credits || []); return l.length ? `<p class="status">${l.map(esc).join(" · ")}</p>` : ""; };
+    if (rs.cat === "sound") {
+      const src = (e) => { const f = D.files[e.f.find(i => i >= 0)] || {}; return [f.by, RS_LIC[f.lic] || f.lic].filter(Boolean).map(esc).join(" · "); };
+      const btns = (e) => e.f.map(i => i < 0 ? '<span class="tag bad">파일 없음</span>' : `<button class="iconbtn rsp" type="button" data-f="${i}" data-vol="${esc(e.vol ?? 1)}" aria-pressed="false"${rsCan(i) ? "" : " disabled"}>▶ ${esc(D.files[i].p.split("/").pop().replace(/\.\w+$/, ""))}</button>`).join("");
+      const sfx = D.sfx.filter(e => rsHit(e.k, e.note, ...e.f.map(i => (D.files[i] || {}).p))), mus = D.music.filter(e => rsHit(e.k, e.note, ...e.f.map(i => (D.files[i] || {}).p)));
+      B.innerHTML = ((mus.length ? `<h3 class="gi-h">음악<small>${mus.length}곡</small></h3>` + gtable(["키", "곡", "음량", "출처"], mus.map(e => [`<span class="rkey">${esc(e.k)}</span>`, btns(e), esc(num(e.vol ?? .6)), src(e)]), 0, [2, 3]) : "")
+        + (sfx.length ? `<h3 class="gi-h">효과음<small>${sfx.length}개</small></h3>` + gtable(["키", "소리(여럿이면 무작위)", "음량", "음높이", "출처"],
+          sfx.map(e => [`<span class="rkey">${esc(e.k)}</span>${e.note ? `<small>${esc(e.note)}</small>` : ""}`, btns(e), esc(num(e.vol ?? 1)), e.pitch ? esc(e.pitch.map(v => num(v)).join("~")) : "", src(e)]), 0, [2, 3, 4]) : "")
+        + credit(["cc0"])) || NONE;
+      B.querySelectorAll(".rsp").forEach(b => b.onclick = () => rsPlay(Number(b.dataset.f), b));
+      return;
+    }
+    if (rs.cat === "font") {
+      const l = D.fonts.filter(e => rsHit(e.k, e.name, e.note, e.by));
+      B.innerHTML = l.length ? gtable(["키", "글꼴", "기준 크기", "배율", "출처", "메모"], l.map(e => [`<span class="rkey">${esc(e.k)}</span>`, `<b>${esc(e.name)}</b>`, esc(e.px ? e.px + "px" : ""), esc(e.scale ? "×" + num(e.scale) : ""),
+        [e.by, RS_LIC[e.lic] || e.lic].filter(Boolean).map(esc).join(" · "), esc(e.note || "")]), 0, [2, 3]) + credit(["ofl"]) : NONE;
+      return;
+    }
+    const all = rs.cat === "spare" ? D.spare : D.anims.filter(e => rsCat(e.k) === rs.cat);
+    const list = all.filter(e => { const a = rsArt(e), f = a && D.files[a.f];
+      return (rs.flt === "anim" ? a && rsFrame(a).n > 1 : rs.flt === "temp" ? e.f === undefined : rs.flt === "below" ? rsBelow(a) : true)
+        && rsHit(e.k, e.note, rsName(e.k), rs.names.get(rsGroup(e.k)), f && f.p.split("/").pop(), f && (f.tags || []).join(" ")); });
+    const grpOf = (e) => e.spare ? D.files[e.f].p.split("/").slice(0, -1).join("/") : rsGroup(e.k);
+    B.innerHTML = [...new Set(list.map(grpOf))].map(g => { const l = list.filter(e => grpOf(e) === g), nm = rs.names.get(g);
+      return `<section class="rgroup"><h4>${nm ? esc(nm) + " " : ""}<span class="rkey">${esc(g)}</span><span class="cnt">${l.length}</span></h4><div class="rtiles">${l.map(rsTile).join("")}</div></section>`; }).join("") || NONE;
+    B.querySelectorAll(".rt").forEach(b => b.onclick = () => openRes(b.dataset.k));
+    rsMount(B);
+  }
+
+  // ---- 상세: 큰 그림 · 프레임 넘기기(예비·시작·판정 프레임 표시) · 파일·품질·출처·이력
+  function openRes(key) {
+    const D = rs.data, e = D && rs.byKey.get(key); if (!e) return;
+    const a = rsArt(e), f = a && D.files[a.f], fr = a && rsFrame(a), can = a && rsCan(a.f), nm = rsName(e.k) || rs.names.get(rsGroup(e.k)) || "";
+    const rows = [], row = (l, v) => { if (v !== "" && v != null) rows.push(`<dt>${l}</dt><dd>${v}</dd>`); };
+    row("키", `<span class="rkey">${esc(e.spare ? "(키 없음 — 게임이 쓰지 않는 파일)" : e.k)}</span>`);
+    if (nm) row("게임 속", esc(nm));
+    if (e.f === undefined && !e.spare) row("상태", a ? `그림 없음 — <span class="rkey">${esc(a.k)}</span> 의 그림을 빌려 쓴다` : `그림 없음 — 코드가 그린다(${esc(e.ph || "")})`);
+    if (e.f === -1) row("상태", '<span class="tag bad">매니페스트가 가리키는 파일이 없다</span>');
+    if (f) {
+      row("파일", `<span class="rkey">${esc(f.p.split("/").pop())}</span>`);
+      row("크기", `${f.w}×${f.h}px${fr.n > 1 ? ` · 프레임 ${fr.w}×${fr.h} × ${fr.n}장` : ""} · ${esc(fmtSize(f.n))}`);
+      if (fr.n > 1) row("재생", `${num(a.fps || 8)}fps · ${a.once ? "한 번" : "되풀이"}${a.hold !== undefined ? ` · 이어지는 구간 ${a.hold < 0 ? "부르는 쪽이 정함" : num(a.hold) + "초"}` : ""}`);
+    }
+    const P = a || e;
+    if (P.pivot) row("기준점", esc(RS_PIVOT[P.pivot] || P.pivot) + (P.feetPx ? ` · 발밑 여백 ${esc(P.feetPx)}px` : "") + (P.pivotPx ? ` (${P.pivotPx.map(esc).join(", ")})` : ""));
+    if (P.border) row("9-slice", `좌 ${esc(P.border[0])} · 아래 ${esc(P.border[1])} · 우 ${esc(P.border[2])} · 위 ${esc(P.border[3])}px`);
+    const tint = e.tint || (a && a.tint); if (/^#[0-9a-f]{6}$/i.test(tint || "")) row("색 곱하기", `<i class="sw" style="background:${esc(tint)}"></i>${esc(tint)}`);
+    if (P.filter === "smooth") row("필터", "부드럽게(고해상 일러스트)");
+    if (f) {
+      row("품질", [RS_TIER[f.tier] || f.tier, ...(f.tags || []).map(t => t === "below_bar" ? "기준 미달(임시 반입)" : t)].filter(Boolean).map(t => `<span class="tag${/기준 미달/.test(t) ? " warn" : ""}">${esc(t)}</span>`).join(" "));
+      row("출처", [f.by, RS_LIC[f.lic] || f.lic || "반입 기록 없음", f.at ? "반입 " + f.at : ""].filter(Boolean).map(esc).join(" · "));
+    }
+    if (e.note) row("메모", esc(e.note));
+    if (f && f.hist) row("이력", `<ul>${f.hist.map(h => `<li>${esc(h.d || "")} — ${esc(h.t)}</li>`).join("")}</ul>`);
+    const marks = Object.entries((a && a.marks) || {}), hits = (a && a.hits) || [];
+    const isHit = (i) => { for (let j = 0; j + 1 < hits.length; j += 2) if (i >= hits[j] && i <= hits[j + 1]) return true; return false; };
+    const frames = can && fr.n > 1 ? `<div class="rd-ctl"><button class="iconbtn" type="button" data-step="-1" aria-label="앞 프레임">◀</button><button class="iconbtn" type="button" id="rdPlay">멈춤</button><button class="iconbtn" type="button" data-step="1" aria-label="다음 프레임">▶</button>
+        <span class="pos" id="rdPos"></span><span class="spacer"></span><button class="iconbtn" type="button" id="rdBg">배경</button></div>
+      <div class="rd-frames" id="rdFrames">${Array.from({length: fr.n}, (_, i) => `<button type="button" class="fbtn${isHit(i) ? " hit" : ""}" data-i="${i}" aria-pressed="false">${i}${marks.filter(m => m[1] === i).map(m => `<small>${esc(RS_MARK[m[0]] || m[0])}</small>`).join("")}</button>`).join("")}</div>
+      ${hits.length ? '<p class="status">붉은 밑줄 = 공격 판정 프레임</p>' : ""}` : can ? `<div class="rd-ctl"><span class="spacer"></span><button class="iconbtn" type="button" id="rdBg">배경</button></div>` : "";
+    $("rsDlgTitle").textContent = nm || (e.spare ? e.k.slice(1) : e.k);
+    $("rsDlgBody").innerHTML = `<div class="rd"><div class="rd-left"><div class="stage rd-view" id="rdView">${!a ? `<span class="lk">${esc(e.ph || "그림 없음")}</span>` : can ? `<canvas class="rsc" data-k="${esc(e.k)}" data-box="${Math.max(160, Math.min(400, window.innerWidth - 90))}" data-cap="12"></canvas>` : '<span class="lk">잠김 — 리소스 탭에서 비밀번호를 넣으면 보입니다</span>'}</div>${frames}</div>
+      <dl class="kv">${rows.join("")}</dl></div>`;
+    $("rsDlgBody").className = "bg-" + rs.bg;
+    $("rsScrim").hidden = false; $("rsClose").focus();
+    rsMount($("rsDlgBody"));
+    const cv = $("rsDlgBody").querySelector("canvas.rsc");
+    if ($("rdBg")) $("rdBg").onclick = () => { rs.bg = RS_BG[(RS_BG.findIndex(b => b[0] === rs.bg) + 1) % RS_BG.length][0]; safe(() => localStorage.setItem("psy-res-bg", rs.bg)); $("rsDlgBody").className = "bg-" + rs.bg; if (!$("view-res").hidden) renderRes(); };
+    if (cv && $("rdFrames")) {
+      const fb = [...$("rdFrames").querySelectorAll(".fbtn")];
+      const show = (i) => { $("rdPos").textContent = `${i} / ${fr.n - 1}`; fb.forEach((b, j) => b.setAttribute("aria-pressed", j === i)); };
+      const hold = (on) => { cv._hold = on; $("rdPlay").textContent = on ? "재생" : "멈춤"; };
+      const go = (i) => { hold(true); rsDraw(cv, ((i % fr.n) + fr.n) % fr.n); };
+      cv._onFrame = show; show(0); hold(!rs.play);
+      $("rdPlay").onclick = () => { if (cv._hold && !rs.play) rs.play = true; hold(!cv._hold); };
+      $("rsDlgBody").querySelectorAll("[data-step]").forEach(b => b.onclick = () => go((cv._i || 0) + Number(b.dataset.step)));
+      fb.forEach(b => b.onclick = () => go(Number(b.dataset.i)));
+    }
+  }
+  function closeRes() { $("rsScrim").hidden = true; $("rsDlgBody").innerHTML = ""; }
+  $("rsClose").onclick = closeRes;
+  $("rsScrim").addEventListener("click", e => { if (e.target === $("rsScrim")) closeRes(); });
 
   // ---------- 테스트 빌드(다른 공개 사이트 psy-builds 의 builds.json — 여기서는 목록만, 받기는 그 페이지에서) ----------
   const BUILDS_SITE = "https://qtdqtd002-coder.github.io/psy-builds/";
@@ -1229,10 +1664,10 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
     try { await ghGet(); storeToken(tok, $("tokRemember").checked); st.editing = true; $("tokScrim").hidden = true; await load(true); setStatus("편집 모드 · 카드를 끌거나 ◀▶ 로 옮기세요"); }
     catch (err) { st.token = prev; $("tokMsg").textContent = "확인 실패: " + err.message; }
   });
-  document.addEventListener("keydown", e => { if (e.key !== "Escape") return; if (!$("cardScrim").hidden) closeCard(); if (!$("tokScrim").hidden) $("tokScrim").hidden = true; });
+  document.addEventListener("keydown", e => { if (e.key !== "Escape") return; if (!$("cardScrim").hidden) closeCard(); if (!$("tokScrim").hidden) $("tokScrim").hidden = true; if (!$("rsScrim").hidden) closeRes(); });
 
   // ---------- 시작 ----------
-  $("refreshBtn").onclick = () => { load(); if (!$("view-lore").hidden) loadLore(true); if (!$("view-info").hidden) loadInfo(true); if (!$("view-builds").hidden) loadBuilds(true); if (!$("view-feedback").hidden) loadFeedback(true); };
+  $("refreshBtn").onclick = () => { load(); if (!$("view-lore").hidden) loadLore(true); if (!$("view-info").hidden) loadInfo(true); if (!$("view-res").hidden) loadRes(true).then(renderRes); if (!$("view-builds").hidden) loadBuilds(true); if (!$("view-feedback").hidden) loadFeedback(true); };
   load();
   setInterval(() => { if (!document.hidden && !st.busy && $("cardScrim").hidden) load(true); }, 60000);
 })();
