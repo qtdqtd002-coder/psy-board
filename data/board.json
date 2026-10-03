@@ -4,16 +4,18 @@
   "project": "PSY 프로젝트",
   "subtitle": "꿈 세계 포획 동료 액션 RPG · 싱글 · Unity 6.3 LTS",
   "currentMilestone": "M1",
-  "updatedAt": "2026-10-03T05:58:18Z",
+  "updatedAt": "2026-10-03T05:58:35Z",
   "qa": {
    "gate": "PASS",
-   "date": "2026-10-03",
-   "compile": 0,
+   "compile": "에러 0",
    "editmode": "117/117",
-   "playmode": "66/66 (8 건너뜀)",
+   "playmode": "66/66 (수동 실행 전용 8 제외)",
    "e2e": 45,
    "screenshots": 89,
-   "commit": "a8d9a71"
+   "screens": 89,
+   "at": "2026-10-03T14:56:00+09:00",
+   "commit": "a8d9a71",
+   "playtest": "PSY-49 4장 E2E 5(65~69) · 3장 E2E 6 · 키 설정 E2E_58 · 전체 걷기 94퀘스트(1장 Lv12 · 2장 Lv22 · 3장 Lv32 · 4장 Lv42) · 봇 실측은 2~4장 아직"
   },
   "build": {
    "result": "Succeeded",
