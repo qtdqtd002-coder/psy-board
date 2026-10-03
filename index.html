@@ -1426,7 +1426,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
     } finally { fb.busy = false; }
   }
   const fbArr = (v) => Array.isArray(v) ? v.filter(Boolean) : v ? [v] : [];
-  const fbRows = (it) => [["개선 결과", fbArr(it.result), "ul"], ["지금", fbArr(it.now), "ul"], ["처리 계획", fbArr(it.plan), "ol"], ["손대는 곳", fbArr(it.touch), "ul"], ["주의", fbArr(it.risk), "ul"],
+  const fbRows = (it) => [["개선 결과", fbArr(it.result), "ul"], ["결정됨", fbArr(it.decided), "ul"], ["지금", fbArr(it.now), "ul"], ["처리 계획", fbArr(it.plan), "ol"], ["손대는 곳", fbArr(it.touch), "ul"], ["주의", fbArr(it.risk), "ul"],
     ["결정 필요", fbArr(it.ask), "ul"], ["같이 볼 것", fbArr(it.deps), ""]];
   function fbShown() {
     const q = fb.q.trim().toLowerCase();
@@ -1452,7 +1452,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
     const round = D.rounds.find(r => r.id === fb.round) || (D.rounds.length === 1 ? D.rounds[0] : null);
     $("fbFacts").innerHTML = (round ? fact("차수", round.name + (round.at ? " · " + round.at : "")) : "") + fact("항목", list.length)
       + Object.entries(FB_STATUS).map(([k, n]) => { const c = list.filter(it => (it.status || "recorded") === k).length; return c ? fact(n, c) : ""; }).join("")
-      + fact("결정 필요", list.filter(it => fbArr(it.ask).length).length);
+      + fact("결정 필요", list.filter(it => fbArr(it.ask).length && !fbArr(it.decided).length).length);
     const bundles = D.bundles.filter(b => (!fb.round || b.round === fb.round) && fbArr(b.items).some(id => list.some(it => it.id === id)));
     $("fbBundles").innerHTML = bundles.length && !fb.q.trim() && !fb.kind ? `<h3 class="gi-h">작업 묶음<small>일괄 작업 때 권하는 순서</small></h3><div class="gi">` + gtable(["순서", "묶음", "항목", "메모"],
       bundles.map((b, i) => [esc(b.order ?? i + 1), `<b>${esc(b.name)}</b>`, fbArr(b.items).map(id => { const d = D.items.find(x => x.id === id), t = `<span class="qid">${esc(id)}</span>${esc(title.get(id) || "")}`; return d && d.status === "done" ? `<s class="fbdone">${t}</s> <span class="tag st-done">개선 완료</span>` : t; }).join("<br>"), esc(b.note || "")]), 1, [0]) + `</div>` : "";
@@ -1464,7 +1464,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
         return `<dt>${l}</dt><dd${l === "결정 필요" ? ' class="ask"' : ""}>${body}</dd>`;
       }).join("");
       return `<details class="fbi${stt === "done" ? " done" : ""}" data-id="${esc(it.id)}"${fb.open.has(it.id) ? " open" : ""}><summary><span class="qid">${esc(it.id)}</span><b>${esc(it.title)}</b>
-        <span class="tags">${it.kind ? `<span class="tag">${esc(it.kind)}</span>` : ""}${it.size ? `<span class="tag">규모 ${esc(it.size)}</span>` : ""}${fbArr(it.ask).length ? `<span class="tag need">결정 ${fbArr(it.ask).length}</span>` : ""}<span class="tag st-${stt}">${FB_STATUS[stt]}</span></span>
+        <span class="tags">${it.kind ? `<span class="tag">${esc(it.kind)}</span>` : ""}${it.size ? `<span class="tag">규모 ${esc(it.size)}</span>` : ""}${fbArr(it.ask).length && !fbArr(it.decided).length ? `<span class="tag need">결정 ${fbArr(it.ask).length}</span>` : ""}<span class="tag st-${stt}">${FB_STATUS[stt]}</span></span>
         <p>${esc(it.feedback)}</p></summary><dl class="fbb">${rows}</dl></details>`;
     }).join("") || NONE;
     $("fbList").querySelectorAll("details").forEach(d => d.addEventListener("toggle", () => { d.open ? fb.open.add(d.dataset.id) : fb.open.delete(d.dataset.id);
