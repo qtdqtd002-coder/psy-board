@@ -4,7 +4,7 @@
   "project": "PSY 프로젝트",
   "subtitle": "꿈 세계 포획 동료 액션 RPG · 싱글 · Unity 6.3 LTS",
   "currentMilestone": "M1",
-  "updatedAt": "2026-10-03T07:08:25Z",
+  "updatedAt": "2026-10-03T07:09:46Z",
   "qa": {
    "gate": "PASS",
    "compile": "에러 0",
@@ -19,13 +19,12 @@
   },
   "build": {
    "result": "Succeeded",
-   "target": "Windows Mono · Android IL2CPP ARM64 — 1~3장 포함",
-   "sizeMB": 181,
-   "size": "181MB(zip 54MB) · APK 58MB",
+   "target": "Windows Mono · Android IL2CPP ARM64 — 1~5장 + 전직(1부 완결)",
+   "sizeMB": 186,
+   "size": "186MB(zip 54MB) · APK 58MB",
    "path": "테스터 내려받기 https://qtdqtd002-coder.github.io/psy-builds/ (비밀번호 필요)",
-   "time": "28s · APK 약 5분",
-   "at": "2026-10-03T14:09:18+09:00",
-   "commit": "2815173"
+   "at": "2026-10-03T16:09:00+09:00",
+   "commit": "2c36c01"
   }
  },
  "milestones": [
