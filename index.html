@@ -892,7 +892,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
 
   // ---------- 세계관(네 갈래 — 원본은 project_psy/docs/design/00_Canon · 올리기 = board.py publish-lore) ----------
   // 주소: #lore-<갈래> · #lore-<갈래>/<앵커>(앵커 = 제목 s-<번호> 또는 용어집의 용어)
-  const LORE_DOCS = [["concept", "세계관", "data/lore.md"], ["glossary", "용어집", "data/lore-glossary.md"], ["chars", "인물", "data/lore-characters.md"], ["story", "시나리오", "data/lore-scenario.md"]];   // 갈래 · 이름 · 파일
+  const LORE_DOCS = [["concept", "세계관", "data/lore.md"], ["glossary", "용어집", "data/lore-glossary.md"], ["chars", "인물", "data/lore-characters.md"], ["story", "시나리오", "data/lore-scenario.md"], ["assets", "리소스 정리", "data/lore-assets.md"]];   // 갈래 · 이름 · 파일
   const lore = {doc: safe(() => localStorage.getItem("psy-lore-doc")) || "concept", src: {}, cache: {}, terms: new Map(), termsTried: false, io: null, cur: null, want: "", gq: "", gcat: ""};
   if (!LORE_DOCS.some(d => d[0] === lore.doc)) lore.doc = "concept";
   const LB = $("loreBody");
