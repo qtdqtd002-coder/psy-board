@@ -6,149 +6,151 @@
 <meta name="robots" content="noindex, nofollow">
 <title>PSY 작업 보드</title>
 <meta name="description" content="PSY 프로젝트의 기획→아트→개발→QA→완료 칸반과 마일스톤 진행 대시보드">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap">
 <style>
+/* 색은 한 벌 — light-dark() 가 color-scheme 을 따라 고른다(기기 설정 · data-theme 둘 다 같은 선언을 쓴다) */
 :root{
-  color-scheme:light;
-  --bg:#F3F2F8; --surface:#FFFFFF; --surface2:#F8F7FC; --ink:#1D1A2B; --muted:#625D7A; --line:#E1DEEB;
-  --accent:#A8620A; --accent-soft:#FBEBD2; --indigo:#4A3E9C;
-  --st-plan:#6A4FD0; --st-art:#C2417E; --st-dev:#2F6FD6; --st-qa:#A86F14; --st-done:#2E8B57;
-  --good:#2E8B57; --bad:#C53A3A;
-  --shadow:0 1px 2px rgba(29,26,43,.06),0 4px 14px rgba(29,26,43,.06);
-  --font-body:"IBM Plex Sans KR","Malgun Gothic","Apple SD Gothic Neo",system-ui,sans-serif;
-  --font-display:"Do Hyeon","IBM Plex Sans KR","Malgun Gothic",sans-serif;
+  color-scheme:light dark;
+  --bg:light-dark(#F4F4F1,#131417); --surface:light-dark(#FDFDFC,#1B1D21); --surface2:light-dark(#ECECE8,#23262B);
+  --ink:light-dark(#1B1C1F,#ECECEA); --muted:light-dark(#5C5F66,#A2A6AD); --line:light-dark(#DCDCD6,#30343A);
+  --accent:light-dark(#A8620A,#F2B544); --accent-soft:light-dark(#F5E9D3,#382D17); --accent-ink:light-dark(#8A4F06,#F2B544);
+  --st-plan:light-dark(#6A4FD0,#9C86F2); --st-art:light-dark(#C2417E,#EC7AAE); --st-dev:light-dark(#2F6FD6,#6FA3F5); --st-qa:light-dark(#A86F14,#E9B45A); --st-done:light-dark(#2E8B57,#5CC48A);
+  --good:light-dark(#2E8B57,#5CC48A); --bad:light-dark(#C53A3A,#FF7A7A); --good-ink:light-dark(#1E6A40,#5CC48A); --bad-ink:light-dark(#AE2C2C,#FF7A7A);
+  --shadow:0 1px 2px light-dark(rgba(27,28,31,.05),rgba(8,9,11,.32)),0 4px 14px light-dark(rgba(27,28,31,.05),rgba(8,9,11,.26));
+  --scrim:light-dark(rgba(27,28,31,.45),rgba(8,9,11,.6));
+  --font-body:"Pretendard Variable",Pretendard,"Malgun Gothic","Apple SD Gothic Neo",system-ui,sans-serif;
+  --font-serif:"Gowun Batang","Malgun Gothic",serif;
+  --r1:6px; --r2:10px; --r3:999px;
+  --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:40px;
+  --tabs-h:48px; --lbar-h:56px; --gut:16px;
   /* 지도(게임 정보): 지형 --mp-* · 표식 --mk-* */
-  --mp-air:#F1EFF8; --mp-void:#D8D4E6; --mp-solid:#57516F; --mp-plat:#A8620A; --mp-ghost:#6A4FD0; --mp-flowl:#D9772B; --mp-flowr:#C9A227;
-  --mp-quick:#8A5A44; --mp-soft:#C7A26B; --mp-lift:#2F9E8F; --mp-water:#8EC3EE; --mp-glyph:rgba(29,26,43,.6); --mp-ring:#FFFFFF;
-  --mk-portal:#2F6FD6; --mk-npc:#2E8B57; --mk-spawn:#C53A3A; --mk-elite:#E0701A; --mk-boss:#8E1239; --mk-chest:#9C5B1F;
-  --mk-spot:#6A4FD0; --mk-lantern:#E3A800; --mk-lore:#0E8FA3; --mk-pickup:#D6409F;
+  --mp-air:light-dark(#F1EFF8,#1F1C2E); --mp-void:light-dark(#D8D4E6,#0B0912); --mp-solid:light-dark(#57516F,#6C668A); --mp-plat:light-dark(#A8620A,#F2B544); --mp-ghost:light-dark(#6A4FD0,#9C86F2);
+  --mp-flowl:light-dark(#D9772B,#E8894A); --mp-flowr:light-dark(#C9A227,#E3C24F); --mp-quick:light-dark(#8A5A44,#9A6A55); --mp-soft:light-dark(#C7A26B,#B99A6B); --mp-lift:light-dark(#2F9E8F,#4FC7B5);
+  --mp-water:light-dark(#8EC3EE,#24598C); --mp-glyph:light-dark(rgba(29,26,43,.6),rgba(10,8,20,.65)); --mp-ring:light-dark(#FDFDFC,#131417);
+  --mk-portal:light-dark(#2F6FD6,#6FA3F5); --mk-npc:light-dark(#2E8B57,#5CC48A); --mk-spawn:light-dark(#C53A3A,#FF7A7A); --mk-elite:light-dark(#E0701A,#FF9A4D); --mk-boss:light-dark(#8E1239,#FF5C8A);
+  --mk-chest:light-dark(#9C5B1F,#D9A066); --mk-spot:light-dark(#6A4FD0,#B3A1FF); --mk-lantern:light-dark(#E3A800,#FFD84D); --mk-lore:light-dark(#0E8FA3,#4FD6E8); --mk-pickup:light-dark(#D6409F,#F58AC8);
 }
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    color-scheme:dark;
-    --bg:#13111D; --surface:#1C1929; --surface2:#221F31; --ink:#ECEAF5; --muted:#A09BB8; --line:#2F2B43;
-    --accent:#F2B544; --accent-soft:#3A2E17; --indigo:#A99CF5;
-    --st-plan:#9C86F2; --st-art:#EC7AAE; --st-dev:#6FA3F5; --st-qa:#E9B45A; --st-done:#5CC48A;
-    --good:#5CC48A; --bad:#FF7A7A;
-    --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25);
-    --mp-air:#1F1C2E; --mp-void:#0B0912; --mp-solid:#6C668A; --mp-plat:#F2B544; --mp-ghost:#9C86F2; --mp-flowl:#E8894A; --mp-flowr:#E3C24F;
-    --mp-quick:#9A6A55; --mp-soft:#B99A6B; --mp-lift:#4FC7B5; --mp-water:#24598C; --mp-glyph:rgba(10,8,20,.65); --mp-ring:#13111D;
-    --mk-portal:#6FA3F5; --mk-npc:#5CC48A; --mk-spawn:#FF7A7A; --mk-elite:#FF9A4D; --mk-boss:#FF5C8A; --mk-chest:#D9A066;
-    --mk-spot:#B3A1FF; --mk-lantern:#FFD84D; --mk-lore:#4FD6E8; --mk-pickup:#F58AC8;
-  }
-}
-:root[data-theme="dark"]{
-  color-scheme:dark;
-  --bg:#13111D; --surface:#1C1929; --surface2:#221F31; --ink:#ECEAF5; --muted:#A09BB8; --line:#2F2B43;
-  --accent:#F2B544; --accent-soft:#3A2E17; --indigo:#A99CF5;
-  --st-plan:#9C86F2; --st-art:#EC7AAE; --st-dev:#6FA3F5; --st-qa:#E9B45A; --st-done:#5CC48A;
-  --good:#5CC48A; --bad:#FF7A7A;
-  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25);
-  --mp-air:#1F1C2E; --mp-void:#0B0912; --mp-solid:#6C668A; --mp-plat:#F2B544; --mp-ghost:#9C86F2; --mp-flowl:#E8894A; --mp-flowr:#E3C24F;
-  --mp-quick:#9A6A55; --mp-soft:#B99A6B; --mp-lift:#4FC7B5; --mp-water:#24598C; --mp-glyph:rgba(10,8,20,.65); --mp-ring:#13111D;
-  --mk-portal:#6FA3F5; --mk-npc:#5CC48A; --mk-spawn:#FF7A7A; --mk-elite:#FF9A4D; --mk-boss:#FF5C8A; --mk-chest:#D9A066;
-  --mk-spot:#B3A1FF; --mk-lantern:#FFD84D; --mk-lore:#4FD6E8; --mk-pickup:#F58AC8;
-}
+:root[data-theme="light"]{color-scheme:light}
+:root[data-theme="dark"]{color-scheme:dark}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 html,body{margin:0}
-body{background:var(--bg);color:var(--ink);font:14px/1.5 var(--font-body);}
-.wrap{max-width:1440px;margin:0 auto;padding-inline:16px;padding-block:calc(18px + env(safe-area-inset-top,0px)) calc(40px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:16px}
-header.top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px}
-.brand h1{font-family:var(--font-display);font-weight:400;font-size:34px;line-height:1;margin:0;letter-spacing:.5px;text-wrap:balance}
-.brand p{margin:6px 0 0;color:var(--muted);font-size:13px}
-.brand .mile{color:var(--accent);font-weight:600}
-.overall{display:flex;align-items:center;gap:12px;min-width:240px;flex:0 1 360px}
-.overall .num{font-family:var(--font-display);font-size:30px;font-variant-numeric:tabular-nums;min-width:3ch;text-align:right}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font:400 15px/1.55 var(--font-body);font-variant-numeric:tabular-nums}
+.wrap{max-width:1440px;margin:0 auto;padding-inline:var(--gut);padding-block:calc(12px + env(safe-area-inset-top,0px)) calc(40px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:16px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+/* ---- 머리 한 줄: 제목 · 현재 마일스톤 · 진행률 ---- */
+header.top{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;min-height:36px}
+header.top h1{font-weight:700;font-size:17px;line-height:1.3;margin:0;white-space:nowrap}
+header.top .mile{color:var(--accent-ink);font-weight:600;font-size:14px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.overall{display:flex;align-items:center;gap:10px;flex:0 1 320px;min-width:150px}
+.overall .num{font-weight:600;font-size:14px;min-width:3ch;text-align:right}
 .overall .lbl{font-size:12px;color:var(--muted);white-space:nowrap}
-.meter{flex:1;height:10px;border-radius:5px;background:var(--line);overflow:hidden;display:flex}
+.meter{flex:1;height:4px;border-radius:var(--r3);background:var(--line);overflow:hidden;display:flex}
 .meter i{display:block;height:100%}
-nav.tabs{display:flex;flex-wrap:wrap;gap:4px;border-bottom:1px solid var(--line);align-items:center}
-nav.tabs .tablist{display:flex;flex-wrap:wrap;gap:4px}
-nav.tabs button.tab{font:inherit;font-weight:600;color:var(--muted);background:none;border:0;border-bottom:2px solid transparent;padding:8px 14px;min-height:40px;cursor:pointer}
-nav.tabs button.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
-nav.tabs .spacer{flex:1}
+header.top .status{margin-left:auto;max-width:36ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+/* ---- 탭 줄(위에 붙는다) ---- */
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:6;background:var(--bg);margin-inline:calc(var(--gut) * -1);padding-inline:var(--gut);border-bottom:1px solid var(--line);height:var(--tabs-h)}
+nav.tabs .tablist{display:flex;flex-wrap:nowrap;gap:2px;height:100%;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none}
+nav.tabs .tablist::-webkit-scrollbar{display:none}
+nav.tabs button.tab{flex:none;font:inherit;font-weight:500;color:var(--muted);background:none;border:0;border-bottom:2px solid transparent;padding:0 14px;height:100%;white-space:nowrap;cursor:pointer;transition:color .15s}
+nav.tabs button.tab:hover{color:var(--ink)}
+nav.tabs button.tab[aria-selected="true"]{color:var(--ink);font-weight:600;border-bottom-color:var(--accent)}
+nav.tabs button.tab:focus-visible{outline-offset:-3px}
 .status{font-size:12px;color:var(--muted)}
-.status.err{color:var(--bad)}
-.iconbtn{font:inherit;font-size:12px;padding:4px 10px;border-radius:6px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.status.err{color:var(--bad-ink)}
+.iconbtn{font:inherit;font-size:13px;font-weight:500;min-height:32px;padding:4px 12px;border-radius:var(--r1);border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;transition:background-color .15s,border-color .15s,color .15s,transform .1s}
+.iconbtn:hover{border-color:var(--muted)}
 .iconbtn[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .filters{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
-.chip{font:inherit;font-size:12px;padding:4px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--muted);cursor:pointer}
+.chip{font:inherit;font-size:13px;min-height:32px;padding:4px 12px;border-radius:var(--r3);border:1px solid var(--line);background:var(--surface);color:var(--muted);cursor:pointer;transition:background-color .15s,border-color .15s,color .15s,transform .1s}
+.chip:hover{color:var(--ink);border-color:var(--muted)}
 .chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-.filters input[type=search]{font:inherit;font-size:12px;padding:5px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);min-width:0;flex:1 1 160px;max-width:260px}
-button:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible,.card:focus-visible,a:focus-visible,.mapbox:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.filters input[type=search]{font:inherit;font-size:13px;min-height:32px;padding:4px 12px;border-radius:var(--r3);border:1px solid var(--line);background:var(--surface);color:var(--ink);min-width:0;flex:1 1 160px;max-width:260px}
+button:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible,.card:focus-visible,a:focus-visible,.mapbox:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.btn:active,.iconbtn:active,.chip:active,.seg button:active,.mv:active,.fbtn:active,.rt:active,.mark:active,.maplist button:active{transform:scale(.97)}
+.btn:disabled:active,.mv:disabled:active{transform:none}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+.fadein{animation:fadein .16s ease-out}
 /* ---- 칸반 ---- */
 .board{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;align-items:start}
-.col{background:var(--surface2);border:1px solid var(--line);border-radius:10px;display:flex;flex-direction:column;min-height:120px}
+.col{background:var(--surface2);border:1px solid var(--line);border-radius:var(--r2);display:flex;flex-direction:column;min-height:120px}
 .col.drop{outline:2px dashed var(--accent);outline-offset:-4px}
 .col-head{display:flex;align-items:center;gap:8px;padding:10px 12px;border-bottom:1px solid var(--line)}
-.col-head b{font-family:var(--font-display);font-weight:400;font-size:19px}
-.col-head .dot{width:9px;height:9px;border-radius:50%}
-.col-head .cnt{margin-left:auto;color:var(--muted);font-variant-numeric:tabular-nums;font-size:12px}
+.col-head b{font-weight:600;font-size:15px}
+.col-head .dot{width:8px;height:8px;border-radius:var(--r3)}
+.col-head .cnt{margin-left:auto;color:var(--muted);font-size:12px}
 .col-body{display:flex;flex-direction:column;gap:8px;padding:10px}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:9px 10px;box-shadow:var(--shadow);cursor:pointer;display:flex;flex-direction:column;gap:6px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r1);padding:10px 11px;box-shadow:var(--shadow);cursor:pointer;display:flex;flex-direction:column;gap:7px;transition:border-color .15s}
+.card:hover{border-color:var(--muted)}
 .editing .card{cursor:grab}
-.card .t{font-weight:600;line-height:1.35;overflow-wrap:anywhere}
+.card .t{font-weight:500;font-size:14px;line-height:1.4;overflow-wrap:anywhere}
 .card .meta{display:flex;flex-wrap:wrap;gap:4px;align-items:center}
-.tag{font-size:11px;padding:1px 7px;border-radius:4px;background:var(--bg);color:var(--muted);border:1px solid var(--line)}
-.tag.m{color:var(--indigo);font-weight:600}
-.tag.p0{color:#fff;background:#C53A3A;border-color:#C53A3A}
-.tag.p1{color:var(--accent);background:var(--accent-soft);border-color:transparent}
+.tag{font-size:12px;line-height:1.5;padding:0 7px;border-radius:var(--r1);background:var(--bg);color:var(--muted);border:1px solid var(--line)}
+.tag.m{color:var(--ink);font-weight:600}
+.tag.p0{color:var(--surface);background:var(--bad-ink);border-color:var(--bad-ink);font-weight:600}
+.tag.p1{color:var(--accent-ink);background:var(--accent-soft);border-color:transparent}
 .tag.who{margin-left:auto;border:0;background:none;padding:0}
 .card .row{display:flex;align-items:center;gap:4px;justify-content:flex-end}
-.mv{font:inherit;font-size:12px;width:26px;height:24px;border-radius:5px;border:1px solid var(--line);background:var(--surface2);color:var(--ink);cursor:pointer}
+.mv{font:inherit;font-size:12px;width:28px;height:26px;border-radius:var(--r1);border:1px solid var(--line);background:var(--surface2);color:var(--ink);cursor:pointer;transition:border-color .15s,transform .1s}
 .mv:disabled{opacity:.3;cursor:default}
-.empty{color:var(--muted);font-size:12px;text-align:center;padding:8px}
-.addbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px}
-.addbar input,.addbar select,.dlg input,.dlg select,.dlg textarea{font:inherit;color:var(--ink);background:var(--surface2);border:1px solid var(--line);border-radius:6px;padding:6px 8px;min-width:0}
+.empty{color:var(--muted);font-size:13px;text-align:center;padding:8px}
+.addbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:var(--r2);padding:10px}
+.addbar input,.addbar select,.dlg input,.dlg select,.dlg textarea{font:inherit;color:var(--ink);background:var(--surface2);border:1px solid var(--line);border-radius:var(--r1);padding:6px 8px;min-width:0}
 .addbar input{flex:1 1 200px}
-.btn{font:inherit;font-weight:600;padding:6px 14px;border-radius:6px;border:1px solid var(--ink);background:var(--ink);color:var(--bg);cursor:pointer}
+.btn{font:inherit;font-weight:600;font-size:14px;padding:6px 14px;border-radius:var(--r1);border:1px solid var(--ink);background:var(--ink);color:var(--bg);cursor:pointer;transition:background-color .15s,border-color .15s,opacity .15s,transform .1s}
+.btn:hover{opacity:.88}
 .btn.ghost{background:none;color:var(--ink);border-color:var(--line)}
-.btn.danger{background:none;color:var(--bad);border-color:var(--bad)}
+.btn.ghost:hover{opacity:1;border-color:var(--muted)}
+.btn.danger{background:none;color:var(--bad-ink);border-color:var(--bad-ink)}
 .btn:disabled{opacity:.5;cursor:default}
 /* ---- 대시보드 ---- */
 .dash{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:12px}
-.panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:10px;min-width:0}
-.panel h2{margin:0;font-family:var(--font-display);font-weight:400;font-size:21px}
-.panel h2 small{font-family:var(--font-body);font-size:12px;color:var(--muted);margin-left:6px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r2);padding:16px 18px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.panel h2{margin:0;font-weight:700;font-size:16px;line-height:1.4}
+.panel h2 small{font-size:12px;font-weight:400;color:var(--muted);margin-left:8px}
 .span4{grid-column:span 4}.span5{grid-column:span 5}.span7{grid-column:span 7}.span8{grid-column:span 8}.span12{grid-column:span 12}
-.ms{display:grid;grid-template-columns:44px 1fr 88px;gap:4px 10px;align-items:center}
-.ms .name{font-weight:600;color:var(--indigo)}
-.ms .bar{height:12px;border-radius:6px;background:var(--line);overflow:hidden;display:flex}
+.ms{display:grid;grid-template-columns:44px 1fr 96px;gap:4px 10px;align-items:center}
+.ms .name{font-weight:600;color:var(--ink)}
+.ms .bar{height:8px;border-radius:var(--r3);background:var(--line);overflow:hidden;display:flex}
 .ms .bar i{height:100%}
-.ms .pct{text-align:right;font-variant-numeric:tabular-nums;color:var(--muted);font-size:12px}
-.ms .desc{grid-column:2 / 4;color:var(--muted);font-size:12px}
-.ms.current .name::after{content:" ◆";color:var(--accent)}
+.ms .pct{text-align:right;color:var(--muted);font-size:12px}
+.ms .desc{grid-column:2 / 4;color:var(--muted);font-size:13px}
+.ms.current .name{color:var(--accent-ink)}
 .stagecounts{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
-.sc{border-radius:8px;padding:10px;background:var(--surface2);border:1px solid var(--line);min-width:0}
-.sc b{display:block;font-family:var(--font-display);font-weight:400;font-size:28px;font-variant-numeric:tabular-nums}
+.sc{border-radius:var(--r1);padding:10px;background:var(--surface2);border:1px solid var(--line);min-width:0}
+.sc b{display:block;font-weight:700;font-size:24px;line-height:1.25}
 .sc span{font-size:12px;color:var(--muted)}
 .legend{display:flex;flex-wrap:wrap;gap:10px;font-size:12px;color:var(--muted)}
-.legend i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:4px;vertical-align:middle}
+.legend i{display:inline-block;width:9px;height:9px;margin-right:4px;vertical-align:middle}
 .areas{display:flex;flex-direction:column;gap:6px}
-.area{display:grid;grid-template-columns:90px 1fr 48px;gap:8px;align-items:center;font-size:12px}
-.area .bar{height:8px;border-radius:4px;background:var(--line);overflow:hidden;display:flex}
+.area{display:grid;grid-template-columns:90px 1fr 48px;gap:8px;align-items:center;font-size:13px}
+.area .bar{height:6px;border-radius:var(--r3);background:var(--line);overflow:hidden;display:flex}
 .area .bar i{height:100%}
-.area .n{text-align:right;color:var(--muted);font-variant-numeric:tabular-nums}
-.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:13px;margin:0}
+.area .n{text-align:right;color:var(--muted);font-size:12px}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:14px;margin:0}
 .kv dt{color:var(--muted)}
-.kv dd{margin:0;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
-.pill{display:inline-block;font-size:12px;font-weight:600;padding:2px 10px;border-radius:999px}
-.pill.pass{background:color-mix(in srgb,var(--good) 18%,transparent);color:var(--good)}
-.pill.fail{background:color-mix(in srgb,var(--bad) 18%,transparent);color:var(--bad)}
+.kv dd{margin:0;overflow-wrap:anywhere}
+.pill{display:inline-block;font-size:12px;font-weight:600;padding:2px 10px;border-radius:var(--r3)}
+.pill.pass{background:color-mix(in srgb,var(--good) 14%,transparent);color:var(--good-ink)}
+.pill.fail{background:color-mix(in srgb,var(--bad) 14%,transparent);color:var(--bad-ink)}
 .log{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;max-height:340px;overflow:auto}
-.log li{display:grid;grid-template-columns:92px 1fr;gap:8px;font-size:12.5px}
-.log time{color:var(--muted);font-variant-numeric:tabular-nums}
+.log li{display:grid;grid-template-columns:92px 1fr;gap:8px;font-size:13px}
+.log time{color:var(--muted)}
 .focus{display:flex;flex-direction:column;gap:6px}
 .links{display:flex;flex-wrap:wrap;gap:8px}
-.links a{color:var(--indigo);font-weight:600;text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:5px 10px}
+.links a{color:var(--ink);font-weight:500;font-size:14px;text-decoration:none;border:1px solid var(--line);border-radius:var(--r1);padding:5px 10px;transition:border-color .15s}
+.links a:hover{border-color:var(--muted)}
 footer.foot{color:var(--muted);font-size:12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+footer.foot a{color:inherit}
 /* ---- 대화상자 ---- */
-.scrim{position:fixed;inset:0;background:rgba(10,8,20,.45);display:flex;align-items:center;justify-content:center;padding:16px;z-index:10}
-.dlg{background:var(--surface);border:1px solid var(--line);border-radius:12px;width:min(540px,100%);max-height:calc(100dvh - 32px);overflow:auto;padding:16px;display:flex;flex-direction:column;gap:10px;box-shadow:var(--shadow)}
-.dlg h3{margin:0;font-family:var(--font-display);font-weight:400;font-size:22px}
+.scrim{position:fixed;inset:0;background:var(--scrim);display:flex;align-items:center;justify-content:center;padding:16px;z-index:10}
+.dlg{background:var(--surface);border:1px solid var(--line);border-radius:var(--r2);width:min(540px,100%);max-height:calc(100dvh - 32px);overflow:auto;padding:18px;display:flex;flex-direction:column;gap:12px;box-shadow:var(--shadow)}
+.dlg h3{margin:0;font-weight:700;font-size:18px}
 .dlg label{display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--muted)}
 .dlg label.inline{flex-direction:row;align-items:center;gap:6px}
 .dlg .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
@@ -156,98 +158,208 @@ footer.foot{color:var(--muted);font-size:12px;display:flex;flex-wrap:wrap;gap:6p
 .dlg .actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
 .dlg .actions .danger{margin-right:auto}
 .dlg p{margin:0;font-size:13px;color:var(--muted)}
-.dlg .note{white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px;color:var(--ink);background:var(--surface2);border:1px solid var(--line);border-radius:6px;padding:8px}
+.dlg .note{white-space:pre-wrap;overflow-wrap:anywhere;font-size:14px;color:var(--ink);background:var(--surface2);border:1px solid var(--line);border-radius:var(--r1);padding:8px 10px}
 /* ---- 세계관 ---- */
-.lore{display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px;align-items:start}
-.lore .toc{position:sticky;top:calc(12px + env(safe-area-inset-top,0px));display:flex;flex-direction:column;gap:2px;border-left:2px solid var(--line);padding-left:12px}
-.lore .toc b{font-size:11px;letter-spacing:.08em;color:var(--muted);margin-bottom:4px}
-.lore .toc a{color:var(--muted);text-decoration:none;font-size:13px;padding:3px 0;line-height:1.35}
-.lore .toc a:hover,.lore .toc a.on{color:var(--ink)}
-.lore .toc{max-height:calc(100vh - 24px);overflow-y:auto}
-.lore .toc a.sub{font-size:12px;padding:2px 0 2px 10px}
-.lore-bar{margin-bottom:14px}
-.lore h4{font-size:14.5px;margin:18px 0 4px;color:var(--indigo);scroll-margin-top:16px}
-.lore hr{border:0;border-top:1px dashed var(--line);margin:22px 0}
-.lore code{font-size:12.5px;background:var(--surface2);border:1px solid var(--line);border-radius:5px;padding:0 5px}
-.lore article{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:28px clamp(16px,4vw,40px) 36px;min-width:0}
-.lore article>*{max-width:760px}
-.lore h1{font-family:var(--font-display);font-weight:400;font-size:clamp(28px,4vw,38px);line-height:1.15;margin:0 0 14px;text-wrap:balance}
-.lore h2{font-family:var(--font-display);font-weight:400;font-size:26px;margin:36px 0 10px;padding-top:16px;border-top:1px solid var(--line);scroll-margin-top:16px;text-wrap:balance}
-.lore h3{font-size:16.5px;margin:24px 0 6px;scroll-margin-top:16px;text-wrap:balance}
-.lore p,.lore li{font-size:15px;line-height:1.8}
-.lore p{margin:8px 0}
-.lore ul,.lore ol{margin:8px 0;padding-left:22px}
-.lore li{margin:3px 0}
-.lore strong{color:var(--ink)}
-.lore blockquote{margin:14px 0;padding:10px 16px;border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:0 8px 8px 0;font-size:14px;line-height:1.7}
-.lore .tblwrap{overflow-x:auto;margin:10px 0;max-width:760px}
-.lore table{border-collapse:collapse;width:100%;font-size:13.5px}
-.lore th,.lore td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top;line-height:1.55}
-.lore th{background:var(--surface2);font-weight:600;white-space:nowrap}
-.lpill{display:inline-block;font-size:11.5px;font-weight:600;padding:1px 8px;border-radius:999px;vertical-align:1px;margin-right:2px}
-.lpill.ok{background:color-mix(in srgb,var(--good) 16%,transparent);color:var(--good)}
-.lpill.tbd{background:color-mix(in srgb,var(--st-plan) 16%,transparent);color:var(--st-plan)}
-.lpill.new{background:var(--accent-soft);color:var(--accent)}
-.branches{list-style:none;margin:18px 0 6px;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;max-width:none!important;position:relative}
-.branches li{margin:0;background:var(--surface2);border:1px solid var(--line);border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:4px;position:relative;font-size:13px;line-height:1.5}
-.branches li.done{border-color:color-mix(in srgb,var(--accent) 55%,var(--line));background:linear-gradient(180deg,var(--accent-soft),var(--surface2) 70%)}
-.branches .no{font-family:var(--font-display);font-size:26px;line-height:1;color:var(--accent)}
-.branches .rg{font-weight:600;font-size:14px}
+#view-lore{margin-top:-16px}
+.lore-bar{position:sticky;top:calc(var(--tabs-h) + env(safe-area-inset-top,0px));z-index:5;background:var(--bg);margin-inline:calc(var(--gut) * -1);padding:var(--s2) var(--gut);min-height:var(--lbar-h);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:var(--s2)}
+.lore-bar .tocbtn{display:none;margin-left:auto;min-height:40px}
+.toc-pop{display:none}
+.lore{display:grid;grid-template-columns:220px minmax(0,960px);gap:var(--s6);align-items:start;margin-top:var(--s5)}
+.toc{display:flex;flex-direction:column;gap:2px;font-size:14px}
+.toc.side{position:sticky;top:calc(var(--tabs-h) + var(--lbar-h) + var(--s4) + env(safe-area-inset-top,0px));max-height:calc(100dvh - var(--tabs-h) - var(--lbar-h) - var(--s6));overflow-y:auto;scrollbar-width:thin}
+.toc a{display:block;color:var(--muted);text-decoration:none;padding:5px 10px;border-radius:var(--r1);line-height:1.4;overflow-wrap:anywhere;transition:color .15s,background-color .15s}
+.toc a:hover{color:var(--ink);background:var(--surface2)}
+.toc a.par{color:var(--ink);font-weight:600}
+.toc a.on{color:var(--ink);font-weight:600;background:var(--surface2)}
+.toc .subs{display:none;flex-direction:column;gap:1px;margin:0 0 var(--s1) var(--s3);padding-left:var(--s2);border-left:1px solid var(--line)}
+.toc .subs.open{display:flex}
+.toc .subs a{font-size:13px;padding:3px 8px}
+.lore-doc{min-width:0;font-size:17px;line-height:1.85}
+.lore-doc>*{max-width:760px}
+.lore-doc>.wide{max-width:960px}
+.lore-doc :is(p,li,blockquote){max-width:68ch}
+.lore-doc :is(h1,h2,h3,h4),.lore-doc [data-term]{scroll-margin-top:calc(var(--tabs-h) + var(--lbar-h) + var(--s4) + env(safe-area-inset-top,0px))}
+.lore-doc h1{font-family:var(--font-serif);font-weight:700;font-size:clamp(30px,4vw,40px);line-height:1.25;margin:0 0 var(--s4);text-wrap:balance}
+.lore-doc h2{font-family:var(--font-serif);font-weight:700;font-size:27px;line-height:1.3;margin:var(--s6) 0 var(--s3);padding-top:var(--s5);border-top:1px solid var(--line);text-wrap:balance}
+.lore-doc h3{font-weight:600;font-size:19px;line-height:1.4;margin:var(--s5) 0 var(--s2);text-wrap:balance}
+.lore-doc h4{font-weight:600;font-size:16px;line-height:1.5;margin:var(--s4) 0 var(--s1)}
+.lore-doc p{margin:var(--s3) 0}
+.lore-doc ul,.lore-doc ol{margin:var(--s3) 0;padding-left:22px}
+.lore-doc li{margin:var(--s1) 0}
+.lore-doc strong{font-weight:600}
+.lore-doc hr{border:0;border-top:1px solid var(--line);margin:var(--s5) 0}
+.lore-doc code{font:13px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;background:var(--surface2);border-radius:var(--r1);padding:1px 5px;overflow-wrap:anywhere}
+.lore-doc blockquote{font-family:var(--font-serif);font-size:18px;line-height:1.8;margin:var(--s5) 0;padding:0 0 0 var(--s5);border-left:1px solid var(--line)}
+.lore-doc a{color:inherit}
+.lore-doc a.term{text-decoration:underline dotted;text-decoration-color:var(--accent);text-underline-offset:4px;text-decoration-thickness:1.5px;transition:color .15s}
+.lore-doc a.term:hover{color:var(--accent-ink)}
+.lore-doc .lead{font-family:var(--font-serif);font-size:20px;line-height:1.8;margin:var(--s4) 0 var(--s5)}
+.lore-doc .tblwrap{margin:var(--s4) 0}
+.lore-doc table{border-collapse:collapse;width:100%}
+.lore-doc th,.lore-doc td{padding:10px 12px 10px 0;text-align:left;vertical-align:top;line-height:1.6;border-bottom:1px solid var(--line)}
+.lore-doc th{font-size:13px;font-weight:600;color:var(--muted);padding-block:6px}
+.lore-doc td{font-size:15px;overflow-wrap:anywhere}
+.lpill{display:inline-block;font-family:var(--font-body);font-size:12px;font-weight:500;line-height:1.5;padding:0 7px;border-radius:var(--r3);vertical-align:1px;margin-right:2px;white-space:nowrap}
+.lpill.ok{background:color-mix(in srgb,var(--good) 10%,transparent);color:var(--good-ink)}
+.lpill.tbd{background:var(--surface2);color:var(--muted)}
+.lpill.new{background:var(--accent-soft);color:var(--accent-ink)}
+/* 블록: lead · facts · cards · timeline · beats · dialogue · note · person · graph · terms · chapters */
+.lfacts{display:grid;grid-template-columns:minmax(88px,auto) minmax(0,1fr);gap:0 var(--s4);margin:var(--s4) 0;font-size:16px}
+.lfacts>div{display:grid;grid-template-columns:subgrid;grid-column:1 / -1;padding:var(--s2) 0;border-bottom:1px solid var(--line)}
+.lfacts dt{color:var(--muted);font-size:14px;font-weight:500;line-height:1.9}
+.lfacts dd{margin:0;line-height:1.7;min-width:0;overflow-wrap:anywhere}
+.lcards{list-style:none;margin:var(--s4) 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:var(--s3);align-items:start}
+.lore-doc .lcards{padding:0}
+.lcards li{margin:0;max-width:none;background:var(--surface);border:1px solid var(--line);border-radius:var(--r2);padding:var(--s3) var(--s4) var(--s4);font-size:15px;line-height:1.65;display:flex;flex-direction:column;gap:var(--s1);min-width:0}
+.lcards .ct{font-weight:600;font-size:16px;line-height:1.4}
+.lcards .cg{align-self:flex-start;font-size:12px;color:var(--muted);background:var(--surface2);border-radius:var(--r3);padding:0 8px;line-height:1.6}
+.lcards .cb{margin-top:2px;overflow-wrap:anywhere}
+.ltime,.lbeats{list-style:none;margin:var(--s4) 0;padding:0}
+.lore-doc .ltime,.lore-doc .lbeats{padding:0}
+.ltime,.lbeats{display:grid;grid-template-columns:fit-content(9em) minmax(0,1fr);column-gap:var(--s4)}
+.ltime li{margin:0;max-width:none;display:grid;grid-template-columns:subgrid;grid-column:1 / -1}
+.ltime .tw{font-size:14px;font-weight:600;color:var(--accent-ink);text-align:right;line-height:1.9;padding-top:1px}
+.ltime .tb{border-left:1px solid var(--line);padding:0 0 var(--s4) var(--s4);font-size:16px;line-height:1.7;min-width:0}
+.ltime li:last-child .tb{padding-bottom:0}
+.ltime .tt,.lbeats .bt{display:block;font-weight:600}
+.lbeats li{margin:0;max-width:none;display:grid;grid-template-columns:subgrid;grid-column:1 / -1;padding:var(--s3) 0;border-top:1px solid var(--line);font-size:16px;line-height:1.7}
+.lbeats li:last-child{border-bottom:1px solid var(--line)}
+.lbeats .bl{font-size:14px;font-weight:600;color:var(--accent-ink);line-height:1.9}
+.lbeats .bb{min-width:0}
+.ldlg{margin:var(--s4) 0;display:grid;grid-template-columns:minmax(64px,auto) minmax(0,1fr);gap:var(--s2) var(--s4)}
+.ldlg>div{display:grid;grid-template-columns:subgrid;grid-column:1 / -1}
+.ldlg .who{font-size:14px;font-weight:600;color:var(--muted);line-height:2.1}
+.ldlg .say{font-family:var(--font-serif);font-size:17px;line-height:1.8;max-width:60ch}
+.ldlg>.dir{display:block;font-style:italic;color:var(--muted);font-size:15px;line-height:1.7}
+.lnote,.lbox{margin:var(--s4) 0;background:var(--surface2);border-radius:var(--r2);padding:var(--s3) var(--s4);font-size:16px;line-height:1.75}
+.lnote .nt{display:block;font-weight:700;margin-bottom:2px}
+.lnote>:last-child,.lbox>:last-child{margin-bottom:0}
+.lnote p,.lbox p{margin:var(--s2) 0}
+.lperson{margin:var(--s4) 0;display:grid;grid-template-columns:64px minmax(0,1fr);gap:var(--s2) var(--s4);align-items:start}
+.lperson .mono{width:64px;height:64px;border-radius:var(--r2);background:var(--surface2);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-family:var(--font-serif);font-weight:700;font-size:30px;line-height:1}
+.lperson .ph{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s1) var(--s2)}
+.lperson .pn{font-family:var(--font-serif);font-weight:700;font-size:22px;line-height:1.35}
+.lperson .pg{font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:var(--r3);padding:0 9px;line-height:1.7}
+.lperson .po{margin:2px 0 0;font-size:16px;line-height:1.65;color:var(--muted)}
+.lperson .pq{grid-column:1 / -1;margin:var(--s1) 0 0;padding:0;border:0;font-family:var(--font-serif);font-size:19px;line-height:1.7}
+.lgraph{margin:var(--s5) 0}
+.lgraph svg{display:block;width:100%;height:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r2)}
+.lgraph .ge line{stroke:var(--muted);stroke-width:1.4;transition:opacity .15s}
+.lgraph .ge text{font:500 18px var(--font-body);fill:var(--muted);text-anchor:middle;dominant-baseline:central;paint-order:stroke;stroke:var(--surface);stroke-width:7px;stroke-linejoin:round;transition:opacity .15s}
+.lgraph .k-blood line{stroke-width:4.5;stroke:var(--ink)}
+.lgraph .k-teach line{stroke-width:2.4;stroke:var(--ink)}
+.lgraph .k-oath line{stroke-width:2.4;stroke-dasharray:7 7}
+.lgraph .k-mirror line{stroke-width:2.4;stroke-dasharray:22 10}
+.lgraph .gn{cursor:default;transition:opacity .15s;outline:none}
+.lgraph .gn[data-to]{cursor:pointer}
+.lgraph .gn rect{fill:var(--surface2);stroke:var(--gc,var(--muted));stroke-width:2.5;transition:fill .15s}
+.lgraph .gn text{font:600 21px var(--font-body);fill:var(--ink);text-anchor:middle;dominant-baseline:central}
+.lgraph .gn:hover rect,.lgraph .gn.on rect{fill:var(--surface)}
+.lgraph .gn:focus-visible rect{stroke:var(--accent);stroke-width:5}
+.lgraph svg.hl .gn:not(.on),.lgraph svg.hl .ge:not(.on){opacity:.22}
+.lgraph svg.hl .ge.on text{fill:var(--ink)}
+.g1{--gc:var(--st-dev)}.g2{--gc:var(--st-art)}.g3{--gc:var(--st-done)}.g4{--gc:var(--st-qa)}.g5{--gc:var(--st-plan)}.g6{--gc:var(--muted)}
+.glegend{list-style:none;margin:var(--s2) 0 0;padding:0;display:flex;flex-wrap:wrap;gap:var(--s1) var(--s4);font-size:13px;color:var(--muted)}
+.lore-doc .glegend,.lore-doc .glist{padding:0}
+.glegend li{margin:0;display:flex;align-items:center;gap:6px;max-width:none}
+.glegend i{display:inline-block;width:12px;height:12px;border-radius:var(--r1);border:2.5px solid var(--gc,var(--muted))}
+.glegend svg{width:30px;height:10px;border:0;background:none;border-radius:0}
+.glegend .ge line{transition:none}
+.glist{display:none;list-style:none;margin:var(--s3) 0 0;font-size:15px;line-height:1.6}
+.glist li{margin:0;max-width:none;padding:var(--s2) 0;border-bottom:1px solid var(--line)}
+.glist .gk{color:var(--muted);font-size:13px;margin-left:6px}
+.gloss-bar{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s2) var(--s3);margin:var(--s4) 0}
+.gloss-bar label{font-size:14px;font-weight:600}
+.gloss-bar input[type=search]{font:inherit;font-size:15px;min-height:40px;padding:4px 14px;border-radius:var(--r3);border:1px solid var(--line);background:var(--surface);color:var(--ink);flex:1 1 200px;max-width:320px;min-width:0}
+.gloss-bar .filters{flex-basis:100%}
+.gloss-bar .chip{min-height:36px}
+.lore-doc .empty{font-size:15px;text-align:left;padding:var(--s3) 0;max-width:none}
+.lore-doc.filtering>:not(.gloss-bar,.lterms,#glossNone){display:none}
+.lterms{margin:var(--s3) 0}
+.lterms>div{padding:var(--s3) var(--s2);margin-inline:calc(var(--s2) * -1);border-bottom:1px solid var(--line);border-radius:var(--r1);transition:background-color .15s}
+.lterms>div.hit{background:var(--accent-soft)}
+.lterms dt{display:flex;flex-wrap:wrap;align-items:baseline;gap:var(--s1) var(--s2);font-weight:700;font-size:18px;line-height:1.5}
+.lterms .tc{font-size:12px;font-weight:500;color:var(--muted);background:var(--surface2);border-radius:var(--r3);padding:0 8px;line-height:1.6}
+.lterms>div.hit .tc{background:var(--surface)}
+.lterms dd{margin:2px 0 0;font-size:16px;line-height:1.75;max-width:68ch}
+.lterms .rel{display:block;margin-top:2px;font-size:14px;color:var(--muted)}
+.lterms .rel a{color:var(--ink);text-underline-offset:3px;text-decoration-color:var(--line)}
+.lterms .rel a:hover{text-decoration-color:var(--accent)}
+#termTip{position:absolute;z-index:8;max-width:min(320px,calc(100vw - 24px));background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:var(--r2);box-shadow:var(--shadow);padding:var(--s2) var(--s3);font-size:14px;line-height:1.6;pointer-events:none}
+#termTip b{font-weight:700;margin-right:6px}
+#termTip .tc{font-size:12px;font-style:normal;color:var(--muted)}
+#termTip span{display:block}
+.branches{list-style:none;margin:var(--s5) 0 var(--s2);display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.lore-doc .branches{padding:0}
+.branches li{margin:0;max-width:none;background:var(--surface);border:1px solid var(--line);border-radius:var(--r2);padding:12px;display:flex;flex-direction:column;gap:4px;font-size:14px;line-height:1.5}
+.branches li.done{border-color:color-mix(in srgb,var(--accent) 55%,var(--line));background:var(--accent-soft)}
+.branches .no{font-family:var(--font-serif);font-weight:700;font-size:22px;line-height:1.2;color:var(--accent-ink)}
+.branches .rg{font-weight:600;font-size:15px}
 .branches .th{color:var(--muted)}
-.branches .bo{font-size:12.5px}
-.branches .gi{font-weight:600;color:var(--indigo)}
+.branches .bo{font-size:13px}
+.branches .gm{font-weight:600}
+.branches li.done .lpill.ok{background:var(--surface)}
+.lore-end{display:block;height:1px}
+.skel{display:flex;flex-direction:column;gap:14px;padding-top:var(--s2)}
+.skel i{display:block;height:14px;border-radius:var(--r1);background:var(--surface2);max-width:68ch}
+.skel i.h1{height:34px;width:min(320px,70%);margin-bottom:var(--s2)}
+.skel i.h2{height:24px;width:min(220px,50%);margin-top:var(--s4)}
+.skel i.sh{width:min(40ch,60%)}
+.lore-err{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s3);font-size:15px;color:var(--muted)}
 /* ---- 게임 정보 ---- */
 .gi{display:flex;flex-direction:column;gap:12px}
 .gi-bar{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;justify-content:space-between}
-.seg{display:flex;flex-wrap:wrap;gap:2px;padding:3px;background:var(--surface2);border:1px solid var(--line);border-radius:10px}
-.seg button{font:inherit;font-weight:600;color:var(--muted);background:none;border:0;border-radius:7px;min-height:40px;padding:0 14px;cursor:pointer}
-.seg button[aria-selected="true"]{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
-.gi .chip{min-height:40px;padding:0 14px;font-size:13px}
-.gi .filters input[type=search]{min-height:40px;padding:0 14px;font-size:13px}
+.seg{display:flex;flex-wrap:wrap;gap:2px;padding:3px;background:var(--surface2);border:1px solid var(--line);border-radius:var(--r2)}
+.seg button{font:inherit;font-size:14px;font-weight:500;color:var(--muted);background:none;border:0;border-radius:var(--r1);min-height:38px;padding:0 14px;cursor:pointer;transition:color .15s,background-color .15s,transform .1s}
+.seg button:hover{color:var(--ink)}
+.seg button[aria-selected="true"]{background:var(--surface);color:var(--ink);font-weight:600;box-shadow:var(--shadow)}
+.gi .chip{min-height:40px;padding:0 14px}
+.gi .filters input[type=search]{min-height:40px;padding:0 14px}
 #giBody{display:flex;flex-direction:column;gap:10px;min-width:0}
-.gi-h{font-family:var(--font-display);font-weight:400;font-size:21px;margin:10px 0 0;display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px}
-.gi-h small{font-family:var(--font-body);font-size:12px;color:var(--muted)}
-.gi-sub{grid-column:1 / -1;margin:6px 0 -4px;font-size:12px;font-weight:600;color:var(--muted)}
-.gi .tblwrap{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:10px}
-.gt{border-collapse:collapse;width:100%;font-size:13px}
+.gi-h{font-weight:700;font-size:17px;line-height:1.4;margin:12px 0 0;display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px}
+.gi-h small{font-size:12px;font-weight:400;color:var(--muted)}
+.gi-sub{grid-column:1 / -1;margin:6px 0 -4px;font-size:13px;font-weight:600;color:var(--muted)}
+.gi .tblwrap{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r2)}
+.gt{border-collapse:collapse;width:100%;font-size:14px}
 .gt th{background:var(--surface2);font-size:12px;font-weight:600;color:var(--muted);text-align:left;white-space:nowrap;padding:8px 12px}
 .gt td{padding:8px 12px;border-top:1px solid var(--line);vertical-align:top;line-height:1.55;overflow-wrap:break-word}
 .gt td.ttl{min-width:190px;width:26%}
 .gt td.nw{white-space:nowrap}
 .gt small,.gcard h4 small{display:block;font-weight:400;font-size:12px;color:var(--muted)}
-.qid{font-size:11px;font-weight:600;color:var(--indigo);margin-right:6px;font-variant-numeric:tabular-nums}
-.tag.ok{color:var(--good)}
+.qid{font-size:12px;font-weight:600;color:var(--muted);margin-right:6px}
+.tag.ok{color:var(--good-ink)}
 .tag.dk{color:var(--bg);background:var(--ink);border-color:var(--ink)}
 .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px;align-items:start}
 .cols3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;align-items:start}
 .gcol{display:flex;flex-direction:column;gap:10px;min-width:0}
 .gcol .gi-h{margin-top:0}
-.gcard{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.gcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r2);padding:12px 14px;display:flex;flex-direction:column;gap:8px;min-width:0}
 .gcard h4{margin:0;font-size:15px;font-weight:600;line-height:1.35;display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px}
 .gcard h4 .tag{font-weight:400}
+.gcard h4 .tag.m{font-weight:600}
 .gcard h4 .tag:first-of-type{margin-left:auto}
 .gcard h4 small{order:9;flex-basis:100%}
-.gcard p{margin:0;font-size:13px}
-.gcard p.sub{color:var(--muted);font-size:12.5px;line-height:1.6}
+.gcard p{margin:0;font-size:14px}
+.gcard p.sub{color:var(--muted);font-size:13px;line-height:1.6}
 .gcard .kv{grid-template-columns:auto minmax(0,1fr);gap:4px 12px}
-.gcard ul{margin:0;padding-left:18px;font-size:13px}
+.gcard ul{margin:0;padding-left:18px;font-size:14px}
 .facts{display:flex;flex-wrap:wrap;gap:4px}
-.fact{font-size:12px;padding:2px 8px;border-radius:6px;background:var(--surface2);border:1px solid var(--line);font-variant-numeric:tabular-nums}
+.fact{font-size:12px;padding:2px 8px;border-radius:var(--r1);background:var(--surface2);border:1px solid var(--line)}
 .fact i{font-style:normal;color:var(--muted);margin-right:5px}
-.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r1);overflow:hidden}
 .stats div{background:var(--surface2);padding:5px 8px;display:flex;align-items:baseline;justify-content:space-between;gap:6px;min-width:0}
-.stats span{font-size:11.5px;color:var(--muted);white-space:nowrap}
-.stats b{font-weight:600;font-size:13px;font-variant-numeric:tabular-nums}
+.stats span{font-size:12px;color:var(--muted);white-space:nowrap}
+.stats b{font-weight:600;font-size:13px}
 .gcard ul.sk{list-style:none;padding:0;display:flex;flex-direction:column;gap:4px}
 .sk li{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 6px}
 .sk li>span:last-child{color:var(--muted);font-size:12px;flex-basis:100%}
 /* 지도 */
 .maps{display:grid;grid-template-columns:220px minmax(0,1fr);gap:12px;align-items:start}
 .maplist{display:flex;flex-direction:column;gap:2px;min-width:0}
-.maplist b{font-size:11px;letter-spacing:.08em;color:var(--muted);margin:8px 0 2px;padding-left:10px;white-space:nowrap}
+.maplist b{font-size:12px;font-weight:600;color:var(--muted);margin:8px 0 2px;padding-left:10px;white-space:nowrap}
 .maplist b:first-child{margin-top:0}
-.maplist button{font:inherit;text-align:left;color:var(--ink);background:none;border:1px solid transparent;border-radius:8px;min-height:40px;padding:4px 10px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:8px}
-.maplist button small{color:var(--muted);font-size:11.5px;font-weight:400;white-space:nowrap}
+.maplist button{font:inherit;font-size:14px;text-align:left;color:var(--ink);background:none;border:1px solid transparent;border-radius:var(--r1);min-height:40px;padding:4px 10px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:8px;transition:background-color .15s,border-color .15s,transform .1s}
+.maplist button small{color:var(--muted);font-size:12px;font-weight:400;white-space:nowrap}
 .maplist button:hover{background:var(--surface2)}
 .maplist button[aria-pressed="true"]{background:var(--surface);border-color:var(--accent);font-weight:600}
 .mapview{gap:10px}
@@ -256,56 +368,56 @@ footer.foot{color:var(--muted);font-size:12px;display:flex;flex-wrap:wrap;gap:6p
 .maphead .spacer{flex:1}
 .zb{width:40px;height:40px;padding:0;font-size:18px;line-height:1}
 .zb[aria-disabled="true"]{opacity:.35;cursor:default}
-.mapbox{display:flex;overflow:auto;max-height:78vh;border:1px solid var(--line);border-radius:8px;background:var(--surface2);overscroll-behavior-x:contain}
+.mapbox{display:flex;overflow:auto;max-height:78vh;border:1px solid var(--line);border-radius:var(--r1);background:var(--surface2);overscroll-behavior-x:contain}
 .mapbox canvas{display:block;flex:none;margin:auto;image-rendering:pixelated;outline:1px solid var(--line)}
-.mapsel{margin:0;font-size:13px;display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px}
+.mapsel{margin:0;font-size:14px;display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px}
 .mapsel span{color:var(--muted)}
-i.mk{display:inline-block;flex:none;width:10px;height:10px;margin:0 3px;border-radius:50%;box-shadow:0 0 0 1.5px var(--mp-ring),0 0 0 2.5px var(--line);vertical-align:middle}
-i.mk.sq{border-radius:2px}
-i.mk.di{border-radius:1px;transform:rotate(45deg) scale(.9)}
+i.mk{display:inline-block;flex:none;width:10px;height:10px;margin:0 3px;border-radius:var(--r3);box-shadow:0 0 0 1.5px var(--mp-ring),0 0 0 2.5px var(--line);vertical-align:middle}
+i.mk.sq{border-radius:0}
+i.mk.di{border-radius:0;transform:rotate(45deg) scale(.9)}
 .marks{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px 14px;align-items:start}
 .mgroup{display:flex;flex-direction:column;gap:2px;min-width:0}
 .mgroup>b{font-size:12px;font-weight:600;color:var(--muted);padding-left:8px}
-.mark{font:inherit;font-size:13px;text-align:left;color:var(--ink);background:none;border:1px solid transparent;border-radius:6px;min-height:40px;padding:4px 8px;cursor:pointer;display:flex;align-items:center;gap:8px;min-width:0}
+.mark{font:inherit;font-size:14px;text-align:left;color:var(--ink);background:none;border:1px solid transparent;border-radius:var(--r1);min-height:40px;padding:4px 8px;cursor:pointer;display:flex;align-items:center;gap:8px;min-width:0;transition:background-color .15s,border-color .15s,transform .1s}
 .mark span{flex:1;min-width:0;overflow-wrap:anywhere;line-height:1.35}
 .mark small{display:block;color:var(--muted);font-size:12px}
-.mark em{font-style:normal;color:var(--muted);font-size:11.5px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.mark em{font-style:normal;color:var(--muted);font-size:12px;white-space:nowrap}
 .mark:hover{background:var(--surface2)}
 .mark[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent)}
 /* ---- 리소스 ---- */
-.rs-lock{display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
-.rs-lock input[type=password]{font:inherit;color:var(--ink);background:var(--surface2);border:1px solid var(--line);border-radius:6px;padding:0 10px;min-height:40px;flex:1 1 180px;max-width:280px}
+.rs-lock{display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:var(--r2);padding:10px 12px}
+.rs-lock input[type=password]{font:inherit;color:var(--ink);background:var(--surface2);border:1px solid var(--line);border-radius:var(--r1);padding:0 10px;min-height:40px;flex:1 1 180px;max-width:280px}
 .rs-lock label{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)}
 .rs-lock .btn,.rs-lock .iconbtn{min-height:40px}
-.rs-lock .msg{font-size:12.5px;color:var(--muted)}
-.rs-lock .msg.err{color:var(--bad)}
+.rs-lock .msg{font-size:13px;color:var(--muted)}
+.rs-lock .msg.err{color:var(--bad-ink)}
 .rs-lock .spacer{flex:1}
 .rs .filters .iconbtn{min-height:40px;padding:0 14px}
 .rs .filters .iconbtn:first-of-type{margin-left:auto}
 #rsBody{display:flex;flex-direction:column;gap:10px;min-width:0}
-.rgroup{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.rgroup{background:var(--surface);border:1px solid var(--line);border-radius:var(--r2);padding:12px 14px;display:flex;flex-direction:column;gap:10px;min-width:0}
 .rgroup h4{margin:0;font-size:15px;font-weight:600;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px}
 .rkey{font:12px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;font-weight:400;color:var(--muted);overflow-wrap:anywhere}
-.rgroup h4 .cnt{margin-left:auto;font-size:12px;font-weight:400;color:var(--muted);font-variant-numeric:tabular-nums}
+.rgroup h4 .cnt{margin-left:auto;font-size:12px;font-weight:400;color:var(--muted)}
 .rtiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(124px,1fr));gap:8px}
-.rt{font:inherit;color:var(--ink);text-align:left;background:var(--surface2);border:1px solid var(--line);border-radius:8px;padding:6px;cursor:pointer;display:flex;flex-direction:column;gap:5px;min-width:0}
+.rt{font:inherit;color:var(--ink);text-align:left;background:var(--surface2);border:1px solid var(--line);border-radius:var(--r1);padding:6px;cursor:pointer;display:flex;flex-direction:column;gap:5px;min-width:0;transition:border-color .15s,transform .1s}
 .rt:hover{border-color:var(--accent)}
-.stage{border-radius:6px;display:flex;align-items:center;justify-content:center;overflow:hidden;
+.stage{border-radius:var(--r1);display:flex;align-items:center;justify-content:center;overflow:hidden;
   background:repeating-conic-gradient(var(--surface) 0 25%,color-mix(in srgb,var(--line) 70%,var(--surface)) 0 50%) 0 0/16px 16px}
-.bg-dark .stage{background:#1B1930}
-.bg-light .stage{background:#F4F1E8}
+.bg-dark .stage{background:#1B1D21}
+.bg-light .stage{background:#F4F4F1}
 .rt .stage{height:104px}
 canvas.rsc{display:block;flex:none;image-rendering:pixelated}
 canvas.rsc.smooth{image-rendering:auto}
-.stage .lk{font-size:11.5px;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:1px 9px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.rt .nm{font-size:12.5px;font-weight:600;overflow-wrap:anywhere;line-height:1.3}
-.rt .nm small{display:block;font-weight:400;font-size:11.5px;color:var(--muted)}
-.rt .mt{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+.stage .lk{font-size:12px;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:var(--r3);padding:1px 9px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rt .nm{font-size:13px;font-weight:600;overflow-wrap:anywhere;line-height:1.3}
+.rt .nm small{display:block;font-weight:400;font-size:12px;color:var(--muted)}
+.rt .mt{font-size:12px;color:var(--muted)}
 .rt .tg{display:flex;flex-wrap:wrap;gap:3px}
-.tag.warn{color:var(--accent);background:var(--accent-soft);border-color:transparent}
-.tag.bad{color:var(--bad)}
+.tag.warn{color:var(--accent-ink);background:var(--accent-soft);border-color:transparent}
+.tag.bad{color:var(--bad-ink)}
 .rsp{min-height:32px;margin:1px 2px 1px 0}
-.rsp[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.rsp[aria-pressed="true"]{background:var(--accent-ink);border-color:var(--accent-ink);color:var(--bg)}
 .rsp:disabled{opacity:.45;cursor:default}
 .dlg.wide{width:min(880px,100%)}
 .rd{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;align-items:start}
@@ -314,117 +426,160 @@ canvas.rsc.smooth{image-rendering:auto}
 .rd-view canvas{margin:auto}
 .rd-ctl{display:flex;flex-wrap:wrap;gap:4px;align-items:center}
 .rd-ctl .iconbtn{min-height:36px;min-width:40px}
-.rd-ctl .pos{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;margin:0 6px}
+.rd-ctl .pos{font-size:12px;color:var(--muted);margin:0 6px}
 .rd-ctl .spacer{flex:1}
 .rd-frames{display:flex;flex-wrap:wrap;gap:3px}
-.fbtn{font:inherit;font-size:12px;min-width:34px;min-height:34px;padding:2px 6px;border-radius:6px;border:1px solid var(--line);background:var(--surface2);color:var(--ink);cursor:pointer;font-variant-numeric:tabular-nums;line-height:1.2}
-.fbtn small{display:block;font-size:10.5px;color:var(--muted)}
+.fbtn{font:inherit;font-size:12px;min-width:34px;min-height:34px;padding:2px 6px;border-radius:var(--r1);border:1px solid var(--line);background:var(--surface2);color:var(--ink);cursor:pointer;line-height:1.2;transition:border-color .15s,transform .1s}
+.fbtn small{display:block;font-size:12px;color:var(--muted)}
 .fbtn.hit{border-color:var(--bad);box-shadow:inset 0 -3px 0 var(--bad)}
 .fbtn[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .fbtn[aria-pressed="true"] small{color:inherit}
-.rd .kv{font-size:13px;gap:5px 12px}
+.rd .kv{font-size:14px;gap:5px 12px}
 .rd .kv ul{margin:0;padding-left:18px}
-.sw{display:inline-block;width:11px;height:11px;border-radius:3px;border:1px solid var(--line);vertical-align:-1px;margin-right:5px}
+.sw{display:inline-block;width:11px;height:11px;border:1px solid var(--line);vertical-align:-1px;margin-right:5px}
 /* 게임 정보에 얹는 작은 그림(리소스가 열려 있을 때만) */
-.rth{flex:none;display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;margin-right:6px;border:1px solid var(--line);border-radius:8px;background:var(--surface2);cursor:pointer;overflow:hidden;vertical-align:middle}
+.rth{flex:none;display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;margin-right:6px;border:1px solid var(--line);border-radius:var(--r1);background:var(--surface2);cursor:pointer;overflow:hidden;vertical-align:middle;transition:border-color .15s}
 .rth:hover{border-color:var(--accent)}
 .gt td .rth{float:left;margin:0 10px 2px 0}
 .ovr{display:flex;flex-wrap:wrap;gap:4px}
 .gcard .links{gap:6px}
-.gcard .links button{font:inherit;font-size:12px;font-weight:600;color:var(--indigo);background:none;border:1px solid var(--line);border-radius:6px;min-height:32px;padding:0 10px;cursor:pointer}
+.gcard .links button{font:inherit;font-size:13px;font-weight:500;color:var(--ink);background:none;border:1px solid var(--line);border-radius:var(--r1);min-height:32px;padding:0 10px;cursor:pointer;transition:border-color .15s,transform .1s}
+.gcard .links button:hover{border-color:var(--muted)}
+.gcard .links button:active{transform:scale(.97)}
 .lorec p{white-space:pre-line;line-height:1.7}
-@media (max-width:720px){.rd{grid-template-columns:minmax(0,1fr)}.rtiles{grid-template-columns:repeat(auto-fill,minmax(104px,1fr))}}
 /* ---- 테스트 빌드 ---- */
 .builds{max-width:640px}
 .builds .pre{white-space:pre-wrap}
 .files{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
-.files li{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:2px 8px;align-items:center;background:var(--surface2);border:1px solid var(--line);border-radius:8px;padding:8px 10px}
-.files b{overflow-wrap:anywhere}
-.files .sz{color:var(--muted);font-size:12px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.files li{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:2px 8px;align-items:center;background:var(--surface2);border:1px solid var(--line);border-radius:var(--r1);padding:8px 10px}
+.files b{font-weight:600;overflow-wrap:anywhere}
+.files .sz{color:var(--muted);font-size:12px;white-space:nowrap}
 .files small{grid-column:2 / 4;color:var(--muted);font-size:12px}
 .builds a.btn{align-self:flex-start;display:inline-flex;align-items:center;min-height:40px;padding:6px 18px;text-decoration:none}
 /* ---- 알파 피드백 ---- */
 .fb{display:flex;flex-direction:column;gap:12px}
-.fb .chip{min-height:40px;padding:0 14px;font-size:13px}
-.fb .filters input[type=search]{min-height:40px;padding:0 14px;font-size:13px}
+.fb .chip{min-height:40px;padding:0 14px}
+.fb .filters input[type=search]{min-height:40px;padding:0 14px}
 .fb .filters .iconbtn{min-height:40px;padding:0 14px;margin-left:auto}
 .fb-list{display:flex;flex-direction:column;gap:8px}
-.fbi{background:var(--surface);border:1px solid var(--line);border-radius:10px;min-width:0}
+.fbi{background:var(--surface);border:1px solid var(--line);border-radius:var(--r2);min-width:0}
 .fbi.done summary b,.fbi.done summary>p{text-decoration:line-through;text-decoration-thickness:1.5px;color:var(--muted)}
-.fbi.done{opacity:.85}
 s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
 .fbi[open]{box-shadow:var(--shadow)}
-.fbi summary{list-style:none;cursor:pointer;padding:12px 14px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:4px 10px;align-items:baseline;border-radius:10px}
+.fbi summary{list-style:none;cursor:pointer;padding:12px 14px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:4px 10px;align-items:baseline;border-radius:var(--r2)}
 .fbi summary::-webkit-details-marker{display:none}
-.fbi summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.fbi summary b{font-size:15px;line-height:1.4;overflow-wrap:anywhere}
+.fbi summary b{font-size:15px;font-weight:600;line-height:1.4;overflow-wrap:anywhere}
 .fbi summary .tags{display:flex;flex-wrap:wrap;gap:4px;justify-content:flex-end}
-.fbi summary p{grid-column:2 / 4;margin:0;color:var(--muted);font-size:13px;line-height:1.6}
-.fbi summary .qid{margin:0;font-size:12px}
-.fbb{border-top:1px solid var(--line);padding:12px 14px 14px;display:grid;grid-template-columns:88px minmax(0,1fr);gap:10px 14px;font-size:13.5px;line-height:1.65}
+.fbi summary p{grid-column:2 / 4;margin:0;color:var(--muted);font-size:14px;line-height:1.6}
+.fbi summary .qid{margin:0}
+.fbb{border-top:1px solid var(--line);margin:0;padding:12px 14px 14px;display:grid;grid-template-columns:88px minmax(0,1fr);gap:10px 14px;font-size:14px;line-height:1.65}
 .fbb dt{color:var(--muted);font-size:12px;font-weight:600;padding-top:2px}
 .fbb dd{margin:0;min-width:0;overflow-wrap:anywhere}
 .fbb ol,.fbb ul{margin:0;padding-left:20px}
 .fbb li{margin:2px 0}
-.fbb dd.ask{background:var(--accent-soft);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:8px 12px}
-.fbb code{font-size:12px;background:var(--surface2);border:1px solid var(--line);border-radius:4px;padding:0 4px}
-.tag.st-recorded{color:var(--st-plan)}.tag.st-ready{color:var(--st-dev)}.tag.st-doing{color:var(--st-qa)}.tag.st-done{color:var(--good)}.tag.st-hold{color:var(--muted)}
-.tag.need{color:var(--accent);background:var(--accent-soft);border-color:transparent}
-@media (max-width:720px){
-  .fbi summary{grid-template-columns:auto minmax(0,1fr)}
-  .fbi summary .tags{grid-column:1 / 3;justify-content:flex-start}
-  .fbi summary p{grid-column:1 / 3}
-  .fbb{grid-template-columns:1fr;gap:2px}
-  .fbb dd{margin-bottom:8px}
+.fbb dd.ask{background:var(--accent-soft);border-radius:var(--r1);padding:8px 12px}
+.fbb code{font-size:12px;background:var(--surface2);border:1px solid var(--line);border-radius:var(--r1);padding:0 4px}
+.tag.st-recorded{color:color-mix(in srgb,var(--st-plan) 78%,var(--ink))}.tag.st-ready{color:color-mix(in srgb,var(--st-dev) 72%,var(--ink))}.tag.st-doing{color:color-mix(in srgb,var(--st-qa) 68%,var(--ink))}.tag.st-done{color:var(--good-ink)}.tag.st-hold{color:var(--muted)}
+.tag.need{color:var(--accent-ink);background:var(--accent-soft);border-color:transparent}
+/* ---- 좁은 화면 ---- */
+@media (max-width:1100px){
+  .board{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .branches{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
-@media (max-width:1100px){.branches{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media (max-width:900px){.lore{grid-template-columns:1fr}.lore .toc{position:static;max-height:none;flex-direction:row;flex-wrap:wrap;border-left:0;padding-left:0;gap:6px}.lore .toc b{display:none}.lore .toc a{border:1px solid var(--line);border-radius:999px;padding:3px 10px;background:var(--surface)}.lore .toc a.sub{display:none}}
-@media (max-width:560px){.branches{grid-template-columns:1fr 1fr}}
-@media (max-width:1100px){.board{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media (max-width:900px){.span4,.span5,.span7,.span8{grid-column:span 12}}
-@media (max-width:720px){.board{grid-template-columns:1fr}.stagecounts{grid-template-columns:repeat(3,1fr)}.brand h1{font-size:28px}.dlg .grid{grid-template-columns:1fr}}
 @media (max-width:900px){
+  .span4,.span5,.span7,.span8{grid-column:span 12}
   .cols3{grid-template-columns:1fr}
   .maps{grid-template-columns:minmax(0,1fr)}
   .maplist{flex-direction:row;align-items:center;gap:6px;overflow-x:auto;padding:2px 2px 6px;scrollbar-width:thin}
   .maplist b{margin:0;padding:0 0 0 4px}
   .maplist button{flex:none;background:var(--surface);border-color:var(--line)}
+  /* 세계관: 목차는 «목차» 버튼으로 여는 접이식 패널 */
+  .lore{grid-template-columns:minmax(0,1fr);margin-top:var(--s4)}
+  .toc.side{display:none}
+  .lore-bar{flex-wrap:wrap}
+  .lore-bar .tocbtn{display:inline-flex;align-items:center}
+  .toc-pop.open{display:block;flex-basis:100%;max-height:min(60dvh,420px);overflow-y:auto;overscroll-behavior:contain;background:var(--surface);border:1px solid var(--line);border-radius:var(--r2);padding:var(--s2)}
+  .toc-pop .toc a{padding:9px 10px}
+  .toc-pop .toc .subs{display:flex}
+  .toc-pop .toc .subs a{padding:7px 8px}
 }
 @media (max-width:720px){
+  header.top h1{font-size:16px}
+  header.top .mile{flex:1 1 0}
+  header.top .status{order:6;margin-left:0;max-width:none;flex:0 1 auto}
+  .overall{order:5;flex:1 1 180px}
+  header.top .iconbtn{min-height:36px}
+  .board{grid-template-columns:1fr}
+  .stagecounts{grid-template-columns:repeat(3,1fr)}
+  .dlg .grid{grid-template-columns:1fr}
+  .rd{grid-template-columns:minmax(0,1fr)}
+  .rtiles{grid-template-columns:repeat(auto-fill,minmax(104px,1fr))}
+  .fbi summary{grid-template-columns:auto minmax(0,1fr)}
+  .fbi summary .tags{grid-column:1 / 3;justify-content:flex-start}
+  .fbi summary p{grid-column:1 / 3}
+  .fbb{grid-template-columns:1fr;gap:2px}
+  .fbb dd{margin-bottom:8px}
   .chip,.iconbtn{min-height:40px;padding-inline:12px}
   .seg{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));width:100%}
   .seg button{padding:0 4px}
-  .gi .filters input[type=search]{font-size:16px;max-width:none}
+  .lore-bar .seg{width:auto;flex:1 1 0;min-width:0}
+  .gi .filters input[type=search],.filters input[type=search],.gloss-bar input[type=search]{font-size:16px;max-width:none}
   .mapview{padding:12px}
   .cards{grid-template-columns:minmax(0,1fr)}
-  /* 표 → 카드로 쌓는다 */
+  /* 표 → 카드로 쌓는다(게임 정보 .gt · 세계관 표) */
   .gi .tblwrap{overflow:visible;background:none;border:0;border-radius:0}
-  .gt,.gt tbody{display:block}
-  .gt thead{display:none}
-  .gt tr{display:flex;flex-direction:column;gap:4px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-bottom:8px}
-  .gt td{display:grid;grid-template-columns:64px minmax(0,1fr);gap:8px;padding:0;border:0}
-  .gt td::before{content:attr(data-l);font-size:12px;color:var(--muted)}
-  .gt td.ttl{display:block;order:-1;min-width:0;width:auto;font-size:15px}
-  .gt td.ttl::before{content:none}
-  .gt td.nil{display:none}
+  .gt,.gt tbody,.lore-doc table,.lore-doc tbody{display:block}
+  .gt thead,.lore-doc thead{display:none}
+  .gt tr,.lore-doc tr{display:flex;flex-direction:column;gap:4px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r2);padding:10px 12px;margin-bottom:8px}
+  .gt td,.lore-doc td{display:grid;grid-template-columns:64px minmax(0,1fr);gap:8px;padding:0;border:0}
+  .gt td::before,.lore-doc td::before{content:attr(data-l);font-size:12px;color:var(--muted);line-height:1.9}
+  .gt td.ttl,.lore-doc td:first-child{display:block;order:-1;min-width:0;width:auto;font-size:15px}
+  .lore-doc td:first-child{font-weight:600;font-size:16px}
+  .gt td.ttl::before,.lore-doc td:first-child::before{content:none}
+  .gt td.nil,.lore-doc td.nil{display:none}
   .gt td.nw{white-space:normal}
+  /* 세계관 블록: 1열 */
+  .lore-doc{font-size:16px;line-height:1.8}
+  .lore-doc h2{font-size:23px}
+  .lore-doc h3{font-size:18px}
+  .lore-doc .lead{font-size:18px}
+  .lore-doc blockquote{font-size:17px;padding-left:var(--s4)}
+  .lcards{grid-template-columns:minmax(0,1fr)}
+  .lfacts{grid-template-columns:minmax(0,1fr)}
+  .lfacts dt{line-height:1.5}
+  .ltime,.lbeats{grid-template-columns:minmax(0,1fr)}
+  .ltime .tw{text-align:left}
+  .ltime .tb{border-left:0;padding-left:0}
+  .ldlg{grid-template-columns:minmax(0,1fr);gap:0}
+  .ldlg>div{margin-bottom:var(--s2)}
+  .ldlg .who{line-height:1.6}
+  .ldlg .dir{margin-bottom:var(--s2)}
+  .lperson{grid-template-columns:52px minmax(0,1fr);gap:var(--s2) var(--s3)}
+  .lperson .mono{width:52px;height:52px;font-size:24px}
+  .lgraph svg,.lgraph .glegend{display:none}
+  .glist{display:block}
+  .branches{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
 }
-@media (max-width:480px){nav.tabs .tablist{gap:2px}nav.tabs button.tab{padding:8px 6px;min-width:40px}}
-@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media (max-width:480px){
+  nav.tabs button.tab{padding:0 11px}
+  .branches{grid-template-columns:minmax(0,1fr)}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
 <div class="wrap" id="app">
   <header class="top">
-    <div class="brand">
-      <h1 id="projTitle">PSY 작업 보드</h1>
-      <p><span id="subtitle">메이플풍 2D 횡스크롤 액션 RPG</span> · 현재 <span class="mile" id="curMile">—</span></p>
-    </div>
+    <h1 id="projTitle">PSY 작업 보드</h1>
+    <span class="mile" id="curMile"></span><span id="subtitle" hidden></span>
     <div class="overall" aria-label="현재 마일스톤 진행률">
-      <span class="num" id="overallPct">–</span>
       <div class="meter" id="overallMeter"></div>
+      <span class="num" id="overallPct"></span>
       <span class="lbl" id="overallLbl"></span>
     </div>
+    <span class="status" id="status" aria-live="polite">불러오는 중…</span>
+    <button class="iconbtn" id="refreshBtn" type="button" title="지금 새로고침">새로고침</button>
+    <button class="iconbtn" id="editBtn" type="button" aria-pressed="false">편집</button>
   </header>
 
   <nav class="tabs" aria-label="보기">
@@ -437,10 +592,6 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
       <button class="tab" role="tab" id="tab-builds" aria-selected="false" aria-controls="view-builds">테스트 빌드</button>
       <button class="tab" role="tab" id="tab-feedback" aria-selected="false" aria-controls="view-feedback">알파 피드백</button>
     </div>
-    <span class="spacer"></span>
-    <span class="status" id="status" aria-live="polite">불러오는 중…</span>
-    <button class="iconbtn" id="refreshBtn" type="button" title="지금 새로고침">새로고침</button>
-    <button class="iconbtn" id="editBtn" type="button" aria-pressed="false">편집</button>
   </nav>
 
   <section id="view-board" role="tabpanel" aria-labelledby="tab-board" style="display:flex;flex-direction:column;gap:12px">
@@ -487,7 +638,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
         <ul class="log" id="log"></ul>
       </div>
       <div class="panel span12">
-        <h2>바로가기<small>저장소는 비공개 — 로그인 필요</small></h2>
+        <h2>바로가기<small>저장소는 비공개 · 로그인 필요</small></h2>
         <div class="links">
           <a href="https://github.com/qtdqtd002-coder/project_psy" target="_blank" rel="noopener">GitHub · project_psy</a>
           <a href="https://github.com/qtdqtd002-coder/game-asset-library" target="_blank" rel="noopener">GitHub · 자산 라이브러리</a>
@@ -500,10 +651,14 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
   </section>
 
   <section id="view-lore" role="tabpanel" aria-labelledby="tab-lore" hidden>
-    <div class="gi-bar lore-bar"><div class="seg" role="tablist" aria-label="세계관 갈래" id="loreSeg"></div></div>
+    <div class="lore-bar">
+      <div class="seg" role="tablist" aria-label="세계관 갈래" id="loreSeg"></div>
+      <button class="iconbtn tocbtn" type="button" id="loreTocBtn" aria-expanded="false" aria-controls="loreTocPop" hidden>목차</button>
+      <div class="toc-pop" id="loreTocPop"><nav class="toc" id="loreTocM" aria-label="세계관 목차"></nav></div>
+    </div>
     <div class="lore">
-      <nav class="toc" id="loreToc" aria-label="세계관 목차"><b>목차</b></nav>
-      <article id="loreBody" role="tabpanel"><p class="empty">불러오는 중…</p></article>
+      <nav class="toc side" id="loreToc" aria-label="세계관 목차"></nav>
+      <article class="lore-doc" id="loreBody" role="tabpanel"></article>
     </div>
   </section>
 
@@ -545,8 +700,8 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
   </section>
 
   <footer class="foot">
-    <span id="dataStamp">데이터 —</span>
-    <span>데이터: <a href="data/board.json" style="color:inherit">data/board.json</a> · <a href="data/lore.md" style="color:inherit">data/lore.md</a> · <a href="data/lore-characters.md" style="color:inherit">lore-characters.md</a> · <a href="data/lore-scenario.md" style="color:inherit">lore-scenario.md</a> · <a href="data/gameinfo.json" style="color:inherit">data/gameinfo.json</a> · <a href="data/resources.json" style="color:inherit">data/resources.json</a> · <a href="data/feedback.json" style="color:inherit">data/feedback.json</a></span>
+    <span id="dataStamp">데이터</span>
+    <span>데이터: <a href="data/board.json" style="color:inherit">data/board.json</a> · <a href="data/lore.md" style="color:inherit">data/lore.md</a> · <a href="data/lore-glossary.md" style="color:inherit">lore-glossary.md</a> · <a href="data/lore-characters.md" style="color:inherit">lore-characters.md</a> · <a href="data/lore-scenario.md" style="color:inherit">lore-scenario.md</a> · <a href="data/gameinfo.json" style="color:inherit">data/gameinfo.json</a> · <a href="data/resources.json" style="color:inherit">data/resources.json</a> · <a href="data/feedback.json" style="color:inherit">data/feedback.json</a></span>
     <span>1분마다 자동 새로고침</span>
   </footer>
 </div>
@@ -687,18 +842,37 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
         if (r.ok) { st.board = data; render(); setStatus("저장됨 · 사이트 반영은 약 1분 뒤"); return true; }
         if (r.status !== 409 && r.status !== 422) throw new Error(`GitHub ${r.status}`);
       }
-      throw new Error("다른 변경과 충돌 — 새로고침 후 다시 시도");
+      throw new Error("다른 변경과 충돌. 새로고침 후 다시 시도");
     } catch (e) { setStatus("저장 실패: " + e.message, true); return false; }
     finally { st.busy = false; }
   }
 
   // ---------- 탭·필터 ----------
   const TABS = ["board", "dash", "lore", "info", "res", "builds", "feedback"];
-  function showTab(which) {
+  function fade(el) { el.classList.remove("fadein"); void el.offsetWidth; el.classList.add("fadein"); }   // 탭·갈래를 바꿀 때 본문 160ms
+  const hashText = (h) => safe(() => decodeURIComponent(h)) ?? h;
+  function setHash(h) { if (hashText(location.hash) !== hashText(h)) safe(() => history.replaceState(null, "", h)); }   // 주소만 바꾼다(기록을 쌓지 않는다)
+  // 주소 → 탭(·세계관 갈래·앵커). #lore-<갈래>/<앵커> · #<탭>
+  function parseHash() {
+    const raw = hashText(location.hash), m = /^#lore-(\w+)(?:\/(.+))?$/.exec(raw);
+    if (m && LORE_DOCS.some(d => d[0] === m[1])) return {tab: "lore", doc: m[1], anchor: m[2] || ""};
+    if (raw.startsWith("#lore")) return {tab: "lore", doc: "", anchor: ""};
+    return TABS.includes(raw.slice(1)) ? {tab: raw.slice(1), doc: "", anchor: ""} : null;
+  }
+  function route() { const h = parseHash(); if (!h) return; if (h.doc) lore.doc = h.doc; showTab(h.tab, h.anchor); }
+  window.addEventListener("hashchange", route);
+  function showTab(which, anchor = "") {
     if (!TABS.includes(which)) which = "board";
+    const changed = st.tab !== which; st.tab = which;
     for (const t of TABS) { const on = t === which; $("tab-" + t).setAttribute("aria-selected", on); $("tab-" + t).tabIndex = on ? 0 : -1; $("view-" + t).hidden = !on; }
     safe(() => localStorage.setItem("psy-tab", which));
-    if (which === "lore") loadLore();
+    tipHide();
+    if (changed) {
+      fade($("view-" + which));
+      const tl = $("tabList"), r = $("tab-" + which).getBoundingClientRect(), b = tl.getBoundingClientRect();   // 고른 탭이 탭 줄 안에 보이게
+      if (r.left < b.left) tl.scrollLeft -= b.left - r.left + 16; else if (r.right > b.right) tl.scrollLeft += r.right - b.right + 16;
+    }
+    if (which === "lore") loadLore(false, anchor); else setHash("#" + which);
     if (which === "info") { loadInfo(); if (gi.data && gi.stale) renderInfoBody(); loadRes().then(() => { if (rs.key && gi.data && !$("view-info").hidden) renderInfoBody(); }); }
     if (which === "res") { loadRes().then(renderRes); loadInfo().then(() => { rsNames(); if (rs.data && !$("view-res").hidden) renderResBody(); }); }
     if (which === "builds") loadBuilds();
@@ -716,40 +890,68 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
   }
   arrowTabs($("tabList"));
 
-  // ---------- 세계관(세 갈래 — 원본은 project_psy/docs/design/01_Concept/03_Lore*.md · 올리기 = board.py publish-lore) ----------
-  const LORE_DOCS = [["concept", "세계관 컨셉", "data/lore.md"], ["chars", "인물", "data/lore-characters.md"], ["story", "시나리오", "data/lore-scenario.md"]];   // 갈래 · 이름 · 파일
-  const lore = {doc: safe(() => localStorage.getItem("psy-lore-doc")) || "concept", cache: {}};
-  { const h = /^#lore-(\w+)$/.exec(location.hash); if (h) lore.doc = h[1]; }
+  // ---------- 세계관(네 갈래 — 원본은 project_psy/docs/design/00_Canon · 올리기 = board.py publish-lore) ----------
+  // 주소: #lore-<갈래> · #lore-<갈래>/<앵커>(앵커 = 제목 s-<번호> 또는 용어집의 용어)
+  const LORE_DOCS = [["concept", "세계관", "data/lore.md"], ["glossary", "용어집", "data/lore-glossary.md"], ["chars", "인물", "data/lore-characters.md"], ["story", "시나리오", "data/lore-scenario.md"]];   // 갈래 · 이름 · 파일
+  const lore = {doc: safe(() => localStorage.getItem("psy-lore-doc")) || "concept", src: {}, cache: {}, terms: new Map(), termsTried: false, io: null, cur: null, want: "", gq: "", gcat: ""};
   if (!LORE_DOCS.some(d => d[0] === lore.doc)) lore.doc = "concept";
-  $("loreSeg").innerHTML = LORE_DOCS.map(([id, name]) => `<button type="button" role="tab" id="lore-tab-${id}" aria-controls="loreBody" data-doc="${id}">${name}</button>`).join("");
-  $("loreSeg").querySelectorAll("button").forEach(b => b.onclick = () => { lore.doc = b.dataset.doc; safe(() => localStorage.setItem("psy-lore-doc", lore.doc)); loadLore(); });
-  arrowTabs($("loreSeg"));
-  function inl(t) {
-    return esc(t)
-      .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
-      .replace(/`(.+?)`/g, "<code>$1</code>")
-      .replace(/\[(구현됨|확정)\]/g, '<span class="lpill ok">$1</span>')
-      .replace(/\[(가안|미정)\]/g, '<span class="lpill tbd">$1</span>')
-      .replace(/\[(제안)\]/g, '<span class="lpill new">$1</span>');
+  const LB = $("loreBody");
+  const M1 = String.fromCharCode(1), M2 = String.fromCharCode(2);   // 잠깐 가려 두는 표시(원고에 나오지 않는 글자)
+  const LORE_SKEL = '<div class="skel" aria-hidden="true"><i class="h1"></i><i></i><i></i><i class="sh"></i><i class="h2"></i><i></i><i></i><i></i><i class="sh"></i></div><p class="sr" role="status">불러오는 중</p>';
+  const reduced = () => !!safe(() => matchMedia("(prefers-reduced-motion: reduce)").matches);
+  const unesc = (s) => s.replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&amp;/g, "&");
+  // 꾸밈 표시를 걷어 낸 글(목차 · 표 이름표 · 용어 뜻 풍선)
+  const plain = (t) => String(t || "").replace(/\[\[([^\]|]+)(?:\|[^\]]+)?\]\]/g, "$1").replace(/`[^`]*`/g, "").replace(/\s*\[[^\]]+\]/g, "").replace(/\*+/g, "").replace(/(\s*[·~]\s*)+$/, "").trim();
+  // 줄을 « | » 로 나눈다([[보이는 글|용어]] 안의 | 는 건드리지 않는다). n 칸을 넘으면 마지막 칸에 붙이고, 모자라면 빈칸으로 채운다
+  function cells(line, n) {
+    const c = (" " + line.replace(/\[\[[^\]]*\]\]/g, x => x.split("|").join(M1)) + " ").split(/\s\|(?=\s)/).map(x => x.split(M1).join("|").trim());
+    if (n && c.length > n) c.splice(n - 1, c.length - n + 1, c.slice(n - 1).join(" | "));
+    while (n && c.length < n) c.push("");
+    return c;
   }
-  function mdLore(src) {
-    const lines = src.replace(/\r/g, "").split("\n"); const toc = []; let h = "", i = 0;
-    const isBlock = (l) => /^(#{1,4}\s|>|\s*[-*]\s|\s*\d+\.\s|\||:::|---)/.test(l);
+
+  $("loreSeg").innerHTML = LORE_DOCS.map(([id, name]) => `<button type="button" role="tab" id="lore-tab-${id}" aria-controls="loreBody" data-doc="${id}">${name}</button>`).join("");
+  $("loreSeg").querySelectorAll("button").forEach(b => b.onclick = () => { if (lore.doc === b.dataset.doc && LB.dataset.doc === lore.doc) return; lore.doc = b.dataset.doc; loadLore(); });
+  arrowTabs($("loreSeg"));
+
+  // 줄 안 표시: **굵게** · *기울임* · `코드` · [[용어]] · [[보이는 글|용어]] · [구현됨…] 같은 표시 필
+  function inl(t) {
+    const codes = [];
+    let s = esc(t).replace(/`([^`]+)`/g, (_, c) => { codes.push(c); return M2 + (codes.length - 1) + M2; });
+    s = s.replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g, (_, a, b) => {
+      const term = unesc((b || a).trim());
+      return lore.terms.has(term) ? `<a class="term" href="#lore-glossary/${encodeURIComponent(term)}" data-tip="${esc(term)}">${a.trim()}</a>` : a.trim();   // 용어집에 없으면 일반 글자
+    });
+    s = s.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>").replace(/(^|[^*])\*([^*\s](?:[^*]*[^*\s])?)\*(?!\*)/g, "$1<em>$2</em>")
+      .replace(/\[((?:구현됨|확정)[^\[\]]*)\]/g, '<span class="lpill ok">$1</span>')
+      .replace(/\[((?:가안|미정|다음 차수)[^\[\]]*)\]/g, '<span class="lpill tbd">$1</span>')
+      .replace(/\[((?:제안|작가안)[^\[\]]*)\]/g, '<span class="lpill new">$1</span>');
+    return s.split(M2).map((p, i) => i % 2 ? `<code>${codes[Number(p)]}</code>` : p).join("");
+  }
+
+  const LORE_MARK = /^(구현됨|확정|가안|미정|다음 차수|제안|작가안)/;
+  const LORE_BLOCK = /^(#{1,4}\s|>|\s*[-*]\s|\s*\d+\.\s|\||:::|---)/;
+  function mdLore(src, doc) {
+    const ctx = {doc, toc: [], cats: []};
+    return {html: mdBlocks(src.replace(/\r/g, "").split("\n"), ctx), toc: ctx.toc, cats: ctx.cats};
+  }
+  // 줄 묶음 → HTML. 어느 갈래든 한 바퀴에 한 줄 이상 나아간다(모르는 줄은 문단으로 받는다)
+  function mdBlocks(lines, ctx) {
+    let h = "", i = 0, m;
     while (i < lines.length) {
-      const l = lines[i]; let m;
+      const l = lines[i];
       if (!l.trim()) { i++; continue; }
-      if (l.startsWith(":::chapters")) {
-        const items = []; i++;
-        while (i < lines.length && !lines[i].startsWith(":::")) { if (lines[i].trim()) items.push(lines[i].split("|").map(x => x.trim())); i++; }
+      if ((m = /^:::\s*([^\s:]*)\s*(.*)$/.exec(l))) {   // :::이름 … ::: (닫는 줄이 없으면 글 끝까지 · 짝 없는 ::: 는 버린다)
+        const body = []; i++;
+        if (!m[1]) continue;
+        while (i < lines.length && lines[i].trim() !== ":::") body.push(lines[i++]);
         i++;
-        h += '<ol class="branches" aria-label="별나무의 다섯 가지 — 장별 흐름">' + items.map(([no, rg, th, bo, gi, stt]) =>
-          `<li class="${stt === "구현됨" ? "done" : ""}"><span class="no">${esc(no)}장</span><span class="rg">${inl(rg)}</span><span class="th">${inl(th)}</span><span class="bo">보스 · ${inl(bo)}</span><span class="gi">${inl(gi)}</span><span>${inl("[" + stt + "]")}</span></li>`).join("") + "</ol>";
+        h += loreBlock(m[1], m[2].trim(), body, ctx);
         continue;
       }
       if ((m = /^(#{1,4})\s+(.*)$/.exec(l))) {
-        const lv = m[1].length, id = "lore-" + toc.length;
-        const inToc = lv === 2 || lv === 3;
-        if (inToc) toc.push({id, text: m[2].replace(/\s*\[[^\]]+\]/g, "").replace(/\*\*/g, "").replace(/`[^`]*`/g, "").replace(/(\s*[·~]\s*)+$/, "").trim(), lv});
+        const lv = m[1].length, inToc = lv === 2 || lv === 3, id = "s-" + ctx.toc.length;
+        if (inToc) ctx.toc.push({id, text: plain(m[2]), lv});
         h += `<h${lv}${inToc ? ` id="${id}"` : ""}>${inl(m[2])}</h${lv}>`; i++; continue;
       }
       if (/^---+\s*$/.test(l)) { h += "<hr>"; i++; continue; }
@@ -758,35 +960,270 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
       if (/^\s*\d+\.\s+/.test(l)) { const it = []; while (i < lines.length && /^\s*\d+\.\s+/.test(lines[i])) it.push(lines[i++].replace(/^\s*\d+\.\s+/, "")); h += `<ol>${it.map(x => `<li>${inl(x)}</li>`).join("")}</ol>`; continue; }
       if (l.startsWith("|")) {
         const rows = []; while (i < lines.length && lines[i].startsWith("|")) rows.push(lines[i++]);
-        const cells = (r) => r.trim().replace(/^\||\|$/g, "").split("|").map(c => c.trim());
-        const head = cells(rows[0]), body = rows.slice(2).map(cells);
-        h += `<div class="tblwrap"><table><thead><tr>${head.map(c => `<th>${inl(c)}</th>`).join("")}</tr></thead><tbody>${body.map(r => `<tr>${r.map(c => `<td>${inl(c)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+        const split = (r) => r.trim().replace(/\[\[[^\]]*\]\]/g, x => x.split("|").join(M1)).replace(/^\||\|$/g, "").split("|").map(c => c.split(M1).join("|").trim());
+        const head = split(rows[0]), body = rows.slice(rows[1] && /^\|[\s:|-]+$/.test(rows[1].trim()) ? 2 : 1).map(split);
+        h += `<div class="tblwrap wide"><table><thead><tr>${head.map(c => `<th scope="col">${inl(c)}</th>`).join("")}</tr></thead><tbody>${body.map(r =>
+          `<tr>${r.map((c, j) => `<td data-l="${esc(plain(head[j] || ""))}"${c === "" ? ' class="nil"' : ""}>${inl(c)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
         continue;
       }
-      const para = []; while (i < lines.length && lines[i].trim() && !isBlock(lines[i])) para.push(lines[i++].trim());
+      const para = [l.trim()]; i++;
+      while (i < lines.length && lines[i].trim() && !LORE_BLOCK.test(lines[i])) para.push(lines[i++].trim());
       h += `<p>${inl(para.join(" "))}</p>`;
     }
-    return {html: h, toc};
+    return h;
   }
-  async function loadLore(force = false) {
-    const [doc, , file] = LORE_DOCS.find(d => d[0] === lore.doc);
-    $("loreSeg").querySelectorAll("button").forEach(b => { const on = b.dataset.doc === doc; b.setAttribute("aria-selected", on); b.tabIndex = on ? 0 : -1; });
-    $("loreBody").setAttribute("aria-labelledby", "lore-tab-" + doc);
-    try {
-      if (force || !lore.cache[doc]) {
-        if (!lore.cache[doc]) $("loreBody").innerHTML = '<p class="empty">불러오는 중…</p>';
-        const r = await fetch(`${file}?v=${Date.now()}`, {cache: "no-store"});
-        if (!r.ok) throw new Error(`HTTP ${r.status}`);
-        lore.cache[doc] = mdLore(await r.text());
+  function loreBlock(name, arg, body, ctx) {
+    const rows = body.filter(x => x.trim()), R = (n) => rows.map(r => cells(r.trim(), n));
+    switch (name) {
+      case "lead": {
+        const ps = []; let cur = [];
+        for (const l of body) { if (l.trim()) cur.push(l.trim()); else if (cur.length) { ps.push(cur); cur = []; } }
+        if (cur.length) ps.push(cur);
+        return ps.map(p => `<p class="lead">${inl(p.join(" "))}</p>`).join("");
       }
+      case "facts": return `<dl class="lfacts">${R(2).map(([k, v]) => `<div><dt>${inl(k)}</dt><dd>${inl(v)}</dd></div>`).join("")}</dl>`;
+      case "cards": return `<ul class="lcards">${R(3).map(([t, g, b]) => `<li><span class="ct">${inl(t)}</span>${g ? `<span class="cg">${inl(g)}</span>` : ""}${b ? `<span class="cb">${inl(b)}</span>` : ""}</li>`).join("")}</ul>`;
+      case "timeline": return `<ol class="ltime">${R(3).map(([w, t, b]) => `<li><span class="tw">${inl(w)}</span><div class="tb">${t ? `<span class="tt">${inl(t)}</span>` : ""}${inl(b)}</div></li>`).join("")}</ol>`;
+      case "beats": return `<ol class="lbeats">${R(3).map(([k, t, b]) => `<li><span class="bl">${inl(k)}</span><div class="bb">${t ? `<span class="bt">${inl(t)}</span>` : ""}${inl(b)}</div></li>`).join("")}</ol>`;
+      case "dialogue": return `<div class="ldlg">${rows.map(r => { const c = cells(r.trim(), 2);
+        return c[0] === "-" || !c[1] ? `<div class="dir">${inl(c[0] === "-" ? c[1] : c[0])}</div>` : `<div><span class="who">${inl(c[0])}</span><span class="say">${inl(c[1])}</span></div>`; }).join("")}</div>`;
+      case "note": return `<aside class="lnote">${arg ? `<b class="nt">${inl(arg)}</b>` : ""}${mdBlocks(body, ctx)}</aside>`;
+      case "person": {
+        const p = Object.fromEntries(R(2)), nm = p["이름"] || "";
+        return `<div class="lperson"><span class="mono" aria-hidden="true">${esc([...plain(nm)][0] || "")}</span><div><div class="ph"><span class="pn">${inl(nm)}</span>${p["무리"] ? `<span class="pg">${inl(p["무리"])}</span>` : ""}</div>
+          ${p["한줄"] ? `<p class="po">${inl(p["한줄"])}</p>` : ""}</div>${p["말"] ? `<blockquote class="pq">${inl(p["말"])}</blockquote>` : ""}</div>`;
+      }
+      case "graph": return graphHtml(rows);
+      case "terms": return `<dl class="lterms">${R(4).map(([t, c, d, rel]) => {
+        if (c && !ctx.cats.includes(c)) ctx.cats.push(c);
+        const rl = rel.split(",").map(x => x.trim()).filter(Boolean).map(x => lore.terms.has(x) ? `<a href="#lore-glossary/${encodeURIComponent(x)}">${esc(x)}</a>` : esc(x)).join(", ");
+        return `<div data-term="${esc(t)}" data-cat="${esc(c)}"><dt>${esc(t)}${c ? `<span class="tc">${esc(c)}</span>` : ""}</dt><dd>${inl(d)}${rl ? `<span class="rel">관련 ${rl}</span>` : ""}</dd></div>`;
+      }).join("")}</dl>`;
+      case "chapters": return '<ol class="branches wide" aria-label="장별 흐름">' + rows.map(r => r.split("|").map(x => x.trim())).map(([no, rg, th, bo, gm, stt]) =>
+        `<li class="${stt === "구현됨" ? "done" : ""}"><span class="no">${esc(no)}장</span><span class="rg">${inl(rg || "")}</span><span class="th">${inl(th || "")}</span><span class="bo">보스 · ${inl(bo || "")}</span><span class="gm">${inl(gm || "")}</span>${stt ? `<span class="th">${inl(LORE_MARK.test(stt) ? "[" + stt + "]" : stt)}</span>` : ""}</li>`).join("") + "</ol>";
+      default: return `<div class="lbox">${mdBlocks(body, ctx)}</div>`;   // 모르는 블록 = 일반 상자
+    }
+  }
+
+  // 관계도(:::graph) — 노드 «@id | 이름 | 무리 | x | y»(x 0~100 · y 0~60) · 간선 «id > id | 라벨 | 종류» → SVG(1000×600) + 좁은 화면용 목록
+  const GKIND = {"핏줄": "k-blood", "사제": "k-teach", "벗": "k-friend", "맹세": "k-oath", "거울": "k-mirror"};
+  function graphHtml(rows) {
+    const nodes = new Map(), raw = [], groups = [], kinds = [], f = (v) => String(+v.toFixed(1));
+    for (const r of rows) {
+      const t = r.trim();
+      if (t.startsWith("@")) {
+        const [id, name, grp, x, y] = cells(t.slice(1), 5), nm = name || id, w = Math.max(92, [...nm].length * 21 + 36), hh = 48;
+        if (grp && !groups.includes(grp)) groups.push(grp);
+        nodes.set(id, {id, name: nm, grp, w, h: hh, x: Math.min(996 - w / 2, Math.max(4 + w / 2, (Number(x) || 0) * 10)), y: Math.min(596 - hh / 2, Math.max(4 + hh / 2, (Number(y) || 0) * 10))});
+      } else { const c = cells(t, 3), m = /^(\S+)\s*>\s*(\S+)$/.exec(c[0]); if (m) raw.push({a: m[1], b: m[2], label: c[1], kind: c[2]}); }
+    }
+    const edges = raw.filter(e => nodes.has(e.a) && nodes.has(e.b) && e.a !== e.b);
+    for (const e of edges) if (e.kind && !kinds.includes(e.kind)) kinds.push(e.kind);
+    const gcls = (g) => g ? "g" + (groups.indexOf(g) % 6 + 1) : "g6", kcls = (k) => GKIND[k] || "k-etc";
+    // 선은 노드 테두리에서 끊는다
+    const rim = (n, o) => { const dx = o.x - n.x, dy = o.y - n.y, s = Math.min(1, dx ? (n.w / 2 + 6) / Math.abs(dx) : Infinity, dy ? (n.h / 2 + 6) / Math.abs(dy) : Infinity); return [n.x + dx * s, n.y + dy * s]; };
+    // 라벨은 선 위에서 노드·다른 라벨과 겹치지 않는 첫 자리에 둔다(가운데부터 양쪽으로)
+    const taken = [...nodes.values()].map(n => [n.x - n.w / 2 - 4, n.y - n.h / 2 - 4, n.x + n.w / 2 + 4, n.y + n.h / 2 + 4]);
+    const free = (b) => !taken.some(t => b[0] < t[2] && b[2] > t[0] && b[1] < t[3] && b[3] > t[1]);
+    const lines = edges.map(e => { const A = nodes.get(e.a), B = nodes.get(e.b), [x1, y1] = rim(A, B), [x2, y2] = rim(B, A);
+      let lab = "";
+      if (e.label) {
+        const lw = [...e.label].length * 17 + 14, box = (t) => { const x = x1 + (x2 - x1) * t, y = y1 + (y2 - y1) * t; return [x - lw / 2, y - 14, x + lw / 2, y + 14]; };
+        const t = [.5, .4, .6, .32, .68, .24, .76, .16, .84].find(v => free(box(v))) || .5, b = box(t);
+        taken.push(b); lab = `<text x="${f((b[0] + b[2]) / 2)}" y="${f((b[1] + b[3]) / 2)}">${esc(e.label)}</text>`;
+      }
+      return `<g class="ge ${kcls(e.kind)}" data-a="${esc(e.a)}" data-b="${esc(e.b)}"><line x1="${f(x1)}" y1="${f(y1)}" x2="${f(x2)}" y2="${f(y2)}"/>${lab}</g>`; }).join("");
+    const boxes = [...nodes.values()].map(n => `<g class="gn ${gcls(n.grp)}" data-id="${esc(n.id)}" data-name="${esc(n.name)}" tabindex="0" role="link" aria-label="${esc(n.name + (n.grp ? ", " + n.grp : ""))}"><rect x="${f(n.x - n.w / 2)}" y="${f(n.y - n.h / 2)}" width="${n.w}" height="${n.h}" rx="10"/><text x="${f(n.x)}" y="${f(n.y)}">${esc(n.name)}</text></g>`).join("");
+    const legend = groups.map(g => `<li class="${gcls(g)}"><i></i>${esc(g)}</li>`).join("")
+      + kinds.map(k => `<li><svg viewBox="0 0 30 10" aria-hidden="true"><g class="ge ${kcls(k)}"><line x1="0" y1="5" x2="30" y2="5"/></g></svg>${esc(k)}</li>`).join("");
+    const list = edges.map(e => `<li><b>${esc(nodes.get(e.a).name)}</b> → <b>${esc(nodes.get(e.b).name)}</b>: ${esc(e.label || e.kind)}${e.kind && e.label && e.kind !== e.label ? `<span class="gk">${esc(e.kind)}</span>` : ""}</li>`).join("");
+    return `<figure class="lgraph wide"><svg viewBox="0 0 1000 600" role="group" aria-label="관계도">${lines}${boxes}</svg>${legend ? `<ul class="glegend">${legend}</ul>` : ""}${list ? `<ul class="glist" aria-label="관계 목록">${list}</ul>` : ""}</figure>`;
+  }
+  function graphHL(node, on) {
+    const svg = node.ownerSVGElement; if (!svg) return;
+    svg.querySelectorAll(".on").forEach(x => x.classList.remove("on"));
+    svg.classList.toggle("hl", on);
+    if (!on) return;
+    const id = node.dataset.id, near = new Set([id]);
+    svg.querySelectorAll(".ge").forEach(g => { if (g.dataset.a === id || g.dataset.b === id) { g.classList.add("on"); near.add(g.dataset.a); near.add(g.dataset.b); } });
+    svg.querySelectorAll(".gn").forEach(g => { if (near.has(g.dataset.id)) g.classList.add("on"); });
+  }
+  function graphGo(node) {
+    if (!node.dataset.to) return;
+    const h = `#lore-${lore.doc}/${node.dataset.to}`;
+    if (location.hash === h) route(); else location.hash = h;   // 주소를 쌓는다 → 뒤로 가면 관계도로 돌아온다
+  }
+
+  // 용어 뜻 풍선([[용어]] 에 올리거나 초점을 주면) — 뜻은 용어집에서 한 번 받아 둔다
+  const tip = document.createElement("div"); tip.id = "termTip"; tip.setAttribute("role", "tooltip"); tip.hidden = true; document.body.appendChild(tip);
+  function tipShow(a) {
+    const t = a.dataset.tip, d = lore.terms.get(t); if (!d) return;
+    tip.innerHTML = `<b>${esc(t)}</b>${d.cat ? `<i class="tc">${esc(d.cat)}</i>` : ""}<span>${esc(d.def)}</span>`;
+    tip.style.left = tip.style.top = "0px"; tip.hidden = false; a.setAttribute("aria-describedby", "termTip");
+    const r = a.getBoundingClientRect(), w = tip.offsetWidth, hh = tip.offsetHeight, vw = document.documentElement.clientWidth;
+    const top = r.bottom + 6 + hh > window.innerHeight && r.top - 6 - hh > 0 ? r.top - 6 - hh : r.bottom + 6;
+    tip.style.left = Math.max(8, Math.min(r.left, vw - w - 8)) + window.scrollX + "px"; tip.style.top = top + window.scrollY + "px";
+  }
+  function tipHide() { if (tip.hidden) return; tip.hidden = true; LB.querySelectorAll('[aria-describedby="termTip"]').forEach(a => a.removeAttribute("aria-describedby")); }
+  const near = (e, sel) => e.target && e.target.closest ? e.target.closest(sel) : null;
+  for (const [on, off] of [["mouseover", "mouseout"], ["focusin", "focusout"]]) {
+    LB.addEventListener(on, e => { const n = near(e, ".gn"); if (n) graphHL(n, true); const a = near(e, "a.term"); if (a) tipShow(a); });
+    LB.addEventListener(off, e => { const n = near(e, ".gn"); if (n && !n.contains(e.relatedTarget)) graphHL(n, false); const a = near(e, "a.term"); if (a && !a.contains(e.relatedTarget)) tipHide(); });
+  }
+  LB.addEventListener("click", e => {
+    const n = near(e, ".gn"); if (n) { graphGo(n); return; }
+    if (near(e, "#loreRetry")) { loadLore(true); return; }
+    const a = near(e, 'a[href^="#lore-"]');
+    if (a) { tipHide(); if (a.getAttribute("href") === location.hash) { e.preventDefault(); route(); } }   // 같은 주소를 다시 누르면 hashchange 가 오지 않는다
+  });
+  LB.addEventListener("keydown", e => { const n = (e.key === "Enter" || e.key === " ") && near(e, ".gn"); if (n) { e.preventDefault(); graphGo(n); } });
+
+  // 목차: h2 + 접힌 h3(지금 읽는 h2 의 것만 펼친다) — 넓은 화면은 왼쪽 기둥, 좁은 화면은 «목차» 버튼으로 여는 패널
+  function tocHtml(toc, doc) {
+    let h = "", sub = false;
+    toc.forEach((t, i) => {
+      const a = `<a href="#lore-${doc}/${t.id}" data-id="${t.id}">${esc(t.text)}</a>`;
+      if (t.lv !== 2) { h += a; return; }
+      if (sub) { h += "</div>"; sub = false; }
+      h += a;
+      if (toc[i + 1] && toc[i + 1].lv === 3) { h += '<div class="subs">'; sub = true; }
+    });
+    return h + (sub ? "</div>" : "");
+  }
+  function tocOpen(on) { $("loreTocPop").classList.toggle("open", on); $("loreTocBtn").setAttribute("aria-expanded", on); }
+  $("loreTocBtn").onclick = () => tocOpen(!$("loreTocPop").classList.contains("open"));
+  for (const box of [$("loreToc"), $("loreTocM")]) box.addEventListener("click", e => {
+    const a = near(e, "a[data-id]"); if (!a) return;
+    e.preventDefault(); tocOpen(false); lore.want = a.dataset.id; loreGoto(a.dataset.id, true); setHash(`#lore-${lore.doc}/${a.dataset.id}`);
+  });
+  function loreCur(id) {
+    if (lore.cur === id) return;
+    lore.cur = id;
+    for (const box of [$("loreToc"), $("loreTocM")]) {
+      box.querySelectorAll("a.on,a.par").forEach(a => a.classList.remove("on", "par"));
+      box.querySelectorAll(".subs.open").forEach(s => s.classList.remove("open"));
+      const a = id ? box.querySelector(`a[data-id="${id}"]`) : null; if (!a) continue;
+      a.classList.add("on");
+      const inSub = a.parentElement.classList.contains("subs"), nx = a.nextElementSibling;
+      const subs = inSub ? a.parentElement : nx && nx.classList.contains("subs") ? nx : null;
+      if (subs) subs.classList.add("open");
+      if (inSub && subs.previousElementSibling) subs.previousElementSibling.classList.add("par");
+      if (box.id === "loreToc") { const r = a.getBoundingClientRect(), b = box.getBoundingClientRect(); if (r.top < b.top) box.scrollTop -= b.top - r.top + 8; else if (r.bottom > b.bottom) box.scrollTop += r.bottom - b.bottom + 8; }
+    }
+  }
+  // 지금 읽는 곳 = 고정 줄 바로 아래 선을 넘어 올라간 마지막 제목. IntersectionObserver 로만 잰다(scroll 리스너 없음):
+  // 위쪽을 한없이 넓혀 «선 위에 있다»를 교차로 읽고, 글 끝 표식이 보이면 맨 끝 대목(또는 방금 목차에서 고른 대목)으로 친다
+  function watchHeads() {
+    for (const o of lore.io || []) o.disconnect();
+    lore.io = null; lore.cur = null; loreCur("");
+    const heads = [...LB.querySelectorAll("h2[id],h3[id]")], above = new Set(); let atEnd = false;
+    if (!heads.length || !("IntersectionObserver" in window)) return;
+    const pick = () => {
+      let last = ""; for (const hd of heads) if (above.has(hd)) last = hd.id;
+      if (atEnd) {
+        const w = heads.find(hd => hd.id === lore.want), r = w && w.getBoundingClientRect();
+        last = r && r.top >= 0 && r.top < window.innerHeight ? w.id : heads[heads.length - 1].id;
+      }
+      loreCur(last);
+    };
+    const line = Math.round(parseFloat(getComputedStyle(heads[0]).scrollMarginTop) || 120) + 48;   // 제목이 멈추는 자리보다 조금 아래
+    const io = new IntersectionObserver(es => { for (const e of es) { if (e.isIntersecting) above.add(e.target); else above.delete(e.target); } pick(); },
+      {rootMargin: `1000000px 0px -${Math.max(0, window.innerHeight - line)}px 0px`});
+    heads.forEach(hd => io.observe(hd));
+    const end = document.createElement("i"); end.className = "lore-end"; end.setAttribute("aria-hidden", "true"); LB.appendChild(end);
+    const io2 = new IntersectionObserver(es => { const v = es[es.length - 1].isIntersecting; if (atEnd && !v) lore.want = ""; atEnd = v; pick(); });
+    io2.observe(end);
+    lore.io = [io, io2];
+  }
+  let loreRaf = 0;
+  window.addEventListener("resize", () => { cancelAnimationFrame(loreRaf); loreRaf = requestAnimationFrame(() => { if (!$("view-lore").hidden && LB.dataset.doc) { const want = lore.want; watchHeads(); lore.want = want; } }); });   // 선의 자리는 창 높이에 달렸다
+
+  // 용어집: 찾기 입력 + 분류 칩 + 결과 없음
+  function glossBar(cats) {
+    return `<div class="gloss-bar"><label for="glossQ">용어 찾기</label><input type="search" id="glossQ" value="${esc(lore.gq)}" autocomplete="off"><span class="status" id="glossCount" aria-live="polite"></span>
+      ${cats.length > 1 ? `<div class="filters" role="group" aria-label="분류">${["", ...cats].map(c => `<button class="chip" type="button" data-c="${esc(c)}" aria-pressed="${lore.gcat === c}">${c ? esc(c) : "전체"}</button>`).join("")}</div>` : ""}</div>
+      <p class="empty" id="glossNone" hidden>찾는 용어가 없습니다</p>`;
+  }
+  function glossFilter() {
+    if (!$("glossQ")) return;
+    const q = lore.gq.trim().toLowerCase(), rows = [...LB.querySelectorAll(".lterms>div")]; let n = 0;
+    for (const r of rows) { const ok = (!lore.gcat || r.dataset.cat === lore.gcat) && (!q || r.textContent.toLowerCase().includes(q)); r.hidden = !ok; if (ok) n++; }
+    LB.querySelectorAll(".lterms").forEach(dl => { dl.hidden = !dl.querySelector(":scope>div:not([hidden])"); });
+    const on = !!(q || lore.gcat);
+    LB.classList.toggle("filtering", on);
+    $("glossNone").hidden = n > 0; $("glossCount").textContent = on ? `${rows.length}개 중 ${n}개` : `${rows.length}개`;
+    LB.querySelectorAll(".gloss-bar .chip").forEach(b => b.setAttribute("aria-pressed", b.dataset.c === lore.gcat));
+  }
+  function glossReset() { lore.gq = ""; lore.gcat = ""; if ($("glossQ")) $("glossQ").value = ""; glossFilter(); }
+
+  async function fetchLore(doc, force) {
+    if (force || lore.src[doc] == null) {
+      const r = await fetch(`${LORE_DOCS.find(d => d[0] === doc)[2]}?v=${Date.now()}`, {cache: "no-store"});
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      lore.src[doc] = (await r.text()).replace(/\r/g, ""); delete lore.cache[doc];
+    }
+    return lore.src[doc];
+  }
+  // 용어집의 :::terms 를 먼저 읽어 둔다 — 다른 갈래의 [[용어]] 가 이 표를 본다(못 받으면 빈 표 → 일반 글자)
+  async function loadTerms(force) {
+    if (lore.termsTried && !force) return;
+    lore.termsTried = true;
+    let src = ""; try { src = await fetchLore("glossary", force); } catch (e) { if (lore.src.glossary != null) src = lore.src.glossary; }
+    const map = new Map(); let inside = false;
+    for (const l of src.split("\n")) {
+      const t = l.trim();
+      if (t.startsWith(":::")) { inside = /^:::\s*terms\b/.test(t); continue; }
+      if (inside && t) { const [term, cat, def] = cells(t, 4); if (term) map.set(term, {cat, def: plain(def)}); }
+    }
+    lore.terms = map; lore.cache = {};
+  }
+  function loreGoto(anchor, smooth) {
+    let el = /^s-\d+$/.test(anchor) ? LB.querySelector("#" + anchor) : null;
+    if (!el) el = [...LB.querySelectorAll("[data-term]")].find(x => x.dataset.term === anchor);
+    if (!el) el = [...LB.querySelectorAll("h2,h3")].find(x => x.textContent.trim().startsWith(anchor));
+    if (!el) return;
+    LB.querySelectorAll(".lterms>div.hit").forEach(x => x.classList.remove("hit"));
+    if (LB.classList.contains("filtering") && (el.hidden || !el.dataset.term)) glossReset();
+    if (el.dataset.term) el.classList.add("hit");
+    el.scrollIntoView({behavior: smooth && !reduced() ? "smooth" : "auto", block: "start"});
+  }
+  function loreClear(html) { LB.dataset.doc = ""; LB.classList.remove("filtering"); LB.innerHTML = html; $("loreToc").innerHTML = $("loreTocM").innerHTML = ""; $("loreTocBtn").hidden = true; tocOpen(false); for (const o of lore.io || []) o.disconnect(); lore.io = null; }
+  function renderLore(doc) {
+    const {html, toc, cats} = lore.cache[doc], fresh = LB.dataset.doc !== doc;
+    let body = html;
+    if (doc === "glossary" && html.includes('class="lterms"')) { const m = /^<h1>.*?<\/h1>/.exec(html), at = m ? m[0].length : 0; body = html.slice(0, at) + glossBar(cats) + html.slice(at); }   // 찾기 줄은 큰 제목 바로 아래
+    LB.innerHTML = body; LB.dataset.doc = doc; LB.classList.remove("filtering"); tipHide();
+    if (fresh) fade(LB);
+    $("loreToc").innerHTML = $("loreTocM").innerHTML = tocHtml(toc, doc); $("loreTocBtn").hidden = !toc.length; tocOpen(false);
+    const h2s = [...LB.querySelectorAll("h2[id]")];   // 관계도 노드 → 같은 문서에서 그 이름으로 시작하는 큰 대목
+    LB.querySelectorAll(".gn").forEach(n => { const hd = h2s.find(x => x.textContent.trim().startsWith(n.dataset.name)); if (hd) n.dataset.to = hd.id; });
+    if ($("glossQ")) {
+      $("glossQ").oninput = () => { lore.gq = $("glossQ").value; glossFilter(); };
+      LB.querySelectorAll(".gloss-bar .chip").forEach(b => b.onclick = () => { lore.gcat = b.dataset.c; glossFilter(); });
+      glossFilter();
+    }
+    watchHeads();
+    return fresh;
+  }
+  async function loadLore(force = false, anchor = "") {
+    const doc = lore.doc;
+    safe(() => localStorage.setItem("psy-lore-doc", doc));
+    $("loreSeg").querySelectorAll("button").forEach(b => { const on = b.dataset.doc === doc; b.setAttribute("aria-selected", on); b.tabIndex = on ? 0 : -1; });
+    LB.setAttribute("aria-labelledby", "lore-tab-" + doc);
+    setHash("#lore-" + doc + (anchor ? "/" + (/^s-\d+$/.test(anchor) ? anchor : encodeURIComponent(anchor)) : ""));
+    if (LB.dataset.doc === doc && !force) { if (anchor) loreGoto(anchor, false); return; }   // 이미 보이는 갈래 — 다시 그리지 않는다
+    if (LB.dataset.doc !== doc && !lore.cache[doc]) loreClear(LORE_SKEL);
+    try {
+      await loadTerms(force);
+      const src = await fetchLore(doc, force && doc !== "glossary");
+      if (!lore.cache[doc]) lore.cache[doc] = mdLore(src, doc);
       if (lore.doc !== doc) return;   // 받는 사이 다른 갈래로 옮겼다
-      const {html, toc} = lore.cache[doc];
-      const subs = doc === "story";   // 시나리오만 장 안의 대목(h3)까지 목차에
-      $("loreBody").innerHTML = html;
-      $("loreToc").innerHTML = "<b>목차</b>" + toc.filter(t => t.lv === 2 || subs).map(t => `<a href="#${t.id}" data-id="${t.id}"${t.lv === 3 ? ' class="sub"' : ""}>${esc(t.text)}</a>`).join("");
-      $("loreToc").querySelectorAll("a").forEach(a => a.onclick = (e) => { e.preventDefault(); const el = $(a.dataset.id); if (el) el.scrollIntoView({behavior: "smooth", block: "start"}); });
+      const fresh = renderLore(doc);
+      if (anchor) loreGoto(anchor, false);
+      else if (fresh) { const top = $("view-lore").getBoundingClientRect().top - $("tabList").getBoundingClientRect().bottom; if (top < 0) window.scrollBy(0, top); }   // 새 갈래는 맨 위부터
     } catch (e) {
-      $("loreBody").innerHTML = `<p class="empty">세계관을 불러오지 못했습니다: ${esc(e.message)}</p>`;
+      if (lore.doc !== doc) return;
+      loreClear(`<p class="lore-err"><span>세계관을 불러오지 못했습니다(${esc(e.message)})</span><button class="btn ghost" type="button" id="loreRetry">다시 시도</button></p>`);
     }
   }
 
@@ -802,6 +1239,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
   const NONE = '<p class="empty">찾는 것이 없습니다</p>';
   const gi = {data: null, busy: false, stale: false, sec: "overview", ch: 0, q: "", map: null, sel: -1, zoom: 0, cell: 0, rad: 0, pts: []};
   const num = (v, d = 2) => String(+(+v || 0).toFixed(d));
+  const cssProbe = document.createElement("i"); cssProbe.hidden = true; document.body.appendChild(cssProbe);   // 지도 캔버스가 토큰 색을 읽는 자리
   const giHit = (...parts) => { const q = gi.q.trim().toLowerCase(); return !q || parts.join(" ").toLowerCase().includes(q); };
   const giCh = (n) => !gi.ch || n === gi.ch;
   const curMap = () => gi.data && gi.data.maps.find(m => m.id === gi.map);
@@ -869,7 +1307,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
     const cards = D.chapters.filter(c => giHit(c.name, c.townName, c.bossName, c.bossTitle, c.finalQuest, ...D.systems.filter(s => s.chapter === c.n).map(s => s.name))).map(c => {
       const sys = D.systems.filter(s => s.chapter === c.n), boss = D.monsters.find(m => m.id === c.boss);
       return `<article class="gcard"><h4>${rth(boss && boss.art ? boss.art + ".idle" : "")}${esc(c.name)}${c.levels ? `<span class="tag">${esc(c.levels)}</span>` : ""}${c.part ? `<span class="tag m">${esc(c.part)}부</span>` : ""}</h4>
-        <dl class="kv">${c.townName ? `<dt>마을</dt><dd>${esc(c.townName)}</dd>` : ""}${c.bossName ? `<dt>보스</dt><dd><b>${esc(c.bossName)}</b>${c.bossTitle ? ` — ${esc(c.bossTitle)}` : ""}</dd>` : ""}
+        <dl class="kv">${c.townName ? `<dt>마을</dt><dd>${esc(c.townName)}</dd>` : ""}${c.bossName ? `<dt>보스</dt><dd><b>${esc(c.bossName)}</b>${c.bossTitle ? ` · ${esc(c.bossTitle)}` : ""}</dd>` : ""}
           ${c.intro ? `<dt>도입</dt><dd>${esc(c.intro)}</dd>` : ""}<dt>규모</dt><dd>지도 ${esc(c.maps)} · 주 이야기 ${esc(c.quests)} · 곁가지 ${esc(c.sideQuests)}</dd>
           ${c.finalQuest ? `<dt>끝</dt><dd>${esc(c.finalQuest)}${c.banner ? ` → «${esc(c.banner)}»` : ""}</dd>` : ""}</dl>
         ${sys.length ? `<div class="ovr">${sys.map(s => `<span class="tag" title="${esc(s.text)}">${esc(s.name)}</span>`).join("")}</div>` : ""}
@@ -881,7 +1319,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
   function secRules() {
     const list = gi.data.tables.filter(t => giHit(t.group, t.name, t.note, ...t.cols, ...t.rows.flatMap(r => r.c)));
     return [...new Set(list.map(t => t.group))].map(g => `<h3 class="gi-h">${esc(g)}</h3>` + list.filter(t => t.group === g).map(t =>
-      `<h4 class="gi-sub" style="margin:4px 0 0;font-size:13px;color:var(--ink)">${esc(t.name)}${t.note ? ` <small style="display:inline;font-weight:400;color:var(--muted)">${esc(t.note)}</small>` : ""}</h4>`
+      `<h4 class="gi-sub" style="margin:4px 0 0;font-size:13px;color:var(--ink)">${esc(t.name)}${t.note ? ` <small style="display:inline;font-size:12px;font-weight:400;color:var(--muted)">${esc(t.note)}</small>` : ""}</h4>`
       + gtable(t.cols.map(esc), t.rows.map(r => t.cols.map((_, i) => esc(r.c[i] ?? ""))), 0, t.cols.map((_, i) => i).filter(i => i > 0 && t.cols.length > 2))).join("")).join("");
   }
   function secNpcs() {
@@ -952,11 +1390,11 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
     const paths = gi.data.paths.filter(p => giHit(p.name, p.title, p.motto, p.branch, p.core && p.core.name, p.awakening && p.awakening.name, ...(p.nodes || []).map(n => n.name + " " + n.desc)));
     const pathCol = (p) => { const aw = p.awakening || {}, core = p.core || {};
       return `<div class="gcol"><article class="gcard"><h4><i class="sw" style="background:${esc(/^#[0-9a-f]{6}$/i.test(p.hex) ? p.hex : "transparent")}"></i>${esc(p.name)}<span class="tag m">${esc(p.title)}</span><span class="tag">${esc(p.branch)}</span></h4>
-        <p>${esc(p.motto)}</p>${p.blessing ? `<p class="sub">${esc(p.blessing)}</p>` : ""}${core.name ? `<dl class="kv"><dt>전직 능력치</dt><dd><b>${esc(core.name)}</b> — ${esc(core.desc)}</dd></dl>` : ""}</article>
+        <p>${esc(p.motto)}</p>${p.blessing ? `<p class="sub">${esc(p.blessing)}</p>` : ""}${core.name ? `<dl class="kv"><dt>전직 능력치</dt><dd><b>${esc(core.name)}</b>: ${esc(core.desc)}</dd></dl>` : ""}</article>
         ${aw.name ? card({...aw, kind: "기술", branch: p.branch, maxRank: aw.maxRank || 1, reqLevel: aw.reqLevel || 0, how: "서임 때 받는 각성기"}) : ""}${(p.nodes || []).map(n => card({...n, how: "스킬 포인트(길 노드)"})).join("")}</div>`; };
     const tree = list.length ? `<div class="cols3">${[...new Set(gi.data.skills.map(s => s.branch))].map(b => { const l = list.filter(s => s.branch === b);
       return l.length ? `<div class="gcol"><h3 class="gi-h">${esc(b)}</h3>${l.map(card).join("")}</div>` : ""; }).join("")}</div>` : "";
-    return tree + (paths.length ? `<h3 class="gi-h">전직 — 꿈지기의 길<small>5장 뒤 서임식에서 하나를 고른다</small></h3><div class="cols3">${paths.map(pathCol).join("")}</div>` : "");
+    return tree + (paths.length ? `<h3 class="gi-h">전직 · 꿈지기의 길<small>5장 뒤 서임식에서 하나를 고른다</small></h3><div class="cols3">${paths.map(pathCol).join("")}</div>` : "");
   }
   function secMonsters() {
     const list = gi.data.monsters.filter(m => giCh(m.chapter) && giHit(m.name, m.title, m.tier, m.style, m.drops, m.where, ...m.skills.map(s => s.name + " " + s.kind)));
@@ -972,7 +1410,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
     const list = gi.data.companions.filter(c => giCh(c.chapter) && giHit(c.name, c.size, c.role, c.roleText, c.skill, c.skillText, c.yields, c.lore));
     const card = (c) => `<article class="gcard"><h4>${rth(c.icon)}${esc(c.name)}<span class="tag">몸집 ${esc(c.size)}</span><span class="tag m">${esc(c.role)}</span></h4><p>${esc(c.roleText)}</p>
       <div class="facts">${fact("피해 배율", "×" + num(c.power))}${c.heal > 0 ? fact("HP 회복", "초당 " + num(c.heal) + "%") : ""}${c.light > 0 ? fact("빛", num(c.light) + "칸") : ""}</div>
-      <dl class="kv">${c.skill ? `<dt>재주</dt><dd><b>${esc(c.skill)}</b> — ${esc(c.skillText)}</dd>` : ""}<dt>정원</dt><dd>${esc(c.yields)}</dd></dl><p class="sub">${esc(c.lore)}</p></article>`;
+      <dl class="kv">${c.skill ? `<dt>재주</dt><dd><b>${esc(c.skill)}</b>: ${esc(c.skillText)}</dd>` : ""}<dt>정원</dt><dd>${esc(c.yields)}</dd></dl><p class="sub">${esc(c.lore)}</p></article>`;
     return perChapter(list, l => `<div class="cards">${l.map(card).join("")}</div>`);
   }
   function secQuests() {
@@ -1054,7 +1492,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
     // 칸을 기기 픽셀 정수로 맞춘다(흐려지지 않게) · 캔버스 넓이 상한
     const cd = Math.max(1, Math.min(Math.round(gi.cell * dpr), Math.floor(Math.sqrt(12e6 / (m.w * H)))));
     cv.width = m.w * cd; cv.height = H * cd; cv.style.width = cv.width / dpr + "px"; cv.style.height = cv.height / dpr + "px";
-    const css = getComputedStyle(document.documentElement), col = (n) => css.getPropertyValue(n).trim();
+    const col = (n, fb) => { cssProbe.style.color = `var(${n}${fb ? `,var(${fb})` : ""})`; return getComputedStyle(cssProbe).color; };   // light-dark() 를 실제 색으로 풀어 읽는다
     const g = cv.getContext("2d"), C = {}, bar = Math.max(1, Math.round(cd * .4)), glyph = col("--mp-glyph");
     for (const [ch, key] of TERRAIN) C[ch] = col("--mp-" + key);
     g.fillStyle = col(m.dark ? "--mp-void" : "--mp-air"); g.fillRect(0, 0, cv.width, cv.height);
@@ -1080,7 +1518,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
     for (const i of m.marks.map((k, i) => i).sort((a, b) => z(m.marks[a]) - z(m.marks[b]))) {
       const k = m.marks[i], p = gi.pts[i];
       markPath(g, k.kind, p.x, p.y, k.kind === "boss" ? rad * 1.3 : rad);
-      g.fillStyle = col("--mk-" + k.kind) || col("--mk-spawn"); g.fill(); g.lineWidth = Math.max(1, 1.5 * dpr); g.strokeStyle = ring; g.stroke();
+      g.fillStyle = col("--mk-" + k.kind, "--mk-spawn"); g.fill(); g.lineWidth = Math.max(1, 1.5 * dpr); g.strokeStyle = ring; g.stroke();
     }
     const s = gi.pts[gi.sel];
     if (s) for (const [w, c] of [[5 * dpr, ring], [2.5 * dpr, col("--accent")]]) { g.beginPath(); g.arc(s.x, s.y, rad * 1.3 + 4 * dpr, 0, Math.PI * 2); g.lineWidth = w; g.strokeStyle = c; g.stroke(); }
@@ -1261,7 +1699,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
       + (packed ? fact("묶음", fmtSize(Object.values(D.packs).reduce((a, p) => a + (p.size || 0), 0))) : "");
     // 잠금 줄
     const L = $("rsLock"); L.hidden = false;
-    if (!D.crypto || !packed) L.innerHTML = `<span class="msg">그림·소리 묶음이 아직 올라오지 않았습니다 — 지금은 목록만 보입니다</span>`;
+    if (!D.crypto || !packed) L.innerHTML = `<span class="msg">그림·소리 묶음이 아직 올라오지 않았습니다. 지금은 목록만 보입니다</span>`;
     else if (!window.crypto || !crypto.subtle) L.innerHTML = `<span class="msg err">이 주소에서는 잠금을 풀 수 없습니다(https 로 열어 주세요)</span>`;
     else if (rs.key) {
       L.innerHTML = `<span class="pill pass">열림</span><span class="spacer"></span><button class="iconbtn" type="button" id="rsLockBtn">잠그기</button>`;
@@ -1335,9 +1773,9 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
     const D = rs.data, e = D && rs.byKey.get(key); if (!e) return;
     const a = rsArt(e), f = a && D.files[a.f], fr = a && rsFrame(a), can = a && rsCan(a.f), nm = rsName(e.k) || rs.names.get(rsGroup(e.k)) || "";
     const rows = [], row = (l, v) => { if (v !== "" && v != null) rows.push(`<dt>${l}</dt><dd>${v}</dd>`); };
-    row("키", `<span class="rkey">${esc(e.spare ? "(키 없음 — 게임이 쓰지 않는 파일)" : e.k)}</span>`);
+    row("키", `<span class="rkey">${esc(e.spare ? "(키 없음 · 게임이 쓰지 않는 파일)" : e.k)}</span>`);
     if (nm) row("게임 속", esc(nm));
-    if (e.f === undefined && !e.spare) row("상태", a ? `그림 없음 — <span class="rkey">${esc(a.k)}</span> 의 그림을 빌려 쓴다` : `그림 없음 — 코드가 그린다(${esc(e.ph || "")})`);
+    if (e.f === undefined && !e.spare) row("상태", a ? `그림 없음 · <span class="rkey">${esc(a.k)}</span> 의 그림을 빌려 쓴다` : `그림 없음 · 코드가 그린다(${esc(e.ph || "")})`);
     if (e.f === -1) row("상태", '<span class="tag bad">매니페스트가 가리키는 파일이 없다</span>');
     if (f) {
       row("파일", `<span class="rkey">${esc(f.p.split("/").pop())}</span>`);
@@ -1354,7 +1792,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
       row("출처", [f.by, RS_LIC[f.lic] || f.lic || "반입 기록 없음", f.at ? "반입 " + f.at : ""].filter(Boolean).map(esc).join(" · "));
     }
     if (e.note) row("메모", esc(e.note));
-    if (f && f.hist) row("이력", `<ul>${f.hist.map(h => `<li>${esc(h.d || "")} — ${esc(h.t)}</li>`).join("")}</ul>`);
+    if (f && f.hist) row("이력", `<ul>${f.hist.map(h => `<li>${esc(h.d || "")} · ${esc(h.t)}</li>`).join("")}</ul>`);
     const marks = Object.entries((a && a.marks) || {}), hits = (a && a.hits) || [];
     const isHit = (i) => { for (let j = 0; j + 1 < hits.length; j += 2) if (i >= hits[j] && i <= hits[j + 1]) return true; return false; };
     const frames = can && fr.n > 1 ? `<div class="rd-ctl"><button class="iconbtn" type="button" data-step="-1" aria-label="앞 프레임">◀</button><button class="iconbtn" type="button" id="rdPlay">멈춤</button><button class="iconbtn" type="button" data-step="1" aria-label="다음 프레임">▶</button>
@@ -1362,7 +1800,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
       <div class="rd-frames" id="rdFrames">${Array.from({length: fr.n}, (_, i) => `<button type="button" class="fbtn${isHit(i) ? " hit" : ""}" data-i="${i}" aria-pressed="false">${i}${marks.filter(m => m[1] === i).map(m => `<small>${esc(RS_MARK[m[0]] || m[0])}</small>`).join("")}</button>`).join("")}</div>
       ${hits.length ? '<p class="status">붉은 밑줄 = 공격 판정 프레임</p>' : ""}` : can ? `<div class="rd-ctl"><span class="spacer"></span><button class="iconbtn" type="button" id="rdBg">배경</button></div>` : "";
     $("rsDlgTitle").textContent = nm || (e.spare ? e.k.slice(1) : e.k);
-    $("rsDlgBody").innerHTML = `<div class="rd"><div class="rd-left"><div class="stage rd-view" id="rdView">${!a ? `<span class="lk">${esc(e.ph || "그림 없음")}</span>` : can ? `<canvas class="rsc" data-k="${esc(e.k)}" data-box="${Math.max(160, Math.min(400, window.innerWidth - 90))}" data-cap="12"></canvas>` : '<span class="lk">잠김 — 리소스 탭에서 비밀번호를 넣으면 보입니다</span>'}</div>${frames}</div>
+    $("rsDlgBody").innerHTML = `<div class="rd"><div class="rd-left"><div class="stage rd-view" id="rdView">${!a ? `<span class="lk">${esc(e.ph || "그림 없음")}</span>` : can ? `<canvas class="rsc" data-k="${esc(e.k)}" data-box="${Math.max(160, Math.min(400, window.innerWidth - 90))}" data-cap="12"></canvas>` : '<span class="lk">잠김 · 리소스 탭에서 비밀번호를 넣으면 보입니다</span>'}</div>${frames}</div>
       <dl class="kv">${rows.join("")}</dl></div>`;
     $("rsDlgBody").className = "bg-" + rs.bg;
     $("rsScrim").hidden = false; $("rsClose").focus();
@@ -1400,7 +1838,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
       if (!rel) { none(); return; }
       const notes = Array.isArray(rel.notes) ? rel.notes.join("\n") : String(rel.notes || ""), commit = String(rel.commit || "");
       $("buildsBox").innerHTML = `<h2>${esc(rel.label || rel.id || "테스트 빌드")}</h2>
-        <dl class="kv"><dt>날짜</dt><dd>${esc(fmt(rel.at) || "—")}</dd><dt>커밋</dt><dd>${esc(/^[0-9a-f]{12,}$/i.test(commit) ? commit.slice(0, 7) : commit || "—")}</dd>${notes ? `<dt>내용</dt><dd class="pre">${esc(notes)}</dd>` : ""}</dl>
+        <dl class="kv"><dt>날짜</dt><dd>${esc(fmt(rel.at) || "없음")}</dd><dt>커밋</dt><dd>${esc(/^[0-9a-f]{12,}$/i.test(commit) ? commit.slice(0, 7) : commit || "없음")}</dd>${notes ? `<dt>내용</dt><dd class="pre">${esc(notes)}</dd>` : ""}</dl>
         <ul class="files">${(rel.files || []).map(f => `<li><span class="tag m">${esc({windows: "Windows", android: "Android"}[f.kind] || f.kind || "")}</span><b>${esc(f.title || f.name || "")}</b><span class="sz">${esc(fmtSize(f.size))}</span>${f.note ? `<small>${esc(f.note)}</small>` : ""}</li>`).join("")}</ul>
         <a class="btn" href="${BUILDS_SITE}" target="_blank" rel="noopener">내려받기 페이지 열기</a>`;
       buildsLoaded = true;
@@ -1471,8 +1909,9 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
       $("fbAll").textContent = list.length && list.every(it => fb.open.has(it.id)) ? "모두 접기" : "모두 펼치기"; }));
   }
 
-  const initialTab = location.hash.startsWith("#lore-") ? "lore" : TABS.includes(location.hash.slice(1)) ? location.hash.slice(1) : (safe(() => localStorage.getItem("psy-tab")) || "board");
-  showTab(initialTab);
+  const h0 = parseHash();
+  if (h0 && h0.doc) lore.doc = h0.doc;
+  showTab(h0 ? h0.tab : (safe(() => localStorage.getItem("psy-tab")) || "board"), h0 ? h0.anchor : "");
 
   function visible() {
     const q = st.q.trim().toLowerCase();
@@ -1540,8 +1979,8 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
     $("milestones").innerHTML = miles().map(m => {
       const cs = all.filter(c => c.milestone === m.id);
       return `<div class="ms ${m.id===cur?"current":""}"><span class="name">${esc(m.id)}</span><div class="bar">${stackBar(cs)}</div>
-        <span class="pct">${cs.length ? Math.round(progress(cs)*100) + "%" : "—"} · ${cs.filter(c=>c.stage==="done").length}/${cs.length}</span>
-        <span class="desc">${esc(m.name)} — ${esc(m.desc||"")}</span></div>`;
+        <span class="pct">${cs.length ? Math.round(progress(cs)*100) + "%" : "0%"} · ${cs.filter(c=>c.stage==="done").length}/${cs.length}</span>
+        <span class="desc">${esc(m.name)}${m.desc ? " · " + esc(m.desc) : ""}</span></div>`;
     }).join("");
     $("stageCounts").innerHTML = STAGES.map(s => `<div class="sc"><span>${s.name}</span><b style="color:${s.color}">${all.filter(c=>c.stage===s.id).length}</b></div>`).join("");
     $("legend").innerHTML = STAGES.map(s => `<span><i style="background:${s.color}"></i>${s.name}</span>`).join("");
@@ -1551,12 +1990,12 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
     const qa = meta.qa || {};
     const pass = String(qa.gate || "").toUpperCase() === "PASS";
     $("qaBox").innerHTML = qa.gate ? `<dt>게이트</dt><dd><span class="pill ${pass ? "pass" : "fail"}">${esc(qa.gate)}</span></dd>
-      <dt>컴파일</dt><dd>${esc(qa.compile||"—")}</dd><dt>EditMode</dt><dd>${esc(qa.editmode||"—")}</dd>
-      <dt>PlayMode</dt><dd>${esc(qa.playmode||"—")}</dd><dt>스크린샷</dt><dd>${esc(qa.screenshots ?? "—")}</dd>
+      <dt>컴파일</dt><dd>${esc(qa.compile||"없음")}</dd><dt>EditMode</dt><dd>${esc(qa.editmode||"없음")}</dd>
+      <dt>PlayMode</dt><dd>${esc(qa.playmode||"없음")}</dd><dt>스크린샷</dt><dd>${esc(qa.screenshots ?? "없음")}</dd>
       <dt>측정</dt><dd>${esc(fmt(qa.at))}</dd>` : `<dt>상태</dt><dd>기록 없음</dd>`;
     const b = meta.build || {};
-    $("buildBox").innerHTML = b.at ? `<dt>대상</dt><dd>${esc(b.target||"—")}</dd><dt>크기</dt><dd>${esc(b.sizeMB ? b.sizeMB + " MB" : "—")}</dd>
-      <dt>위치</dt><dd>${esc(b.path||"—")}</dd><dt>빌드</dt><dd>${esc(fmt(b.at))}</dd>` : `<dt>상태</dt><dd>빌드 기록 없음</dd>`;
+    $("buildBox").innerHTML = b.at ? `<dt>대상</dt><dd>${esc(b.target||"없음")}</dd><dt>크기</dt><dd>${esc(b.sizeMB ? b.sizeMB + " MB" : "없음")}</dd>
+      <dt>위치</dt><dd>${esc(b.path||"없음")}</dd><dt>빌드</dt><dd>${esc(fmt(b.at))}</dd>` : `<dt>상태</dt><dd>빌드 기록 없음</dd>`;
     const prio = (p) => ({P0:0, P1:1, P2:2})[p] ?? 3;
     const focus = all.filter(c => c.stage !== "done" && (c.priority === "P0" || c.stage === "qa" || c.stage === "dev"))
       .sort((a,c) => prio(a.priority) - prio(c.priority)).slice(0, 8);
@@ -1572,10 +2011,10 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
     $("subtitle").textContent = meta.subtitle || "";
     $("curMile").textContent = m ? `${m.id} ${m.name}` : cur;
     const scope = cards().filter(c => c.milestone === cur);
-    $("overallPct").textContent = scope.length ? Math.round(progress(scope) * 100) + "%" : "–";
+    $("overallPct").textContent = scope.length ? Math.round(progress(scope) * 100) + "%" : "";
     $("overallMeter").innerHTML = stackBar(scope);
     $("overallLbl").textContent = scope.length ? `${scope.filter(c=>c.stage==="done").length}/${scope.length} 완료` : "";
-    $("dataStamp").textContent = "데이터 갱신 " + (fmt(meta.updatedAt) || "—");
+    $("dataStamp").textContent = "데이터 갱신 " + (fmt(meta.updatedAt) || "없음");
   }
 
   function renderSelects() {
@@ -1664,7 +2103,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
     try { await ghGet(); storeToken(tok, $("tokRemember").checked); st.editing = true; $("tokScrim").hidden = true; await load(true); setStatus("편집 모드 · 카드를 끌거나 ◀▶ 로 옮기세요"); }
     catch (err) { st.token = prev; $("tokMsg").textContent = "확인 실패: " + err.message; }
   });
-  document.addEventListener("keydown", e => { if (e.key !== "Escape") return; if (!$("cardScrim").hidden) closeCard(); if (!$("tokScrim").hidden) $("tokScrim").hidden = true; if (!$("rsScrim").hidden) closeRes(); });
+  document.addEventListener("keydown", e => { if (e.key !== "Escape") return; if (!$("cardScrim").hidden) closeCard(); if (!$("tokScrim").hidden) $("tokScrim").hidden = true; if (!$("rsScrim").hidden) closeRes(); tipHide(); tocOpen(false); });
 
   // ---------- 시작 ----------
   $("refreshBtn").onclick = () => { load(); if (!$("view-lore").hidden) loadLore(true); if (!$("view-info").hidden) loadInfo(true); if (!$("view-res").hidden) loadRes(true).then(renderRes); if (!$("view-builds").hidden) loadBuilds(true); if (!$("view-feedback").hidden) loadFeedback(true); };
