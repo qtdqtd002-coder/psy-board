@@ -419,6 +419,35 @@ canvas.rsc.smooth{image-rendering:auto}
 .rsp{min-height:32px;margin:1px 2px 1px 0}
 .rsp[aria-pressed="true"]{background:var(--accent-ink);border-color:var(--accent-ink);color:var(--bg)}
 .rsp:disabled{opacity:.45;cursor:default}
+.pp-sum{display:flex;flex-wrap:wrap;gap:8px}
+.pp-sum .ps{flex:1 1 150px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r2);padding:10px 12px;min-width:0}
+.pp-sum .ps b{display:block;font-size:14px}
+.pp-sum .ps .bar{height:6px;border-radius:3px;background:var(--surface2);overflow:hidden;display:flex;margin:6px 0 4px}
+.pp-sum .ps .bar i{display:block;height:100%}
+.pp-sum .ps .bar .done{background:var(--good)}.pp-sum .ps .bar .review{background:var(--st-qa)}.pp-sum .ps .bar .doing{background:var(--st-dev)}
+.pp-sum .ps small{font-size:12px;color:var(--muted)}
+.pp-row{font:inherit;color:var(--ink);text-align:left;width:100%;background:var(--surface);border:1px solid var(--line);border-radius:var(--r2);padding:10px 12px;cursor:pointer;
+  display:grid;grid-template-columns:minmax(120px,1.1fr) repeat(4,minmax(0,1fr));gap:8px;align-items:stretch;transition:border-color .15s}
+.pp-row:hover{border-color:var(--accent)}
+.pp-row .who{display:flex;flex-direction:column;justify-content:center;gap:2px;min-width:0}
+.pp-row .who b{font-size:14px;overflow-wrap:anywhere}
+.pp-cell{background:var(--surface2);border-radius:var(--r1);padding:6px;display:flex;flex-direction:column;gap:5px;min-width:0}
+.pp-cell .hd{display:flex;flex-wrap:wrap;align-items:center;gap:4px;font-size:12px;color:var(--muted)}
+.pp-cell .stage{height:84px}
+.pp-cell .stage img,.pp-shot .stage img{max-width:100%;max-height:100%;object-fit:contain;display:block}
+.pp-cell.todo{background:none;border:1px dashed var(--line)}
+.pp-list{display:flex;flex-direction:column;gap:8px}
+.pp-head{display:grid;grid-template-columns:minmax(120px,1.1fr) repeat(4,minmax(0,1fr));gap:8px;padding:0 12px;font-size:12px;font-weight:600;color:var(--muted)}
+.tag.pp-doing{color:color-mix(in srgb,var(--st-dev) 72%,var(--ink))}.tag.pp-review{color:color-mix(in srgb,var(--st-qa) 68%,var(--ink))}.tag.pp-done{color:var(--good-ink)}.tag.pp-hold,.tag.pp-todo{color:var(--muted)}
+.pp-dlg{display:flex;flex-direction:column;gap:14px}
+.pp-sec{border:1px solid var(--line);border-radius:var(--r2);padding:12px 14px;display:flex;flex-direction:column;gap:8px}
+.pp-sec h4{margin:0;font-size:15px;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.pp-sec p{margin:0;font-size:14px;line-height:1.6}
+.pp-sec ul{margin:0;padding-left:18px;font-size:13px;color:var(--muted);line-height:1.6}
+.pp-shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px}
+.pp-shot{margin:0;display:flex;flex-direction:column;gap:4px}
+.pp-shot .stage{height:200px}
+.pp-shot figcaption{font-size:12px;color:var(--muted)}
 .dlg.wide{width:min(880px,100%)}
 .rd{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;align-items:start}
 .rd-left{display:flex;flex-direction:column;gap:8px;min-width:0}
@@ -514,6 +543,9 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
   .dlg .grid{grid-template-columns:1fr}
   .rd{grid-template-columns:minmax(0,1fr)}
   .rtiles{grid-template-columns:repeat(auto-fill,minmax(104px,1fr))}
+  .pp-row,.pp-head{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pp-row .who{grid-column:1/-1}
+  .pp-head{display:none}
   .fbi summary{grid-template-columns:auto minmax(0,1fr)}
   .fbi summary .tags{grid-column:1 / 3;justify-content:flex-start}
   .fbi summary p{grid-column:1 / 3}
@@ -1530,7 +1562,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
   safe(() => matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => { if (mapVisible()) drawMap(); }));   // 캔버스 색은 다시 칠해야 바뀐다
 
   // ---------- 리소스(data/resources.json = 목록(공개) · data/res/<묶음>.bin = 비밀번호로 잠근 그림·소리 — 만들기 tools/board/res_export.py · 올리기 = board.py publish-res) ----------
-  const RS_CATS = [["char", "캐릭터"], ["enemy", "몬스터"], ["boss", "보스"], ["fx", "FX"], ["icon", "아이콘"], ["ui", "UI"], ["tile", "타일·배경"], ["prop", "소품"], ["sound", "소리"], ["font", "글꼴"], ["spare", "예비 파일"]];
+  const RS_CATS = [["pipe", "제작 단계"], ["char", "캐릭터"], ["enemy", "몬스터"], ["boss", "보스"], ["fx", "FX"], ["icon", "아이콘"], ["ui", "UI"], ["tile", "타일·배경"], ["prop", "소품"], ["sound", "소리"], ["font", "글꼴"], ["spare", "예비 파일"]];
   const RS_ICONS = new Set(["skill", "passive", "companion", "stat", "icon", "branch"]);   // ui.<이것>.* 은 아이콘 갈래로
   const RS_TIER = {v1_cc0: "CC0 원본", v1_inhouse_draft: "자체 제작 초안", v2_inhouse: "자체 제작", v2_ai_cleaned: "AI 생성 + 덧칠", v3_final: "확정"};
   const RS_LIC = {own: "자체 제작", cc0: "CC0 1.0", ofl: "SIL OFL 1.1"};
@@ -1538,7 +1570,12 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
   const RS_MARK = {tele: "예비", start: "시작", takeoff: "도약", rise: "상승", apex: "정점", slam: "내려찍기", land: "착지", spawn: "소환"};
   const RS_FLT = [["", "전체"], ["anim", "움직임"], ["temp", "임시·빌림"], ["below", "기준 미달"]];
   const RS_BG = [["check", "체크"], ["dark", "어둡게"], ["light", "밝게"]];
-  const rs = {data: null, busy: null, err: "", cat: "char", flt: "", q: "", key: null, msg: "", packs: new Map(), bmps: new Map(), byKey: new Map(), names: new Map(), sound: null,
+  // 제작 단계(원화 → 모델링 → 리깅 → 애니메이션) — 원본 docs/art/pipeline/pipeline.json, 미리보기는 잠근 묶음 «pipe»
+  const PP_STAGE = {concept: "원화", model: "모델링", rig: "리깅", anim: "애니메이션"};
+  const PP_STATUS = {todo: "없음", doing: "진행", review: "검수", done: "확정", hold: "보류"};
+  const PP_KIND = [["hero", "주인공"], ["npc", "NPC"], ["enemy", "몬스터"], ["boss", "보스"], ["etc", "그 밖"]];
+  const PP_FLT = [["", "전체"], ["work", "작업 있음"], ["concept", "원화 단계"], ["model", "모델링 단계"], ["rig", "리깅 단계"], ["anim", "애니메이션 단계"]];
+  const rs = {data: null, busy: null, err: "", cat: "pipe", flt: "", urls: new Map(), q: "", key: null, msg: "", packs: new Map(), bmps: new Map(), byKey: new Map(), names: new Map(), sound: null,
     play: safe(() => localStorage.getItem("psy-res-play")) !== "0", bg: safe(() => localStorage.getItem("psy-res-bg")) || "check"};
   const b64u8 = (s) => Uint8Array.from(atob(s), c => c.charCodeAt(0));
   const u8b64 = (u) => { let b = ""; for (const x of u) b += String.fromCharCode(x); return btoa(b); };
@@ -1564,7 +1601,8 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
         d.packs = d.packs || {}; d.licenses = d.licenses || {};
         // 키 없는 그림(예비)도 같은 틀로 볼 수 있게 가짜 키를 준다
         d.spare = d.orphans.map(i => { const p = d.files[i].p, m = /_strip(\d+)/.exec(p); return {k: "~" + p.split("/").pop().replace(/\.png$/i, ""), f: i, fr: m ? Number(m[1]) : 1, fps: 8, spare: true}; });
-        if (rs.data && JSON.stringify(rs.data.packs) !== JSON.stringify(d.packs)) { rs.packs.clear(); rs.bmps.clear(); }
+        if (rs.data && JSON.stringify(rs.data.packs) !== JSON.stringify(d.packs)) { rs.packs.clear(); rs.bmps.clear(); ppDrop(); }
+        d.pipeline = d.pipeline || {stages: [], units: []};
         rs.data = d; rs.err = ""; rs.byKey = new Map([...d.anims, ...d.spare].map(e => [e.k, e]));
         if (rs.key && !(await rsCheck(rs.key))) rsForget();   // 비밀번호가 바뀌었다
         await rsRestore(); rsNames();
@@ -1593,7 +1631,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
     try { await crypto.subtle.decrypt({name: "AES-GCM", iv: b64u8(c.check.iv), additionalData: utf8("check")}, key, b64u8(c.check.ct)); return true; } catch (e) { return false; }
   }
   function rsForget() {
-    rs.key = null; rs.packs.clear(); rs.bmps.clear(); gi.stale = true; rsStop();
+    rs.key = null; rs.packs.clear(); rs.bmps.clear(); gi.stale = true; rsStop(); ppDrop();
     safe(() => sessionStorage.removeItem("psy-res-key")); safe(() => localStorage.removeItem("psy-res-key"));
   }
   async function rsRestore() {
@@ -1631,6 +1669,58 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
   function rsBitmap(fi) {
     if (!rs.bmps.has(fi)) rs.bmps.set(fi, rsBytes(fi).then(b => createImageBitmap(new Blob([b], {type: "image/png"}))));
     return rs.bmps.get(fi);
+  }
+
+  // ---- 제작 단계 미리보기: <img class="ppi" data-fi="파일 번호"> 를 넣고 ppMount(root) — jpg·움직이는 webp 라 캔버스가 아니라 img 로 그린다
+  const PP_MIME = {jpg: "image/jpeg", jpeg: "image/jpeg", png: "image/png", webp: "image/webp", gif: "image/gif"};
+  function ppDrop() { for (const u of rs.urls.values()) u.then(x => URL.revokeObjectURL(x)).catch(() => {}); rs.urls.clear(); }
+  function ppUrl(fi) {
+    if (!rs.urls.has(fi)) {
+      const ext = (rs.data.files[fi].p.split(".").pop() || "").toLowerCase();
+      rs.urls.set(fi, rsBytes(fi).then(b => URL.createObjectURL(new Blob([b], {type: PP_MIME[ext] || "application/octet-stream"}))));
+      rs.urls.get(fi).catch(() => rs.urls.delete(fi));
+    }
+    return rs.urls.get(fi);
+  }
+  function ppMount(root) { root.querySelectorAll("img.ppi:not([src])").forEach(im => { const fi = Number(im.dataset.fi); if (rsCan(fi)) ppUrl(fi).then(u => { im.src = u; }).catch(() => {}); }); }
+  const ppKind = (id) => { const k = id.split(".")[0]; return PP_KIND.some(x => x[0] === k) ? k : "etc"; };
+  const ppName = (u) => u.name || rs.names.get(u.id) || (u.id === "hero" ? "이안" : "");
+  const ppSt = (u, sid) => ((u.st || {})[sid] || {}).s || "todo";
+  // 그 대상이 지금 서 있는 단계 = 확정이 아닌 첫 단계(전부 확정이면 마지막)
+  const ppAt = (u, stages) => stages.find(s => ppSt(u, s) !== "done") || stages[stages.length - 1];
+  const ppTag = (s) => `<span class="tag pp-${s}">${PP_STATUS[s] || s}</span>`;
+  function ppShot(f, cls = "") {
+    return rsCan(f.i) ? `<img class="ppi${cls}" data-fi="${f.i}" alt="${esc(f.label || "")}" loading="lazy">` : '<span class="lk">잠김</span>';
+  }
+  function renderPipe(B) {
+    const P = rs.data.pipeline, stages = P.stages || [];
+    const sum = stages.map(sid => { const c = {done: 0, review: 0, doing: 0}; for (const u of P.units) { const s = ppSt(u, sid); if (s in c) c[s]++; }
+      const n = P.units.length || 1;
+      return `<div class="ps"><b>${PP_STAGE[sid] || sid}</b><div class="bar">${["done", "review", "doing"].map(k => `<i class="${k}" style="width:${c[k] / n * 100}%"></i>`).join("")}</div>
+        <small>확정 ${c.done} · 검수 ${c.review} · 진행 ${c.doing} / ${P.units.length}</small></div>`; }).join("");
+    const list = P.units.filter(u => (rs.flt === "" || (rs.flt === "work" ? !!u.st : !!u.st && ppAt(u, stages) === rs.flt)) && rsHit(u.id, ppName(u), u.note, ...stages.map(s => ((u.st || {})[s] || {}).note || "")));
+    const row = (u) => `<button type="button" class="pp-row" data-u="${esc(u.id)}"><span class="who"><b>${esc(ppName(u) || u.id)}</b><span class="rkey">${esc(u.id)}</span></span>
+      ${stages.map(sid => { const d = (u.st || {})[sid], s = ppSt(u, sid), f = d && d.files && d.files[0];
+        return `<span class="pp-cell ${s}"><span class="hd">${PP_STAGE[sid] || sid} ${ppTag(s)}${d && d.files ? `<span>${d.files.length}장</span>` : ""}</span>${f ? `<span class="stage">${ppShot(f)}</span>` : ""}</span>`; }).join("")}</button>`;
+    const head = `<div class="pp-head"><span>대상</span>${stages.map(s => `<span>${PP_STAGE[s] || s}</span>`).join("")}</div>`;
+    B.innerHTML = `<div class="pp-sum">${sum}</div>` + (PP_KIND.map(([k, nm]) => { const l = list.filter(u => ppKind(u.id) === k);
+      return l.length ? `<section class="rgroup"><h4>${nm}<span class="cnt">${l.length}</span></h4>${head}<div class="pp-list">${l.map(row).join("")}</div></section>` : ""; }).join("")
+      || '<p class="empty">조건에 맞는 대상이 없습니다</p>');
+    B.querySelectorAll(".pp-row").forEach(b => b.onclick = () => openPipe(b.dataset.u));
+    ppMount(B);
+  }
+  function openPipe(id) {
+    const P = rs.data.pipeline, u = P.units.find(x => x.id === id); if (!u) return;
+    $("rsDlgTitle").textContent = (ppName(u) || u.id) + " · 제작 단계";
+    $("rsDlgBody").innerHTML = `<div class="pp-dlg">${u.note ? `<p class="status">${esc(u.note)}</p>` : ""}${u.spec ? `<p class="status">설정서 <span class="rkey">${esc(u.spec)}</span></p>` : ""}
+      ${P.stages.map(sid => { const d = (u.st || {})[sid] || {}, s = d.s || "todo";
+        return `<section class="pp-sec"><h4>${PP_STAGE[sid] || sid} ${ppTag(s)}${d.tool ? `<span class="tag">${esc(d.tool)}</span>` : ""}${d.at ? `<span class="status">${esc(d.at)}</span>` : ""}</h4>
+          ${d.note ? `<p>${esc(d.note)}</p>` : s === "todo" ? '<p class="status">아직 시작하지 않았습니다</p>' : ""}
+          ${d.files ? `<div class="pp-shots">${d.files.map(f => `<figure class="pp-shot"><span class="stage">${ppShot(f)}</span><figcaption>${esc(f.label || "")}</figcaption></figure>`).join("")}</div>` : ""}
+          ${d.log ? `<ul>${d.log.map(h => `<li>${esc(h.d || "")} · ${esc(h.t || "")}</li>`).join("")}</ul>` : ""}</section>`; }).join("")}</div>`;
+    $("rsDlgBody").className = "bg-" + rs.bg;
+    $("rsScrim").hidden = false; $("rsClose").focus();
+    ppMount($("rsDlgBody"));
   }
 
   // ---- 그림 캔버스: <canvas class="rsc" data-k="키" data-box="칸 크기"> 를 넣고 rsMount(root) — 프레임이 여럿이면 저절로 돈다
@@ -1715,9 +1805,9 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
       };
     }
     // 고르기
-    const art = !["sound", "font"].includes(rs.cat);
+    const art = !["sound", "font", "pipe"].includes(rs.cat);
     const chip = (v, n) => `<button class="chip" type="button" data-f="${v}" aria-pressed="${rs.flt === v}">${n}</button>`;
-    $("rsFilters").innerHTML = (art && rs.cat !== "spare" ? RS_FLT.map(([v, n]) => chip(v, n)).join("") : "")
+    $("rsFilters").innerHTML = (rs.cat === "pipe" ? PP_FLT.map(([v, n]) => chip(v, n)).join("") : art && rs.cat !== "spare" ? RS_FLT.map(([v, n]) => chip(v, n)).join("") : "")
       + `<input type="search" id="rsQ" placeholder="찾기(키·이름·메모)" value="${esc(rs.q)}" aria-label="리소스 찾기">`
       + (art && rs.key ? `<button class="iconbtn" type="button" id="rsPlayBtn" aria-pressed="${rs.play}">${rs.play ? "움직임 켬" : "움직임 끔"}</button>
         <button class="iconbtn" type="button" id="rsBgBtn">배경: ${RS_BG.find(b => b[0] === rs.bg)[1]}</button>` : "");
@@ -1738,6 +1828,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
   }
   function renderResBody() {
     const D = rs.data, B = $("rsBody"); if (!D) return;
+    if (rs.cat === "pipe") { renderPipe(B); return; }
     B.className = "bg-" + rs.bg;
     const credit = (lics) => { const l = lics.map(k => D.licenses[k]).filter(Boolean).flatMap(c => c.credits || []); return l.length ? `<p class="status">${l.map(esc).join(" · ")}</p>` : ""; };
     if (rs.cat === "sound") {
