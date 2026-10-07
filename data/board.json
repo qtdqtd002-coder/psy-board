@@ -2,35 +2,35 @@
  "schema": "psy-board/1",
  "meta": {
   "project": "PSY 프로젝트",
-  "subtitle": "새 프로젝트 준비 중",
+  "subtitle": "첫울음(가제) · 제노니아류 탑뷰 액션 RPG",
   "currentMilestone": "M0",
-  "updatedAt": "2026-10-07T13:49:24Z"
+  "updatedAt": "2026-10-07T14:41:46Z"
  },
  "milestones": [
   {
    "id": "M0",
    "name": "프리프로덕션",
-   "desc": "장르·벤치마크 선정 · 기획 · 환경"
+   "desc": "세계관 · 아트 방식 결정 · 싸움 손맛 시험 · 시스템 기획"
   },
   {
    "id": "M1",
    "name": "수직 슬라이스",
-   "desc": ""
+   "desc": "1장 첫여울 전부 · 메잡이 · 보스 먹부리"
   },
   {
    "id": "M2",
    "name": "알파",
-   "desc": ""
+   "desc": "2~3장 · 세 소임 · 기울기와 갈림"
   },
   {
    "id": "M3",
    "name": "베타",
-   "desc": ""
+   "desc": "4~5장 · 맺음 셋 · 관계 퀘스트 전부"
   },
   {
    "id": "M4",
    "name": "출시",
-   "desc": ""
+   "desc": "다듬기 · 번역 · 상점"
   }
  ],
  "areas": [
@@ -45,8 +45,223 @@
   "QA",
   "출시"
  ],
- "cards": [],
+ "cards": [
+  {
+   "id": "PSY-001",
+   "title": "세계관 1차: 시놉시스 · 세계 · 인물 · 메인 퀘스트 35 · 관계 퀘스트 27 · 용어집",
+   "stage": "qa",
+   "milestone": "M0",
+   "area": "시나리오",
+   "priority": "P0",
+   "owner": "Claude",
+   "note": "가제 «첫울음». 보드 세계관 탭 여섯 갈래에 게시. 원고 = docs/design/00_Canon. 사용자 검토 대기(검토가 QA).",
+   "order": 1,
+   "createdAt": "2026-10-07T14:41:46Z",
+   "updatedAt": "2026-10-07T14:41:46Z",
+   "doneAt": null
+  },
+  {
+   "id": "PSY-002",
+   "title": "제작 방향 초안: 제노니아 벤치마크 판단 · 아트 방식 세 갈래 · 만들 것 · 차례",
+   "stage": "qa",
+   "milestone": "M0",
+   "area": "기획",
+   "priority": "P0",
+   "owner": "Claude",
+   "note": "게임 정보 › 제작 방향에 게시. 원고 = docs/design/01_Production/ProductionPlan.md. 사용자 검토 대기.",
+   "order": 2,
+   "createdAt": "2026-10-07T14:41:46Z",
+   "updatedAt": "2026-10-07T14:41:46Z",
+   "doneAt": null
+  },
+  {
+   "id": "PSY-003",
+   "title": "보드 메뉴 재정리: 세계관 · 대시보드 · 칸반 · 리소스 · 게임 정보 · 빌드 다운로드 · 피드백",
+   "stage": "qa",
+   "milestone": "M0",
+   "area": "인프라",
+   "priority": "P1",
+   "owner": "Claude",
+   "note": "세계관 여섯 갈래 · 퀘스트 블록 · 좁은 화면 표 수정 포함. 넓은/좁은/어두운 화면 캡처로 확인. 라이브 확인 뒤 완료로.",
+   "order": 3,
+   "createdAt": "2026-10-07T14:41:46Z",
+   "updatedAt": "2026-10-07T14:41:46Z",
+   "doneAt": null
+  },
+  {
+   "id": "PSY-004",
+   "title": "결정: 아트 방식 고르기(3D 로우폴리 실시간 / 3D 를 구운 2D / 2D 도트)",
+   "stage": "plan",
+   "milestone": "M0",
+   "area": "아트",
+   "priority": "P0",
+   "owner": "사용자",
+   "note": "기획의 안 = 3D 로우폴리 실시간. 시험 한 벌(PSY-006)을 보고 정한다. 정하기 전에는 아트를 늘리지 않는다.",
+   "order": 4,
+   "createdAt": "2026-10-07T14:41:46Z",
+   "updatedAt": "2026-10-07T14:41:46Z",
+   "doneAt": null
+  },
+  {
+   "id": "PSY-005",
+   "title": "결정: 주인공 우레의 성별과 생김새",
+   "stage": "plan",
+   "milestone": "M0",
+   "area": "기획",
+   "priority": "P0",
+   "owner": "사용자",
+   "note": "게임의 얼굴이라 기획이 안을 내지 않았다. 시험 한 벌을 만들기 전에 필요.",
+   "order": 5,
+   "createdAt": "2026-10-07T14:41:46Z",
+   "updatedAt": "2026-10-07T14:41:46Z",
+   "doneAt": null
+  },
+  {
+   "id": "PSY-006",
+   "title": "아트 방식 시험 한 벌: 우레 · 잠잠이 · 첫여울 땅 한 화면을 두 방식으로",
+   "stage": "plan",
+   "milestone": "M0",
+   "area": "아트",
+   "priority": "P1",
+   "owner": "Claude",
+   "note": "3D 실시간과 구운 2D 를 나란히 놓고 사용자가 고른다. PSY-005 뒤에 시작.",
+   "order": 6,
+   "createdAt": "2026-10-07T14:41:46Z",
+   "updatedAt": "2026-10-07T14:41:46Z",
+   "doneAt": null
+  },
+  {
+   "id": "PSY-007",
+   "title": "회색 상자 싸움 손맛 시험: 치기 · 구르기 · 숨 · 소리 물결 피하기",
+   "stage": "plan",
+   "milestone": "M0",
+   "area": "시스템",
+   "priority": "P1",
+   "owner": "Claude",
+   "note": "아트 없이 상자로. 재미는 사용자가 해 보고 판정한다.",
+   "order": 7,
+   "createdAt": "2026-10-07T14:41:46Z",
+   "updatedAt": "2026-10-07T14:41:46Z",
+   "doneAt": null
+  },
+  {
+   "id": "PSY-008",
+   "title": "시스템 기획서: 싸움 · 성장 · 기울기 · 조율/벼리기 · 길동무 · 저장",
+   "stage": "plan",
+   "milestone": "M0",
+   "area": "기획",
+   "priority": "P1",
+   "owner": "Claude",
+   "note": "docs/design/02_Systems. 문서마다 7섹션 양식.",
+   "order": 8,
+   "createdAt": "2026-10-07T14:41:46Z",
+   "updatedAt": "2026-10-07T14:41:46Z",
+   "doneAt": null
+  },
+  {
+   "id": "PSY-009",
+   "title": "1장 첫여울: 지도와 대사 표",
+   "stage": "plan",
+   "milestone": "M1",
+   "area": "콘텐츠",
+   "priority": "P2",
+   "owner": "Claude",
+   "note": "메인 M1-01~07 · 관계 S1-1, S2-1, S4-1. 인물 말투 표를 지킨다.",
+   "order": 9,
+   "createdAt": "2026-10-07T14:41:46Z",
+   "updatedAt": "2026-10-07T14:41:46Z",
+   "doneAt": null
+  },
+  {
+   "id": "PSY-010",
+   "title": "게임 정보 탭의 데이터 갈래를 탑뷰 게임에 맞게 다시 짜기",
+   "stage": "plan",
+   "milestone": "M1",
+   "area": "인프라",
+   "priority": "P2",
+   "owner": "Claude",
+   "note": "지금 코드는 옛 횡스크롤 틀(지형 범례 등). 데이터가 없는 동안은 감춰져 있다. 게임 데이터가 생기면 내보내기 스크립트와 함께.",
+   "order": 10,
+   "createdAt": "2026-10-07T14:41:46Z",
+   "updatedAt": "2026-10-07T14:41:46Z",
+   "doneAt": null
+  },
+  {
+   "id": "PSY-011",
+   "title": "확인: 보드의 옛 빈 세계관 파일 3개 삭제",
+   "stage": "plan",
+   "milestone": "M0",
+   "area": "인프라",
+   "priority": "P2",
+   "owner": "사용자",
+   "note": "data/lore.md · lore-scenario.md · lore-assets.md. 0바이트이고 더는 읽지 않는다. 사용자 확인 뒤 지운다.",
+   "order": 11,
+   "createdAt": "2026-10-07T14:41:46Z",
+   "updatedAt": "2026-10-07T14:41:46Z",
+   "doneAt": null
+  }
+ ],
  "log": [
+  {
+   "at": "2026-10-07T14:41:46Z",
+   "text": "새 게임 착수: 가제 «첫울음»(제노니아류 탑뷰 액션 RPG) · 세계관 1차와 제작 방향 초안 게시 · 보드 메뉴 재정리",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-10-07T14:41:46Z",
+   "text": "«세계관 1차: 시놉시스 · 세계 · 인물 · 메인 퀘스트 35 · 관계 퀘스트 27 · 용어집» 추가(QA)",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-10-07T14:41:46Z",
+   "text": "«제작 방향 초안: 제노니아 벤치마크 판단 · 아트 방식 세 갈래 · 만들 것 · 차례» 추가(QA)",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-10-07T14:41:46Z",
+   "text": "«보드 메뉴 재정리: 세계관 · 대시보드 · 칸반 · 리소스 · 게임 정보 · 빌드 다운로드 · 피드백» 추가(QA)",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-10-07T14:41:46Z",
+   "text": "«결정: 아트 방식 고르기(3D 로우폴리 실시간 / 3D 를 구운 2D / 2D 도트)» 추가(기획)",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-10-07T14:41:46Z",
+   "text": "«결정: 주인공 우레의 성별과 생김새» 추가(기획)",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-10-07T14:41:46Z",
+   "text": "«아트 방식 시험 한 벌: 우레 · 잠잠이 · 첫여울 땅 한 화면을 두 방식으로» 추가(기획)",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-10-07T14:41:46Z",
+   "text": "«회색 상자 싸움 손맛 시험: 치기 · 구르기 · 숨 · 소리 물결 피하기» 추가(기획)",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-10-07T14:41:46Z",
+   "text": "«시스템 기획서: 싸움 · 성장 · 기울기 · 조율/벼리기 · 길동무 · 저장» 추가(기획)",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-10-07T14:41:46Z",
+   "text": "«1장 첫여울: 지도와 대사 표» 추가(기획)",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-10-07T14:41:46Z",
+   "text": "«게임 정보 탭의 데이터 갈래를 탑뷰 게임에 맞게 다시 짜기» 추가(기획)",
+   "by": "Claude"
+  },
+  {
+   "at": "2026-10-07T14:41:46Z",
+   "text": "«확인: 보드의 옛 빈 세계관 파일 3개 삭제» 추가(기획)",
+   "by": "Claude"
+  },
   {
    "at": "2026-10-07T13:49:24Z",
    "text": "프로젝트 전면 폐기 · 재시작 — 보드를 비웠다"
