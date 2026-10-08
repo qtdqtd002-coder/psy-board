@@ -197,7 +197,8 @@ footer.foot a{color:inherit}
 .lore-doc .tblwrap{margin:var(--s4) 0}
 .lore-doc table{border-collapse:collapse;width:100%}
 .lore-doc th,.lore-doc td{padding:10px 12px 10px 0;text-align:left;vertical-align:top;line-height:1.6;border-bottom:1px solid var(--line)}
-.lore-doc th{font-size:13px;font-weight:600;color:var(--muted);padding-block:6px}
+.lore-doc th{font-size:13px;font-weight:600;color:var(--muted);padding-block:6px;white-space:nowrap}
+.lore-doc table:has(th:nth-child(6)) :is(td:first-child,td:nth-child(2)){white-space:nowrap}   /* 칸이 많은 표(컷신 표)는 앞 두 칸을 한 줄로 */
 .lore-doc td{font-size:15px;overflow-wrap:anywhere}
 .lpill{display:inline-block;font-family:var(--font-body);font-size:12px;font-weight:500;line-height:1.5;padding:0 7px;border-radius:var(--r3);vertical-align:1px;margin-right:2px;white-space:nowrap}
 .lpill.ok{background:color-mix(in srgb,var(--good) 10%,transparent);color:var(--good-ink)}
@@ -328,6 +329,36 @@ footer.foot a{color:inherit}
 .lquest .qb ul{margin:0;padding-left:20px}
 .lquest .qb li{max-width:none}
 .lquest .qb .fork dd{background:var(--accent-soft);border-radius:var(--r1);padding:var(--s2) var(--s3)}
+/* 대본(:::script) — 접는 틀은 퀘스트 카드와 같다. 안은 줄마다 한 덩이(장면 · 지문 · 연출 · 대사 · 고름 · 조건)이고, 컷신 안의 줄은 바탕색으로, 갈림에 걸린 줄은 왼쪽 띠로 묶는다 */
+.lscript .sb{border-top:1px solid var(--line);padding:var(--s2) 0 var(--s3)}
+.lscript .sb>*{margin:0;padding:5px var(--s4);max-width:none}
+.lscript .scn{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px var(--s3);margin-top:var(--s3);padding-top:var(--s3);border-top:1px solid var(--line);font-size:14px}
+.lscript .sb>.scn:first-child{margin-top:0;border-top:0;padding-top:5px}
+.lscript .scn b{font-weight:600}
+.lscript .scn span{color:var(--muted);font-size:13px}
+.lscript .sd{color:var(--muted);font-size:15px;line-height:1.7}
+.lscript .sd.fx{color:var(--ink)}
+.lscript .sk{display:inline-block;font-size:12px;font-weight:600;color:var(--accent-ink);margin-right:var(--s2)}
+.lscript .sop{display:inline-block;font-size:12px;font-weight:600;line-height:1.6;color:var(--ink);background:var(--surface2);border:1px solid var(--line);border-radius:var(--r3);padding:0 8px;margin-right:6px}
+.lscript .sop.boss{border-color:var(--bad);color:var(--bad-ink)}
+.lscript .sl{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:var(--s3)}
+.lscript .sl .who{font-size:14px;font-weight:600;color:var(--muted);line-height:2.1;overflow-wrap:anywhere}
+.lscript .sl .who.same{visibility:hidden}
+.lscript .sl .say{font-family:var(--font-serif);font-size:17px;line-height:1.75;max-width:60ch}
+.lscript .sl.sign .say{font-family:var(--font-body);font-size:16px;line-height:1.85;letter-spacing:.02em}
+.lscript .sp{font-style:normal;font-family:var(--font-body);font-size:13px;color:var(--muted)}
+.lscript .cut{background:var(--accent-soft)}
+.lscript .sch{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px var(--s2);font-size:14px;font-weight:600;margin-top:var(--s2);padding-top:var(--s3)}
+.lscript .sch b{color:var(--accent-ink)}
+.lscript .sce{padding:0;height:var(--s2);margin-bottom:var(--s2)}
+.lscript .sq{margin-block:var(--s2);padding-block:var(--s3)}
+.lscript .sq b{font-weight:600}
+.lscript .sq ul{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin:var(--s2) 0 0;padding:0}
+.lscript .sq li{max-width:none;font-size:15px;line-height:1.5;background:var(--surface);border:1px solid var(--line);border-radius:var(--r1);padding:4px 10px}
+.lscript .sif{font-size:13px;font-weight:600;padding-top:var(--s3)}
+.lscript .sif.all{color:var(--muted);font-weight:500}
+.lscript .sif.all .sk{color:var(--muted)}
+.lscript .br{box-shadow:inset 3px 0 0 var(--accent)}
 .lore-acts{margin-left:auto;display:flex;gap:var(--s2);align-items:center}
 .lore-acts .iconbtn{min-height:40px}
 /* 게임 정보 › 제작 방향(세계관과 같은 글 틀) */
@@ -472,6 +503,20 @@ canvas.rsc.smooth{image-rendering:auto}
 .pp-cell.todo{background:none;border:1px dashed var(--line)}
 .pp-list{display:flex;flex-direction:column;gap:8px}
 .pp-head{display:grid;grid-template-columns:minmax(120px,1.1fr) repeat(4,minmax(0,1fr));gap:8px;padding:0 12px;font-size:12px;font-weight:600;color:var(--muted)}
+.pp-row.art,.pp-head.art{grid-template-columns:minmax(120px,.8fr) minmax(0,2fr) minmax(0,1.6fr) 176px;gap:4px 14px}
+.pp-row.art{align-items:center}
+.pa-one,.pa-where{min-width:0;font-size:14px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.pa-where{font-size:13px;color:var(--muted)}
+.pa-grp{font-size:12px;color:var(--muted)}
+.pa-tags{display:flex;flex-wrap:wrap;gap:4px;align-items:center;margin:0}
+.tag.pri-slice{color:var(--accent-ink);background:var(--accent-soft);border-color:transparent}
+.pa-lead{margin:0;font-size:16px;line-height:1.65}
+.pa-note{margin:0;font-size:14px;line-height:1.6;background:var(--accent-soft);border-radius:var(--r1);padding:8px 10px}
+.pa-info{margin:0;display:grid;grid-template-columns:minmax(84px,auto) minmax(0,1fr);gap:6px 14px;font-size:14px;line-height:1.6}
+.pa-info>div{display:grid;grid-template-columns:subgrid;grid-column:1 / -1}
+.pa-info dt{font-size:13px;font-weight:600;color:var(--muted)}
+.pa-info dd{margin:0;min-width:0}
+.pp-sec ul.pa-list{font-size:14px;color:var(--ink)}
 .tag.pp-doing{color:color-mix(in srgb,var(--st-dev) 72%,var(--ink))}.tag.pp-review{color:color-mix(in srgb,var(--st-qa) 68%,var(--ink))}.tag.pp-done{color:var(--good-ink)}.tag.pp-hold,.tag.pp-todo{color:var(--muted)}
 .pp-dlg{display:flex;flex-direction:column;gap:14px}
 .pp-sec{border:1px solid var(--line);border-radius:var(--r2);padding:12px 14px;display:flex;flex-direction:column;gap:8px}
@@ -581,6 +626,9 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
   .pp-row,.pp-head{grid-template-columns:repeat(2,minmax(0,1fr))}
   .pp-row .who{grid-column:1/-1}
   .pp-head{display:none}
+  .pp-row.art{grid-template-columns:minmax(0,1fr)}
+  .pa-info{grid-template-columns:minmax(0,1fr);gap:0}
+  .pa-info dd{margin-bottom:6px}
   .fbi summary{grid-template-columns:auto minmax(0,1fr)}
   .fbi summary .tags{grid-column:1 / 3;justify-content:flex-start}
   .fbi summary p{grid-column:1 / 3}
@@ -602,6 +650,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
   .gt td::before,.lore-doc td::before{content:attr(data-l);font-size:12px;color:var(--muted);line-height:1.9}
   .gt td.ttl,.lore-doc td:first-child{display:block;order:-1;min-width:0;width:auto;font-size:15px}
   .lore-doc td:first-child{font-weight:600;font-size:16px}
+  .lore-doc table:has(th:nth-child(6)) td:first-child{white-space:normal}
   .gt td.ttl::before,.lore-doc td:first-child::before{content:none}
   .gt td.nil,.lore-doc td.nil{display:none}
   .lore-doc td{grid-template-columns:88px minmax(0,1fr)}
@@ -621,6 +670,11 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
   .lquest .qb{grid-template-columns:minmax(0,1fr);gap:0;padding:var(--s3)}
   .lquest .qb dt{line-height:1.6}
   .lquest .qb dd{margin-bottom:var(--s2)}
+  .lscript .sb>*{padding-inline:var(--s3)}
+  .lscript .sl{grid-template-columns:minmax(0,1fr);gap:0}
+  .lscript .sl .who{line-height:1.5}
+  .lscript .sl .who.same{display:none}
+  .lscript .sl .say{font-size:16px}
   :root{--lbar-h:108px}
   .lore-bar .seg.six{display:flex;flex-wrap:nowrap;flex:1 1 100%;width:auto;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none}
   .lore-bar .seg.six::-webkit-scrollbar{display:none}
@@ -786,7 +840,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
 
   <footer class="foot">
     <span id="dataStamp">데이터</span>
-    <span>데이터: <a href="data/board.json" style="color:inherit">data/board.json</a> · <a href="data/lore-synopsis.md" style="color:inherit">lore-synopsis.md</a> · <a href="data/lore-world.md" style="color:inherit">lore-world.md</a> · <a href="data/lore-characters.md" style="color:inherit">lore-characters.md</a> · <a href="data/lore-main.md" style="color:inherit">lore-main.md</a> · <a href="data/lore-sub.md" style="color:inherit">lore-sub.md</a> · <a href="data/lore-glossary.md" style="color:inherit">lore-glossary.md</a> · <a href="data/gameplan.md" style="color:inherit">data/gameplan.md</a> · <a href="data/gameinfo.json" style="color:inherit">data/gameinfo.json</a> · <a href="data/resources.json" style="color:inherit">data/resources.json</a> · <a href="data/feedback.json" style="color:inherit">data/feedback.json</a></span>
+    <span>데이터: <a href="data/board.json" style="color:inherit">data/board.json</a> · <a href="data/lore-synopsis.md" style="color:inherit">lore-synopsis.md</a> · <a href="data/lore-world.md" style="color:inherit">lore-world.md</a> · <a href="data/lore-characters.md" style="color:inherit">lore-characters.md</a> · <a href="data/lore-main.md" style="color:inherit">lore-main.md</a> · <a href="data/lore-mscript.md" style="color:inherit">lore-mscript.md</a> · <a href="data/lore-sub.md" style="color:inherit">lore-sub.md</a> · <a href="data/lore-sscript.md" style="color:inherit">lore-sscript.md</a> · <a href="data/lore-glossary.md" style="color:inherit">lore-glossary.md</a> · <a href="data/gameplan.md" style="color:inherit">data/gameplan.md</a> · <a href="data/gameinfo.json" style="color:inherit">data/gameinfo.json</a> · <a href="data/resources.json" style="color:inherit">data/resources.json</a> · <a href="data/feedback.json" style="color:inherit">data/feedback.json</a></span>
     <span>1분마다 자동 새로고침</span>
   </footer>
 </div>
@@ -977,7 +1031,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
 
   // ---------- 세계관(여섯 갈래 · 읽는 순서대로 — 원본은 project_psy/docs/design/00_Canon · 올리기 = board.py publish-lore) ----------
   // 주소: #lore-<갈래> · #lore-<갈래>/<앵커>(앵커 = 제목 s-<번호> 또는 용어집의 용어)
-  const LORE_DOCS = [["synopsis", "시놉시스", "data/lore-synopsis.md"], ["world", "세계", "data/lore-world.md"], ["chars", "인물", "data/lore-characters.md"], ["main", "메인 퀘스트", "data/lore-main.md"], ["sub", "서브 퀘스트", "data/lore-sub.md"], ["glossary", "용어집", "data/lore-glossary.md"]];   // 갈래 · 이름 · 파일
+  const LORE_DOCS = [["synopsis", "시놉시스", "data/lore-synopsis.md"], ["world", "세계", "data/lore-world.md"], ["chars", "인물", "data/lore-characters.md"], ["main", "메인 퀘스트", "data/lore-main.md"], ["mscript", "메인 대본", "data/lore-mscript.md"], ["sub", "서브 퀘스트", "data/lore-sub.md"], ["sscript", "서브 대본", "data/lore-sscript.md"], ["glossary", "용어집", "data/lore-glossary.md"]];   // 갈래 · 이름 · 파일
   const lore = {doc: safe(() => localStorage.getItem("psy-lore-doc")) || LORE_DOCS[0][0], src: {}, cache: {}, terms: new Map(), termsTried: false, io: null, cur: null, want: "", gq: "", gcat: ""};
   if (!LORE_DOCS.some(d => d[0] === lore.doc)) lore.doc = LORE_DOCS[0][0];
   const LB = $("loreBody");
@@ -1098,6 +1152,27 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
         const val = (v) => v.includes(" // ") ? `<ul>${v.split(" // ").map(x => `<li>${inl(x.trim())}</li>`).join("")}</ul>` : inl(v);
         return `<details class="lquest"><summary><span class="qn">${esc(qid)}</span><b class="qt">${inl(title)}</b>${meta ? `<span class="qw">${meta}</span>` : ""}${get("한줄") ? `<p class="qo">${inl(get("한줄"))}</p>` : ""}</summary>
           <dl class="qb">${f.filter(r => !["주는 이", "곳", "한줄"].includes(r[0]) && r[1]).map(([k, v]) => `<div${k === "갈림" ? ' class="fork"' : ""}><dt>${esc(k)}</dt><dd>${val(v)}</dd></div>`).join("")}</dl></details>`;
+      }
+      case "script": {   // :::script 번호 | 이름 — 줄 첫 칸: @ 장면(곳 · 때 | 나오는 사람) · - 지문 · ! 연출 · # 컷신(«# | 번호 | 이름» 으로 열고 «# | 끝» 으로 닫는다) · ? 고름(물음 | 가 // 나) · > 조건(다음 > 나 @ 까지) · 그 밖 = 말하는 사람
+        const [qid, title] = cells(arg, 2), places = []; let h = "", prev = "", cut = false, br = false, nCut = 0, nPick = 0, nSay = 0;
+        const act = (t) => inl(t).replace(/\((조작|보스)(?::\s*([^)]*))?\)/g, (_, k, a) => `<span class="sop${k === "보스" ? " boss" : ""}">${k}${a ? " · " + a : ""}</span>`);
+        const row = (tag, cls, inner) => `<${tag} class="${cls}${cut ? " cut" : ""}${br ? " br" : ""}">${inner}</${tag}>`;
+        for (const r of rows) {
+          const c = cells(r.trim(), 3), k = c[0], rest = [c[1], c[2]].filter(Boolean).join(" | ");
+          if (k === "@") { prev = ""; br = false; const pl = plain(c[1]).split(" · ")[0]; if (pl && places[places.length - 1] !== pl) places.push(pl);
+            h += row("div", "scn", `<b>${inl(c[1])}</b>${c[2] ? `<span>${inl(c[2])}</span>` : ""}`); }
+          else if (k === "-") { prev = ""; h += row("p", "sd", act(rest)); }
+          else if (k === "!") { prev = ""; h += row("p", "sd fx", `<span class="sk">연출</span>${act(rest)}`); }
+          else if (k === "#") { prev = "";
+            if (c[1] === "끝") { if (cut) h += row("div", "sce", ""); cut = false; }
+            else { cut = true; nCut++; h += row("div", "sch", `<span class="sk">컷신</span><b>${esc(c[1])}</b><span>${inl(c[2])}</span>`); } }
+          else if (k === "?") { prev = ""; nPick++; h += row("div", "sq", `<span class="sk">고름</span><b>${inl(c[1])}</b><ul>${c[2].split(" // ").filter(x => x.trim()).map(x => `<li>${inl(x.trim())}</li>`).join("")}</ul>`); }
+          else if (k === ">") { prev = ""; const all = /^어느/.test(c[1]); br = false; h += row("p", "sif" + (all ? " all" : ""), `<span class="sk">${all ? "함께" : "갈림"}</span>${inl(rest)}`); br = !all; }
+          else { nSay++; const same = k === prev; prev = k;
+            h += row("div", "sl" + (rest.includes("〈") ? " sign" : ""), `<span class="who${same ? " same" : ""}">${inl(k)}</span><span class="say">${inl(rest).replace(/\(([^()]*)\)/g, '<i class="sp">($1)</i>')}</span>`); }
+        }
+        const meta = [nCut ? "컷신 " + nCut : "", nPick ? "고름 " + nPick : "", "대사 " + nSay].filter(Boolean).join(" · ");
+        return `<details class="lquest lscript"><summary><span class="qn">${esc(qid)}</span><b class="qt">${inl(title)}</b><span class="qw">${meta}</span>${places.length ? `<p class="qo">${places.map(esc).join(" → ")}</p>` : ""}</summary><div class="sb">${h}</div></details>`;
       }
       default: return `<div class="lbox">${mdBlocks(body, ctx)}</div>`;   // 모르는 블록 = 일반 상자
     }
@@ -1337,7 +1412,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
   const TERRAIN = [["#", "solid", "땅"], ["=", "plat", "발판"], ["-", "ghost", "그림 없는 발판"], ["<", "flowl", "흐르는 모래 ←"], [">", "flowr", "흐르는 모래 →"],
     ["%", "quick", "늪모래"], ["&", "soft", "무른 모래"], ["^", "lift", "모래 기둥"], ["~", "water", "물"]];   // 글자 · 색 변수(--mp-*) · 이름
   const MARKS = [["portal", "포털", "sq"], ["npc", "NPC", ""], ["boss", "보스", "di"], ["elite", "정예", "di"], ["spawn", "몬스터 자리", ""], ["chest", "숨은 상자", "sq"],
-    ["spot", "재주 자리", ""], ["lantern", "산호 등불", ""], ["lore", "꿈 기록", ""], ["pickup", "퀘스트 물건", ""]];   // 종류 · 이름 · 모양(목록·범례 순서)
+    ["spot", "재주 자리", ""], ["lantern", "등불", ""], ["lore", "기록", ""], ["pickup", "퀘스트 물건", ""]];   // 종류 · 이름 · 모양(목록·범례 순서)
   const MARK_Z = ["spawn", "lore", "pickup", "spot", "lantern", "chest", "npc", "elite", "portal", "boss"];   // 그리는 순서(뒤가 위)
   const ZOOMS = [3, 4, 5, 6, 8, 10, 12, 16, 20];   // 칸 한 변(px)
   const NONE = '<p class="empty">찾는 것이 없습니다</p>';
@@ -1426,7 +1501,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
     const D = gi.data, main = D.quests.filter(q => !q.side).length;
     const facts = [["장", D.chapters.length], ["지도", D.maps.length], ["퀘스트", `${D.quests.length}(주 ${main} · 곁 ${D.quests.length - main})`], ["몬스터", D.monsters.length],
       ["동료", D.companions.length], ["장비", D.items.filter(i => i.kind === "장비").length], ["세트", D.sets.length], ["스킬", D.skills.length], ["전직 길", D.paths.length],
-      ["시스템", D.systems.length], ["인물", new Set(D.npcs.map(n => n.id)).size], ["꿈 기록·태엽", D.lore.length], ["숨은 상자", D.chests.length]].filter(f => f[1]);
+      ["시스템", D.systems.length], ["인물", new Set(D.npcs.map(n => n.id)).size], ["기록", D.lore.length], ["숨은 상자", D.chests.length]].filter(f => f[1]);
     const go = (sec, name, n) => `<button type="button" data-go="${sec}" data-ch="${n}">${name}</button>`;
     const cards = D.chapters.filter(c => giHit(c.name, c.townName, c.bossName, c.bossTitle, c.finalQuest, ...D.systems.filter(s => s.chapter === c.n).map(s => s.name))).map(c => {
       const sys = D.systems.filter(s => s.chapter === c.n), boss = D.monsters.find(m => m.id === c.boss);
@@ -1518,7 +1593,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
         ${aw.name ? card({...aw, kind: "기술", branch: p.branch, maxRank: aw.maxRank || 1, reqLevel: aw.reqLevel || 0, how: "서임 때 받는 각성기"}) : ""}${(p.nodes || []).map(n => card({...n, how: "스킬 포인트(길 노드)"})).join("")}</div>`; };
     const tree = list.length ? `<div class="cols3">${[...new Set(gi.data.skills.map(s => s.branch))].map(b => { const l = list.filter(s => s.branch === b);
       return l.length ? `<div class="gcol"><h3 class="gi-h">${esc(b)}</h3>${l.map(card).join("")}</div>` : ""; }).join("")}</div>` : "";
-    return tree + (paths.length ? `<h3 class="gi-h">전직 · 꿈지기의 길<small>5장 뒤 서임식에서 하나를 고른다</small></h3><div class="cols3">${paths.map(pathCol).join("")}</div>` : "");
+    return tree + (paths.length ? `<h3 class="gi-h">전직<small>갈림 길</small></h3><div class="cols3">${paths.map(pathCol).join("")}</div>` : "");
   }
   function secMonsters() {
     const list = gi.data.monsters.filter(m => giCh(m.chapter) && giHit(m.name, m.title, m.tier, m.style, m.drops, m.where, ...m.skills.map(s => s.name + " " + s.kind)));
@@ -1654,7 +1729,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
   safe(() => matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => { if (mapVisible()) drawMap(); }));   // 캔버스 색은 다시 칠해야 바뀐다
 
   // ---------- 리소스(data/resources.json = 목록(공개) · data/res/<묶음>.bin = 비밀번호로 잠근 그림·소리 — 만들기 tools/board/res_export.py · 올리기 = board.py publish-res) ----------
-  const RS_CATS = [["pipe", "제작 단계"], ["char", "캐릭터"], ["enemy", "몬스터"], ["boss", "보스"], ["fx", "FX"], ["icon", "아이콘"], ["ui", "UI"], ["tile", "타일·배경"], ["prop", "소품"], ["sound", "소리"], ["font", "글꼴"], ["spare", "예비 파일"]];
+  const RS_CATS = [["pipe", "원화 목록"], ["char", "캐릭터"], ["enemy", "몬스터"], ["boss", "보스"], ["fx", "FX"], ["icon", "아이콘"], ["ui", "UI"], ["tile", "타일·배경"], ["prop", "소품"], ["sound", "소리"], ["font", "글꼴"], ["spare", "예비 파일"]];
   const RS_ICONS = new Set(["skill", "passive", "companion", "stat", "icon", "branch"]);   // ui.<이것>.* 은 아이콘 갈래로
   const RS_TIER = {v1_cc0: "CC0 원본", v1_inhouse_draft: "자체 제작 초안", v2_inhouse: "자체 제작", v2_ai_cleaned: "AI 생성 + 덧칠", v3_final: "확정"};
   const RS_LIC = {own: "자체 제작", cc0: "CC0 1.0", ofl: "SIL OFL 1.1"};
@@ -1662,11 +1737,12 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
   const RS_MARK = {tele: "예비", start: "시작", takeoff: "도약", rise: "상승", apex: "정점", slam: "내려찍기", land: "착지", spawn: "소환"};
   const RS_FLT = [["", "전체"], ["anim", "움직임"], ["temp", "임시·빌림"], ["below", "기준 미달"]];
   const RS_BG = [["check", "체크"], ["dark", "어둡게"], ["light", "밝게"]];
-  // 제작 단계(원화 → 모델링 → 리깅 → 애니메이션) — 원본 docs/art/pipeline/pipeline.json, 미리보기는 잠근 묶음 «pipe»
+  // 원화 목록 — 대상마다 «무엇 · 인물 정보 · 등장 위치 · 필요한 그림». 원본 = 세계관 원고와 대본(tools/board/art_list.py 가 뽑는다 → board.py publish-pipeline). 단계(stages)는 아트 방식이 정해지면 모델링 · 리깅 · 애니메이션을 붙인다
   const PP_STAGE = {concept: "원화", model: "모델링", rig: "리깅", anim: "애니메이션"};
   const PP_STATUS = {todo: "없음", doing: "진행", review: "검수", done: "확정", hold: "보류"};
-  const PP_KIND = [["hero", "주인공"], ["npc", "NPC"], ["enemy", "몬스터"], ["boss", "보스"], ["etc", "그 밖"]];
-  const PP_FLT = [["", "전체"], ["work", "작업 있음"], ["concept", "원화 단계"], ["model", "모델링 단계"], ["rig", "리깅 단계"], ["anim", "애니메이션 단계"]];
+  const PP_KIND = [["hero", "주인공과 동료"], ["npc", "인물"], ["enemy", "소리먹이"], ["boss", "보스"], ["bg", "배경"], ["prop", "소품"], ["cut", "컷신"], ["etc", "그 밖"]];
+  const PP_PRI = {slice: "수직 슬라이스", p1: "1부", p2: "2부", p3: "3부"};   // 그리는 차례 = 처음 나오는 장
+  const PP_FLT = [["", "전체"], ["slice", "수직 슬라이스"], ["p1", "1부"], ["p2", "2부"], ["p3", "3부"], ["work", "작업 있음"]];
   const rs = {data: null, busy: null, err: "", cat: "pipe", flt: "", urls: new Map(), q: "", key: null, msg: "", packs: new Map(), bmps: new Map(), byKey: new Map(), names: new Map(), sound: null,
     play: safe(() => localStorage.getItem("psy-res-play")) !== "0", bg: safe(() => localStorage.getItem("psy-res-bg")) || "check"};
   const b64u8 = (s) => Uint8Array.from(atob(s), c => c.charCodeAt(0));
@@ -1776,7 +1852,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
   }
   function ppMount(root) { root.querySelectorAll("img.ppi:not([src])").forEach(im => { const fi = Number(im.dataset.fi); if (rsCan(fi)) ppUrl(fi).then(u => { im.src = u; }).catch(() => {}); }); }
   const ppKind = (id) => { const k = id.split(".")[0]; return PP_KIND.some(x => x[0] === k) ? k : "etc"; };
-  const ppName = (u) => u.name || rs.names.get(u.id) || (u.id === "hero" ? "이안" : "");
+  const ppName = (u) => u.name || rs.names.get(u.id) || "";
   const ppSt = (u, sid) => ((u.st || {})[sid] || {}).s || "todo";
   // 그 대상이 지금 서 있는 단계 = 확정이 아닌 첫 단계(전부 확정이면 마지막)
   const ppAt = (u, stages) => stages.find(s => ppSt(u, s) !== "done") || stages[stages.length - 1];
@@ -1785,17 +1861,19 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
     return rsCan(f.i) ? `<img class="ppi${cls}" data-fi="${f.i}" alt="${esc(f.label || "")}" loading="lazy">` : '<span class="lk">잠김</span>';
   }
   function renderPipe(B) {
-    const P = rs.data.pipeline, stages = P.stages || [];
-    const sum = stages.map(sid => { const c = {done: 0, review: 0, doing: 0}; for (const u of P.units) { const s = ppSt(u, sid); if (s in c) c[s]++; }
-      const n = P.units.length || 1;
-      return `<div class="ps"><b>${PP_STAGE[sid] || sid}</b><div class="bar">${["done", "review", "doing"].map(k => `<i class="${k}" style="width:${c[k] / n * 100}%"></i>`).join("")}</div>
-        <small>확정 ${c.done} · 검수 ${c.review} · 진행 ${c.doing} / ${P.units.length}</small></div>`; }).join("");
-    const list = P.units.filter(u => (rs.flt === "" || (rs.flt === "work" ? !!u.st : !!u.st && ppAt(u, stages) === rs.flt)) && rsHit(u.id, ppName(u), u.note, ...stages.map(s => ((u.st || {})[s] || {}).note || "")));
-    const row = (u) => `<button type="button" class="pp-row" data-u="${esc(u.id)}"><span class="who"><b>${esc(ppName(u) || u.id)}</b><span class="rkey">${esc(u.id)}</span></span>
-      ${stages.map(sid => { const d = (u.st || {})[sid], s = ppSt(u, sid), f = d && d.files && d.files[0];
-        return `<span class="pp-cell ${s}"><span class="hd">${PP_STAGE[sid] || sid} ${ppTag(s)}${d && d.files ? `<span>${d.files.length}장</span>` : ""}</span>${f ? `<span class="stage">${ppShot(f)}</span>` : ""}</span>`; }).join("")}</button>`;
-    const head = `<div class="pp-head"><span>대상</span>${stages.map(s => `<span>${PP_STAGE[s] || s}</span>`).join("")}</div>`;
-    B.innerHTML = `<div class="pp-sum">${sum}</div>` + (PP_KIND.map(([k, nm]) => { const l = list.filter(u => ppKind(u.id) === k);
+    const P = rs.data.pipeline, stages = P.stages || [], units = P.units || [];
+    const done = (u) => stages.length > 0 && stages.every(s => ppSt(u, s) === "done"), work = (u) => !!u.st && Object.keys(u.st).length > 0;
+    const sum = PP_KIND.map(([k, nm]) => { const l = units.filter(u => ppKind(u.id) === k); if (!l.length) return "";
+      const d = l.filter(done).length, w = l.filter(u => work(u) && !done(u)).length;
+      return `<div class="ps"><b>${nm}</b><div class="bar"><i class="done" style="width:${d / l.length * 100}%"></i><i class="doing" style="width:${w / l.length * 100}%"></i></div><small>${l.length}개 · 확정 ${d} · 진행 ${w}</small></div>`; }).join("");
+    const list = units.filter(u => (rs.flt === "" || (rs.flt === "work" ? work(u) : u.pri === rs.flt))
+      && rsHit(u.id, ppName(u), u.one, u.grp, u.note, ...(u.where || []), ...(u.info || []).map(x => x.join(" ")), ...stages.map(s => ((u.st || {})[s] || {}).note || "")));
+    const row = (u) => `<button type="button" class="pp-row art" data-u="${esc(u.id)}"><span class="who"><b>${esc(ppName(u) || u.id)}</b><span class="pa-grp">${esc(u.grp || u.id)}</span></span>
+      <span class="pa-one">${esc(u.one || u.note || "")}</span><span class="pa-where">${esc((u.where || [])[0] || "")}</span>
+      <span class="pa-tags">${u.pri ? `<span class="tag pri-${esc(u.pri)}">${esc(PP_PRI[u.pri] || u.pri)}</span>` : ""}${stages.map(sid => { const s = ppSt(u, sid); return `<span class="tag pp-${s}">${PP_STAGE[sid] || sid} ${PP_STATUS[s] || s}</span>`; }).join("")}</span></button>`;
+    const head = '<div class="pp-head art"><span>대상</span><span>무엇</span><span>등장 위치</span><span>차례 · 상태</span></div>';
+    B.className = "";
+    B.innerHTML = (P.note ? `<p class="status">${esc(P.note)}</p>` : "") + `<div class="pp-sum">${sum}</div>` + (PP_KIND.map(([k, nm]) => { const l = list.filter(u => ppKind(u.id) === k);
       return l.length ? `<section class="rgroup"><h4>${nm}<span class="cnt">${l.length}</span></h4>${head}<div class="pp-list">${l.map(row).join("")}</div></section>` : ""; }).join("")
       || '<p class="empty">조건에 맞는 대상이 없습니다</p>');
     B.querySelectorAll(".pp-row").forEach(b => b.onclick = () => openPipe(b.dataset.u));
@@ -1803,11 +1881,18 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
   }
   function openPipe(id) {
     const P = rs.data.pipeline, u = P.units.find(x => x.id === id); if (!u) return;
-    $("rsDlgTitle").textContent = (ppName(u) || u.id) + " · 제작 단계";
-    $("rsDlgBody").innerHTML = `<div class="pp-dlg">${u.note ? `<p class="status">${esc(u.note)}</p>` : ""}${u.spec ? `<p class="status">설정서 <span class="rkey">${esc(u.spec)}</span></p>` : ""}
-      ${P.stages.map(sid => { const d = (u.st || {})[sid] || {}, s = d.s || "todo";
-        return `<section class="pp-sec"><h4>${PP_STAGE[sid] || sid} ${ppTag(s)}${d.tool ? `<span class="tag">${esc(d.tool)}</span>` : ""}${d.at ? `<span class="status">${esc(d.at)}</span>` : ""}</h4>
-          ${d.note ? `<p>${esc(d.note)}</p>` : s === "todo" ? '<p class="status">아직 시작하지 않았습니다</p>' : ""}
+    const ul = (l) => `<ul class="pa-list">${l.map(x => `<li>${esc(x)}</li>`).join("")}</ul>`, person = ["hero", "npc"].includes(ppKind(u.id));
+    $("rsDlgTitle").textContent = (ppName(u) || u.id) + " · 원화";
+    $("rsDlgBody").innerHTML = `<div class="pp-dlg">${u.one ? `<p class="pa-lead">${esc(u.one)}</p>` : ""}
+      <p class="pa-tags">${u.pri ? `<span class="tag pri-${esc(u.pri)}">${esc(PP_PRI[u.pri] || u.pri)}</span>` : ""}${u.grp ? `<span class="tag">${esc(u.grp)}</span>` : ""}<span class="rkey">${esc(u.id)}</span></p>
+      ${u.note ? `<p class="pa-note">${esc(u.note)}</p>` : ""}
+      ${(u.info || []).length ? `<section class="pp-sec"><h4>${person ? "인물 정보" : "설정"}</h4><dl class="pa-info">${u.info.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl></section>` : ""}
+      ${(u.where || []).length ? `<section class="pp-sec"><h4>등장 위치</h4>${ul(u.where)}</section>` : ""}
+      ${(u.need || []).length ? `<section class="pp-sec"><h4>필요한 그림</h4>${ul(u.need)}</section>` : ""}
+      ${u.spec ? `<p class="status">설정서: ${esc(u.spec)}</p>` : ""}
+      ${(P.stages || []).map(sid => { const d = (u.st || {})[sid] || {}, st = d.s || "todo";
+        return `<section class="pp-sec"><h4>${PP_STAGE[sid] || sid} ${ppTag(st)}${d.tool ? `<span class="tag">${esc(d.tool)}</span>` : ""}${d.at ? `<span class="status">${esc(d.at)}</span>` : ""}</h4>
+          ${d.note ? `<p>${esc(d.note)}</p>` : st === "todo" ? '<p class="status">아직 시작하지 않았습니다</p>' : ""}
           ${d.files ? `<div class="pp-shots">${d.files.map(f => `<figure class="pp-shot"><span class="stage">${ppShot(f)}</span><figcaption>${esc(f.label || "")}</figcaption></figure>`).join("")}</div>` : ""}
           ${d.log ? `<ul>${d.log.map(h => `<li>${esc(h.d || "")} · ${esc(h.t || "")}</li>`).join("")}</ul>` : ""}</section>`; }).join("")}</div>`;
     $("rsDlgBody").className = "bg-" + rs.bg;
@@ -1876,7 +1961,10 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
     if (!D) { $("rsLock").hidden = true; $("rsFacts").innerHTML = $("rsFilters").innerHTML = ""; $("rsBody").innerHTML = `<p class="empty">${rs.err ? "리소스 목록을 불러오지 못했습니다: " + esc(rs.err) : "불러오는 중…"}</p>`; return; }
     $("rsStamp").textContent = D.generatedAt ? "리소스 " + fmt(D.generatedAt) + (D.commit ? " · " + D.commit : "") : "";
     const arts = D.anims, packed = Object.keys(D.packs).length;
-    $("rsFacts").innerHTML = fact("그림 키", arts.length) + fact("그림 파일", D.files.filter(f => /\.png$/i.test(f.p)).length) + fact("임시·빌림", arts.filter(e => e.f === undefined).length)
+    const PU = (D.pipeline || {}).units || [], PS = (D.pipeline || {}).stages || [];
+    $("rsFacts").innerHTML = rs.cat === "pipe" ? fact("원화 대상", PU.length) + fact("수직 슬라이스", PU.filter(u => u.pri === "slice").length) + fact("인물", PU.filter(u => /^(hero|npc)\./.test(u.id)).length)
+      + fact("컷신", PU.filter(u => u.id.startsWith("cut.")).length) + fact("원화 확정", PU.filter(u => PS.length && PS.every(x => ppSt(u, x) === "done")).length)
+      : fact("그림 키", arts.length) + fact("그림 파일", D.files.filter(f => /\.png$/i.test(f.p)).length) + fact("임시·빌림", arts.filter(e => e.f === undefined).length)
       + fact("기준 미달", arts.filter(e => rsBelow(rsArt(e))).length) + fact("효과음", D.sfx.length) + fact("음악", D.music.length) + fact("글꼴", D.fonts.length)
       + (packed ? fact("묶음", fmtSize(Object.values(D.packs).reduce((a, p) => a + (p.size || 0), 0))) : "");
     // 잠금 줄
