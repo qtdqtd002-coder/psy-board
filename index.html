@@ -508,7 +508,7 @@ canvas.rsc.smooth{image-rendering:auto}
 .pa-one,.pa-where{min-width:0;font-size:14px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .pa-where{font-size:13px;color:var(--muted)}
 .pa-grp{font-size:12px;color:var(--muted)}
-.pa-tags{display:flex;flex-wrap:wrap;gap:4px;align-items:center;margin:0}
+.pa-tags{display:flex;flex-wrap:wrap;gap:4px;align-items:center;margin:0}.pa-step{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
 .tag.pri-slice{color:var(--accent-ink);background:var(--accent-soft);border-color:transparent}
 .pa-lead{margin:0;font-size:16px;line-height:1.65}
 .pa-note{margin:0;font-size:14px;line-height:1.6;background:var(--accent-soft);border-radius:var(--r1);padding:8px 10px}
@@ -1729,7 +1729,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
   safe(() => matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => { if (mapVisible()) drawMap(); }));   // 캔버스 색은 다시 칠해야 바뀐다
 
   // ---------- 리소스(data/resources.json = 목록(공개) · data/res/<묶음>.bin = 비밀번호로 잠근 그림·소리 — 만들기 tools/board/res_export.py · 올리기 = board.py publish-res) ----------
-  const RS_CATS = [["pipe", "원화 목록"], ["char", "캐릭터"], ["enemy", "몬스터"], ["boss", "보스"], ["fx", "FX"], ["icon", "아이콘"], ["ui", "UI"], ["tile", "타일·배경"], ["prop", "소품"], ["sound", "소리"], ["font", "글꼴"], ["spare", "예비 파일"]];
+  const RS_CATS = [["pipe", "제작 목록"], ["char", "캐릭터"], ["enemy", "몬스터"], ["boss", "보스"], ["fx", "FX"], ["icon", "아이콘"], ["ui", "UI"], ["tile", "타일·배경"], ["prop", "소품"], ["sound", "소리"], ["font", "글꼴"], ["spare", "예비 파일"]];
   const RS_ICONS = new Set(["skill", "passive", "companion", "stat", "icon", "branch"]);   // ui.<이것>.* 은 아이콘 갈래로
   const RS_TIER = {v1_cc0: "CC0 원본", v1_inhouse_draft: "자체 제작 초안", v2_inhouse: "자체 제작", v2_ai_cleaned: "AI 생성 + 덧칠", v3_final: "확정"};
   const RS_LIC = {own: "자체 제작", cc0: "CC0 1.0", ofl: "SIL OFL 1.1"};
@@ -1737,12 +1737,12 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
   const RS_MARK = {tele: "예비", start: "시작", takeoff: "도약", rise: "상승", apex: "정점", slam: "내려찍기", land: "착지", spawn: "소환"};
   const RS_FLT = [["", "전체"], ["anim", "움직임"], ["temp", "임시·빌림"], ["below", "기준 미달"]];
   const RS_BG = [["check", "체크"], ["dark", "어둡게"], ["light", "밝게"]];
-  // 원화 목록 — 대상마다 «무엇 · 인물 정보 · 등장 위치 · 필요한 그림». 원본 = 세계관 원고와 대본(tools/board/art_list.py 가 뽑는다 → board.py publish-pipeline). 단계(stages)는 아트 방식이 정해지면 모델링 · 리깅 · 애니메이션을 붙인다
-  const PP_STAGE = {concept: "원화", model: "모델링", rig: "리깅", anim: "애니메이션"};
+  // 제작 목록 — 대상마다 «무엇 · 정보 · 등장 위치 · 필요한 것 · 단계». 원본 = 세계관 원고와 대본 + 1장 제작 묶음(tools/board/art_list.py · tools/art/kit_ch1.py → board.py publish-pipeline). 단계는 원화 → 모델링 → 리깅 · 동작 → 반입이고 대상마다 거치는 단계가 다르다(u.stages)
+  const PP_STAGE = {concept: "원화", model: "모델링", rig: "리깅 · 동작", anim: "애니메이션", unity: "반입"};
   const PP_STATUS = {todo: "없음", doing: "진행", review: "검수", done: "확정", hold: "보류"};
-  const PP_KIND = [["hero", "주인공과 동료"], ["npc", "인물"], ["enemy", "소리먹이"], ["boss", "보스"], ["bg", "배경"], ["prop", "소품"], ["cut", "컷신"], ["etc", "그 밖"]];
-  const PP_PRI = {slice: "수직 슬라이스", p1: "1부", p2: "2부", p3: "3부"};   // 그리는 차례 = 처음 나오는 장
-  const PP_FLT = [["", "전체"], ["slice", "수직 슬라이스"], ["p1", "1부"], ["p2", "2부"], ["p3", "3부"], ["work", "작업 있음"]];
+  const PP_KIND = [["hero", "주인공과 동료"], ["npc", "인물"], ["enemy", "소리먹이"], ["boss", "보스"], ["weapon", "무기"], ["env", "환경 조각"], ["map", "맵"], ["bg", "장소 원화"], ["prop", "소품"], ["cut", "컷신"], ["ui", "화면"], ["fx", "효과"], ["etc", "그 밖"]];
+  const PP_PRI = {slice: "1장", p1: "1부", p2: "2부", p3: "3부"};   // 그리는 차례 = 처음 나오는 장
+  const PP_FLT = [["", "전체"], ["slice", "1장 · 수직 슬라이스"], ["p1", "1부"], ["p2", "2부"], ["p3", "3부"], ["work", "작업 있음"]];
   const rs = {data: null, busy: null, err: "", cat: "pipe", flt: "", urls: new Map(), q: "", key: null, msg: "", packs: new Map(), bmps: new Map(), byKey: new Map(), names: new Map(), sound: null,
     play: safe(() => localStorage.getItem("psy-res-play")) !== "0", bg: safe(() => localStorage.getItem("psy-res-bg")) || "check"};
   const b64u8 = (s) => Uint8Array.from(atob(s), c => c.charCodeAt(0));
@@ -1853,7 +1853,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
   function ppMount(root) { root.querySelectorAll("img.ppi:not([src])").forEach(im => { const fi = Number(im.dataset.fi); if (rsCan(fi)) ppUrl(fi).then(u => { im.src = u; }).catch(() => {}); }); }
   const ppKind = (id) => { const k = id.split(".")[0]; return PP_KIND.some(x => x[0] === k) ? k : "etc"; };
   const ppName = (u) => u.name || rs.names.get(u.id) || "";
-  const ppSt = (u, sid) => ((u.st || {})[sid] || {}).s || "todo";
+  const ppSt = (u, sid) => ((u.st || {})[sid] || {}).s || "todo"; const ppStages = (u, P) => (u.stages && u.stages.length ? u.stages : (P.stages || []));   // 그 대상이 거치는 단계
   // 그 대상이 지금 서 있는 단계 = 확정이 아닌 첫 단계(전부 확정이면 마지막)
   const ppAt = (u, stages) => stages.find(s => ppSt(u, s) !== "done") || stages[stages.length - 1];
   const ppTag = (s) => `<span class="tag pp-${s}">${PP_STATUS[s] || s}</span>`;
@@ -1862,7 +1862,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
   }
   function renderPipe(B) {
     const P = rs.data.pipeline, stages = P.stages || [], units = P.units || [];
-    const done = (u) => stages.length > 0 && stages.every(s => ppSt(u, s) === "done"), work = (u) => !!u.st && Object.keys(u.st).length > 0;
+    const done = (u) => { const st = ppStages(u, P); return st.length > 0 && st.every(s => ppSt(u, s) === "done"); }, work = (u) => !!u.st && Object.keys(u.st).length > 0;
     const sum = PP_KIND.map(([k, nm]) => { const l = units.filter(u => ppKind(u.id) === k); if (!l.length) return "";
       const d = l.filter(done).length, w = l.filter(u => work(u) && !done(u)).length;
       return `<div class="ps"><b>${nm}</b><div class="bar"><i class="done" style="width:${d / l.length * 100}%"></i><i class="doing" style="width:${w / l.length * 100}%"></i></div><small>${l.length}개 · 확정 ${d} · 진행 ${w}</small></div>`; }).join("");
@@ -1870,8 +1870,8 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
       && rsHit(u.id, ppName(u), u.one, u.grp, u.note, ...(u.where || []), ...(u.info || []).map(x => x.join(" ")), ...stages.map(s => ((u.st || {})[s] || {}).note || "")));
     const row = (u) => `<button type="button" class="pp-row art" data-u="${esc(u.id)}"><span class="who"><b>${esc(ppName(u) || u.id)}</b><span class="pa-grp">${esc(u.grp || u.id)}</span></span>
       <span class="pa-one">${esc(u.one || u.note || "")}</span><span class="pa-where">${esc((u.where || [])[0] || "")}</span>
-      <span class="pa-tags">${u.pri ? `<span class="tag pri-${esc(u.pri)}">${esc(PP_PRI[u.pri] || u.pri)}</span>` : ""}${stages.map(sid => { const s = ppSt(u, sid); return `<span class="tag pp-${s}">${PP_STAGE[sid] || sid} ${PP_STATUS[s] || s}</span>`; }).join("")}</span></button>`;
-    const head = '<div class="pp-head art"><span>대상</span><span>무엇</span><span>등장 위치</span><span>차례 · 상태</span></div>';
+      <span class="pa-tags">${u.pri ? `<span class="tag pri-${esc(u.pri)}">${esc(PP_PRI[u.pri] || u.pri)}</span>` : ""}${(() => { const st = ppStages(u, P), at = ppAt(u, st), s = ppSt(u, at), n = st.filter(x => ppSt(u, x) === "done").length; return `<span class="tag pp-${s}">${PP_STAGE[at] || at} ${PP_STATUS[s] || s}</span>` + (st.length > 1 ? `<span class="pa-step">${n}/${st.length}</span>` : ""); })()}</span></button>`;
+    const head = '<div class="pp-head art"><span>대상</span><span>무엇</span><span>등장 위치</span><span>차례 · 지금 단계</span></div>';
     B.className = "";
     B.innerHTML = (P.note ? `<p class="status">${esc(P.note)}</p>` : "") + `<div class="pp-sum">${sum}</div>` + (PP_KIND.map(([k, nm]) => { const l = list.filter(u => ppKind(u.id) === k);
       return l.length ? `<section class="rgroup"><h4>${nm}<span class="cnt">${l.length}</span></h4>${head}<div class="pp-list">${l.map(row).join("")}</div></section>` : ""; }).join("")
@@ -1882,15 +1882,15 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
   function openPipe(id) {
     const P = rs.data.pipeline, u = P.units.find(x => x.id === id); if (!u) return;
     const ul = (l) => `<ul class="pa-list">${l.map(x => `<li>${esc(x)}</li>`).join("")}</ul>`, person = ["hero", "npc"].includes(ppKind(u.id));
-    $("rsDlgTitle").textContent = (ppName(u) || u.id) + " · 원화";
+    $("rsDlgTitle").textContent = (ppName(u) || u.id) + " · 제작";
     $("rsDlgBody").innerHTML = `<div class="pp-dlg">${u.one ? `<p class="pa-lead">${esc(u.one)}</p>` : ""}
       <p class="pa-tags">${u.pri ? `<span class="tag pri-${esc(u.pri)}">${esc(PP_PRI[u.pri] || u.pri)}</span>` : ""}${u.grp ? `<span class="tag">${esc(u.grp)}</span>` : ""}<span class="rkey">${esc(u.id)}</span></p>
       ${u.note ? `<p class="pa-note">${esc(u.note)}</p>` : ""}
       ${(u.info || []).length ? `<section class="pp-sec"><h4>${person ? "인물 정보" : "설정"}</h4><dl class="pa-info">${u.info.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl></section>` : ""}
       ${(u.where || []).length ? `<section class="pp-sec"><h4>등장 위치</h4>${ul(u.where)}</section>` : ""}
-      ${(u.need || []).length ? `<section class="pp-sec"><h4>필요한 그림</h4>${ul(u.need)}</section>` : ""}
+      ${(u.need || []).length ? `<section class="pp-sec"><h4>필요한 것</h4>${ul(u.need)}</section>` : ""}
       ${u.spec ? `<p class="status">설정서: ${esc(u.spec)}</p>` : ""}
-      ${(P.stages || []).map(sid => { const d = (u.st || {})[sid] || {}, st = d.s || "todo";
+      ${ppStages(u, P).map(sid => { const d = (u.st || {})[sid] || {}, st = d.s || "todo";
         return `<section class="pp-sec"><h4>${PP_STAGE[sid] || sid} ${ppTag(st)}${d.tool ? `<span class="tag">${esc(d.tool)}</span>` : ""}${d.at ? `<span class="status">${esc(d.at)}</span>` : ""}</h4>
           ${d.note ? `<p>${esc(d.note)}</p>` : st === "todo" ? '<p class="status">아직 시작하지 않았습니다</p>' : ""}
           ${d.files ? `<div class="pp-shots">${d.files.map(f => `<figure class="pp-shot"><span class="stage">${ppShot(f)}</span><figcaption>${esc(f.label || "")}</figcaption></figure>`).join("")}</div>` : ""}
@@ -1962,8 +1962,8 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
     $("rsStamp").textContent = D.generatedAt ? "리소스 " + fmt(D.generatedAt) + (D.commit ? " · " + D.commit : "") : "";
     const arts = D.anims, packed = Object.keys(D.packs).length;
     const PU = (D.pipeline || {}).units || [], PS = (D.pipeline || {}).stages || [];
-    $("rsFacts").innerHTML = rs.cat === "pipe" ? fact("원화 대상", PU.length) + fact("수직 슬라이스", PU.filter(u => u.pri === "slice").length) + fact("인물", PU.filter(u => /^(hero|npc)\./.test(u.id)).length)
-      + fact("컷신", PU.filter(u => u.id.startsWith("cut.")).length) + fact("원화 확정", PU.filter(u => PS.length && PS.every(x => ppSt(u, x) === "done")).length)
+    $("rsFacts").innerHTML = rs.cat === "pipe" ? fact("만들 대상", PU.length) + fact("1장 · 수직 슬라이스", PU.filter(u => u.pri === "slice").length) + fact("인물", PU.filter(u => /^(hero|npc)\./.test(u.id)).length) + fact("무기 · 환경 · 맵", PU.filter(u => /^(weapon|env|map)\./.test(u.id)).length)
+      + fact("컷신", PU.filter(u => u.id.startsWith("cut.")).length) + fact("끝까지 확정", PU.filter(u => { const st = ppStages(u, D.pipeline); return st.length > 0 && st.every(x => ppSt(u, x) === "done"); }).length)
       : fact("그림 키", arts.length) + fact("그림 파일", D.files.filter(f => /\.png$/i.test(f.p)).length) + fact("임시·빌림", arts.filter(e => e.f === undefined).length)
       + fact("기준 미달", arts.filter(e => rsBelow(rsArt(e))).length) + fact("효과음", D.sfx.length) + fact("음악", D.music.length) + fact("글꼴", D.fonts.length)
       + (packed ? fact("묶음", fmtSize(Object.values(D.packs).reduce((a, p) => a + (p.size || 0), 0))) : "");
