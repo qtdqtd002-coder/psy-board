@@ -4,7 +4,7 @@
   "project": "PSY 프로젝트",
   "subtitle": "첫울음(가제) · 제노니아류 탑뷰 액션 RPG · 셋이 싸운다 · 60~80시간",
   "currentMilestone": "M0",
-  "updatedAt": "2026-10-09T00:56:34Z"
+  "updatedAt": "2026-10-09T01:04:50Z"
  },
  "milestones": [
   {
@@ -287,19 +287,24 @@
   {
    "id": "PSY-018",
    "title": "Unity 렌더를 URP 3D 로 바꾸기: 위에서 비스듬히 보는 고정 카메라",
-   "stage": "dev",
+   "stage": "qa",
    "milestone": "M0",
    "area": "개발",
    "priority": "P1",
    "owner": "Claude",
-   "note": "지금 뼈대는 URP 2D 다. 화면의 맛 시험(PSY-006)에 앞서 3D 렌더러 · 카메라 · 저해상도 렌더 전환 스위치를 만든다\n착수: URP 3D 렌더러 · 고정 카메라 · 화면의 맛 스위치(로우폴리 그대로 / 실시간 도트풍)",
+   "note": "지금 뼈대는 URP 2D 다. 화면의 맛 시험(PSY-006)에 앞서 3D 렌더러 · 카메라 · 저해상도 렌더 전환 스위치를 만든다\n착수: URP 3D 렌더러 · 고정 카메라 · 화면의 맛 스위치(로우폴리 그대로 / 실시간 도트풍)\n게이트 통과(10-09): 컴파일 오류 0 · EditMode 17/17 · PlayMode 실패 0 · E2E 1건. 3D 렌더 · 고정 직교 카메라 · F1 전환. 도형으로 찍은 두 화면 = docs/screenshots/E2E_Look_Clean.png · E2E_Look_Pixel.png. 화면의 느낌은 사용자 확인",
    "order": 18,
    "createdAt": "2026-10-08T23:12:51Z",
-   "updatedAt": "2026-10-09T00:56:34Z",
+   "updatedAt": "2026-10-09T01:04:50Z",
    "doneAt": null
   }
  ],
  "log": [
+  {
+   "at": "2026-10-09T01:04:50Z",
+   "text": "«Unity 렌더를 URP 3D 로 바꾸기: 위에서 비스듬히 보는 고정 카메라» 개발 → QA — 게이트 통과(10-09): 컴파일 오류 0 · EditMode 17/17 · PlayMode 실패 0 · E2E 1건. 3D 렌더 · 고정 직교 카메라 · F1 전환. 도형으로 찍은 두 화면 = docs/screenshots/E2E_Look_Clean.png · E2E_Look_Pixel.png. 화면의 느낌은 사용자 확인",
+   "by": "Claude"
+  },
   {
    "at": "2026-10-09T00:56:34Z",
    "text": "«Unity 렌더를 URP 3D 로 바꾸기: 위에서 비스듬히 보는 고정 카메라» 기획 → 개발 — 착수: URP 3D 렌더러 · 고정 카메라 · 화면의 맛 스위치(로우폴리 그대로 / 실시간 도트풍)",
