@@ -4,7 +4,7 @@
   "project": "PSY 프로젝트",
   "subtitle": "첫울음(가제) · 제노니아류 탑뷰 액션 RPG · 셋이 싸운다 · 60~80시간",
   "currentMilestone": "M0",
-  "updatedAt": "2026-10-09T03:08:30Z",
+  "updatedAt": "2026-10-09T04:52:45Z",
   "qa": {
    "gate": "PASS",
    "compile": "오류 0",
@@ -314,14 +314,19 @@
    "area": "아트",
    "priority": "P0",
    "owner": "Claude",
-   "note": "초안 = docs/design/04_Art_Sound/ArtStyle.md. 시안 설명 글과 도구는 준비됨. 막힘: Gemini 키의 프로젝트 접근이 거부되어 그림을 못 만든다(사용자 확인 필요). 풍이 정해지기 전에는 원화와 모델을 늘리지 않는다",
+   "note": "풍 시안 아홉 장 완료(2026-10-09, Gemini 웹 구독 계정, 커밋 bd2dc0d). 풍 셋(A 민화 로우폴리, B 점토 인형, C 손그림 동화)마다 첫여울 마을, 들메, 소리먹이를 그려 견줌 시트로 묶었다(비공개 저장소 docs/art/style/01_candidates/sheet.png). 본 것과 어긋난 점은 docs/design/04_Art_Sound/ArtStyle.md 3.4와 4.3. 지금 = 사용자가 풍을 고를 차례(P-16). 다음 = 고른 풍으로 세 등신 견줌 → 기준 원화 → Tripo 모델. 풍이 정해지기 전에는 원화와 모델을 늘리지 않는다. Gemini API 키는 여전히 막혀 있으나 웹 경로로 풀었다",
    "order": 19,
    "createdAt": "2026-10-09T03:08:30Z",
-   "updatedAt": "2026-10-09T03:08:30Z",
+   "updatedAt": "2026-10-09T04:52:45Z",
    "doneAt": null
   }
  ],
  "log": [
+  {
+   "at": "2026-10-09T04:52:45Z",
+   "text": "«아트풍 정리: 풍 후보 셋과 등신 견줌 시안(Gemini) → 사용자가 고른다» 수정(note)",
+   "by": "Claude"
+  },
   {
    "at": "2026-10-09T03:08:30Z",
    "text": "«아트풍 정리: 풍 후보 셋과 등신 견줌 시안(Gemini) → 사용자가 고른다» 추가(아트)",
