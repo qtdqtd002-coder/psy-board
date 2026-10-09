@@ -4,14 +4,14 @@
   "project": "PSY 프로젝트",
   "subtitle": "첫울음(가제) · 제노니아류 탑뷰 액션 RPG · 셋이 싸운다 · 60~80시간",
   "currentMilestone": "M0",
-  "updatedAt": "2026-10-09T14:28:46Z",
+  "updatedAt": "2026-10-09T15:45:00Z",
   "qa": {
    "gate": "PASS",
    "compile": "오류 0",
-   "editmode": "17/17",
-   "playmode": "3 통과 · 2 건너뜀 · 실패 0",
-   "screenshots": "E2E_Look 2장",
-   "at": "2026-10-09T01:10:00Z"
+   "editmode": "20/20",
+   "playmode": "4 통과 · 2 건너뜀 · 실패 0",
+   "screenshots": "E2E_Look 2장 · E2E_Char_Deulme 2장",
+   "at": "2026-10-09T15:42:00Z"
   }
  },
  "milestones": [
