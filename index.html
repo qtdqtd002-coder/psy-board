@@ -523,9 +523,9 @@ canvas.rsc.smooth{image-rendering:auto}
 .pp-sec h4{margin:0;font-size:15px;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
 .pp-sec p{margin:0;font-size:14px;line-height:1.6}
 .pp-sec ul{margin:0;padding-left:18px;font-size:13px;color:var(--muted);line-height:1.6}
-.pp-shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px}
+.pp-shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px}
 .pp-shot{margin:0;display:flex;flex-direction:column;gap:4px}
-.pp-shot .stage{height:200px}
+.pp-shot .stage{height:240px}.pp-shot .stage img{cursor:zoom-in}
 .pp-shot figcaption{font-size:12px;color:var(--muted)}
 .dlg.wide{width:min(880px,100%)}
 .rd{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;align-items:start}
@@ -1850,7 +1850,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
     }
     return rs.urls.get(fi);
   }
-  function ppMount(root) { root.querySelectorAll("img.ppi:not([src])").forEach(im => { const fi = Number(im.dataset.fi); if (rsCan(fi)) ppUrl(fi).then(u => { im.src = u; }).catch(() => {}); }); }
+  function ppMount(root) { root.querySelectorAll("img.ppi:not([src])").forEach(im => { const fi = Number(im.dataset.fi); if (rsCan(fi)) ppUrl(fi).then(u => { im.src = u; im.title = "누르면 크게 봅니다"; im.onclick = () => window.open(u, "_blank", "noopener"); }).catch(() => {}); }); }
   const ppKind = (id) => { const k = id.split(".")[0]; return PP_KIND.some(x => x[0] === k) ? k : "etc"; };
   const ppName = (u) => u.name || rs.names.get(u.id) || "";
   const ppSt = (u, sid) => ((u.st || {})[sid] || {}).s || "todo"; const ppStages = (u, P) => (u.stages && u.stages.length ? u.stages : (P.stages || []));   // 그 대상이 거치는 단계
