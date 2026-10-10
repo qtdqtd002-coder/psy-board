@@ -527,6 +527,35 @@ canvas.rsc.smooth{image-rendering:auto}
 .pp-shot{margin:0;display:flex;flex-direction:column;gap:4px}
 .pp-shot .stage{height:240px}.pp-shot .stage img{cursor:zoom-in}
 .pp-shot figcaption{font-size:12px;color:var(--muted)}
+/* 만드는 법(make): 새로 · 변주 ← 본 · 재사용 · 직접 제작 · 아이콘 · 만듦 — 새로는 채워서 눈에 띄게, 만듦은 흐리게 */
+.tag.mk-new{color:var(--surface);background:var(--accent-ink);border-color:var(--accent-ink);font-weight:600}
+.tag.mk-variant{color:color-mix(in srgb,var(--st-dev) 72%,var(--ink));border-color:color-mix(in srgb,var(--st-dev) 38%,var(--line))}
+.tag.mk-reuse{color:color-mix(in srgb,var(--st-plan) 76%,var(--ink));border-color:color-mix(in srgb,var(--st-plan) 36%,var(--line))}
+.tag.mk-own{color:color-mix(in srgb,var(--st-art) 70%,var(--ink));border-color:color-mix(in srgb,var(--st-art) 36%,var(--line))}
+.tag.mk-icon{color:var(--muted);border-style:dashed}
+.tag.mk-made{color:var(--muted);background:none;opacity:.7}
+.pa-mk{display:flex;align-self:flex-start;max-width:100%;margin-top:3px}
+.pa-mk .tag{overflow-wrap:anywhere}
+.pp-make{background:var(--surface);border:1px solid var(--line);border-radius:var(--r2);padding:10px 12px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.fact.hl{background:var(--accent-soft);border-color:transparent;color:var(--accent-ink);font-weight:600}
+.fact.hl i{color:inherit;font-weight:400}
+.fact i.after{margin:0 0 0 5px}
+.mk-tbl{width:100%;max-width:480px;border-collapse:collapse;font-size:13px;font-variant-numeric:tabular-nums}
+.mk-tbl th,.mk-tbl td{padding:5px 8px;text-align:right;vertical-align:top;border-bottom:1px solid var(--line)}
+.mk-tbl th{font-size:12px;font-weight:600;color:var(--muted)}
+.mk-tbl th:first-child,.mk-tbl td:first-child{text-align:left;padding-left:0}
+.mk-tbl th:last-child,.mk-tbl td:last-child{padding-right:0}
+.mk-tbl tfoot td{font-weight:600;border-bottom:0}
+.mk-tbl td small{font-size:11px;font-weight:400;color:var(--muted);margin-right:8px}
+.pp-make .status{margin:0}
+.mk-flt{flex:1 1 100%;display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.mk-lbl{font-size:12px;font-weight:600;color:var(--muted);margin-right:2px}
+.chip .cn{margin-left:5px;font-size:12px;opacity:.7}
+.pp-dlg p.pa-make{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px;font-size:14px;line-height:1.6;color:var(--ink)}
+.pa-mk-l{font-size:13px;font-weight:600;color:var(--muted)}
+.pa-mk-t{flex:1 1 220px;min-width:0;overflow-wrap:anywhere}
+.pa-link{font:inherit;font-weight:600;color:var(--accent-ink);background:none;border:0;padding:2px 0;margin:0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.pa-link:hover{text-decoration-thickness:2px}
 .dlg.wide{width:min(880px,100%)}
 .rd{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;align-items:start}
 .rd-left{display:flex;flex-direction:column;gap:8px;min-width:0}
@@ -1743,7 +1772,9 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
   const PP_KIND = [["hero", "주인공과 동료"], ["npc", "인물"], ["enemy", "소리먹이"], ["boss", "보스"], ["weapon", "무기"], ["env", "환경 조각"], ["map", "맵"], ["bg", "장소 원화"], ["prop", "소품"], ["cut", "컷신"], ["ui", "화면"], ["fx", "효과"], ["etc", "그 밖"]];
   const PP_PRI = {slice: "1장", p1: "1부", p2: "2부", p3: "3부"};   // 그리는 차례 = 처음 나오는 장
   const PP_FLT = [["", "전체"], ["slice", "1장 · 수직 슬라이스"], ["p1", "1부"], ["p2", "2부"], ["p3", "3부"], ["work", "작업 있음"]];
-  const rs = {data: null, busy: null, err: "", cat: "pipe", flt: "", urls: new Map(), q: "", key: null, msg: "", packs: new Map(), bmps: new Map(), byKey: new Map(), names: new Map(), sound: null,
+  const MK_ORDER = ["new", "variant", "reuse", "own", "icon", "made"];   // «만드는 법» 칩의 차례(만듦은 맨 끝) · 이름은 자료(pipeline.make.how)에서
+  const MK_PRI = [["slice", "1장"], ["p1", "2~4장"], ["p2", "5~8장"], ["p3", "9~12장"]];   // 요약표의 줄(우선순위 = 처음 나오는 장)
+  const rs = {data: null, busy: null, err: "", cat: "pipe", flt: "", mk: "", urls: new Map(), q: "", key: null, msg: "", packs: new Map(), bmps: new Map(), byKey: new Map(), names: new Map(), sound: null,
     play: safe(() => localStorage.getItem("psy-res-play")) !== "0", bg: safe(() => localStorage.getItem("psy-res-bg")) || "check"};
   const b64u8 = (s) => Uint8Array.from(atob(s), c => c.charCodeAt(0));
   const u8b64 = (u) => { let b = ""; for (const x of u) b += String.fromCharCode(x); return btoa(b); };
@@ -1860,20 +1891,43 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
   function ppShot(f, cls = "") {
     return rsCan(f.i) ? `<img class="ppi${cls}" data-fi="${f.i}" alt="${esc(f.label || "")}" loading="lazy">` : '<span class="lk">잠김</span>';
   }
+  // ---- 만드는 법(u.make · pipeline.make — 원본 tools/art/make_plan.py → art_list.py). 옛 자료에는 없으니 없으면 아무것도 그리지 않는다
+  const mkTag = (m, withBase) => `<span class="tag mk-${esc(m.how)}"${m.note ? ` title="${esc(m.note)}"` : ""}>${esc(m.ko)}${withBase && m.baseName ? " ← " + esc(m.baseName) : ""}</span>`;
+  const mkN = (v) => Number(v || 0).toLocaleString("ko-KR");
+  function ppMakeBox(M) {
+    const by = M.by || {}, ko = Object.fromEntries((M.how || []).map(h => [h.how, h.ko]));
+    const tot = (ks) => MK_PRI.reduce((a, [p]) => a + ks.reduce((b, k) => b + ((by[p] || {})[k] || 0), 0), 0), other = ["made", "reuse", "own", "icon"];
+    const facts = `<span class="fact hl"><i>새로 만들 모델</i>${mkN(M.totalNew)}</span><span class="fact"><i>Tripo 크레딧 어림</i>${mkN(M.totalCredits)}<i class="after">하나에 ${mkN(M.credit)}</i></span>`
+      + ["variant", "reuse", "own", "icon", "made"].filter(k => ko[k]).map(k => fact(esc(ko[k]), tot([k]))).join("");
+    const rows = MK_PRI.filter(([p]) => by[p]).map(([p, nm]) => { const c = by[p], reg = (M.regionNew || {})[p];
+      return `<tr><td>${nm}</td><td>${reg ? `<small title="${esc(reg[0])}">환경 ${mkN(reg[1])} 포함</small>` : ""}${mkN((M.newModels || {})[p])}</td><td>${mkN((M.credits || {})[p])}</td><td>${mkN(c.variant)}</td><td>${mkN(other.reduce((a, k) => a + (c[k] || 0), 0))}</td></tr>`; }).join("");
+    return `<section class="pp-make" aria-label="만드는 법 요약"><div class="facts">${facts}</div>
+      <table class="mk-tbl"><thead><tr><th scope="col">차례</th><th scope="col">새 모델</th><th scope="col">크레딧</th><th scope="col">변주</th><th scope="col" title="재사용 · 직접 제작 · 아이콘 · 만듦">그 밖</th></tr></thead><tbody>${rows}</tbody>
+      <tfoot><tr><td>합</td><td>${mkN(M.totalNew)}</td><td>${mkN(M.totalCredits)}</td><td>${mkN(tot(["variant"]))}</td><td>${mkN(tot(other))}</td></tr></tfoot></table>
+      ${M.note ? `<p class="status">${esc(M.note)}</p>` : ""}</section>`;
+  }
+  // 자세히 보기의 «만드는 법» 줄 — «변주: 본 = 보리(npc.25) · 미역. 횟집 아주머니». 본의 이름을 누르면 그 대상으로 간다
+  function ppMakeLine(u, P) {
+    const m = u.make; if (!m) return "";
+    const has = m.base && P.units.some(x => x.id === m.base);
+    const base = m.base ? `본 = ${has ? `<button type="button" class="pa-link" data-u="${esc(m.base)}">${esc(m.baseName || m.base)}</button>` : esc(m.baseName || m.base)}<span class="rkey">(${esc(m.base)})</span>` : "";
+    const text = [base, m.count > 1 ? `모델 ${esc(m.count)}개` : "", esc(m.note || "")].filter(Boolean).join(" · ");
+    return `<p class="pa-make"><span class="pa-mk-l">만드는 법</span>${mkTag(m, false)}${text ? `<span class="pa-mk-t">${text}</span>` : ""}</p>`;
+  }
   function renderPipe(B) {
-    const P = rs.data.pipeline, stages = P.stages || [], units = P.units || [];
+    const P = rs.data.pipeline, stages = P.stages || [], units = P.units || [], mk = P.make ? rs.mk : "";
     const done = (u) => { const st = ppStages(u, P); return st.length > 0 && st.every(s => ppSt(u, s) === "done"); }, work = (u) => !!u.st && Object.keys(u.st).length > 0;
     const sum = PP_KIND.map(([k, nm]) => { const l = units.filter(u => ppKind(u.id) === k); if (!l.length) return "";
       const d = l.filter(done).length, w = l.filter(u => work(u) && !done(u)).length;
       return `<div class="ps"><b>${nm}</b><div class="bar"><i class="done" style="width:${d / l.length * 100}%"></i><i class="doing" style="width:${w / l.length * 100}%"></i></div><small>${l.length}개 · 확정 ${d} · 진행 ${w}</small></div>`; }).join("");
-    const list = units.filter(u => (rs.flt === "" || (rs.flt === "work" ? work(u) : u.pri === rs.flt))
-      && rsHit(u.id, ppName(u), u.one, u.grp, u.note, ...(u.where || []), ...(u.info || []).map(x => x.join(" ")), ...stages.map(s => ((u.st || {})[s] || {}).note || "")));
-    const row = (u) => `<button type="button" class="pp-row art" data-u="${esc(u.id)}"><span class="who"><b>${esc(ppName(u) || u.id)}</b><span class="pa-grp">${esc(u.grp || u.id)}</span></span>
+    const list = units.filter(u => (rs.flt === "" || (rs.flt === "work" ? work(u) : u.pri === rs.flt)) && (!mk || (u.make && u.make.how === mk))
+      && rsHit(u.id, ppName(u), u.one, u.grp, u.note, ...(u.make ? [u.make.ko, u.make.baseName, u.make.note] : []), ...(u.where || []), ...(u.info || []).map(x => x.join(" ")), ...stages.map(s => ((u.st || {})[s] || {}).note || "")));
+    const row = (u) => `<button type="button" class="pp-row art" data-u="${esc(u.id)}"><span class="who"><b>${esc(ppName(u) || u.id)}</b><span class="pa-grp">${esc(u.grp || u.id)}</span>${u.make ? `<span class="pa-mk">${mkTag(u.make, true)}</span>` : ""}</span>
       <span class="pa-one">${esc(u.one || u.note || "")}</span><span class="pa-where">${esc((u.where || [])[0] || "")}</span>
       <span class="pa-tags">${u.pri ? `<span class="tag pri-${esc(u.pri)}">${esc(PP_PRI[u.pri] || u.pri)}</span>` : ""}${(() => { const st = ppStages(u, P), at = ppAt(u, st), s = ppSt(u, at), n = st.filter(x => ppSt(u, x) === "done").length; return `<span class="tag pp-${s}">${PP_STAGE[at] || at} ${PP_STATUS[s] || s}</span>` + (st.length > 1 ? `<span class="pa-step">${n}/${st.length}</span>` : ""); })()}</span></button>`;
     const head = '<div class="pp-head art"><span>대상</span><span>무엇</span><span>등장 위치</span><span>차례 · 지금 단계</span></div>';
     B.className = "";
-    B.innerHTML = (P.note ? `<p class="status">${esc(P.note)}</p>` : "") + `<div class="pp-sum">${sum}</div>` + (PP_KIND.map(([k, nm]) => { const l = list.filter(u => ppKind(u.id) === k);
+    B.innerHTML = (P.note ? `<p class="status">${esc(P.note)}</p>` : "") + (P.make ? ppMakeBox(P.make) : "") + `<div class="pp-sum">${sum}</div>` + (PP_KIND.map(([k, nm]) => { const l = list.filter(u => ppKind(u.id) === k);
       return l.length ? `<section class="rgroup"><h4>${nm}<span class="cnt">${l.length}</span></h4>${head}<div class="pp-list">${l.map(row).join("")}</div></section>` : ""; }).join("")
       || '<p class="empty">조건에 맞는 대상이 없습니다</p>');
     B.querySelectorAll(".pp-row").forEach(b => b.onclick = () => openPipe(b.dataset.u));
@@ -1886,6 +1940,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
     $("rsDlgBody").innerHTML = `<div class="pp-dlg">${u.one ? `<p class="pa-lead">${esc(u.one)}</p>` : ""}
       <p class="pa-tags">${u.pri ? `<span class="tag pri-${esc(u.pri)}">${esc(PP_PRI[u.pri] || u.pri)}</span>` : ""}${u.grp ? `<span class="tag">${esc(u.grp)}</span>` : ""}<span class="rkey">${esc(u.id)}</span></p>
       ${u.note ? `<p class="pa-note">${esc(u.note)}</p>` : ""}
+      ${ppMakeLine(u, P)}
       ${(u.info || []).length ? `<section class="pp-sec"><h4>${person ? "인물 정보" : "설정"}</h4><dl class="pa-info">${u.info.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl></section>` : ""}
       ${(u.where || []).length ? `<section class="pp-sec"><h4>등장 위치</h4>${ul(u.where)}</section>` : ""}
       ${(u.need || []).length ? `<section class="pp-sec"><h4>필요한 것</h4>${ul(u.need)}</section>` : ""}
@@ -1897,6 +1952,8 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
           ${d.log ? `<ul>${d.log.map(h => `<li>${esc(h.d || "")} · ${esc(h.t || "")}</li>`).join("")}</ul>` : ""}</section>`; }).join("")}</div>`;
     $("rsDlgBody").className = "bg-" + rs.bg;
     $("rsScrim").hidden = false; $("rsClose").focus();
+    $("rsDlg").scrollTop = 0;   // 본으로 건너온 때에도 맨 위에서 시작
+    $("rsDlgBody").querySelectorAll(".pa-link").forEach(b => b.onclick = () => openPipe(b.dataset.u));
     ppMount($("rsDlgBody"));
   }
 
@@ -1952,7 +2009,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
   }
 
   $("rsSeg").innerHTML = RS_CATS.map(([id, name]) => `<button type="button" role="tab" id="rs-tab-${id}" aria-controls="rsBody" data-cat="${id}">${name}</button>`).join("");
-  $("rsSeg").querySelectorAll("button").forEach(b => b.onclick = () => { rs.cat = b.dataset.cat; rs.flt = ""; renderRes(); });
+  $("rsSeg").querySelectorAll("button").forEach(b => b.onclick = () => { rs.cat = b.dataset.cat; rs.flt = ""; rs.mk = ""; renderRes(); });
   arrowTabs($("rsSeg"));
   function renderRes() {
     $("rsSeg").querySelectorAll("button").forEach(b => { const on = b.dataset.cat === rs.cat; b.setAttribute("aria-selected", on); b.tabIndex = on ? 0 : -1; });
@@ -1987,11 +2044,16 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
     // 고르기
     const art = !["sound", "font", "pipe"].includes(rs.cat);
     const chip = (v, n) => `<button class="chip" type="button" data-f="${v}" aria-pressed="${rs.flt === v}">${n}</button>`;
+    // 만드는 법 칩(전체 · 새로 · 변주 · 재사용 · 직접 제작 · 아이콘 · 만듦) — 위 거름과 같이 걸린다. 자료에 pipeline.make 가 없으면 그리지 않는다
+    const MK = (D.pipeline || {}).make, mkKo = MK ? Object.fromEntries((MK.how || []).map(h => [h.how, h.ko])) : {};
+    const mchip = (v, n) => `<button class="chip" type="button" data-m="${v}" aria-pressed="${rs.mk === v}">${esc(n)}${v ? `<span class="cn">${PU.filter(u => u.make && u.make.how === v).length}</span>` : ""}</button>`;
+    const mkFlt = rs.cat === "pipe" && MK ? `<div class="mk-flt" role="group" aria-label="만드는 법으로 거르기"><span class="mk-lbl">만드는 법</span>${[["", "전체"], ...MK_ORDER.filter(k => mkKo[k]).map(k => [k, mkKo[k]])].map(([v, n]) => mchip(v, n)).join("")}</div>` : "";
     $("rsFilters").innerHTML = (rs.cat === "pipe" ? PP_FLT.map(([v, n]) => chip(v, n)).join("") : art && rs.cat !== "spare" ? RS_FLT.map(([v, n]) => chip(v, n)).join("") : "")
-      + `<input type="search" id="rsQ" placeholder="찾기(키·이름·메모)" value="${esc(rs.q)}" aria-label="리소스 찾기">`
+      + `<input type="search" id="rsQ" placeholder="찾기(키·이름·메모)" value="${esc(rs.q)}" aria-label="리소스 찾기">` + mkFlt
       + (art && rs.key ? `<button class="iconbtn" type="button" id="rsPlayBtn" aria-pressed="${rs.play}">${rs.play ? "움직임 켬" : "움직임 끔"}</button>
         <button class="iconbtn" type="button" id="rsBgBtn">배경: ${RS_BG.find(b => b[0] === rs.bg)[1]}</button>` : "");
-    $("rsFilters").querySelectorAll(".chip").forEach(b => b.onclick = () => { rs.flt = b.dataset.f; renderRes(); });
+    $("rsFilters").querySelectorAll(".chip[data-f]").forEach(b => b.onclick = () => { rs.flt = b.dataset.f; renderRes(); });
+    $("rsFilters").querySelectorAll(".chip[data-m]").forEach(b => b.onclick = () => { rs.mk = b.dataset.m; renderRes(); });
     $("rsQ").oninput = () => { rs.q = $("rsQ").value; renderResBody(); };
     if ($("rsPlayBtn")) $("rsPlayBtn").onclick = () => { rs.play = !rs.play; safe(() => localStorage.setItem("psy-res-play", rs.play ? "1" : "0")); renderRes(); };
     if ($("rsBgBtn")) $("rsBgBtn").onclick = () => { rs.bg = RS_BG[(RS_BG.findIndex(b => b[0] === rs.bg) + 1) % RS_BG.length][0]; safe(() => localStorage.setItem("psy-res-bg", rs.bg)); renderRes(); };
