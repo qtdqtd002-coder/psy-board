@@ -1,18 +1,42 @@
 {
  "schema": "psy-board-res/1",
- "generatedAt": "2026-10-09T23:13:51Z",
+ "generatedAt": "2026-10-10T00:58:06Z",
  "packs": {
   "pipe": {
    "file": "data/res/pipe.bin",
-   "iv": "luibPb+j7swWGL24",
-   "size": 6275922
+   "iv": "S8JpXZemikhO60+R",
+   "size": 8214480
   }
  },
  "files": [
   {
-   "p": "pipe/env.bld.bau/concept_c8ae51a7a5.jpg",
+   "p": "pipe/boss.01/concept_a258d300d7.jpg",
    "pack": "pipe",
    "o": 0,
+   "n": 106513,
+   "w": 1280,
+   "h": 1280
+  },
+  {
+   "p": "pipe/enemy.02/concept_7f886f9b80.jpg",
+   "pack": "pipe",
+   "o": 106513,
+   "n": 64156,
+   "w": 1280,
+   "h": 1280
+  },
+  {
+   "p": "pipe/enemy.03/concept_40f7a96eba.jpg",
+   "pack": "pipe",
+   "o": 170669,
+   "n": 99818,
+   "w": 1280,
+   "h": 1280
+  },
+  {
+   "p": "pipe/env.bld.bau/concept_c8ae51a7a5.jpg",
+   "pack": "pipe",
+   "o": 270487,
    "n": 166488,
    "w": 1280,
    "h": 1280
@@ -20,7 +44,7 @@
   {
    "p": "pipe/env.bld.bau/model_56850a24a6.jpg",
    "pack": "pipe",
-   "o": 166488,
+   "o": 436975,
    "n": 105755,
    "w": 1280,
    "h": 640
@@ -28,7 +52,7 @@
   {
    "p": "pipe/env.bld.choga/concept_31b4d417c7.jpg",
    "pack": "pipe",
-   "o": 272243,
+   "o": 542730,
    "n": 184605,
    "w": 1280,
    "h": 1280
@@ -36,7 +60,7 @@
   {
    "p": "pipe/env.bld.choga/model_be2cdfc60b.jpg",
    "pack": "pipe",
-   "o": 456848,
+   "o": 727335,
    "n": 114994,
    "w": 1280,
    "h": 640
@@ -44,7 +68,7 @@
   {
    "p": "pipe/env.bld.jongru/concept_2b32edcb57.jpg",
    "pack": "pipe",
-   "o": 571842,
+   "o": 842329,
    "n": 137928,
    "w": 1280,
    "h": 1280
@@ -52,7 +76,7 @@
   {
    "p": "pipe/env.bld.jongru/model_d837542437.jpg",
    "pack": "pipe",
-   "o": 709770,
+   "o": 980257,
    "n": 87161,
    "w": 1280,
    "h": 640
@@ -60,7 +84,7 @@
   {
    "p": "pipe/env.bld.jumak/concept_b3c3512ad3.jpg",
    "pack": "pipe",
-   "o": 796931,
+   "o": 1067418,
    "n": 231895,
    "w": 1280,
    "h": 1280
@@ -68,7 +92,7 @@
   {
    "p": "pipe/env.bld.jumak/model_d7e6da163f.jpg",
    "pack": "pipe",
-   "o": 1028826,
+   "o": 1299313,
    "n": 107069,
    "w": 1280,
    "h": 640
@@ -76,7 +100,7 @@
   {
    "p": "pipe/env.bld.mill/concept_46d3420732.jpg",
    "pack": "pipe",
-   "o": 1135895,
+   "o": 1406382,
    "n": 179563,
    "w": 1280,
    "h": 1280
@@ -84,7 +108,7 @@
   {
    "p": "pipe/env.bld.mill/model_eacd10be47.jpg",
    "pack": "pipe",
-   "o": 1315458,
+   "o": 1585945,
    "n": 109491,
    "w": 1280,
    "h": 640
@@ -92,7 +116,7 @@
   {
    "p": "pipe/env.bld.smithy/concept_936f646a6f.jpg",
    "pack": "pipe",
-   "o": 1424949,
+   "o": 1695436,
    "n": 154775,
    "w": 1280,
    "h": 1280
@@ -100,7 +124,7 @@
   {
    "p": "pipe/env.bld.smithy/model_80d2a9b35d.jpg",
    "pack": "pipe",
-   "o": 1579724,
+   "o": 1850211,
    "n": 106392,
    "w": 1280,
    "h": 640
@@ -108,7 +132,7 @@
   {
    "p": "pipe/env.nat.bush/concept_0daf5cd7e8.jpg",
    "pack": "pipe",
-   "o": 1686116,
+   "o": 1956603,
    "n": 67662,
    "w": 1280,
    "h": 1280
@@ -116,7 +140,7 @@
   {
    "p": "pipe/env.nat.bush/model_47a1317084.jpg",
    "pack": "pipe",
-   "o": 1753778,
+   "o": 2024265,
    "n": 65435,
    "w": 1280,
    "h": 640
@@ -124,7 +148,7 @@
   {
    "p": "pipe/env.nat.pine/concept_0526388283.jpg",
    "pack": "pipe",
-   "o": 1819213,
+   "o": 2089700,
    "n": 65314,
    "w": 1280,
    "h": 1280
@@ -132,7 +156,7 @@
   {
    "p": "pipe/env.nat.pine/model_87c066587a.jpg",
    "pack": "pipe",
-   "o": 1884527,
+   "o": 2155014,
    "n": 53676,
    "w": 1280,
    "h": 640
@@ -140,7 +164,7 @@
   {
    "p": "pipe/env.nat.rock/concept_ca3a55c48d.jpg",
    "pack": "pipe",
-   "o": 1938203,
+   "o": 2208690,
    "n": 66720,
    "w": 1280,
    "h": 1280
@@ -148,7 +172,7 @@
   {
    "p": "pipe/env.nat.rock/model_9fd32e4982.jpg",
    "pack": "pipe",
-   "o": 2004923,
+   "o": 2275410,
    "n": 52348,
    "w": 1280,
    "h": 640
@@ -156,7 +180,7 @@
   {
    "p": "pipe/env.nat.tree/concept_110f67345b.jpg",
    "pack": "pipe",
-   "o": 2057271,
+   "o": 2327758,
    "n": 74613,
    "w": 1280,
    "h": 1280
@@ -164,7 +188,7 @@
   {
    "p": "pipe/env.nat.tree/model_d23f7952e2.jpg",
    "pack": "pipe",
-   "o": 2131884,
+   "o": 2402371,
    "n": 53420,
    "w": 1280,
    "h": 640
@@ -172,7 +196,7 @@
   {
    "p": "pipe/env.nat.zelkova/concept_d521e6da7d.jpg",
    "pack": "pipe",
-   "o": 2185304,
+   "o": 2455791,
    "n": 108903,
    "w": 1280,
    "h": 1280
@@ -180,7 +204,7 @@
   {
    "p": "pipe/env.nat.zelkova/model_f21214e149.jpg",
    "pack": "pipe",
-   "o": 2294207,
+   "o": 2564694,
    "n": 86017,
    "w": 1280,
    "h": 640
@@ -188,7 +212,7 @@
   {
    "p": "pipe/env.str.bench/concept_16e2188ed1.jpg",
    "pack": "pipe",
-   "o": 2380224,
+   "o": 2650711,
    "n": 141074,
    "w": 1280,
    "h": 1280
@@ -196,7 +220,7 @@
   {
    "p": "pipe/env.str.bench/model_dec26804e1.jpg",
    "pack": "pipe",
-   "o": 2521298,
+   "o": 2791785,
    "n": 69946,
    "w": 1280,
    "h": 640
@@ -204,7 +228,7 @@
   {
    "p": "pipe/env.str.bridge/concept_86aa28b20e.jpg",
    "pack": "pipe",
-   "o": 2591244,
+   "o": 2861731,
    "n": 118251,
    "w": 1280,
    "h": 1280
@@ -212,7 +236,7 @@
   {
    "p": "pipe/env.str.bridge/model_7a936e91b2.jpg",
    "pack": "pipe",
-   "o": 2709495,
+   "o": 2979982,
    "n": 70227,
    "w": 1280,
    "h": 640
@@ -220,7 +244,7 @@
   {
    "p": "pipe/env.str.fence/concept_1238fa1fee.jpg",
    "pack": "pipe",
-   "o": 2779722,
+   "o": 3050209,
    "n": 93927,
    "w": 1280,
    "h": 1280
@@ -228,7 +252,7 @@
   {
    "p": "pipe/env.str.fence/model_ca829ed7e3.jpg",
    "pack": "pipe",
-   "o": 2873649,
+   "o": 3144136,
    "n": 48793,
    "w": 1280,
    "h": 640
@@ -236,7 +260,7 @@
   {
    "p": "pipe/env.str.jars/concept_7199d2d341.jpg",
    "pack": "pipe",
-   "o": 2922442,
+   "o": 3192929,
    "n": 84160,
    "w": 1280,
    "h": 1280
@@ -244,7 +268,7 @@
   {
    "p": "pipe/env.str.jars/model_e301802bc9.jpg",
    "pack": "pipe",
-   "o": 3006602,
+   "o": 3277089,
    "n": 68862,
    "w": 1280,
    "h": 640
@@ -252,7 +276,7 @@
   {
    "p": "pipe/env.str.stack/concept_74a80db83d.jpg",
    "pack": "pipe",
-   "o": 3075464,
+   "o": 3345951,
    "n": 176650,
    "w": 1280,
    "h": 1280
@@ -260,7 +284,7 @@
   {
    "p": "pipe/env.str.stack/model_f9fe5902a8.jpg",
    "pack": "pipe",
-   "o": 3252114,
+   "o": 3522601,
    "n": 104490,
    "w": 1280,
    "h": 640
@@ -268,7 +292,7 @@
   {
    "p": "pipe/env.str.wall/concept_96e9fa4098.jpg",
    "pack": "pipe",
-   "o": 3356604,
+   "o": 3627091,
    "n": 116127,
    "w": 1280,
    "h": 1280
@@ -276,23 +300,63 @@
   {
    "p": "pipe/env.str.wall/model_4143e734f7.jpg",
    "pack": "pipe",
-   "o": 3472731,
+   "o": 3743218,
    "n": 56482,
    "w": 1280,
    "h": 640
   },
   {
+   "p": "pipe/env.tile.cave/concept_3197bd02b5.jpg",
+   "pack": "pipe",
+   "o": 3799700,
+   "n": 177397,
+   "w": 1280,
+   "h": 1280
+  },
+  {
+   "p": "pipe/env.tile.field/concept_4976527fcb.jpg",
+   "pack": "pipe",
+   "o": 3977097,
+   "n": 193321,
+   "w": 1280,
+   "h": 1280
+  },
+  {
+   "p": "pipe/env.tile.forest/concept_828e2c45bf.jpg",
+   "pack": "pipe",
+   "o": 4170418,
+   "n": 296281,
+   "w": 1280,
+   "h": 1280
+  },
+  {
    "p": "pipe/env.tile.grass/concept_5ac522c4da.jpg",
    "pack": "pipe",
-   "o": 3529213,
+   "o": 4466699,
    "n": 135930,
+   "w": 1280,
+   "h": 1280
+  },
+  {
+   "p": "pipe/env.tile.path/concept_ab4fa823ea.jpg",
+   "pack": "pipe",
+   "o": 4602629,
+   "n": 172441,
+   "w": 1280,
+   "h": 1280
+  },
+  {
+   "p": "pipe/env.tile.yard/concept_45c2477152.jpg",
+   "pack": "pipe",
+   "o": 4775070,
+   "n": 301745,
    "w": 1280,
    "h": 1280
   },
   {
    "p": "pipe/hero.01/concept_054e7148f1.jpg",
    "pack": "pipe",
-   "o": 3665143,
+   "o": 5076815,
    "n": 104770,
    "w": 1280,
    "h": 1280
@@ -300,7 +364,7 @@
   {
    "p": "pipe/hero.01/concept_53abdd0643.jpg",
    "pack": "pipe",
-   "o": 3769913,
+   "o": 5181585,
    "n": 105042,
    "w": 1280,
    "h": 1280
@@ -308,7 +372,7 @@
   {
    "p": "pipe/hero.01/concept_7d2528b721.jpg",
    "pack": "pipe",
-   "o": 3874955,
+   "o": 5286627,
    "n": 190537,
    "w": 1180,
    "h": 1280
@@ -316,7 +380,7 @@
   {
    "p": "pipe/hero.01/concept_ddfbb0bab0.jpg",
    "pack": "pipe",
-   "o": 4065492,
+   "o": 5477164,
    "n": 110361,
    "w": 1280,
    "h": 1280
@@ -324,7 +388,7 @@
   {
    "p": "pipe/hero.01/concept_e58ab776c1.jpg",
    "pack": "pipe",
-   "o": 4175853,
+   "o": 5587525,
    "n": 100363,
    "w": 1280,
    "h": 1280
@@ -332,7 +396,7 @@
   {
    "p": "pipe/hero.02/concept_6cc5a66134.jpg",
    "pack": "pipe",
-   "o": 4276216,
+   "o": 5687888,
    "n": 54259,
    "w": 1280,
    "h": 1280
@@ -340,7 +404,7 @@
   {
    "p": "pipe/hero.03/concept_448965d2a3.jpg",
    "pack": "pipe",
-   "o": 4330475,
+   "o": 5742147,
    "n": 37299,
    "w": 1280,
    "h": 352
@@ -348,7 +412,7 @@
   {
    "p": "pipe/hero.03/concept_bcdc89b0c9.jpg",
    "pack": "pipe",
-   "o": 4367774,
+   "o": 5779446,
    "n": 124116,
    "w": 1280,
    "h": 1280
@@ -356,7 +420,7 @@
   {
    "p": "pipe/hero.03/model_1c35b3fd29.jpg",
    "pack": "pipe",
-   "o": 4491890,
+   "o": 5903562,
    "n": 65262,
    "w": 1280,
    "h": 640
@@ -364,7 +428,7 @@
   {
    "p": "pipe/hero.03/rig_643939215b.jpg",
    "pack": "pipe",
-   "o": 4557152,
+   "o": 5968824,
    "n": 60513,
    "w": 1280,
    "h": 512
@@ -372,7 +436,7 @@
   {
    "p": "pipe/hero.03/rig_ad5fa4abf4.jpg",
    "pack": "pipe",
-   "o": 4617665,
+   "o": 6029337,
    "n": 103925,
    "w": 1280,
    "h": 853
@@ -380,7 +444,7 @@
   {
    "p": "pipe/hero.03/rig_f6a0d49de7.jpg",
    "pack": "pipe",
-   "o": 4721590,
+   "o": 6133262,
    "n": 117176,
    "w": 1280,
    "h": 853
@@ -388,31 +452,31 @@
   {
    "p": "pipe/hero.03/unity_809b8038f1.jpg",
    "pack": "pipe",
-   "o": 4838766,
-   "n": 151716,
+   "o": 6250438,
+   "n": 151725,
    "w": 1280,
    "h": 1280
   },
   {
    "p": "pipe/hero.03/unity_82f8969e62.jpg",
    "pack": "pipe",
-   "o": 4990482,
-   "n": 45937,
+   "o": 6402163,
+   "n": 45933,
    "w": 1280,
    "h": 720
   },
   {
    "p": "pipe/hero.03/unity_ebec85ad8b.jpg",
    "pack": "pipe",
-   "o": 5036419,
-   "n": 40096,
+   "o": 6448096,
+   "n": 40205,
    "w": 1280,
    "h": 320
   },
   {
    "p": "pipe/npc.01/concept_7455874e11.jpg",
    "pack": "pipe",
-   "o": 5076515,
+   "o": 6488301,
    "n": 120270,
    "w": 1280,
    "h": 1280
@@ -420,7 +484,7 @@
   {
    "p": "pipe/npc.05/concept_170a95e2cc.jpg",
    "pack": "pipe",
-   "o": 5196785,
+   "o": 6608571,
    "n": 136904,
    "w": 1280,
    "h": 1280
@@ -428,7 +492,7 @@
   {
    "p": "pipe/npc.23/concept_19bfb8ea35.jpg",
    "pack": "pipe",
-   "o": 5333689,
+   "o": 6745475,
    "n": 121120,
    "w": 1280,
    "h": 1280
@@ -436,7 +500,7 @@
   {
    "p": "pipe/npc.24/concept_e44fec984e.jpg",
    "pack": "pipe",
-   "o": 5454809,
+   "o": 6866595,
    "n": 116848,
    "w": 1280,
    "h": 1280
@@ -444,7 +508,7 @@
   {
    "p": "pipe/npc.25/concept_e2360c0006.jpg",
    "pack": "pipe",
-   "o": 5571657,
+   "o": 6983443,
    "n": 112041,
    "w": 1280,
    "h": 1280
@@ -452,7 +516,7 @@
   {
    "p": "pipe/npc.26/concept_f5e28a0584.jpg",
    "pack": "pipe",
-   "o": 5683698,
+   "o": 7095484,
    "n": 126838,
    "w": 1280,
    "h": 1280
@@ -460,7 +524,7 @@
   {
    "p": "pipe/npc.27/concept_7c559d61d0.jpg",
    "pack": "pipe",
-   "o": 5810536,
+   "o": 7222322,
    "n": 112105,
    "w": 1280,
    "h": 1280
@@ -468,7 +532,7 @@
   {
    "p": "pipe/npc.crowd.02/concept_0652d1158b.jpg",
    "pack": "pipe",
-   "o": 5922641,
+   "o": 7334427,
    "n": 97551,
    "w": 1280,
    "h": 1280
@@ -476,7 +540,7 @@
   {
    "p": "pipe/npc.crowd.04/concept_86abcadd90.jpg",
    "pack": "pipe",
-   "o": 6020192,
+   "o": 7431978,
    "n": 112533,
    "w": 1280,
    "h": 1280
@@ -484,7 +548,7 @@
   {
    "p": "pipe/weapon.dorikkae/concept_caaab598cf.jpg",
    "pack": "pipe",
-   "o": 6132725,
+   "o": 7544511,
    "n": 81626,
    "w": 1280,
    "h": 1280
@@ -492,8 +556,56 @@
   {
    "p": "pipe/weapon.dorikkae/model_1411afa2a3.jpg",
    "pack": "pipe",
-   "o": 6214351,
+   "o": 7626137,
    "n": 61555,
+   "w": 1280,
+   "h": 640
+  },
+  {
+   "p": "pipe/weapon.jongme.shield/concept_cfd2844a97.jpg",
+   "pack": "pipe",
+   "o": 7687692,
+   "n": 184653,
+   "w": 1280,
+   "h": 1280
+  },
+  {
+   "p": "pipe/weapon.jongme.shield/model_88e11fad5e.jpg",
+   "pack": "pipe",
+   "o": 7872345,
+   "n": 95760,
+   "w": 1280,
+   "h": 640
+  },
+  {
+   "p": "pipe/weapon.jongme/concept_4688be0c11.jpg",
+   "pack": "pipe",
+   "o": 7968105,
+   "n": 88508,
+   "w": 1280,
+   "h": 1280
+  },
+  {
+   "p": "pipe/weapon.jongme/model_f52cf22d45.jpg",
+   "pack": "pipe",
+   "o": 8056613,
+   "n": 58517,
+   "w": 1280,
+   "h": 640
+  },
+  {
+   "p": "pipe/weapon.namume/concept_7b13ef409a.jpg",
+   "pack": "pipe",
+   "o": 8115130,
+   "n": 59953,
+   "w": 1280,
+   "h": 1280
+  },
+  {
+   "p": "pipe/weapon.namume/model_3456b9cdf3.jpg",
+   "pack": "pipe",
+   "o": 8175083,
+   "n": 39381,
    "w": 1280,
    "h": 640
   }
@@ -511,7 +623,7 @@
    "rig",
    "unity"
   ],
-  "updated": "2026-10-09T23:13:51Z",
+  "updated": "2026-10-10T00:58:06Z",
   "note": "만드는 차례는 원화 → 모델링(Tripo) → 리깅 · 동작 → 반입(유니티)이다. 대상의 종류에 따라 건너뛰는 단계가 있다. 풍은 벤치마크를 따른 SD 툰이고 사람은 3등신이다. 원화는 모델링에 바로 넣을 규격으로 그린다(사람은 T자세 앞뒤 · 빈손 · 한 장에 하나 · 단색 배경). «1장 · 수직 슬라이스»를 누르면 1장에 필요한 것만 보인다. 무기 · 환경 조각 · 맵 · 화면 · 효과의 가짓수는 작가안이고 Tripo 시험 뒤에 고친다. 그림은 비공개 저장소에 있고 여기에는 목록과 상태만 올린다",
   "units": [
    {
@@ -587,27 +699,27 @@
       "note": "사용자가 생김새를 정했다(결정 기록 D-052): 얼굴은 후보 가(묶은 머리), 살빛은 밝게. 확정본은 후보 가의 그림에서 살빛만 밝힌 것이다. 허리에 손종이 아니라 둥근 방울이 그려졌으니 손종은 따로 만들어 단다.",
       "files": [
        {
-        "i": 35,
+        "i": 43,
         "p": "pipe/hero.01/concept_054e7148f1.jpg",
         "label": "우레(확정: 묶은 머리 · 밝은 살빛)"
        },
        {
-        "i": 37,
+        "i": 45,
         "p": "pipe/hero.01/concept_7d2528b721.jpg",
         "label": "살빛 견줌(지금 · 조금 밝게 · 더 밝게)"
        },
        {
-        "i": 36,
+        "i": 44,
         "p": "pipe/hero.01/concept_53abdd0643.jpg",
         "label": "우레 · 후보 가(묶은 머리, 차분한 얼굴)"
        },
        {
-        "i": 38,
+        "i": 46,
         "p": "pipe/hero.01/concept_ddfbb0bab0.jpg",
         "label": "우레 · 후보 나(머리띠, 당찬 얼굴)"
        },
        {
-        "i": 39,
+        "i": 47,
         "p": "pipe/hero.01/concept_e58ab776c1.jpg",
         "label": "우레 · 후보 다(둥근 머리, 순한 얼굴)"
        }
@@ -675,7 +787,7 @@
       "note": "T자세 정면 한 장을 그렸다(들메와 같은 규격). 설정서 그대로. 비치는 몸은 셰이더로 낸다. 사용자가 보고 정한다.",
       "files": [
        {
-        "i": 40,
+        "i": 48,
         "p": "pipe/hero.02/concept_6cc5a66134.jpg",
         "label": "아리(새끼 소리먹이)"
        }
@@ -746,7 +858,7 @@
       "note": "T자세 정면 한 장을 그렸다(들메와 같은 규격). 설정서 그대로(큰 몸 · 굽은 어깨 · 흰 털 섞인 수염 · 빛바랜 쪽빛 겉옷). 상투는 지었다. 사용자가 보고 정한다.",
       "files": [
        {
-        "i": 50,
+        "i": 58,
         "p": "pipe/npc.01/concept_7455874e11.jpg",
         "label": "바우(양아버지)"
        }
@@ -822,12 +934,12 @@
       "note": "T자세 정면이 기준 그림으로 정해졌다(사용자 확인, 3등신 툰). 옆과 뒤는 Tripo 가 정면에서 네 면 그림으로 만들었다.",
       "files": [
        {
-        "i": 42,
+        "i": 50,
         "p": "pipe/hero.03/concept_bcdc89b0c9.jpg",
         "label": "T자세 정면(풍의 기준 그림)"
        },
        {
-        "i": 41,
+        "i": 49,
         "p": "pipe/hero.03/concept_448965d2a3.jpg",
         "label": "Tripo 가 만든 네 면 그림"
        }
@@ -840,7 +952,7 @@
       "note": "네 면 그림으로 모델을 만들고 면을 줄였다(146만 → 19,681면, 질감 4096점). 생김새는 줄이기 전과 같다. 풍이 원화보다 입체 인형 쪽이고 윤곽선은 모델에 없어 게임의 셰이더로 낸다. 사용자가 보고 정한다.",
       "files": [
        {
-        "i": 43,
+        "i": 51,
         "p": "pipe/hero.03/model_1c35b3fd29.jpg",
         "label": "면을 줄인 모델(여덟 쪽)"
        }
@@ -853,17 +965,17 @@
       "note": "뼈 41개로 리깅하고 동작 셋(대기 · 달리기 · 베기)을 입혔다. 달리기는 제자리 동작으로 바로잡았다. «베기»는 6.6초짜리 느린 내려찍기라 세 배로 튼다. 다리를 크게 들면 저고리 앞자락이 벌어진다(게임 화면의 크기에서는 잘 안 보인다). Tripo 의 동작은 열하나뿐이라 무기별 동작은 다른 데서 얻어야 한다. 사용자가 보고 정한다.",
       "files": [
        {
-        "i": 44,
+        "i": 52,
         "p": "pipe/hero.03/rig_643939215b.jpg",
         "label": "뼈를 움직여 본 것(위: 크게 · 아래: 걷는 정도)"
        },
        {
-        "i": 46,
+        "i": 54,
         "p": "pipe/hero.03/rig_f6a0d49de7.jpg",
         "label": "달리기"
        },
        {
-        "i": 45,
+        "i": 53,
         "p": "pipe/hero.03/rig_ad5fa4abf4.jpg",
         "label": "베기(느린 내려찍기)"
        }
@@ -876,17 +988,17 @@
       "note": "시험 장면에 넣었다. 툰 셰이더(두 단 그림자 · 윤곽선)를 씌웠고 게이트를 통과했다. 위에서 내려다보면 머리카락이 얼굴을 가려서 몸을 눕힌 각도 넷(0 · 10 · 20 · 30도)을 찍어 두었다. 사용자가 화면을 보고 정한다.",
       "files": [
        {
-        "i": 47,
+        "i": 55,
         "p": "pipe/hero.03/unity_809b8038f1.jpg",
         "label": "유니티: 동작 셋과 툰 셰이더 견줌"
        },
        {
-        "i": 49,
+        "i": 57,
         "p": "pipe/hero.03/unity_ebec85ad8b.jpg",
         "label": "유니티: 눕힌 각도 0 · 10 · 20 · 30도"
        },
        {
-        "i": 48,
+        "i": 56,
         "p": "pipe/hero.03/unity_82f8969e62.jpg",
         "label": "유니티: 시험 장면(20도 눕힘)"
        }
@@ -1200,7 +1312,7 @@
       "note": "T자세 정면 한 장을 그렸다(들메와 같은 규격). 설정서 그대로(둥근 배 · 밀짚 삿갓 · 허리의 방울 · 웃는 눈). 제 키만 한 봇짐은 따로 만든다(T자세에는 싣지 않는다). 사용자가 보고 정한다.",
       "files": [
        {
-        "i": 51,
+        "i": 59,
         "p": "pipe/npc.05/concept_170a95e2cc.jpg",
         "label": "달구(봇짐장수)"
        }
@@ -1979,7 +2091,7 @@
       "note": "T자세 정면 한 장을 그렸다(들메와 같은 규격). 겉모습은 지었다(작가안). 지팡이는 싣지 않았다. 사용자가 보고 정한다.",
       "files": [
        {
-        "i": 52,
+        "i": 60,
         "p": "pipe/npc.23/concept_19bfb8ea35.jpg",
         "label": "느티(촌장 할멈)"
        }
@@ -2032,7 +2144,7 @@
       "note": "T자세 정면 한 장을 그렸다(들메와 같은 규격). 겉모습은 지었다(작가안). 이름을 따라 뿔처럼 솟은 머리 두 가닥을 표식으로 잡았다. 사용자가 보고 정한다.",
       "files": [
        {
-        "i": 53,
+        "i": 61,
         "p": "pipe/npc.24/concept_e44fec984e.jpg",
         "label": "쇠뿔(대장장이)"
        }
@@ -2086,7 +2198,7 @@
       "note": "T자세 정면 한 장을 그렸다(들메와 같은 규격). 겉모습은 지었다(작가안). 이름을 따라 보릿빛 저고리. 사용자가 보고 정한다.",
       "files": [
        {
-        "i": 54,
+        "i": 62,
         "p": "pipe/npc.25/concept_e2360c0006.jpg",
         "label": "보리(주막 아주머니)"
        }
@@ -2137,7 +2249,7 @@
       "note": "T자세 정면 한 장을 그렸다(들메와 같은 규격). 겉모습은 지었다(작가안). 들메와 닮게(헝클어진 밤빛 머리 · 굵은 눈썹). 사용자가 보고 정한다.",
       "files": [
        {
-        "i": 55,
+        "i": 63,
         "p": "pipe/npc.26/concept_f5e28a0584.jpg",
         "label": "맷돌(방앗간 주인, 들메의 아버지)"
        }
@@ -2192,7 +2304,7 @@
       "note": "T자세 정면 한 장을 그렸다(들메와 같은 규격). 겉모습은 지었다(작가안). 들메의 손목 끈과 같은 풀빛 끈으로 머리를 묶었다. 딱따기는 싣지 않았다. 사용자가 보고 정한다.",
       "files": [
        {
-        "i": 56,
+        "i": 64,
         "p": "pipe/npc.27/concept_7c559d61d0.jpg",
         "label": "다래(들메의 동생, 아홉 살)"
        }
@@ -3541,7 +3653,7 @@
       "note": "T자세 정면 한 장을 그렸다(들메와 같은 규격). 설정서의 «검은 솜옷»과 «목을 잃은 이가 많다»를 옮겼다. 무리의 본 한 사람이고 남녀노소 변주는 다음에 한다. 사용자가 보고 정한다.",
       "files": [
        {
-        "i": 57,
+        "i": 65,
         "p": "pipe/npc.crowd.02/concept_0652d1158b.jpg",
         "label": "고요회 사람(무리의 본)"
        }
@@ -3618,7 +3730,7 @@
       "note": "T자세 정면 한 장을 그렸다(들메와 같은 규격). 겉모습은 지었다(작가안). 무리의 본 한 사람이다. 사용자가 보고 정한다.",
       "files": [
        {
-        "i": 58,
+        "i": 66,
         "p": "pipe/npc.crowd.04/concept_86abcadd90.jpg",
         "label": "첫여울 아이(무리의 본)"
        }
@@ -3900,7 +4012,22 @@
      "model",
      "rig",
      "unity"
-    ]
+    ],
+    "st": {
+     "concept": {
+      "s": "review",
+      "tool": "Gemini 웹",
+      "at": "2026-10-10",
+      "note": "T자세 정면 한 장을 그렸다(들메와 같은 규격). 설정서: 부리가 돋은 덩이. 가는 소리 줄기를 세 갈래로 쏜다. 빛깔과 볏은 지었다. 사용자가 보고 정한다.",
+      "files": [
+       {
+        "i": 1,
+        "p": "pipe/enemy.02/concept_7f886f9b80.jpg",
+        "label": "째째(부리가 돋은 소리먹이)"
+       }
+      ]
+     }
+    }
    },
    {
     "id": "enemy.03",
@@ -3941,7 +4068,22 @@
      "model",
      "rig",
      "unity"
-    ]
+    ],
+    "st": {
+     "concept": {
+      "s": "review",
+      "tool": "Gemini 웹",
+      "at": "2026-10-10",
+      "note": "T자세 정면 한 장을 그렸다(들메와 같은 규격). 설정서: 낙엽 더미처럼 생겼다. 숨어 있다가 가까이 오면 터진다. 빛깔은 지었다. 사용자가 보고 정한다.",
+      "files": [
+       {
+        "i": 2,
+        "p": "pipe/enemy.03/concept_40f7a96eba.jpg",
+        "label": "바스락이(낙엽 더미 같은 소리먹이)"
+       }
+      ]
+     }
+    }
    },
    {
     "id": "enemy.04",
@@ -4846,7 +4988,22 @@
      "model",
      "rig",
      "unity"
-    ]
+    ],
+    "st": {
+     "concept": {
+      "s": "review",
+      "tool": "Gemini 웹",
+      "at": "2026-10-10",
+      "note": "T자세 정면 한 장을 그렸다(들메와 같은 규격). 설정서: 커다란 부리가 달린 것. 몸속에서 수백 가지 새소리가 맴돈다. 큰 부리로 쪼고 새소리를 떼 지어 날려 보낸다. 빛깔과 깃은 지었다. 사용자가 보고 정한다.",
+      "files": [
+       {
+        "i": 0,
+        "p": "pipe/boss.01/concept_a258d300d7.jpg",
+        "label": "먹부리(1장의 보스)"
+       }
+      ]
+     }
+    }
    },
    {
     "id": "boss.02",
@@ -11287,7 +11444,41 @@
      "concept",
      "model",
      "unity"
-    ]
+    ],
+    "st": {
+     "concept": {
+      "s": "review",
+      "tool": "Gemini 웹",
+      "at": "2026-10-10",
+      "note": "한 장을 그렸다. 사용자가 보고 정한다.",
+      "files": [
+       {
+        "i": 73,
+        "p": "pipe/weapon.namume/concept_7b13ef409a.jpg",
+        "label": "원화"
+       }
+      ]
+     },
+     "model": {
+      "s": "review",
+      "tool": "Tripo",
+      "at": "2026-10-10",
+      "note": "원화 한 장으로 만들었다(면 2000쯤). 여덟 쪽에서 찍은 그림을 붙였다. 사용자가 보고 정한다.",
+      "files": [
+       {
+        "i": 74,
+        "p": "pipe/weapon.namume/model_3456b9cdf3.jpg",
+        "label": "여덟 쪽에서 본 모델"
+       }
+      ]
+     },
+     "unity": {
+      "s": "doing",
+      "tool": "Unity",
+      "at": "2026-10-10",
+      "note": "툰 셰이더를 씌워 프리팹으로 묶었다. 아직 손에 쥐여 주지 않았다."
+     }
+    }
    },
    {
     "id": "weapon.dorikkae",
@@ -11344,7 +11535,7 @@
       "note": "한 장을 그렸다. 사용자가 보고 정한다.",
       "files": [
        {
-        "i": 59,
+        "i": 67,
         "p": "pipe/weapon.dorikkae/concept_caaab598cf.jpg",
         "label": "원화"
        }
@@ -11357,7 +11548,7 @@
       "note": "원화 한 장으로 만들었다(면 2500쯤). 여덟 쪽에서 찍은 그림을 붙였다. 사용자가 보고 정한다.",
       "files": [
        {
-        "i": 60,
+        "i": 68,
         "p": "pipe/weapon.dorikkae/model_1411afa2a3.jpg",
         "label": "여덟 쪽에서 본 모델"
        }
@@ -11489,7 +11680,41 @@
      "concept",
      "model",
      "unity"
-    ]
+    ],
+    "st": {
+     "concept": {
+      "s": "review",
+      "tool": "Gemini 웹",
+      "at": "2026-10-10",
+      "note": "한 장을 그렸다. 사용자가 보고 정한다.",
+      "files": [
+       {
+        "i": 71,
+        "p": "pipe/weapon.jongme/concept_4688be0c11.jpg",
+        "label": "원화"
+       }
+      ]
+     },
+     "model": {
+      "s": "review",
+      "tool": "Tripo",
+      "at": "2026-10-10",
+      "note": "원화 한 장으로 만들었다(면 2500쯤). 여덟 쪽에서 찍은 그림을 붙였다. 사용자가 보고 정한다.",
+      "files": [
+       {
+        "i": 72,
+        "p": "pipe/weapon.jongme/model_f52cf22d45.jpg",
+        "label": "여덟 쪽에서 본 모델"
+       }
+      ]
+     },
+     "unity": {
+      "s": "doing",
+      "tool": "Unity",
+      "at": "2026-10-10",
+      "note": "툰 셰이더를 씌워 프리팹으로 묶었다. 아직 손에 쥐여 주지 않았다."
+     }
+    }
    },
    {
     "id": "weapon.jongme.shield",
@@ -11514,7 +11739,41 @@
      "concept",
      "model",
      "unity"
-    ]
+    ],
+    "st": {
+     "concept": {
+      "s": "review",
+      "tool": "Gemini 웹",
+      "at": "2026-10-10",
+      "note": "한 장을 그렸다. 사용자가 보고 정한다.",
+      "files": [
+       {
+        "i": 69,
+        "p": "pipe/weapon.jongme.shield/concept_cfd2844a97.jpg",
+        "label": "원화"
+       }
+      ]
+     },
+     "model": {
+      "s": "review",
+      "tool": "Tripo",
+      "at": "2026-10-10",
+      "note": "원화 한 장으로 만들었다(면 2500쯤). 여덟 쪽에서 찍은 그림을 붙였다. 사용자가 보고 정한다.",
+      "files": [
+       {
+        "i": 70,
+        "p": "pipe/weapon.jongme.shield/model_88e11fad5e.jpg",
+        "label": "여덟 쪽에서 본 모델"
+       }
+      ]
+     },
+     "unity": {
+      "s": "doing",
+      "tool": "Unity",
+      "at": "2026-10-10",
+      "note": "툰 셰이더를 씌워 프리팹으로 묶었다. 아직 손에 쥐여 주지 않았다."
+     }
+    }
    },
    {
     "id": "weapon.yoryeong",
@@ -11691,7 +11950,7 @@
       "note": "한 장을 그렸다. 이음매 없이 이어지게 다듬어 마을 장면의 땅에 깔았다.",
       "files": [
        {
-        "i": 34,
+        "i": 40,
         "p": "pipe/env.tile.grass/concept_5ac522c4da.jpg",
         "label": "원화"
        }
@@ -11716,7 +11975,22 @@
     "stages": [
      "concept",
      "unity"
-    ]
+    ],
+    "st": {
+     "concept": {
+      "s": "review",
+      "tool": "Gemini 웹",
+      "at": "2026-10-10",
+      "note": "한 장을 그렸다. 이음매 없이 이어지게 다듬어 마을 장면의 땅에 깔았다.",
+      "files": [
+       {
+        "i": 41,
+        "p": "pipe/env.tile.path/concept_ab4fa823ea.jpg",
+        "label": "원화"
+       }
+      ]
+     }
+    }
    },
    {
     "id": "env.tile.water",
@@ -11754,7 +12028,22 @@
     "stages": [
      "concept",
      "unity"
-    ]
+    ],
+    "st": {
+     "concept": {
+      "s": "review",
+      "tool": "Gemini 웹",
+      "at": "2026-10-10",
+      "note": "한 장을 그렸다. 이음매 없이 이어지게 다듬어 마을 장면의 땅에 깔았다.",
+      "files": [
+       {
+        "i": 42,
+        "p": "pipe/env.tile.yard/concept_45c2477152.jpg",
+        "label": "원화"
+       }
+      ]
+     }
+    }
    },
    {
     "id": "env.tile.field",
@@ -11773,7 +12062,22 @@
     "stages": [
      "concept",
      "unity"
-    ]
+    ],
+    "st": {
+     "concept": {
+      "s": "review",
+      "tool": "Gemini 웹",
+      "at": "2026-10-10",
+      "note": "한 장을 그렸다. 이음매 없이 이어지게 다듬어 마을 장면의 땅에 깔았다.",
+      "files": [
+       {
+        "i": 38,
+        "p": "pipe/env.tile.field/concept_4976527fcb.jpg",
+        "label": "원화"
+       }
+      ]
+     }
+    }
    },
    {
     "id": "env.tile.forest",
@@ -11792,7 +12096,22 @@
     "stages": [
      "concept",
      "unity"
-    ]
+    ],
+    "st": {
+     "concept": {
+      "s": "review",
+      "tool": "Gemini 웹",
+      "at": "2026-10-10",
+      "note": "한 장을 그렸다. 이음매 없이 이어지게 다듬어 마을 장면의 땅에 깔았다.",
+      "files": [
+       {
+        "i": 39,
+        "p": "pipe/env.tile.forest/concept_828e2c45bf.jpg",
+        "label": "원화"
+       }
+      ]
+     }
+    }
    },
    {
     "id": "env.tile.cave",
@@ -11811,7 +12130,22 @@
     "stages": [
      "concept",
      "unity"
-    ]
+    ],
+    "st": {
+     "concept": {
+      "s": "review",
+      "tool": "Gemini 웹",
+      "at": "2026-10-10",
+      "note": "한 장을 그렸다. 이음매 없이 이어지게 다듬어 마을 장면의 땅에 깔았다.",
+      "files": [
+       {
+        "i": 37,
+        "p": "pipe/env.tile.cave/concept_3197bd02b5.jpg",
+        "label": "원화"
+       }
+      ]
+     }
+    }
    },
    {
     "id": "env.nat.pine",
@@ -11840,7 +12174,7 @@
       "note": "시험으로 한 장을 뽑았다. 풍은 기준 그림과 맞는다. 비스듬히 위에서가 아니라 정면으로 나왔다. 사용자가 보고 정한다.",
       "files": [
        {
-        "i": 14,
+        "i": 17,
         "p": "pipe/env.nat.pine/concept_0526388283.jpg",
         "label": "원화"
        }
@@ -11853,7 +12187,7 @@
       "note": "원화 한 장으로 만들었다(면 6000쯤). 여덟 쪽에서 찍은 그림을 붙였다. 사용자가 보고 정한다.",
       "files": [
        {
-        "i": 15,
+        "i": 18,
         "p": "pipe/env.nat.pine/model_87c066587a.jpg",
         "label": "여덟 쪽에서 본 모델"
        }
@@ -11894,7 +12228,7 @@
       "note": "한 장을 그렸다. 사용자가 보고 정한다.",
       "files": [
        {
-        "i": 20,
+        "i": 23,
         "p": "pipe/env.nat.zelkova/concept_d521e6da7d.jpg",
         "label": "원화"
        }
@@ -11907,7 +12241,7 @@
       "note": "원화 한 장으로 만들었다(면 8000쯤). 여덟 쪽에서 찍은 그림을 붙였다. 사용자가 보고 정한다.",
       "files": [
        {
-        "i": 21,
+        "i": 24,
         "p": "pipe/env.nat.zelkova/model_f21214e149.jpg",
         "label": "여덟 쪽에서 본 모델"
        }
@@ -11948,7 +12282,7 @@
       "note": "한 장을 그렸다. 사용자가 보고 정한다.",
       "files": [
        {
-        "i": 18,
+        "i": 21,
         "p": "pipe/env.nat.tree/concept_110f67345b.jpg",
         "label": "원화"
        }
@@ -11961,7 +12295,7 @@
       "note": "원화 한 장으로 만들었다(면 6000쯤). 여덟 쪽에서 찍은 그림을 붙였다. 사용자가 보고 정한다.",
       "files": [
        {
-        "i": 19,
+        "i": 22,
         "p": "pipe/env.nat.tree/model_d23f7952e2.jpg",
         "label": "여덟 쪽에서 본 모델"
        }
@@ -12002,7 +12336,7 @@
       "note": "한 장을 그렸다. 사용자가 보고 정한다.",
       "files": [
        {
-        "i": 12,
+        "i": 15,
         "p": "pipe/env.nat.bush/concept_0daf5cd7e8.jpg",
         "label": "원화"
        }
@@ -12015,7 +12349,7 @@
       "note": "원화 한 장으로 만들었다(면 3000쯤). 여덟 쪽에서 찍은 그림을 붙였다. 사용자가 보고 정한다.",
       "files": [
        {
-        "i": 13,
+        "i": 16,
         "p": "pipe/env.nat.bush/model_47a1317084.jpg",
         "label": "여덟 쪽에서 본 모델"
        }
@@ -12076,7 +12410,7 @@
       "note": "한 장을 그렸다. 사용자가 보고 정한다.",
       "files": [
        {
-        "i": 16,
+        "i": 19,
         "p": "pipe/env.nat.rock/concept_ca3a55c48d.jpg",
         "label": "원화"
        }
@@ -12089,7 +12423,7 @@
       "note": "원화 한 장으로 만들었다(면 3000쯤). 여덟 쪽에서 찍은 그림을 붙였다. 사용자가 보고 정한다.",
       "files": [
        {
-        "i": 17,
+        "i": 20,
         "p": "pipe/env.nat.rock/model_9fd32e4982.jpg",
         "label": "여덟 쪽에서 본 모델"
        }
@@ -12190,7 +12524,7 @@
       "note": "한 장을 그렸다. 사용자가 보고 정한다.",
       "files": [
        {
-        "i": 32,
+        "i": 35,
         "p": "pipe/env.str.wall/concept_96e9fa4098.jpg",
         "label": "원화"
        }
@@ -12203,7 +12537,7 @@
       "note": "원화 한 장으로 만들었다(면 3000쯤). 여덟 쪽에서 찍은 그림을 붙였다. 사용자가 보고 정한다.",
       "files": [
        {
-        "i": 33,
+        "i": 36,
         "p": "pipe/env.str.wall/model_4143e734f7.jpg",
         "label": "여덟 쪽에서 본 모델"
        }
@@ -12244,7 +12578,7 @@
       "note": "한 장을 그렸다. 사용자가 보고 정한다.",
       "files": [
        {
-        "i": 26,
+        "i": 29,
         "p": "pipe/env.str.fence/concept_1238fa1fee.jpg",
         "label": "원화"
        }
@@ -12257,7 +12591,7 @@
       "note": "원화 한 장으로 만들었다(면 3000쯤). 여덟 쪽에서 찍은 그림을 붙였다. 사용자가 보고 정한다.",
       "files": [
        {
-        "i": 27,
+        "i": 30,
         "p": "pipe/env.str.fence/model_ca829ed7e3.jpg",
         "label": "여덟 쪽에서 본 모델"
        }
@@ -12298,7 +12632,7 @@
       "note": "한 장을 그렸다. 사용자가 보고 정한다.",
       "files": [
        {
-        "i": 24,
+        "i": 27,
         "p": "pipe/env.str.bridge/concept_86aa28b20e.jpg",
         "label": "원화"
        }
@@ -12311,7 +12645,7 @@
       "note": "원화 한 장으로 만들었다(면 5000쯤). 여덟 쪽에서 찍은 그림을 붙였다. 사용자가 보고 정한다.",
       "files": [
        {
-        "i": 25,
+        "i": 28,
         "p": "pipe/env.str.bridge/model_7a936e91b2.jpg",
         "label": "여덟 쪽에서 본 모델"
        }
@@ -12392,7 +12726,7 @@
       "note": "한 장을 그렸다. 사용자가 보고 정한다.",
       "files": [
        {
-        "i": 28,
+        "i": 31,
         "p": "pipe/env.str.jars/concept_7199d2d341.jpg",
         "label": "원화"
        }
@@ -12405,7 +12739,7 @@
       "note": "원화 한 장으로 만들었다(면 4000쯤). 여덟 쪽에서 찍은 그림을 붙였다. 사용자가 보고 정한다.",
       "files": [
        {
-        "i": 29,
+        "i": 32,
         "p": "pipe/env.str.jars/model_e301802bc9.jpg",
         "label": "여덟 쪽에서 본 모델"
        }
@@ -12446,7 +12780,7 @@
       "note": "한 장을 그렸다. 사용자가 보고 정한다.",
       "files": [
        {
-        "i": 22,
+        "i": 25,
         "p": "pipe/env.str.bench/concept_16e2188ed1.jpg",
         "label": "원화"
        }
@@ -12459,7 +12793,7 @@
       "note": "원화 한 장으로 만들었다(면 3000쯤). 여덟 쪽에서 찍은 그림을 붙였다. 사용자가 보고 정한다.",
       "files": [
        {
-        "i": 23,
+        "i": 26,
         "p": "pipe/env.str.bench/model_dec26804e1.jpg",
         "label": "여덟 쪽에서 본 모델"
        }
@@ -12520,7 +12854,7 @@
       "note": "한 장을 그렸다. 사용자가 보고 정한다.",
       "files": [
        {
-        "i": 30,
+        "i": 33,
         "p": "pipe/env.str.stack/concept_74a80db83d.jpg",
         "label": "원화"
        }
@@ -12533,7 +12867,7 @@
       "note": "원화 한 장으로 만들었다(면 4000쯤). 여덟 쪽에서 찍은 그림을 붙였다. 사용자가 보고 정한다.",
       "files": [
        {
-        "i": 31,
+        "i": 34,
         "p": "pipe/env.str.stack/model_f9fe5902a8.jpg",
         "label": "여덟 쪽에서 본 모델"
        }
@@ -12614,7 +12948,7 @@
       "note": "한 장을 그렸다. 사용자가 보고 정한다.",
       "files": [
        {
-        "i": 2,
+        "i": 5,
         "p": "pipe/env.bld.choga/concept_31b4d417c7.jpg",
         "label": "원화"
        }
@@ -12627,7 +12961,7 @@
       "note": "원화 한 장으로 만들었다(면 10000쯤). 여덟 쪽에서 찍은 그림을 붙였다. 사용자가 보고 정한다.",
       "files": [
        {
-        "i": 3,
+        "i": 6,
         "p": "pipe/env.bld.choga/model_be2cdfc60b.jpg",
         "label": "여덟 쪽에서 본 모델"
        }
@@ -12668,7 +13002,7 @@
       "note": "한 장을 그렸다. 사용자가 보고 정한다.",
       "files": [
        {
-        "i": 4,
+        "i": 7,
         "p": "pipe/env.bld.jongru/concept_2b32edcb57.jpg",
         "label": "원화"
        }
@@ -12681,7 +13015,7 @@
       "note": "원화 한 장으로 만들었다(면 10000쯤). 여덟 쪽에서 찍은 그림을 붙였다. 사용자가 보고 정한다.",
       "files": [
        {
-        "i": 5,
+        "i": 8,
         "p": "pipe/env.bld.jongru/model_d837542437.jpg",
         "label": "여덟 쪽에서 본 모델"
        }
@@ -12722,7 +13056,7 @@
       "note": "한 장을 그렸다. 사용자가 보고 정한다.",
       "files": [
        {
-        "i": 6,
+        "i": 9,
         "p": "pipe/env.bld.jumak/concept_b3c3512ad3.jpg",
         "label": "원화"
        }
@@ -12735,7 +13069,7 @@
       "note": "원화 한 장으로 만들었다(면 12000쯤). 여덟 쪽에서 찍은 그림을 붙였다. 사용자가 보고 정한다.",
       "files": [
        {
-        "i": 7,
+        "i": 10,
         "p": "pipe/env.bld.jumak/model_d7e6da163f.jpg",
         "label": "여덟 쪽에서 본 모델"
        }
@@ -12776,7 +13110,7 @@
       "note": "한 장을 그렸다. 사용자가 보고 정한다.",
       "files": [
        {
-        "i": 8,
+        "i": 11,
         "p": "pipe/env.bld.mill/concept_46d3420732.jpg",
         "label": "원화"
        }
@@ -12789,7 +13123,7 @@
       "note": "원화 한 장으로 만들었다(면 12000쯤). 여덟 쪽에서 찍은 그림을 붙였다. 사용자가 보고 정한다.",
       "files": [
        {
-        "i": 9,
+        "i": 12,
         "p": "pipe/env.bld.mill/model_eacd10be47.jpg",
         "label": "여덟 쪽에서 본 모델"
        }
@@ -12830,7 +13164,7 @@
       "note": "한 장을 그렸다. 사용자가 보고 정한다.",
       "files": [
        {
-        "i": 0,
+        "i": 3,
         "p": "pipe/env.bld.bau/concept_c8ae51a7a5.jpg",
         "label": "원화"
        }
@@ -12843,7 +13177,7 @@
       "note": "원화 한 장으로 만들었다(면 8000쯤). 여덟 쪽에서 찍은 그림을 붙였다. 사용자가 보고 정한다.",
       "files": [
        {
-        "i": 1,
+        "i": 4,
         "p": "pipe/env.bld.bau/model_56850a24a6.jpg",
         "label": "여덟 쪽에서 본 모델"
        }
@@ -12884,7 +13218,7 @@
       "note": "한 장을 그렸다. 사용자가 보고 정한다.",
       "files": [
        {
-        "i": 10,
+        "i": 13,
         "p": "pipe/env.bld.smithy/concept_936f646a6f.jpg",
         "label": "원화"
        }
@@ -12897,7 +13231,7 @@
       "note": "원화 한 장으로 만들었다(면 10000쯤). 여덟 쪽에서 찍은 그림을 붙였다. 사용자가 보고 정한다.",
       "files": [
        {
-        "i": 11,
+        "i": 14,
         "p": "pipe/env.bld.smithy/model_80d2a9b35d.jpg",
         "label": "여덟 쪽에서 본 모델"
        }
