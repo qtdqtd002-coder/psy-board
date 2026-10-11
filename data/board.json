@@ -4,7 +4,7 @@
   "project": "PSY 프로젝트",
   "subtitle": "첫울음(가제) · 제노니아류 탑뷰 액션 RPG · 셋이 싸운다 · 60~80시간",
   "currentMilestone": "M1",
-  "updatedAt": "2026-10-11T14:56:32Z",
+  "updatedAt": "2026-10-11T15:45:48Z",
   "qa": {
    "gate": "PASS",
    "compile": "0 errors",
@@ -479,9 +479,28 @@
    "createdAt": "2026-10-11T13:42:11Z",
    "updatedAt": "2026-10-11T14:56:32Z",
    "doneAt": null
+  },
+  {
+   "id": "PSY-031",
+   "title": "퀄리티 계획 묶음 0 «바탕»: 저장 안전 · 오류 기록 · 창을 벗어나면 멈춤 · 정리 · 해 보기 도구",
+   "stage": "dev",
+   "milestone": "M1",
+   "area": "개발",
+   "priority": "P0",
+   "owner": "Claude",
+   "note": "사용자 지시(2026-10-12 새벽 · D-094 «권장대로 묶음 0부터 순서대로 · 실측 · 개선 · 빌드까지»). 묶음 0 = T1 · T2 · T3 · T4 · T5 · K1 · Q1 · Q2 · Q4 · Q7(보고서 PSY-030 의 번호). 세 덩이(0a 지키는 장치 · 0b 정리 · 0c 해 보기 도구)로 나눠 덩이마다 게이트를 통과시킨다. 실행 대장 = docs/design/01_Production/QualityPlan_Runbook.md.",
+   "order": 31,
+   "createdAt": "2026-10-11T15:45:48Z",
+   "updatedAt": "2026-10-11T15:45:48Z",
+   "doneAt": null
   }
  ],
  "log": [
+  {
+   "at": "2026-10-11T15:45:48Z",
+   "text": "«퀄리티 계획 묶음 0 «바탕»: 저장 안전 · 오류 기록 · 창을 벗어나면 멈춤 · 정리 · 해 보기 도구» 추가(개발)",
+   "by": "Claude"
+  },
   {
    "at": "2026-10-11T14:56:32Z",
    "text": "«보고서: 돈을 들이지 않고 퀄리티를 올리는 계획(전 영역 검토)» 수정(note)",
