@@ -754,7 +754,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
       <button class="tab" role="tab" id="tab-board" aria-selected="false" aria-controls="view-board">칸반</button>
       <button class="tab" role="tab" id="tab-res" aria-selected="false" aria-controls="view-res">리소스</button>
       <button class="tab" role="tab" id="tab-info" aria-selected="false" aria-controls="view-info">게임 정보</button>
-      <button class="tab" role="tab" id="tab-builds" aria-selected="false" aria-controls="view-builds">빌드 다운로드</button>
+      <button class="tab" role="tab" id="tab-builds" aria-selected="false" aria-controls="view-builds" hidden>빌드 다운로드</button>
       <button class="tab" role="tab" id="tab-feedback" aria-selected="false" aria-controls="view-feedback">피드백</button>
     </div>
   </nav>
@@ -1031,6 +1031,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
   window.addEventListener("hashchange", route);
   function showTab(which, anchor = "") {
     if (!TABS.includes(which)) which = TABS[0];
+    if (which === "builds" && $("tab-builds").hidden) { buildsWanted = true; which = TABS[0]; }   // 올라온 빌드가 없는 동안 이 탭은 감춰져 있다 — 빌드가 있으면 loadBuilds 가 탭을 드러내고 이리로 데려온다
     const changed = st.tab !== which; st.tab = which;
     for (const t of TABS) { const on = t === which; $("tab-" + t).setAttribute("aria-selected", on); $("tab-" + t).tabIndex = on ? 0 : -1; $("view-" + t).hidden = !on; }
     safe(() => localStorage.setItem("psy-tab2", which));
@@ -1050,7 +1051,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
   // 탭 줄 키보드: ← → Home End 로 옮긴다(Tab 순서에는 고른 탭만 든다)
   function arrowTabs(root) {
     root.addEventListener("keydown", e => {
-      const tabs = [...root.querySelectorAll('[role="tab"]')], i = tabs.indexOf(document.activeElement);
+      const tabs = [...root.querySelectorAll('[role="tab"]:not([hidden])')], i = tabs.indexOf(document.activeElement);
       const n = e.key === "ArrowRight" ? i + 1 : e.key === "ArrowLeft" ? i - 1 : e.key === "Home" ? 0 : e.key === "End" ? tabs.length - 1 : null;
       if (i < 0 || n === null) return;
       e.preventDefault(); const t = tabs[(n + tabs.length) % tabs.length]; t.focus(); t.click();
@@ -2156,12 +2157,13 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
   $("rsScrim").addEventListener("click", e => { if (e.target === $("rsScrim")) closeRes(); });
 
   // ---------- 테스트 빌드(다른 공개 사이트 psy-builds 의 builds.json — 여기서는 목록만, 받기는 그 페이지에서) ----------
+  // 올라온 빌드가 없는 동안에는 탭을 감춘다(처음 열 때 한 번 물어본다). 빌드가 올라오면 탭이 제자리에 다시 나온다.
   const BUILDS_SITE = "https://qtdqtd002-coder.github.io/psy-builds/";
-  let buildsLoaded = false;
+  let buildsLoaded = false, buildsWanted = false;
   const fmtSize = (v) => typeof v !== "number" || !isFinite(v) ? String(v ?? "") : v >= 1048576 ? (v / 1048576).toFixed(v >= 104857600 ? 0 : 1) + " MB" : v >= 1024 ? Math.round(v / 1024) + " KB" : v + " B";
   async function loadBuilds(force = false) {
     if (buildsLoaded && !force) return;
-    const none = () => { buildsLoaded = false; $("buildsBox").innerHTML = '<p class="empty">아직 올라온 빌드가 없습니다</p>'; };
+    const none = () => { buildsLoaded = false; buildsWanted = false; $("buildsBox").innerHTML = '<p class="empty">아직 올라온 빌드가 없습니다</p>'; $("tab-builds").hidden = true; if (st.tab === "builds") showTab(TABS[0]); };
     try {
       // 보드와 같은 곳(github.io)에서 열렸으면 상대 경로, 파일·다른 호스트에서 열렸으면 전체 주소
       const base = safe(() => location.origin === new URL(BUILDS_SITE).origin) ? "/psy-builds/" : BUILDS_SITE;
@@ -2175,6 +2177,8 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
         <ul class="files">${(rel.files || []).map(f => `<li><span class="tag m">${esc({windows: "Windows", android: "Android"}[f.kind] || f.kind || "")}</span><b>${esc(f.title || f.name || "")}</b><span class="sz">${esc(fmtSize(f.size))}</span>${f.note ? `<small>${esc(f.note)}</small>` : ""}</li>`).join("")}</ul>
         <a class="btn" href="${BUILDS_SITE}" target="_blank" rel="noopener">내려받기 페이지 열기</a>`;
       buildsLoaded = true;
+      $("tab-builds").hidden = false;
+      if (buildsWanted) { buildsWanted = false; showTab("builds"); }
     } catch (e) {
       if (!buildsLoaded) none();   // 이미 보이던 목록은 잠깐의 통신 오류로 지우지 않는다
     }
@@ -2223,7 +2227,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
     const round = D.rounds.find(r => r.id === fb.round) || (D.rounds.length === 1 ? D.rounds[0] : null);
     $("fbFacts").innerHTML = (round ? fact("차수", round.name + (round.at ? " · " + round.at : "")) : "") + fact("항목", list.length)
       + Object.entries(FB_STATUS).map(([k, n]) => { const c = list.filter(it => (it.status || "recorded") === k).length; return c ? fact(n, c) : ""; }).join("")
-      + fact("결정 필요", list.filter(it => fbArr(it.ask).length && !fbArr(it.decided).length).length);
+      + fact("결정 필요", list.filter(it => fbArr(it.ask).length).length);   // 정해진 물음은 decided 로 옮기므로 ask 에 남은 것이 곧 남은 물음이다(board.py publish-feedback 의 셈과 같다)
     const bundles = D.bundles.filter(b => (!fb.round || b.round === fb.round) && fbArr(b.items).some(id => list.some(it => it.id === id)));
     $("fbBundles").innerHTML = bundles.length && !fb.q.trim() && !fb.kind ? `<h3 class="gi-h">작업 묶음<small>일괄 작업 때 권하는 순서</small></h3><div class="gi">` + gtable(["순서", "묶음", "항목", "메모"],
       bundles.map((b, i) => [esc(b.order ?? i + 1), `<b>${esc(b.name)}</b>`, fbArr(b.items).map(id => { const d = D.items.find(x => x.id === id), t = `<span class="qid">${esc(id)}</span>${esc(title.get(id) || "")}`; return d && d.status === "done" ? `<s class="fbdone">${t}</s> <span class="tag st-done">개선 완료</span>` : t; }).join("<br>"), esc(b.note || "")]), 1, [0]) + `</div>` : "";
@@ -2245,6 +2249,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
   const h0 = parseHash();
   if (h0 && h0.doc) lore.doc = h0.doc;
   showTab(h0 ? h0.tab : (safe(() => localStorage.getItem("psy-tab2")) || TABS[0]), h0 ? h0.anchor : "");
+  loadBuilds();   // 올라온 빌드가 있는지 한 번 물어본다 — 있어야 «빌드 다운로드» 탭이 나온다
 
   function visible() {
     const q = st.q.trim().toLowerCase();
@@ -2439,7 +2444,7 @@ s.fbdone{color:var(--muted);text-decoration-thickness:1.5px}
   document.addEventListener("keydown", e => { if (e.key !== "Escape") return; if (!$("cardScrim").hidden) closeCard(); if (!$("tokScrim").hidden) $("tokScrim").hidden = true; if (!$("rsScrim").hidden) closeRes(); tipHide(); tocOpen(false); });
 
   // ---------- 시작 ----------
-  $("refreshBtn").onclick = () => { load(); if (!$("view-lore").hidden) loadLore(true); if (!$("view-info").hidden) { gi.plan = null; loadInfo(true); } if (!$("view-res").hidden) loadRes(true).then(renderRes); if (!$("view-builds").hidden) loadBuilds(true); if (!$("view-feedback").hidden) loadFeedback(true); };
+  $("refreshBtn").onclick = () => { load(); if (!$("view-lore").hidden) loadLore(true); if (!$("view-info").hidden) { gi.plan = null; loadInfo(true); } if (!$("view-res").hidden) loadRes(true).then(renderRes); if (!$("view-builds").hidden || $("tab-builds").hidden) loadBuilds(true); if (!$("view-feedback").hidden) loadFeedback(true); };
   load();
   setInterval(() => { if (!document.hidden && !st.busy && $("cardScrim").hidden) load(true); }, 60000);
 })();
